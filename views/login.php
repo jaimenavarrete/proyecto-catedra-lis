@@ -20,7 +20,7 @@
     <div id="form">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
-    <h2>Registro</h2>
+    <h2>INICIO DE SECIÓN</h2>
     <hr>
     </div>
     
@@ -30,42 +30,17 @@
     </div>
 
     <div class="input-container">
-    <i class="fa fa-address-card icon"></i>
-    <input class="input-field" type="text" name="input" placeholder="Nombre:">
-    </div>
-
-    <div class="input-container">
-    <i class="fa fa-address-card icon"></i>
-    <input class="input-field" type="text" name="input" placeholder="Apellido:">
-    </div>
-
-    <div class="input-container">
-    <i class="fa fa-birthday-cake icon"></i>
-    <input class="input-field" type="text" name="fechacumpleaños" placeholder="dd/mm/yyyy">
-    </div>
-
-    <div class="input-container">
-    <i class="fa fa-envelope icon"></i>
-    <input class="input-field" type="text" name="email" placeholder="Email:">
-    </div>
-
-    <div class="input-container">
-    <i class="fa fa-phone icon"></i>
-    <input class="input-field" type="text" name="tel" placeholder="Numero de teléfono:">
-    </div>
-
-    <div class="input-container">
     <i class="fa fa-key icon"></i>
     <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:">
     </div>
 
-    <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:">
-    </div>
-    <button type="submit" class="btn">Registrar</button>
-    <h4>¿Ya tienes cuenta?</h4>
-    <center><a href="">Inicia Sesión</a></center>
+    <input type="checkbox" name="recordar" id="recuerdame">
+    <label for="recuerdame">Recuerdame</label>
+    <a href="http://">¿Olvidaste tu contraseña?</a>
+
+    <button type="submit" class="btn">Ingresar</button>
+    <h4>¿Aun no tienes cuenta?</h4>
+    <center><a href="">Registrate</a></center>
     </form>
     </div>
     </article>
