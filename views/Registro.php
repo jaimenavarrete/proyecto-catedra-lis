@@ -6,20 +6,21 @@
     <title>Registro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/styles.css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="freg">
 <br>
 <br>
 <br>
     <section>
     <article>
-    <div id="form">
-    <form action="" class="form-horizontal" name="formulario" id="salario">
+    <div id="formr">
+    <form action="" class="form-horizontal" name="formr">
     <div>
     <h2>Registro</h2>
-    <hr>
+    <hr id="line">
     </div>
     
     <div class="input-container">
