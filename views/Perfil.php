@@ -15,7 +15,7 @@
 <ul>
   <li><img class="circular--squaremin" src="img/user.png" /></li>
  <li><a href="Perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
- <li><a href="">Grupos<i class="fa fa-users icon"></i></a></li>
+ <li><a href="Grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
  <li><a href="inscripcon_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
  <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
  </ul>

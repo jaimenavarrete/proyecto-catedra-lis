@@ -31,13 +31,13 @@
      <br>
      <br>
      <div class="input-container-repo">
-     <h4  >Materia:</h4>
+     <h4 style="margin-top:-0.1em;" >Materia:</h4>
     <select name="materias">
     <option value="">Lenguajes interpretados en el servidor</option>
     </select>
     </div>
     <div class="input-container-repo">
-    <h4>Grupo:</h4>
+    <h4 style="margin-top:-0.1em;" >Grupo:</h4>
     <select name="grupo" >
     <option value="">01T</option>
     </select>
