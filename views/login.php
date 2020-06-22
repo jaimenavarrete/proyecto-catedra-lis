@@ -36,7 +36,10 @@
 
     <input type="checkbox" name="recordar" id="recuerdame">
     <label for="recuerdame">Recuerdame</label>
+    <div class="input-container">
     <a href="http://">¿Olvidaste tu contraseña?</a>
+    </div>
+    
 
     <button type="submit" class="btn">Ingresar</button>
     <h4>¿Aun no tienes cuenta?</h4>

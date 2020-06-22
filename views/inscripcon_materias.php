@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/normalize.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body id="fondo">
+<body id="freg">
 <br>
 <br>
 <br>
