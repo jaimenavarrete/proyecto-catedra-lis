@@ -42,7 +42,7 @@
     <option value="">01T</option>
     </select>
     </div>
-    <button type="submit" class="btn">Agregar materia</button>
+    <button type="submit" class="btn" id="btn-repo">Agregar materia</button>
         </div>
         
     </article>
