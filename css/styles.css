@@ -1,33 +1,128 @@
 *{
     box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
  }
 
-a{
-    font-family: 'Comfortaa', cursive;
+/*Barra Sup*/
+#navegador ul{
+  list-style-type: none;
+  margin:0px;
+  padding:0px;
+  text-align: center;
+  background:#3CA4DA ;
+  overflow: hidden;
 }
 
- body{
-    background-color: dodgerblue
- }
+#navegador li{
+float: left;
 
-hr {
+}
+
+#navegador li a {
+ display: block;
+ color:#fff;
+ text-align: center;
+ padding: 20px 20px;
+ text-decoration: none;
+}
+
+#navegador li a:hover{
+  color: #ffffff;
+}
+
+#cerrar{
+  padding-left:33em;
+  
+}
+/***********************************************************************************************************************************************/
+/* Rectangulos*/
+#rectanglep{
+  margin-top: 8em;
+  margin-left: 10em;
+  width:26em;
+  height:26em;
+  background:#3CA4DA;
+  border-radius:4px;
+}
+
+#rectangles{
+  margin-top: -25.75em;
+  margin-left: 10.25em;
+  width:25.5em;
+  height:25.5em;
+  background:#fff;
+  border-radius:4px;
+}
+
+#rectangles1{
+  margin-top: -25.75em;
+  margin-left:10.25em;
+  width:25.5em;
+  height:12.75em;
+  background:#3CA4DA;
+ 
+}
+#rectangles button{
+  margin-top: 20em;
+  margin-left: 3em;
+  width: 80%;
+}
+/************************************************************************************************************************************************/
+#creditos{
+  position: absolute;
+  width: 1349px;
+  height: 66px;
+  left: 0px;
+  top: 1200px;
+  background: #3CA4DA;
+}
+#line{
     height: 5px;
     margin-left: 0%;
     margin-right: 0%;
-    background-color: dodgerblue;
-  }
+    background: #3CA4DA;
+    border-radius:5px;   
+     }
 
-h4 {
-    font-family: 'Comfortaa', cursive;
-    color: black;
-    text-align: center;
+     #fuente{
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+      color: #258AC1;;
+      text-align: center;
+      line-height: 61px;
+      margin-top: -8em;
+      font-size: 3em;
+      
+    }
+b{
+color: black;
+font-size: 12px;
+width: bold;
 }
+h1{
+  font-family: 'Comfortaa', cursive;
+  color: #fff;
+  text-align: center;
+  font-size: 2em;
+}
+
 
 h2{
-    font-family: 'Comfortaa', cursive;
-    color: dodgerblue;
+    color: #3CA4DA;;
 }
 
+h4 {
+  color: black;
+  text-align: center;
+}
+
+h5 {
+  color: #fff;
+  text-align: center;
+}
+#fontm{
+  color: #3CA4DA;
+}
 .input-container {
   display: flex;
   width: 100%;
@@ -36,46 +131,131 @@ h2{
 
 .icon {
   padding: 10px;
-  background: dodgerblue;
+  background: #3CA4DA;;
   color: white;
   min-width: 50px;
   text-align: center;
 }
 
 .input-field {
-  font-family: 'Comfortaa', cursive;
   width: 100%;
   padding: 10px;
   outline: none;
 }
 
 .input-field:focus {
-  border: 2px solid dodgerblue;
+  border: 2px solid #3CA4DA;;
 }
 
 
 .btn {
-  background-color: dodgerblue;
+  background-color: #3CA4DA;;
   color: white;
   padding: 15px 20px;
-  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  background: #3CA4DA;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+.btne {
+  background-color: white;
+  color: #3CA4DA;;
+  padding: 15px 20px;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
 }
-
 .btn:hover {
   opacity: 1;
 }
+#fondo {
+  background: #E5E5E5;
+}
 
-#form {
+#freg{
+    background-color: #3CA4DA;
+}
+/*Formulario Registrar y Inicio Sesion*/
+#formr {
     width:350px;
 	padding:16px;
 	border-radius:10px;
 	margin:auto;
 	background-color:#fff;
 }
-
-.input-container .selects{
-background-color: chocolate;
+/***********************************************************************************************************************************************************/
+/* Tabla de informacion personal*/
+#forminf {
+  width:35em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 40.5em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
 }
+#forminf h4{
+  color: black;
+  text-align: left;
+}
+/***********************************************************************************************************************************************************/
+/*Formulario materias incritas*/
+#format {
+  width:65.5em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 10em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+  float:left;
+}
+/***********************************************************************************************************************************************************/
+/*Cuadro que muestra las materias inscritas*/
+#formm {
+  width:14em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 0em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+  float:left;margin-left:18px;
+}
+
+#formm h4{
+  font-size: 13px;
+}
+/***********************************************************************************************************************************************************/
+
+/*Fotos circulares*/
+.circular--squaremax {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+  width:150px;
+  height:150px;
+  margin-left: 18.2em;
+  margin-top: -4.9em;
+  overflow:hidden;
+}
+
+.circular--squaremin {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+  width:50px;
+  height:50px;
+  margin:10px;
+  margin-left: 45px;
+  overflow:hidden;
+}
+/************************************************************************************************************************************************/
+
