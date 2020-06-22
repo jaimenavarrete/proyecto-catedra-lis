@@ -82,7 +82,7 @@
      </div>
     </article>
     </section>
-    <br><br><br>
+    
     <div id="creditos">
         <h5>Copyright © 2020-Universidad Don Bosco</h5>
     </div>

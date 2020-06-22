@@ -31,7 +31,7 @@ float: left;
 }
 
 #cerrar{
-  padding-left:33em;
+ float: right; 
   
 }
 /***********************************************************************************************************************************************/
@@ -69,12 +69,15 @@ float: left;
 }
 /************************************************************************************************************************************************/
 #creditos{
-  position: absolute;
-  width: 1349px;
-  height: 66px;
-  left: 0px;
-  top: 1200px;
-  background: #3CA4DA;
+    background-color:#3CA4DA;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    text-align: center;
+    color: white;
+    bottom: 0;
+    padding: 3px;
+    clear: both;
 }
 #line{
     height: 5px;
@@ -108,7 +111,7 @@ h1{
 
 
 h2{
-    color: #3CA4DA;;
+    color: #3CA4DA;
 }
 
 h4 {
@@ -129,6 +132,21 @@ h5 {
   margin-bottom: 15px;
 }
 
+.input-container-repo {
+  display: flex;
+  height: 20px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  float:left;margin-left:8em;
+}
+
+#btn-repo{
+  width: 200px;
+  height: 47px;
+  margin-left: 10px;
+  margin-top: 100px;
+}
+
 .icon {
   padding: 10px;
   background: #3CA4DA;;
@@ -136,6 +154,7 @@ h5 {
   min-width: 50px;
   text-align: center;
 }
+
 
 .input-field {
   width: 100%;
@@ -161,7 +180,7 @@ h5 {
 }
 .btne {
   background-color: white;
-  color: #3CA4DA;;
+  color: #3CA4DA;
   padding: 15px 20px;
   cursor: pointer;
   width: 100%;
@@ -174,13 +193,17 @@ h5 {
   background: #E5E5E5;
 }
 
-#freg{
-    background-color: #3CA4DA;
+#fondo h1{
+  color: #258AC1;
+  text-align: center;
 }
+#freg{
+    background-color: #cdcdcd;
+}  
 /*Formulario Registrar y Inicio Sesion*/
 #formr {
-  width:350px;
-	padding:16px;
+  width:720px;
+	padding:35px;
 	border-radius:10px;
 	margin:auto;
 	background-color:#fff;
@@ -262,4 +285,26 @@ h5 {
   overflow:hidden;
 }
 /************************************************************************************************************************************************/
+/*Tablas*/
 
+.input-container .tablas{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+ 
+}
+
+ th,td{
+
+padding: 10px;
+}
+
+thead{
+  background-color:#3CA4DA ;
+  color: white;
+}
+tr:nth-child(even){
+  background-color: #ddd;
+}
+
+/************************************************************************************************************************************************/
