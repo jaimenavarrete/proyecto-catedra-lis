@@ -31,14 +31,14 @@ float: left;
 }
 
 #cerrar{
-  padding-left:55em;
+  padding-left:33em;
   
 }
 /***********************************************************************************************************************************************/
 /* Rectangulos*/
 #rectanglep{
   margin-top: 8em;
-  margin-left: 18em;
+  margin-left: 10em;
   width:26em;
   height:26em;
   background:#3CA4DA;
@@ -47,7 +47,7 @@ float: left;
 
 #rectangles{
   margin-top: -25.75em;
-  margin-left: 18.25em;
+  margin-left: 10.25em;
   width:25.5em;
   height:25.5em;
   background:#fff;
@@ -56,13 +56,26 @@ float: left;
 
 #rectangles1{
   margin-top: -25.75em;
-  margin-left: 18.25em;
+  margin-left:10.25em;
   width:25.5em;
   height:12.75em;
   background:#3CA4DA;
  
 }
+#rectangles button{
+  margin-top: 20em;
+  margin-left: 3em;
+  width: 80%;
+}
 /************************************************************************************************************************************************/
+#creditos{
+  position: absolute;
+  width: 1349px;
+  height: 66px;
+  left: 0px;
+  top: 1200px;
+  background: #3CA4DA;
+}
 #line{
     height: 5px;
     margin-left: 0%;
@@ -71,6 +84,21 @@ float: left;
     border-radius:5px;   
      }
 
+     #fuente{
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+      color: #258AC1;;
+      text-align: center;
+      line-height: 61px;
+      margin-top: -8em;
+      font-size: 3em;
+      
+    }
+b{
+color: black;
+font-size: 12px;
+width: bold;
+}
 h1{
   font-family: 'Comfortaa', cursive;
   color: #fff;
@@ -84,9 +112,16 @@ h2{
 }
 
 h4 {
-  font-family: 'Comfortaa', cursive;
   color: black;
   text-align: center;
+}
+
+h5 {
+  color: #fff;
+  text-align: center;
+}
+#fontm{
+  color: #3CA4DA;
 }
 .input-container {
   display: flex;
@@ -117,16 +152,17 @@ h4 {
   background-color: #3CA4DA;;
   color: white;
   padding: 15px 20px;
-  border: none;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  background: #3CA4DA;
+  border: 1px solid #000000;
+  box-sizing: border-box;
 }
 .btne {
   background-color: white;
   color: #3CA4DA;;
   padding: 15px 20px;
-  border: none;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
@@ -141,7 +177,7 @@ h4 {
 #freg{
     background-color: #3CA4DA;
 }
-
+/*Formulario Registrar y Inicio Sesion*/
 #formr {
     width:350px;
 	padding:16px;
@@ -149,35 +185,55 @@ h4 {
 	margin:auto;
 	background-color:#fff;
 }
-
-#formpp {
-  width:250px;
-padding:50px;
-border-radius:10px;
-margin:80px;
-background-color:#fff;
-}
-
+/***********************************************************************************************************************************************************/
+/* Tabla de informacion personal*/
 #forminf {
-  width:50em;
+  width:35em;
 	padding:25px;
   border-radius:4px;
-  margin-left: 46em;
+  margin-left: 40.5em;
   margin-top: 2.55em;
   background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+}
+#forminf h4{
+  color: black;
+  text-align: left;
+}
+/***********************************************************************************************************************************************************/
+/*Formulario materias incritas*/
+#format {
+  width:65.5em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 10em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+  float:left;
+}
+/***********************************************************************************************************************************************************/
+/*Cuadro que muestra las materias inscritas*/
+#formm {
+  width:14em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 0em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+  float:left;margin-left:18px;
 }
 
-#fuente{
-  font-family: 'Comfortaa', cursive;
-  font-weight: 700;
-  color: #258AC1;;
-  text-align: center;
-  line-height: 61px;
-  margin-top: -8em;
-  font-size: 3em;
-  
+#formm h4{
+  font-size: 13px;
 }
+/***********************************************************************************************************************************************************/
 
+/*Fotos circulares*/
 .circular--squaremax {
   border-top-left-radius: 50% 50%;
   border-top-right-radius: 50% 50%;
@@ -185,7 +241,7 @@ background-color:#fff;
   border-bottom-left-radius: 50% 50%;
   width:150px;
   height:150px;
-  margin-left: 26.5em;
+  margin-left: 18.2em;
   margin-top: -4.9em;
   overflow:hidden;
 }
@@ -198,8 +254,8 @@ background-color:#fff;
   width:50px;
   height:50px;
   margin:10px;
-  margin-left: 100px;
+  margin-left: 45px;
   overflow:hidden;
 }
-
+/************************************************************************************************************************************************/
 

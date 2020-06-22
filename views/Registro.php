@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/styles.css"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="freg">
 <br>
@@ -63,7 +62,7 @@
     <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:" required>
     </div>
     <button type="submit" class="btn">Registrar</button>
-    <h4>¿Ya tienes cuenta?</h4>
+    <h4 style="text-align: center;">¿Ya tienes cuenta?</h4>
     <center><a href="">Inicia Sesión</a></center>
     <br>
     </form>
