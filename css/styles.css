@@ -176,6 +176,11 @@ h5 {
 
 #freg{
     background-color: #3CA4DA;
+    background-image: url("fondo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 /*Formulario Registrar y Inicio Sesion*/
 #formr {
@@ -185,6 +190,7 @@ h5 {
 	margin:auto;
 	background-color:#fff;
 }
+
 /***********************************************************************************************************************************************************/
 /* Tabla de informacion personal*/
 #forminf {
