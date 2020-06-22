@@ -172,7 +172,7 @@ h5 {
   color: white;
   padding: 15px 20px;
   cursor: pointer;
-  width: 100%;
+  border-radius: 30px;  
   opacity: 0.9;
   background: #3CA4DA;
   border: 1px solid #000000;
