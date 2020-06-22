@@ -179,11 +179,15 @@ h5 {
 }
 /*Formulario Registrar y Inicio Sesion*/
 #formr {
-    width:350px;
+  width:350px;
 	padding:16px;
 	border-radius:10px;
 	margin:auto;
 	background-color:#fff;
+}
+
+.input-container select{
+  width: 100%;
 }
 /***********************************************************************************************************************************************************/
 /* Tabla de informacion personal*/
