@@ -24,8 +24,7 @@
     </div>
     
     <div class="input-container">
-    
-    <select name="materias" id="materias">
+    <select name="materias" id="materias" class="selects">
     <option value="">Matematica 1</option>
     <option value="">Matematica 2</option>
     <option value="">Matematica 3</option>
@@ -33,7 +32,7 @@
     </div>
 
     <div class="input-container">
-    <select name="grupo" id="grupo">
+    <select name="grupo" id="grupo" class="selects">
     <option value="">01T</option>
     <option value="">04T</option>
     <option value="">02T</option>
