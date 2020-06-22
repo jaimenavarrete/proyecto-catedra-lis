@@ -75,6 +75,7 @@ float: left;
   left: 0px;
   top: 1200px;
   background: #3CA4DA;
+  flex: 0 0 auto;
 }
 #line{
     height: 5px;
@@ -85,8 +86,6 @@ float: left;
      }
 
      #fuente{
-      font-family: 'Comfortaa', cursive;
-      font-weight: 700;
       color: #258AC1;;
       text-align: center;
       line-height: 61px;
@@ -100,7 +99,6 @@ font-size: 12px;
 width: bold;
 }
 h1{
-  font-family: 'Comfortaa', cursive;
   color: #fff;
   text-align: center;
   font-size: 2em;
@@ -127,6 +125,14 @@ h5 {
   display: flex;
   width: 100%;
   margin-bottom: 15px;
+}
+
+.input-container-repo {
+  display: flex;
+  height: auto;;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  float:left;margin-left:8em;
 }
 
 .icon {
@@ -159,6 +165,8 @@ h5 {
   border: 1px solid #000000;
   box-sizing: border-box;
 }
+
+
 .btne {
   background-color: white;
   color: #3CA4DA;;
@@ -173,7 +181,10 @@ h5 {
 #fondo {
   background: #E5E5E5;
 }
-
+#fondo h1{
+  color:#258AC1;
+  text-align: center;
+}
 #freg{
     background-color: #3CA4DA;
 }
@@ -217,6 +228,13 @@ h5 {
   border: 2px solid #258AC1;
   box-sizing: border-box;
   float:left;
+}
+
+#format button{
+width: 200px;
+height: 47px;
+margin-left: 10px;
+margin-top: 100px;
 }
 /***********************************************************************************************************************************************************/
 /*Cuadro que muestra las materias inscritas*/

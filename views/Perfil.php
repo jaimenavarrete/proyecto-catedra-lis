@@ -14,10 +14,10 @@
     <nav>
 <ul>
   <li><img class="circular--squaremin" src="img/user.png" /></li>
- <li><a href=”#”>Mi perfil<i class="fa fa-user icon"></i></a></li>
- <li><a href=”#”>Grupos<i class="fa fa-users icon"></i></a></li>
- <li><a href=”#”>Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
- <li id="cerrar"><a href=”#”>Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
+ <li><a href="Perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+ <li><a href="">Grupos<i class="fa fa-users icon"></i></a></li>
+ <li><a href="inscripcon_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
+ <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
  </ul>
  </nav>
  </div>
@@ -77,14 +77,14 @@
          <h4 id="fontm" style="text-align: right;"></h4>
          <h4 id="fontm">Nombre:</h4>
          <h3 style="text-align: center;">LENGUAJES INTERP. EN EL SERVIDOR</h3>
-         <button type="submit" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
+         <button type="submit" class="btn" id="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
      </div>
      </div>
     </article>
     </section>
     <br><br><br>
-    <div id="creditos">
-        <h5>Copyright © 2020-Universidad Don Bosco</h5>
-    </div>
+    <footer id="creditos">
+    <h5>Copyright © 2020-Universidad Don Bosco</h5>
+    </footer>
 </body>
 </html>
