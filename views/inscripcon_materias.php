@@ -27,9 +27,10 @@
 <br>
     <section>
     <article>
-    <div id="format">
+    <h1>INSCRIPCION DE MATERIAS</h1>
+    <div id="formtab">
     <div>
-    <h2>INSCRIPCION DE MATERIAS</h2>
+    <h2>Proceso de inscripción</h2>
     <hr id="line">
     </div>
     <br>
@@ -54,9 +55,10 @@
 
     <div class="input-container-repo">
     <h4 style="margin-top:-0.1em;">Cupo:</h4>
-        <input type="text" name="cupos" id="cupos">
+        <input type="text" name="cupos" id="cupos" readonly style="width: 28px;
+  height: 20px; text-align: center;">
     </div>
-    <button type="submit" class="btn" id="btn-repo">+ Agregar materia</button>
+    <button type="submit" class="btn" id="btn-repo">Agregar materia +</button>
     </div>
     </article>
     </section>
@@ -64,10 +66,10 @@
 <br><br>
     <section>
     <article>
-    <div id="format">
+    <div id="formtab">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
-    <h2>MATERIAS A INSCRIBIR</h2>
+    <h2>Materias a inscribir</h2>
     <hr id="line">
     </div>
     <br> 
@@ -101,7 +103,7 @@
 
 
 
-    <div id="creditos">
+    <div id="creditos" style="top: 66em;">
    <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div> 
 </body>

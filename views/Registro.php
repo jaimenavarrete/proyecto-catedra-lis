@@ -61,9 +61,9 @@
     <i class="fa fa-key icon"></i>
     <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:" required>
     </div>
-    <button type="submit" class="btn">Registrar</button>
+    <button type="submit" class="btn" style="margin-left:103px;">Registrar</button>
     <h4 style="text-align: center;">¿Ya tienes cuenta?</h4>
-    <center><a href="">Inicia Sesión</a></center>
+    <center><a href="login.php">Inicia Sesión</a></center>
     <br>
     </form>
     </div>

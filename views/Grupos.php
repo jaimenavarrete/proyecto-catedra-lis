@@ -25,7 +25,7 @@
     <article>
         <br>
     <h1>GRUPOS DE LAS MATERIAS</h1>
-        <div id="format">
+        <div id="formtab">
         <h2>Búsqueda de grupos por materia</h2>
      <hr id="line">
      <br>
@@ -45,7 +45,7 @@
     <button type="submit" class="btn" id="btn-repo">Ver grupo</button>
         </div>
 
-        <div id="format">
+        <div id="formtab">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
     <h2>Información de la materia actual</h2>
@@ -68,13 +68,14 @@
     </form>
     </div>
 
-    <div id="format">
+
+    <div id="formtab">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
     <h2>Información de los alumnos de la materia actual</h2>
     <hr id="line">
     </div>
-    <button type="submit" class="btn" id="btn-repo" style="background:#27AE60;">Formar Grupos +</button>
+    
     <br> 
     <br>
     <div class="input-container">
@@ -103,12 +104,55 @@
     </div>
     </form>
     </div>
-        <br>
-        <br>
-        <br>
+
+
+    <div id="formtab">
+    <form action="" class="form-horizontal" name="formulario" id="salario">
+    <div>
+    <h2>Información de los grupos de la materia actual</h2>
+    <hr id="line">
+    <br><br>
+    </div>
+    <div class="input-container">
+    <h4 style="margin-top:0.5em;">Grupo:</h4>
+    <select name="lista-grupos" class="lista-grupos">
+    <option value="">Grupo 1</option>
+    <option value="">Grupo 2</option>
+    </select>
+    <a href="http://"><i class="fa fa-trash icon"  style="padding-top:16px ; background:#EB5757; width: 50px; height: 50px; margin-left:35em; margin-top:0.1em;"  ></i></a>
+    <button type="submit" class="btn" id="btn-grupos" style="background:#27AE60;">Formar Grupos +</button>
+    </div>
+    <br> 
+    <br>
+    <div class="input-container">
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>#</th><th>Nombre del alumno</th><th>Correo electrónico</th><th>Opciones</th>
+                </tr>
+            </thead>
+          <tr>
+              <td>1</td><td>[Nombre del alumno 1]</td><td>[Correo del alumno 1]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a></td>
+          </tr> 
+          <tr>
+              <td>2</td><td>[Nombre del alumno 2]</td><td>[Correo del alumno 2]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a></td>
+          </tr> 
+          <tr>
+              <td>3</td><td>[Nombre del alumno 3]</td><td>[Correo del alumno 3]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a></td>
+          </tr> 
+          <tr>
+              <td>4</td><td>[Nombre del alumno 4]</td><td>[Correo del alumno 4]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></td>
+          </tr> 
+          <tr>
+              <td>5</td><td>[Nombre del alumno 5]</td><td>[Correo del alumno 5]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></td>
+          </tr> 
+        </table>
+    </div>
+    </form>
+    </div>
     </article>
 </section>
-<div id="creditos">
+<div id="creditos" style="margin-top:120em">
 <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>
 </body>

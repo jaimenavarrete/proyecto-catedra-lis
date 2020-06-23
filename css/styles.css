@@ -74,12 +74,9 @@ float: left;
 width: 100%;
 height: 66px;
 left: 0px;
-top: 1440px;
 }
 #line{
     height: 5px;
-    margin-left: 0%;
-    margin-right: 0%;
     background: #3CA4DA;
     border-radius:5px;   
      }
@@ -126,14 +123,21 @@ h5 {
   margin-bottom: 15px;
 }
 
+.input-container .lista-grupos{
+  display: flex;
+  width: 15%;
+  height: 20px;
+  float:left;margin-left:0.1em;
+  margin-top: 6px;
+}
+
 .input-container-repo {
   display: flex;
   height: 20px;
   margin-bottom: 15px;
   box-sizing: border-box;
-  float:left;margin-left:6.8em;
+  float:left;margin-left:9em;
 }
-
 #btn-repo{
   margin-left: 760px;
   margin-top: 40px;
@@ -142,6 +146,17 @@ h5 {
   left: 1066px;
   top: 868px;
 }
+
+#btn-grupos{
+  margin-left: 15px;
+  margin-top: 3px;
+  width: 300px;
+  height: 50px;
+  left: 1066px;
+  top: 868px;
+}
+
+
 
 .icon {
   padding: 10px;
@@ -235,6 +250,28 @@ h5 {
   border: 2px solid #258AC1;
   box-sizing: border-box;
   float:left;
+}
+#formtab {
+  width:65.5em;
+	padding:25px;
+  border-radius:4px;
+  margin-left: 10em;
+  margin-top: 2.55em;
+  background-color:#fff;
+  border: 2px solid #258AC1;
+  box-sizing: border-box;
+  float:left;
+}
+
+#formtab #i-pdf{
+  border:none;
+  background:#27AE60;
+  margin-top: -20px;
+}
+#formtab i{
+  border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 4px;
 }
 /***********************************************************************************************************************************************************/
 /*Cuadro que muestra las materias inscritas*/

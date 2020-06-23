@@ -41,9 +41,9 @@
     </div>
     
 
-    <button type="submit" class="btn">Ingresar</button>
+    <button type="submit" class="btn" style="margin-left:103px;">Ingresar</button>
     <h4>¿Aun no tienes cuenta?</h4>
-    <center><a href="">Registrate</a></center>
+    <center><a href="Registro.php">Registrate</a></center>
     </form>
     </div>
     </article>
