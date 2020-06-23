@@ -144,6 +144,10 @@ h5 {
 
 .input-container-repo .select_grupos_lab{
   
+  margin-left: 25px;
+}
+
+.input-container-repo .nombre_grupos_lab{
   margin-left: 200px;
 }
 
@@ -154,8 +158,9 @@ h5 {
 
 .input-container-repo .select_grupos_teoria{
   
-  margin-left: 245px;
+  margin-left: 70px;
 }
+
 
 #btn-repo{
   margin-left: 760px;

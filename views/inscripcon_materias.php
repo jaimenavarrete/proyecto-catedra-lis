@@ -53,7 +53,7 @@
     <h4 style="margin-top:-0.1em; margin-left: 5.5px; ">Cupo:</h4>
         <input type="text" name="cupos" id="cupos" style="margin-left: 1.5em; width: 140px;" >
     
-    <h4 style="margin-top:-0.1em;" class="select_grupos_lab">Grupo laboratorio:</h4>
+    <h4 style="margin-top:-0.1em;" class="nombre_grupos_lab">Grupo laboratorio:</h4>
     <select name="grupo" id="grupo" class="select_grupos_lab">
     <option value="">01L</option>
     <option value="">04L</option>
