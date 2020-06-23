@@ -74,7 +74,7 @@ float: left;
 width: 100%;
 height: 66px;
 left: 0px;
-top: 1440px;
+top: 2250px;
 }
 #line{
     height: 5px;
@@ -126,6 +126,14 @@ h5 {
   margin-bottom: 15px;
 }
 
+.input-container .lista-grupos{
+  display: flex;
+  width: 25%;
+  height: 30px;
+  float:left;margin-left:2em;
+  margin-top: 6px;
+}
+
 .input-container-repo {
   display: flex;
   height: 20px;
@@ -142,6 +150,17 @@ h5 {
   left: 1066px;
   top: 868px;
 }
+
+#btn-grupos{
+  margin-left: 400px;
+  margin-top: 3px;
+  width: 300px;
+  height: 50px;
+  left: 1066px;
+  top: 868px;
+}
+
+
 
 .icon {
   padding: 10px;

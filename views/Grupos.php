@@ -68,13 +68,14 @@
     </form>
     </div>
 
+
     <div id="format">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
     <h2>Información de los alumnos de la materia actual</h2>
     <hr id="line">
     </div>
-    <button type="submit" class="btn" id="btn-repo" style="background:#27AE60;">Formar Grupos +</button>
+    
     <br> 
     <br>
     <div class="input-container">
@@ -98,6 +99,55 @@
           </tr> 
           <tr>
               <td>5</td><td>[Nombre del alumno 5]</td><td>Grupo 1</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"><i class="fa fa-trash icon" style="background:#EB5757;"></i></a></td>
+          </tr> 
+        </table>
+    </div>
+    </form>
+    </div>
+        <br>
+        <br>
+        <br>
+    </article>
+</section>
+
+
+
+    <div id="format">
+    <form action="" class="form-horizontal" name="formulario" id="salario">
+    <div>
+    <h2>Información de los grupos de la materia actual</h2>
+    <hr id="line">
+    </div>
+    <div class="input-container">
+    <h4 style="margin-top:1em;">Grupo:</h4>
+    <select name="lista-grupos" class="lista-grupos">
+    <option value="">Grupo 1</option>
+    </select>
+    <button type="submit" class="btn" id="btn-grupos" style="background:#27AE60;">Formar Grupos +</button>
+    </div>
+    <br> 
+    <br>
+    <div class="input-container">
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>#</th><th>Nombre del alumno</th><th>Correo electrónico</th><th>Opciones</th>
+                </tr>
+            </thead>
+          <tr>
+              <td>1</td><td>[Nombre del alumno 1]</td><td>Grupo 1</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"></a></td>
+          </tr> 
+          <tr>
+              <td>2</td><td>[Nombre del alumno 2]</td><td>Grupo 2</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"></a></td>
+          </tr> 
+          <tr>
+              <td>3</td><td>[Nombre del alumno 3]</td><td>[Sin grupo]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"></a></td>
+          </tr> 
+          <tr>
+              <td>4</td><td>[Nombre del alumno 4]</td><td>[Sin grupo]</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"></a></td>
+          </tr> 
+          <tr>
+              <td>5</td><td>[Nombre del alumno 5]</td><td>Grupo 1</td><td><a href="http://"><i class="fa fa-pencil  icon" style="background:#27AE60;"></i></a>&nbsp<a href="http://"></a></td>
           </tr> 
         </table>
     </div>
