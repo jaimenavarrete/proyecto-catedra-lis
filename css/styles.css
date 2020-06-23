@@ -69,13 +69,12 @@ float: left;
 }
 /************************************************************************************************************************************************/
 #creditos{
+  background-color:#3CA4DA;
   position: absolute;
-  width: 1349px;
-  height: 66px;
-  left: 0px;
-  top: 1200px;
-  background: #3CA4DA;
-  flex: 0 0 auto;
+width: 100%;
+height: 66px;
+left: 0px;
+top: 1440px;
 }
 #line{
     height: 5px;
@@ -132,14 +131,16 @@ h5 {
   height: 20px;
   margin-bottom: 15px;
   box-sizing: border-box;
-  float:left;margin-left:8em;
+  float:left;margin-left:6.8em;
 }
 
 #btn-repo{
-  width: 200px;
+  margin-left: 760px;
+  margin-top: 40px;
+  width: 230px;
   height: 47px;
-  margin-left: 10px;
-  margin-top: 100px;
+  left: 1066px;
+  top: 868px;
 }
 
 .icon {
@@ -166,11 +167,10 @@ h5 {
   color: white;
   padding: 15px 20px;
   cursor: pointer;
-  width: 100%;
   opacity: 0.9;
-  background: #3CA4DA;
   border: 1px solid #000000;
   box-sizing: border-box;
+  border-radius:6px;
 }
 
 
@@ -279,5 +279,28 @@ h5 {
   margin-left: 45px;
   overflow:hidden;
 }
+/************************************************************************************************************************************************/
+/*Tablas*/
+
+.input-container .tablas{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+ 
+}
+
+ th,td{
+
+padding: 10px;
+}
+
+thead{
+  background-color:#3CA4DA ;
+  color: white;
+}
+tr:nth-child(even){
+  background-color: #ddd;
+}
+
 /************************************************************************************************************************************************/
 
