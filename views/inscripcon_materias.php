@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/normalize.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body id="freg">
+<body id="fondo">
 <div id="navegador">
     <nav>
     <ul>
@@ -27,15 +27,15 @@
 <br>
     <section>
     <article>
-    <div id="formr">
-    <form action="" class="form-horizontal" name="formulario" id="salario">
+    <div id="format">
     <div>
     <h2>INSCRIPCION DE MATERIAS</h2>
     <hr id="line">
     </div>
-    
-    <div>Materias:</div>
-    <div class="input-container">
+    <br>
+     <br>
+    <div class="input-container-repo">
+    <h4 style="margin-top:-0.1em;" >Materia:</h4>
     <select name="materias" id="materias">
     <option value="">Matematica 1</option>
     <option value="">Matematica 2</option>
@@ -43,8 +43,8 @@
     </select>
     </div>
     
-    <div>Grupos:</div>
-    <div class="input-container">
+    <div class="input-container-repo">
+    <h4 style="margin-top:-0.1em;">Grupo:</h4>
     <select name="grupo" id="grupo">
     <option value="">01T</option>
     <option value="">04T</option>
@@ -52,16 +52,11 @@
     </select>
     </div>
 
-    <div>Cupos disponibles:</div>
-    <div class="input-container">
+    <div class="input-container-repo">
+    <h4 style="margin-top:-0.1em;">Cupo:</h4>
         <input type="text" name="cupos" id="cupos">
     </div>
-
-    
-
-    <button type="submit" class="btn">+ Agregar materia</button>
-   
-    </form>
+    <button type="submit" class="btn" id="btn-repo">+ Agregar materia</button>
     </div>
     </article>
     </section>
@@ -69,7 +64,7 @@
 <br><br>
     <section>
     <article>
-    <div id="formr">
+    <div id="format">
     <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
     <h2>MATERIAS A INSCRIBIR</h2>
@@ -84,20 +79,23 @@
                 </tr>
             </thead>
           <tr>
-              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>1T</td><td><a href="http://"><i class="fa fa-trash icon"></i></a></td>
+              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>1T</td><td><a href="http://"><i class="fa fa-trash icon" style="background:#EB5757;"></i></a></td>
           </tr> 
           <tr>
-              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>10T</td><td><a href="http://"><i class="fa fa-trash icon"></i></a></td>
+              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>10T</td><td><a href="http://"><i class="fa fa-trash icon" style="background:#EB5757;"></i></a></td>
           </tr>  
         </table>
     </div>
 
     
 
-    <button type="submit" class="btn">Finalizar inscripción</button>
+    <button type="submit" class="btn" id="btn-repo" style="background:#27AE60;">Finalizar inscripción</button>
    
     </form>
     </div>
+    <br>
+        <br>
+        <br>
     </article>
     </section>
 
@@ -105,6 +103,6 @@
 
     <div id="creditos">
    <h5>Copyright © 2020-Universidad Don Bosco</h5>
-    </div>
+</div> 
 </body>
 </html>
