@@ -142,6 +142,21 @@ h5 {
   float:left;margin-left:6.8em;
 }
 
+.input-container-repo .select_grupos_lab{
+  
+  margin-left: 200px;
+}
+
+.input-container-repo .select_grupos_nombre{
+  
+  margin-left: 200px;
+}
+
+.input-container-repo .select_grupos_teoria{
+  
+  margin-left: 245px;
+}
+
 #btn-repo{
   margin-left: 760px;
   margin-top: 40px;
