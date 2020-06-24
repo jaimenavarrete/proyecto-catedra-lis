@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="../css/styles.css"/>
-    <link rel="stylesheet" href="../css/normalize.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="fondo">
 <div id="navegador">
@@ -16,7 +16,7 @@
   <li><img class="circular--squaremin" src="img/user.png" /></li>
  <li><a href="Perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
  <li><a href="Grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
- <li><a href="inscripcon_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
+ <li><a href="inscripcion_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
  <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
  </ul>
  </nav>
