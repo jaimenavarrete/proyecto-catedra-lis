@@ -1,9 +1,10 @@
 *{
     box-sizing: border-box;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Lato', Arial, sans-serif, helvetica;
  }
 
-/*Barra Sup*/
+/*Barra Menu - Header*/
+
 #navegador ul{
   list-style-type: none;
   margin:0px;
