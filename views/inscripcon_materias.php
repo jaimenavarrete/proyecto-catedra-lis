@@ -51,15 +51,8 @@
     </div>
     
     <div class="input-container-repo">
-<<<<<<< HEAD
-    <h4 style="margin-top:-0.1em;">Cupo:</h4>
-        <input type="text" name="cupos" id="cupos" readonly style="width: 28px;
-  height: 20px; text-align: center;">
-    </div>
-    <button type="submit" class="btn" id="btn-repo">Agregar materia +</button>
-=======
     <h4 style="margin-top:-0.1em; margin-left: 5.5px; ">Cupo:</h4>
-        <input type="text" name="cupos" id="cupos" style="margin-left: 1.5em; width: 140px;" >
+        <input type="text" name="cupos" id="cupos" style="margin-left: 1.5em; width: 140px;" readonly>
     
     <h4 style="margin-top:-0.1em;" class="nombre_grupos_lab">Grupo laboratorio:</h4>
     <select name="grupo" id="grupo" class="select_grupos_lab">
@@ -68,8 +61,7 @@
     <option value="">02L</option>
     </select>
     </div>
-    <button type="submit" class="btn" id="btn-repo" >+ Agregar materia</button>
->>>>>>> b8269a7f314a45168ff778577b13efe421a8a694
+    <button type="submit" class="btn" id="btn-repo" >Agregar materia +</button>
     </div>
     </article>
     </section>
