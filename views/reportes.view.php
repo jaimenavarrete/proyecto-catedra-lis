@@ -10,20 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="fondo">
+<header>
 <div id="navegador">
-    <nav>
-    <ul>
-  <li><img class="circular--squaremin" src="img/user.png" /></li>
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar" class="fa fa-bars icon" style="font-size:28px"></label>
+<img class="circular--squaremin" src="img/user.png" />
+<a href="login.php" class="cerrar">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a>
+    <nav class="menu">
+<ul>
  <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
  <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
  <li><a href="inscripcion_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
- <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
+ <li class="cerrar-m"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
  </ul>
  </nav>
  </div>
-<section>
+ </header>
+<section class="contenido">
     <article>
-        <br>
     <h1>REPORTES MATERIAS</h1>
 
     <div id="formtab">

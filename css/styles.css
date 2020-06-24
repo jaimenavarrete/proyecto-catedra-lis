@@ -3,39 +3,142 @@
     font-family: 'Lato', Arial, sans-serif, helvetica;
  }
 
-/*Barra Menu - Header*/
+/*Barra Menu Movil - Header*/
+
+header{
+  width: 100%;
+  height: 55px;
+  background-color:#3CA4DA  ;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 100;
+}
+
+#navegador{
+  width: 92%;
+  margin:auto;
+}
+
+img{
+  float: left;
+}
+
+#menu-bar{
+  display: none;
+}
+
+header label{
+  float: right;
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+.menu{
+  position: absolute;
+  top:55px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #3CA4DA ;
+  opacity: 0.9;
+  transition: all 0.5s;
+  transform: translateX(-100%);
+}
+
+#menu-bar:checked ~ .menu{
+transform: translateX(0%);
+}
+header #navegador{
+  display:table;
+}
 
 #navegador ul{
   list-style-type: none;
   margin:0px;
   padding:0px;
-  text-align: center;
+  text-align: justify;
   background:#3CA4DA ;
   overflow: hidden;
 }
 
 #navegador li{
-float: left;
-
+display: block;
+height: 50px;
+padding: 15px;
 }
 
 #navegador li a {
- display: block;
  color:#fff;
- text-align: center;
- padding: 20px 20px;
  text-decoration: none;
 }
 
 #navegador li a:hover{
   color: #ffffff;
 }
+  .cerrar{
+  float: right;
+  visibility: hidden;
+   }
 
-#cerrar{
-  padding-left:33em;
+   .cerrar-m{
+    visibility: visible;
+     }
+
+/*Ajuste de HEADER para escritorio*/
+
+@media (min-width:1024px){
+  .menu{
+    position: static;
+    width: auto;
+    height: auto;
+    transform:translateX(0%);
+    float: left;
+    display: flex;
+  }
+
+  #navegador li{
+    float: left;
+    
+    }
   
+    #navegador .cerrar{
+      color:#fff;
+      text-decoration: none;
+      list-style-type: none;
+      margin-top:14px;
+      padding:0px;
+      text-align: center;
+      background:#3CA4DA ;
+      overflow: hidden;
+    }
+
+    header label{
+      visibility: hidden;
+    }
+
+    .menu #cerrar{
+      padding-left:33em;
+    }
+    .cerrar{
+   float: right;
+   visibility: visible;
+    }
+    .cerrar-m{
+      visibility: hidden;
+       }
+
 }
 /***********************************************************************************************************************************************/
+.contenido{
+  margin-top: 85px;
+  position: relative;
+}
+
+.contenido-p{
+  margin-top: 250px;
+  position: relative;
+}
 /* Rectangulos*/
 #rectanglep{
   margin-top: 8em;
@@ -335,8 +438,7 @@ border-radius: 4px;
   border-bottom-left-radius: 50% 50%;
   width:50px;
   height:50px;
-  margin:10px;
-  margin-left: 45px;
+  margin-top:3px;
   overflow:hidden;
 }
 /************************************************************************************************************************************************/
