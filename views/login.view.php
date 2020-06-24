@@ -10,41 +10,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="freg">
-
-<br>
-<br>
-<br>
-<br>
     <section>
         <article>
-            <div id="formr">
-                <form action="" class="form-horizontal" name="formulario" id="salario">
-            <div>
-            <h2>Inicio de sesión</h2>
-            <hr id="line">
-            </div>
-            
-            <div class="input-container">
-                <i class="fa fa-user-circle-o icon"></i>
-                <input class="input-field" type="text" name="input" placeholder="Usuario:">
-            </div>
+            <form action="" class="form-horizontal" name="formulario" id="salario">
+                <div>
+                    <h2>Inicio de sesión</h2>
+                </div>            
+                <div class="input-container">
+                    <i class="fa fa-user-circle-o icon"></i>
+                    <input class="input-field" type="text" name="input" placeholder="Usuario:">
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-key icon"></i>
+                    <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:">
+                </div>
+                <div class="form-options">
+                    <label for="recuerdame">Recuérdame</label>
+                    <input type="checkbox" name="recordar" id="recuerdame">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
 
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:">
-            </div>
-
-            <label for="recuerdame">Recuerdame</label>
-            <input type="checkbox" name="recordar" id="recuerdame">
-            <div class="input-container">
-            <a href="#">¿Olvidaste tu contraseña?</a>
-            </div>
-            
-            <button type="submit" class="btn" style="margin-left:103px;">Ingresar</button>
-            <h4>¿Aun no tienes cuenta?</h4>
-            <center><a href="Registro.php">Registrate</a></center>
+                <input type="submit" class="btn" value="Ingresar">
+                
+                <div class="form-options">
+                    <h4>¿Aun no tienes cuenta?</h4>
+                    <a href="registro.php">Regístrate</a>
+                </div>
             </form>
-            </div>
         </article>
     </section>
     

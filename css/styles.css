@@ -1,7 +1,77 @@
-*{
-    box-sizing: border-box;
-    font-family: 'Lato', Arial, sans-serif, helvetica;
- }
+/*** ESTILOS PREDETERMINADOS ***/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', Arial, sans-serif, helvetica;
+}
+
+body {
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', Arial, sans-serif, helvetica;
+}
+
+/*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+#freg{
+  background-image: url(../img/fondo.png);
+  background-color: #3CA4DA;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+}
+#freg section {
+  margin-top: 100px;
+}
+
+/*** PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+.form-horizontal {
+  padding:16px 50px;
+  border-radius:10px;
+  margin:auto;
+  background-color:#fff;
+  width: 100%;
+  max-width: 500px;
+}
+.form-horizontal h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.form-horizontal h4 {
+  margin: 10px 0;
+}
+.form-horizontal i {
+  border: 2px solid #000;
+  border-radius: 5px 0 0 5px;
+  margin-right: 5px;
+  line-height: 1.5;
+}
+.form-horizontal .input-field {
+  border: 2px solid #000;
+  border-radius: 0 5px 5px 0;
+}
+.form-horizontal .form-options input[type="checkbox"] {
+  margin-right: 70px;
+}
+.form-horizontal .form-options {
+  font-weight: bold;
+  margin: 25px 0;
+  text-align: center;
+}
+.form-horizontal a {
+  color: #258AC1;
+}
+.form-horizontal .btn {
+  border-width: 2px;
+  padding: 10px;
+  width: 100%;
+}
 
 /*Barra Menu - Header*/
 
@@ -72,25 +142,18 @@ float: left;
 #creditos{
   background-color:#3CA4DA;
   position: absolute;
-width: 100%;
-height: 66px;
-left: 0px;
-top: 2250px;
+  width: 100%;
+  height: 66px;
+  left: 0px;
+  top: 2250px;
 }
-#line{
-    height: 5px;
-    background: #3CA4DA;
-    border-radius:5px;   
-     }
-
-     #fuente{
-      color: #258AC1;;
-      text-align: center;
-      line-height: 61px;
-      margin-top: -8em;
-      font-size: 3em;
-      
-    }
+#fuente{
+  color: #258AC1;;
+  text-align: center;
+  line-height: 61px;
+  margin-top: -8em;
+  font-size: 3em;
+}
 b{
 color: black;
 font-size: 12px;
@@ -109,7 +172,6 @@ h2{
 
 h4 {
   color: black;
-  text-align: center;
 }
 
 h5 {
@@ -122,14 +184,19 @@ h5 {
 .input-container {
   display: flex;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.input-container select{
+  width: 100%;
 }
 
 .input-container .lista-grupos{
   display: flex;
   width: 25%;
   height: 30px;
-  float:left;margin-left:2em;
+  float:left;
+  margin-left:2em;
   margin-top: 6px;
 }
 
@@ -191,7 +258,7 @@ h5 {
 
 .input-field {
   width: 100%;
-  padding: 10px;
+  padding: 13px 10px;
   outline: none;
 }
 
@@ -201,7 +268,7 @@ h5 {
 
 
 .btn {
-  background-color: #3CA4DA;;
+  background-color: #258AC1;;
   color: white;
   padding: 15px 20px;
   cursor: pointer;
@@ -229,21 +296,6 @@ h5 {
 #fondo h1{
   color:#258AC1;
   text-align: center;
-}
-#freg{
-    background-color: #3CA4DA;
-}
-/*Formulario Registrar y Inicio Sesion*/
-#formr {
-  width:350px;
-	padding:16px;
-	border-radius:10px;
-	margin:auto;
-	background-color:#fff;
-}
-
-.input-container select{
-  width: 100%;
 }
 /***********************************************************************************************************************************************************/
 /* Tabla de informacion personal*/
