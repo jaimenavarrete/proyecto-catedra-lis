@@ -36,29 +36,40 @@
     <br>
      <br>
     <div class="input-container-repo">
-    <h4 style="margin-top:-0.1em;" >Materia:</h4>
+    <h4 style="margin-top:-0.1em; padding:5px;" >Materia:</h4>
     <select name="materias" id="materias">
     <option value="">Matematica 1</option>
     <option value="">Matematica 2</option>
     <option value="">Matematica 3</option>
     </select>
-    </div>
-    
-    <div class="input-container-repo">
-    <h4 style="margin-top:-0.1em;">Grupo:</h4>
-    <select name="grupo" id="grupo">
+    <h4 style="margin-top:-0.1em;" class="select_grupos_nombre">Grupo teoria:</h4>
+    <select name="grupo" id="grupo" class="select_grupos_teoria">
     <option value="">01T</option>
     <option value="">04T</option>
     <option value="">02T</option>
     </select>
     </div>
-
+    
     <div class="input-container-repo">
+<<<<<<< HEAD
     <h4 style="margin-top:-0.1em;">Cupo:</h4>
         <input type="text" name="cupos" id="cupos" readonly style="width: 28px;
   height: 20px; text-align: center;">
     </div>
     <button type="submit" class="btn" id="btn-repo">Agregar materia +</button>
+=======
+    <h4 style="margin-top:-0.1em; margin-left: 5.5px; ">Cupo:</h4>
+        <input type="text" name="cupos" id="cupos" style="margin-left: 1.5em; width: 140px;" >
+    
+    <h4 style="margin-top:-0.1em;" class="nombre_grupos_lab">Grupo laboratorio:</h4>
+    <select name="grupo" id="grupo" class="select_grupos_lab">
+    <option value="">01L</option>
+    <option value="">04L</option>
+    <option value="">02L</option>
+    </select>
+    </div>
+    <button type="submit" class="btn" id="btn-repo" >+ Agregar materia</button>
+>>>>>>> b8269a7f314a45168ff778577b13efe421a8a694
     </div>
     </article>
     </section>
