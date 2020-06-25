@@ -28,12 +28,14 @@
  </header>
     <section class="contenido-p">
     <article>
+    <div id="rectangles-cont">
     <div id="rectanglep"></div>
     <div id="rectangles">
     <button type="submit" class="btn" style="top: 100px;">Modificar perfil<i class="fa fa-pencil icon" style="font-size:24px"></i></button>
     </div>
     <div id="rectangles1"></div>
     <div><img class="circular--squaremax" src="img/user.png" /></div>
+    </div>
     <h1 id="fuente">PERFIL PERSONAL</h1>
     <div id="forminf">
     <form action="" name="formip">

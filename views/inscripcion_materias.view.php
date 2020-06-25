@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/normalize.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
+<body id="fondo">
 <header>
 <div id="navegador">
 <input type="checkbox" id="menu-bar">
@@ -33,8 +34,7 @@
     <h2>Proceso de inscripción</h2>
     <hr id="line">
     </div>
-    <br>
-     <br>
+
     <div class="input-container-repo">
     <h4 style="margin-top:-0.1em; padding:5px;" >Materia:</h4>
     <select name="materias" id="materias">
@@ -63,14 +63,8 @@
     </div>
     <button type="submit" class="btn" id="btn-repo" >Agregar materia +</button>
     </div>
-    </article>
-    </section>
 
-<br><br>
-    <section>
-    <article>
     <div id="formtab">
-    <form action="" class="form-horizontal" name="formulario" id="salario">
     <div>
     <h2>Materias a inscribir</h2>
     <hr id="line">
@@ -95,17 +89,9 @@
     
 
     <button type="submit" class="btn" id="btn-repo" style="background:#27AE60;">Finalizar inscripción</button>
-   
-    </form>
     </div>
-    <br>
-        <br>
-        <br>
     </article>
     </section>
-
-
-
     <div id="creditos" style="top: 66em;">
    <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div> 
