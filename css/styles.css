@@ -4,36 +4,70 @@
  }
 
 /*Barra Sup*/
-#navegador ul{
-  list-style-type: none;
-  margin:0px;
-  padding:0px;
-  text-align: center;
+#navegador{
+  height:95px;
   background:#3CA4DA ;
-  overflow: hidden;
+  display: flex;
+}
+#btn-menu
+{
+  display: none;
+}
+#navegador label{
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
 }
 
-#navegador li{
-float: left;
+#navegador .menu ul{
+  background-color: #3CA4DA;
+  display: flex;
+  list-style: none;
+}
+
+#navegador .menu a{
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#navegador .menu a:hover{
+  background-color: rgba(0,0,0, 0.3);
 
 }
 
-#navegador li a {
- display: block;
- color:#fff;
- text-align: center;
- padding: 20px 20px;
- text-decoration: none;
+#navegador .menu ul li a i{
+  background-color: initial;
+
 }
 
-#navegador li a:hover{
-  color: #ffffff;
+/***********************************************************************************************************************************************/
+/* Responsive menu superiror*/
+@media (max-width:850px){
+  #navegador label{
+    display: block
 }
 
-#cerrar{
-  padding-left:33em;
-  
+#navegador .menu {
+  position: absolute;
+  top: 79px;
+  left: 0;
+  width: 75%;
+  transform: translateX(-100%);
+  transition: all 0.3s;
 }
+#navegador .menu ul{
+  flex-direction: column;
+}
+
+#navegador #btn-menu:checked ~ .menu {
+  transform: translateX(0%);
+}
+
+}
+
+
 /***********************************************************************************************************************************************/
 /* Rectangulos*/
 #rectanglep{
