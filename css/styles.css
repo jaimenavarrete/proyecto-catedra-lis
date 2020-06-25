@@ -1,28 +1,222 @@
-*{
-    box-sizing: border-box;
-    font-family: 'Lato', Arial, sans-serif, helvetica;
-   
- }
+/*** ESTILOS PREDETERMINADOS ***/
 
-/*Barra Menu Movil - Header*/
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', Arial, sans-serif, helvetica;
+}
 
+body {
+  background: #F2F2F2;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', Arial, sans-serif, helvetica;
+}
+
+h1 {
+  color:#258AC1;
+  font-size: 50px;
+  margin: 50px 0;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  margin: 20px 0 40px 0;
+  font-size: 30px;
+}
+
+/* El boton de tipo submit se va a ocultar, para trabajar con la etiqueta label en el diseño*/
+input[type="submit"] {
+  display: none;
+}
+
+/* Se mostrará solo el botón submit del login y registro*/
+
+#freg input[type="submit"] {
+  background: #258AC1;
+  display: block;
+}
+
+/*** CONTENEDORES PRINCIPALES DE LAS SECCIONES DE LAS PAGINAS ***/
+
+.formtab {
+  background: #fff;
+  border: 3px solid #258AC1;
+  border-radius: 5px;
+  margin: 0 auto 42px auto;
+  padding: 25px;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+/*** TABLAS DE LAS PAGINAS ***/
+
+/* Tablas generales */
+.tablas {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+.tablas td {
+  padding: 10px;
+}
+
+.tablas th {
+  padding: 20px;
+}
+
+.tablas thead {
+  background-color:#3CA4DA ;
+  color: white;
+}
+
+.tablas tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+/* Tabla de la pagina de perfil personal*/
+.tabla-datos-perfil {
+  border-collapse: collapse;
+
+  max-width: 1500px;
+}
+
+.tabla-datos-perfil tr {
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.tabla-datos-perfil td {
+  
+  width: 20%;
+  max-width: 200px;
+}
+
+.tabla-datos-perfil h4 {
+  margin: 0;
+}
+
+/*** ICONOS DE LAS PAGINAS ***/
+
+.icon {
+  color: #FFF;
+  padding: 10px;
+  text-align: center;
+}
+
+.icon-login-registro {
+  background: #258AC1;
+  width: 60px;
+}
+
+.icon-modify {
+  background: #27AE60;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+.icon-delete {
+  background: #EB5757;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+/*** SECCIONES DE BUSQUEDA Y SECCIONES DE BOTONES DE LAS PAGINAS ***/
+
+/* Contenedor para ordenar las secciones que contengan varias filas*/
+.search-container {
+  margin-bottom: 20px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* Posicionar el botón de descargas hacia el lado derecho - Página de reportes*/
+.downloader-container {
+  justify-content: flex-end;
+}
+
+/* Contenedor para separar elementos Select*/
+.select-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.select-container .icon-delete {
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.select-container select,
+.select-container input {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.select-container input {
+  background: #F0F0F0;
+  border: 1px solid #212121;
+}
+
+.select-container h4 {
+  margin-right: 10px;
+}
+
+/*** BOTONES DE LAS PAGINAS ***/
+
+/* Diseño de Botones Submit, creados a partir de label*/
+.btn {
+  background-color: #27AE60;
+  color: white;
+  font-weight: bold;
+  padding: 5px 50px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius:6px;
+}
+
+/* Botón específico para la página de inscripción */
+.btn-inscribir {
+  margin: 60px 0 30px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-inscribir label {
+  padding: 15px 40px;
+}
+
+/* Botón específico para la página de perfil de usuario */
+.btn-modificar-perfil label {
+  padding: 15px 40px;
+}
+
+/*** BARRA DE NAVEGACION - HEADER ***/
 header{
   width: 100%;
-  height: 55px;
+  height: 75px;
   background-color:#3CA4DA  ;
-  position: fixed;
+  position: absolute;
   top:0;
   left: 0;
-  z-index: 100;
+  box-shadow: 0 2px 2px rgba(0,0,0,.75);
+  font-weight: bold;
 }
 
 #navegador{
-  width: 92%;
+  width: 88%;
   margin:auto;
-}
-
-img{
-  float: left;
 }
 
 #menu-bar{
@@ -37,7 +231,7 @@ header label{
 
 .menu{
   position: absolute;
-  top:55px;
+  top:60px;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -96,6 +290,7 @@ padding: 15px;
     transform:translateX(0%);
     float: left;
     display: flex;
+    
   }
 
   #navegador li{
@@ -103,7 +298,7 @@ padding: 15px;
     
     }
   
-    #navegador .cerrar{
+  #navegador .cerrar{
       color:#fff;
       text-decoration: none;
       list-style-type: none;
@@ -114,366 +309,173 @@ padding: 15px;
       overflow: hidden;
     }
 
-    header label{
+  header label{
       visibility: hidden;
     }
 
-    .menu #cerrar{
+  .menu #cerrar{
       padding-left:33em;
     }
-    .cerrar{
+  .cerrar{
    float: right;
    visibility: visible;
     }
-    .cerrar-m{
+
+  .cerrar-m{
       visibility: hidden;
        }
 
 }
-/***********************************************************************************************************************************************/
-/*Hace que todo el contenido de las paginas se mantenga centrado*/
-.contenido{
-  margin-top: 80px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.contenido-p{
-  margin-top: 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-/* Rectangulos*/
+/*** BARRA DE CREDITOS - FOOTER***/
 
-#rectangles-cont{
-  width:30em;
-  height:17.5em;
-  margin-left: -15%;
-}
-#rectanglep{
-  margin-top: 8em;
-  margin-left: 10em;
-  width:28em;
-  height:26em;
-  background:#3CA4DA;
-  border-radius:4px;
-}
-
-#rectangles{
-  margin-top: -25.75em;
-  margin-left: 10.25em;
-  width:27.5em;
-  height:25.5em;
-  background:#fff;
-  border-radius:4px;
-}
-
-#rectangles1{
-  margin-top: -25.75em;
-  margin-left:10.25em;
-  width:27.5em;
-  height:12.75em;
-  background:#3CA4DA;
- 
-}
-#rectangles button{
-  margin-top: 20em;
-  margin-left: 3em;
-  width: 80%;
-}
-/************************************************************************************************************************************************/
-#creditos{
+#creditos {
   background-color:#3CA4DA;
-  position: absolute;
-width: 100%;
-height: 66px;
-left: 0px;
-top: 2250px;
-}
-#line{
-    height: 5px;
-    background: #3CA4DA;
-    border-radius:5px;   
-     }
-
-     #fuente{
-      color: #258AC1;;
-      text-align: center;
-      line-height: 61px;
-      margin-top: -8em;
-      font-size: 3em;
-      
-    }
-b{
-color: black;
-font-size: 12px;
-width: bold;
-}
-h1{
+  box-shadow: 0 -2px 2px rgba(0,0,0,.75);
   color: #fff;
-  text-align: center;
-  font-size: 2em;
-}
-
-
-h2{
-    color: #3CA4DA;;
-}
-
-h4 {
-  color: black;
+  padding: 5px 0;
+  width: 100%;
   text-align: center;
 }
 
-h5 {
-  color: #fff;
-  text-align: center;
+/*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+#freg {
+  background-image: url(../img/fondo.png);
+  background-color: #3CA4DA;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
 }
-#fontm{
-  color: #3CA4DA;
+
+#freg section {
+  margin-top: 100px;
 }
-.input-container {
+
+/*** PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+.form-horizontal {
+  padding:16px 50px;
+  border-radius:10px;
+  margin:auto;
+  background-color:#fff;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-horizontal h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.form-horizontal h4 {
+  margin: 10px 0;
+}
+
+.form-horizontal i {
+  border: 2px solid #000;
+  border-radius: 5px 0 0 5px;
+  margin-right: 5px;
+  line-height: 1.5;
+}
+
+.form-horizontal .input-container {
   display: flex;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
-.input-container .lista-grupos{
-  display: flex;
-  width: 25%;
-  height: 30px;
-  float:left;margin-left:2em;
-  margin-top: 6px;
-}
-
-.input-container-repo {
-  display: flex;
-  height: 20px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  float:left;margin-left:9em;
-}
-
-.input-container-repo .select_grupos_lab{
-  
-  margin-left: 25px;
-}
-
-.input-container-repo .nombre_grupos_lab{
-  margin-left: 200px;
-}
-
-.input-container-repo .select_grupos_nombre{
-  
-  margin-left: 200px;
-}
-
-.input-container-repo .select_grupos_teoria{
-  
-  margin-left: 70px;
-}
-
-
-#btn-repo{
-  margin-left: 760px;
-  margin-top: 40px;
-  width: 230px;
-  height: 47px;
-  left: 1066px;
-  top: 868px;
-}
-
-#btn-grupos{
-  margin-left: 15px;
-  margin-top: 3px;
-  width: 500px;
-  height: 50px;
-  left: 1066px;
-  top: 868px;
-}
-
-
-
-.icon {
-  padding: 10px;
-  background: #3CA4DA;;
-  color: white;
-  min-width: 50px;
-  text-align: center;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
+.form-horizontal .input-field {
+  border: 2px solid #000;
+  border-radius: 0 5px 5px 0;
   outline: none;
+  padding: 13px 10px;
+  width: 100%;
 }
 
-.input-field:focus {
+.form-horizontal .input-field:focus {
   border: 2px solid #3CA4DA;;
 }
 
-
-.btn {
-  background-color: #3CA4DA;;
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  opacity: 0.9;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius:6px;
+.form-horizontal .form-options input[type="checkbox"] {
+  margin-right: 70px;
 }
 
-
-.btne {
-  background-color: white;
-  color: #3CA4DA;;
-  padding: 15px 20px;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-.btn:hover {
-  opacity: 1;
-}
-#fondo {
-  background: #E5E5E5;
-}
-#fondo h1{
-  color:#258AC1;
+.form-horizontal .form-options {
+  font-weight: bold;
+  margin: 25px 0;
   text-align: center;
 }
-#freg{
-    background-color: #3CA4DA;
-}
-/*Formulario Registrar y Inicio Sesion*/
-#formr {
-  width:350px;
-	padding:16px;
-	border-radius:10px;
-	margin:auto;
-	background-color:#fff;
+
+.form-horizontal a {
+  color: #258AC1;
 }
 
-.input-container select{
+.form-horizontal .btn {
+  border-width: 2px;
+  padding: 10px;
   width: 100%;
 }
-/***********************************************************************************************************************************************************/
-/* Tabla de informacion personal*/
-#forminf {
-  width:35em;
-	padding:25px;
-  border-radius:4px;
-  margin-left: 46.5%;
-  margin-right: 30%;
-  margin-top: 2.55em;
-  background-color:#fff;
-  border: 2px solid #258AC1;
-  box-sizing: border-box;
-}
-#forminf h4{
-  color: black;
-  text-align: left;
-}
-/***********************************************************************************************************************************************************/
-/*Formulario materias incritas*/
-#format {
-  width:65.5em;
-	padding:25px;
-  border-radius:4px;
-  margin-top: 2.55em;
-  background-color:#fff;
-  border: 2px solid #258AC1;
-  box-sizing: border-box;
-  float:left;
-}
-#formtab {
-  width:65.5em;
-	padding:25px;
-  border-radius:4px;
-  margin-top: 2.55em;
-  background-color:#fff;
-  border: 2px solid #258AC1;
-  box-sizing: border-box;
+
+/*** SECCION DEL PERFIL DEL USUARIO - PAGINA DE PERFIL PERSONAL ***/
+.contenido{
+  margin-top: 7em;
 }
 
-#formtab #i-pdf{
-  border:none;
-  background:#27AE60;
-  margin-top: -20px;
-}
-#formtab i{
-  border: 1px solid #000000;
-box-sizing: border-box;
-border-radius: 4px;
-}
-/***********************************************************************************************************************************************************/
-/*Cuadro que muestra las materias inscritas*/
-#formm {
-  width:14em;
-	padding:25px;
-  border-radius:4px;
-  margin-left: 0em;
-  margin-top: 2.55em;
-  background-color:#fff;
-  border: 2px solid #258AC1;
-  box-sizing: border-box;
-  float:left;margin-left:18px;
+.seccion-perfil {
+  background-color: #3CA4DA;
+  text-align: center;
 }
 
-#formm h4{
-  font-size: 13px;
-}
-/***********************************************************************************************************************************************************/
-
-/*Fotos circulares*/
+/* Fotos circulares */
 .circular--squaremax {
-  border-top-left-radius: 50% 50%;
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
+  border-radius: 50%;
+  margin-bottom: 30px;
   width:150px;
-  height:150px;
-  margin-left: 19.8em;
-  margin-top: -4.9em;
-  overflow:hidden;
 }
 
 .circular--squaremin {
-  border-top-left-radius: 50% 50%;
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
+  border-radius: 50%;
   width:50px;
   height:50px;
-  margin-top:3px;
   overflow:hidden;
+  margin-top:10px;
+  float: left;
 }
-/************************************************************************************************************************************************/
-/*Tablas*/
 
-.input-container .tablas{
+/*** CUADROS DE MATERIAS INSCRITAS - PAGINA DE PERFIL PERSONAL ***/
+
+.materias-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.materias-container .formm {
+  background-color: #fff;
+  border: 2px solid #258AC1;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.7);
+  border-radius: 5px;
+  margin: 0 10px 20px 0;
+  padding: 25px;
+
+  width: 24%;
+  min-width: 300px;
+}
+
+.materias-container .formm h4 {
+  color: #3CA4DA;
+  font-size: 18px;
+}
+
+.materias-container .formm span {
+  color: #000;
+  margin-right: 15px;
+}
+
+.materias-container .formm .btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
-  text-align: left;
-  border-collapse: collapse;
- 
 }
-
- th,td{
-
-padding: 10px;
-}
-
-thead{
-  background-color:#3CA4DA ;
-  color: white;
-}
-tr:nth-child(even){
-  background-color: #ddd;
-}
-
-/************************************************************************************************************************************************/
-
