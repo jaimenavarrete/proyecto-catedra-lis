@@ -55,6 +55,12 @@ input[type="submit"] {
   max-width: 1500px;
 }
 
+section{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
 /*** TABLAS DE LAS PAGINAS ***/
 
 /* Tablas generales */
