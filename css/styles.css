@@ -1,0 +1,404 @@
+/*** ESTILOS PREDETERMINADOS ***/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', Arial, sans-serif, helvetica;
+}
+
+body {
+  background: #F2F2F2;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', Arial, sans-serif, helvetica;
+}
+
+h1 {
+  color:#258AC1;
+  font-size: 50px;
+  margin: 50px 0;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  margin: 20px 0 40px 0;
+  font-size: 30px;
+}
+
+/* El boton de tipo submit se va a ocultar, para trabajar con la etiqueta label en el diseño*/
+input[type="submit"] {
+  display: none;
+}
+
+/* Se mostrará solo el botón submit del login y registro*/
+
+#freg input[type="submit"] {
+  background: #258AC1;
+  display: block;
+}
+
+/*** CONTENEDORES PRINCIPALES DE LAS SECCIONES DE LAS PAGINAS ***/
+
+.formtab {
+  background: #fff;
+  border: 3px solid #258AC1;
+  border-radius: 5px;
+  margin: 0 auto 42px auto;
+  padding: 25px;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+/*** TABLAS DE LAS PAGINAS ***/
+
+/* Tablas generales */
+.tablas {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+.tablas td {
+  padding: 10px;
+}
+
+.tablas th {
+  padding: 20px;
+}
+
+.tablas thead {
+  background-color:#3CA4DA ;
+  color: white;
+}
+
+.tablas tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+/* Tabla de la pagina de perfil personal*/
+.tabla-datos-perfil {
+  border-collapse: collapse;
+
+  max-width: 1500px;
+}
+
+.tabla-datos-perfil tr {
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.tabla-datos-perfil td {
+  
+  width: 20%;
+  max-width: 200px;
+}
+
+.tabla-datos-perfil h4 {
+  margin: 0;
+}
+
+/*** ICONOS DE LAS PAGINAS ***/
+
+.icon {
+  color: #FFF;
+  padding: 10px;
+  text-align: center;
+}
+
+.icon-login-registro {
+  background: #258AC1;
+  width: 60px;
+}
+
+.icon-modify {
+  background: #27AE60;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+.icon-delete {
+  background: #EB5757;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+/*** SECCIONES DE BUSQUEDA Y SECCIONES DE BOTONES DE LAS PAGINAS ***/
+
+/* Contenedor para ordenar las secciones que contengan varias filas*/
+.search-container {
+  margin-bottom: 20px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* Posicionar el botón de descargas hacia el lado derecho - Página de reportes*/
+.downloader-container {
+  justify-content: flex-end;
+}
+
+/* Contenedor para separar elementos Select*/
+.select-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.select-container .icon-delete {
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.select-container select,
+.select-container input {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.select-container input {
+  background: #F0F0F0;
+  border: 1px solid #212121;
+}
+
+.select-container h4 {
+  margin-right: 10px;
+}
+
+/*** BOTONES DE LAS PAGINAS ***/
+
+/* Diseño de Botones Submit, creados a partir de label*/
+.btn {
+  background-color: #27AE60;
+  color: white;
+  font-weight: bold;
+  padding: 5px 50px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius:6px;
+}
+
+/* Botón específico para la página de inscripción */
+.btn-inscribir {
+  margin: 60px 0 30px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-inscribir label {
+  padding: 15px 40px;
+}
+
+/* Botón específico para la página de perfil de usuario */
+.btn-modificar-perfil label {
+  padding: 15px 40px;
+}
+
+/*** BARRA DE NAVEGACION - HEADER ***/
+
+#navegador {
+  background:#3CA4DA;
+  box-shadow: 0 2px 2px rgba(0,0,0,.75);
+  font-weight: bold;
+  width: 100%;
+}
+
+#navegador nav {
+  margin: 0 auto;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+#navegador ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+#navegador li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#navegador li a {
+ display: block;
+ color:#fff;
+ padding: 20px 20px;
+ text-align: center;
+ text-decoration: none;
+}
+
+#navegador li .imagen {
+  padding: 0;
+}
+
+#navegador li a:not(.imagen):hover {
+  background: #FFF;
+  color: #3CA4DA;
+}
+
+#navegador li a:hover .icon {
+  color: #3CA4DA;
+}
+
+/*** BARRA DE CREDITOS - FOOTER***/
+
+#creditos {
+  background-color:#3CA4DA;
+  box-shadow: 0 -2px 2px rgba(0,0,0,.75);
+  color: #fff;
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+}
+
+/*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+#freg {
+  background-image: url(../img/fondo.png);
+  background-color: #3CA4DA;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+}
+
+#freg section {
+  margin-top: 100px;
+}
+
+/*** PAGINAS DE REGISTRO E INICIO DE SESION ***/
+
+.form-horizontal {
+  padding:16px 50px;
+  border-radius:10px;
+  margin:auto;
+  background-color:#fff;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-horizontal h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.form-horizontal h4 {
+  margin: 10px 0;
+}
+
+.form-horizontal i {
+  border: 2px solid #000;
+  border-radius: 5px 0 0 5px;
+  margin-right: 5px;
+  line-height: 1.5;
+}
+
+.form-horizontal .input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.form-horizontal .input-field {
+  border: 2px solid #000;
+  border-radius: 0 5px 5px 0;
+  outline: none;
+  padding: 13px 10px;
+  width: 100%;
+}
+
+.form-horizontal .input-field:focus {
+  border: 2px solid #3CA4DA;;
+}
+
+.form-horizontal .form-options input[type="checkbox"] {
+  margin-right: 70px;
+}
+
+.form-horizontal .form-options {
+  font-weight: bold;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.form-horizontal a {
+  color: #258AC1;
+}
+
+.form-horizontal .btn {
+  border-width: 2px;
+  padding: 10px;
+  width: 100%;
+}
+
+/*** SECCION DEL PERFIL DEL USUARIO - PAGINA DE PERFIL PERSONAL ***/
+
+.seccion-perfil {
+  background-color: #3CA4DA;
+  text-align: center;
+}
+
+/* Fotos circulares */
+.circular--squaremax {
+  border-radius: 50%;
+  margin-bottom: 30px;
+  width:150px;
+}
+
+.circular--squaremin {
+  border-radius: 50%;
+  width:50px;
+  height:50px;
+  overflow:hidden;
+}
+
+/*** CUADROS DE MATERIAS INSCRITAS - PAGINA DE PERFIL PERSONAL ***/
+
+.materias-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.materias-container .formm {
+  background-color: #fff;
+  border: 2px solid #258AC1;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.7);
+  border-radius: 5px;
+  margin: 0 10px 20px 0;
+  padding: 25px;
+
+  width: 24%;
+  min-width: 300px;
+}
+
+.materias-container .formm h4 {
+  color: #3CA4DA;
+  font-size: 18px;
+}
+
+.materias-container .formm span {
+  color: #000;
+  margin-right: 15px;
+}
+
+.materias-container .formm .btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
