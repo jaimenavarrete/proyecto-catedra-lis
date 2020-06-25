@@ -243,8 +243,8 @@ header label{
   height: 100vh;
   background: #3CA4DA ;
   opacity: 0.9;
-  transition: all 0.5s;
   transform: translateX(-100%);
+  transition: all 0.3s;
 }
 
 #menu-bar:checked ~ .menu{
@@ -288,15 +288,17 @@ padding: 15px;
 
 /*Ajuste de HEADER para escritorio*/
 
-@media (min-width:1024px){
+
+
+@media (min-width:970px){
   .menu{
     position: static;
-    width: auto;
-    height: auto;
+    width: 70%;
+    height: 50px;
     transform:translateX(0%);
     float: left;
     display: flex;
-    
+    transition: all 0.0s;
   }
 
   #navegador li{
