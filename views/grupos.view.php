@@ -18,6 +18,7 @@
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="#">Grupos<i class="fa fa-users icon"></i></a></li>
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
             </div>
             <div class="separador-links">
                 <li><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
@@ -28,7 +29,7 @@
 <section>
     <article>
         <h1>GRUPOS DE LAS MATERIAS</h1>
-        <div id="formtab">
+        <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
             <form class="search-container">
                 <div class="select-container">
@@ -50,7 +51,7 @@
             </form>
         </div>
 
-        <div id="formtab">
+        <div class="formtab">
             <h2>Información de la materia actual</h2>
             <table class="tablas">
                 <thead>
@@ -70,7 +71,7 @@
             </table>
         </div>
 
-        <div id="formtab">
+        <div class="formtab">
             <h2>Información de los alumnos de la materia actual</h2>
             <table class="tablas">
                 <thead>
@@ -114,7 +115,7 @@
             </table>
         </div>
 
-        <div id="formtab">
+        <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
             <form class="search-container">
                 <div class="select-container">

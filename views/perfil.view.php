@@ -12,78 +12,105 @@
 <body id="fondo">
 <div id="navegador">
     <nav>
-<ul>
-  <li><img class="circular--squaremin" src="img/user.png" /></li>
- <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
- <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
- <li><a href="inscripcion_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
- <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
- </ul>
- </nav>
- </div>
+        <ul>
+            <div class="separador-links">
+                <li><a href="#" class="imagen"><img class="circular--squaremin" src="img/user.png" /></a></li>
+                <li><a href="#">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
+                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
+            </div>
+            <div class="separador-links">
+                <li><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
+            </div>
+        </ul>
+    </nav>
+</div>
 
-    <section>
+<section>
     <article>
-    <div id="rectanglep"></div>
-    <div id="rectangles">
-    <button type="submit" class="btn" style="top: 100px;">Modificar perfil<i class="fa fa-pencil icon" style="font-size:24px"></i></button>
-    </div>
-    <div id="rectangles1"></div>
-    <div><img class="circular--squaremax" src="img/user.png" /></div>
-    <h1 id="fuente">PERFIL PERSONAL</h1>
-    <div id="forminf">
-    <form action="" name="formip">
-    <div>
-     <h2>Datos personales</h2>
-     <hr id="line">
-    <h4>Usuario:</h4>
-    <h4>Nombres:</h4>
-    <h4>Apellidos:</h4>
-    <h4>Fecha de cumpleaños:</h4>
-    <h4>Email:</h4>
-    <h4>Edad:</h4>
-    <h4>Numero de telefono:</h4>
-    </div>
-    </form>
-    </div>
-     <div id="format">
-     <h2>Materias inscritas</h2>
-     <hr id="line">
-     
-     <div id="formm">
-         
-         <h4 id="fontm" style="text-align: left;">Codigo:<b>LIS104</b> &nbsp  Grupo:<b>01T</b></h4>
-         <h4 id="fontm">Nombre:</h4>
-         <h3 style="text-align: center;">LENGUAJES INTERP. EN EL SERVIDOR</h3>
-         <button type="submit" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
-     </div>
-     <div id="formm">
-         
-         <h4 id="fontm" style="text-align: left;">Codigo:<b>LIS104</b>  Grupo:<b>01T</b></h4>
-         <h4 id="fontm">Nombre:</h4>
-         <h3 style="text-align: center;">LENGUAJES INTERP. EN EL SERVIDOR</h3>
-         <button type="submit" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
-     </div>
-     <div id="formm">
-         
-         <h4 id="fontm" style="text-align: left;">Codigo:<b>LIS104</b> &nbsp  Grupo:<b>01T</b></h4>
-         <h4 id="fontm">Nombre:</h4>
-         <h3 style="text-align: center;">LENGUAJES INTERP. EN EL SERVIDOR</h3>
-         <button type="submit" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
-     </div>
-     <div id="formm">
-         
-         <h4 id="fontm" style="text-align: left;">Codigo:<b>LIS104</b>  Grupo:<b>01T</b></h4>
-         <h4 id="fontm" style="text-align: right;"></h4>
-         <h4 id="fontm">Nombre:</h4>
-         <h3 style="text-align: center;">LENGUAJES INTERP. EN EL SERVIDOR</h3>
-         <button type="submit" class="btn" id="btn">Ver materia<i class="fa fa-arrow-circle-right icon" style="font-size:24px"></i></button>
-     </div>
-     </div>
+            <h1 id="fuente">PERFIL PERSONAL</h1>
+            <div class="formtab seccion-perfil">
+                <form action="">
+                    <div>
+                        <img class="circular--squaremax" src="img/user.png" />
+                    </div>
+
+                    <div class="btn-modificar-perfil">
+                        <input type="submit" id="btn-repo">
+                        <label for="btn-repo" class="btn">Modificar perfil<i class="fa fa-pencil icon" style="font-size:24px"></i></label>
+                    </div>
+                </form>
+            </div>
+            <div class="formtab">
+                <h2>Datos personales</h2>
+                <table class="tabla-datos-perfil">
+                    <tr>
+                        <td><h4>Usuario:</h4></td>  
+                        <td><p>[Usuario de la persona]</p></td>                     
+                    </tr>
+                    <tr>
+                        <td><h4>Nombres:</h4></td>
+                        <td><p>[Nombres de la persona]</p></td>                        
+                    </tr>
+                    <tr>
+                        <td><h4>Apellidos:</h4></td>      
+                        <td><p>[Apellidos de la persona]</p></td>                   
+                    </tr>
+                    <tr>
+                        <td><h4>Fecha de nacimiento:</h4></td>   
+                        <td><p>[Fecha de nacimiento de la persona]</p></td>                      
+                    </tr>
+                    <tr>
+                        <td><h4>Email:</h4></td> 
+                        <td><p>[Email de la persona]</p></td>                         
+                    </tr>
+                    <tr>
+                        <td><h4>Edad:</h4></td>  
+                        <td><p>[Edad de la persona]</p></td>                        
+                    </tr>
+                    <tr>
+                        <td><h4>Número de teléfono:</h4></td>
+                        <td><p>[Número de teléfono de la persona]</p></td>  
+                    </tr>
+                </table>
+            </div>
+            <div class="formtab">
+                <h2>Materias inscritas</h2>
+                
+                <div class="materias-container">
+                    <div class="formm">
+                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
+                        <h4>Nombre:</h4>
+                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
+                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                    </div>
+                    <div class="formm">            
+                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
+                        <h4>Nombre:</h4>
+                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
+                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                    </div>
+                    <div class="formm">
+                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
+                        <h4>Nombre:</h4>
+                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
+                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                    </div>
+                    <div class="formm">     
+                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
+                        <h4></h4>
+                        <h4>Nombre:</h4>
+                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
+                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                    </div>
+                </div>
+            </div>
     </article>
-    </section>
-    <div id="creditos" style="top: 76em;">
+</section>
+
+<div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
-    </div>
+</div>
 </body>
 </html>

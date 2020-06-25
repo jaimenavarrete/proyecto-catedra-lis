@@ -9,105 +9,113 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body id="fondo">
+<body>
 <div id="navegador">
     <nav>
-    <ul>
-  <li><img class="circular--squaremin" src="img/user.png" /></li>
- <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
- <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
- <li><a href="inscripcion_materias.php">Incripción<i class="fa fa-pencil-square-o icon"></i></a></li>
- <li id="cerrar"><a href="login.php">Cerrar Sesión<i class="fa fa-sign-out icon"></i> </a></li>
- </ul>
- </nav>
- </div>
-<br>
-
-
-<br>
-    <section>
+        <ul>
+            <div class="separador-links">
+                <li><a href="perfil.php" class="imagen"><img class="circular--squaremin" src="img/user.png" /></a></li>
+                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
+                <li><a href="#">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
+            </div>
+            <div class="separador-links">
+                <li><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
+            </div>
+        </ul>
+    </nav>
+</div>
+<section>
     <article>
-    <h1>INSCRIPCION DE MATERIAS</h1>
-    <div id="formtab">
-    <div>
-    <h2>Proceso de inscripción</h2>
-    <hr id="line">
-    </div>
-    <br>
-     <br>
-    <div class="input-container-repo">
-    <h4 style="margin-top:-0.1em; padding:5px;" >Materia:</h4>
-    <select name="materias" id="materias">
-    <option value="">Matematica 1</option>
-    <option value="">Matematica 2</option>
-    <option value="">Matematica 3</option>
-    </select>
-    <h4 style="margin-top:-0.1em;" class="select_grupos_nombre">Grupo teoria:</h4>
-    <select name="grupo" id="grupo" class="select_grupos_teoria">
-    <option value="">01T</option>
-    <option value="">04T</option>
-    <option value="">02T</option>
-    </select>
-    </div>
-    
-    <div class="input-container-repo">
-    <h4 style="margin-top:-0.1em; margin-left: 5.5px; ">Cupo:</h4>
-        <input type="text" name="cupos" id="cupos" style="margin-left: 1.5em; width: 140px;" readonly>
-    
-    <h4 style="margin-top:-0.1em;" class="nombre_grupos_lab">Grupo laboratorio:</h4>
-    <select name="grupo" id="grupo" class="select_grupos_lab">
-    <option value="">01L</option>
-    <option value="">04L</option>
-    <option value="">02L</option>
-    </select>
-    </div>
-    <button type="submit" class="btn" id="btn-repo" >Agregar materia +</button>
-    </div>
-    </article>
-    </section>
+        <h1>INSCRIPCION DE MATERIAS</h1>
+        <div class="formtab">
+            <h2>Proceso de inscripción</h2>
 
-<br><br>
-    <section>
+            <div class="search-container">
+                <div class="select-container">
+                    <h4>Materia:</h4>
+                    <select name="materias" id="materias" class="materias">
+                        <option value="">Matematica 1</option>
+                        <option value="">Matematica 2</option>
+                        <option value="">Matematica 3</option>
+                    </select>
+                </div>
+
+                <div class="select-container">
+                    <h4>Grupo teoria:</h4>
+                    <select name="grupo" id="grupo" class="materias">
+                        <option value="">01T</option>
+                        <option value="">04T</option>
+                        <option value="">02T</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <div class="select-container">
+                    <h4>Cupo:</h4>
+                    <input type="text" name="cupos" id="cupos" readonly>
+                </div>
+
+                <div class="select-container">
+                    <h4>Grupo laboratorio:</h4>
+                    <select name="grupo" id="grupo" class="select_grupos_lab">
+                        <option value="">01L</option>
+                        <option value="">04L</option>
+                        <option value="">02L</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-inscribir">
+                <input type="submit" id="btn-repo">
+                <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+            </div>
+        </div>
+    </article>
+</section>
+
+<section>
     <article>
-    <div id="formtab">
-    <form action="" class="form-horizontal" name="formulario" id="salario">
-    <div>
-    <h2>Materias a inscribir</h2>
-    <hr id="line">
-    </div>
-    <br> 
-    <div class="input-container">
-        <table class="tablas">
-            <thead>
-                <tr>
-                    <th>#</th><th>Nombre de la materia</th><th>Grupo de la materia</th><th>Remover</th>
-                </tr>
-            </thead>
-          <tr>
-              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>1T</td><td><a href="http://"><i class="fa fa-trash icon" style="background:#EB5757;"></i></a></td>
-          </tr> 
-          <tr>
-              <td>1</td><td>Lenguaje Intrepreado en el servidor</td><td>10T</td><td><a href="http://"><i class="fa fa-trash icon" style="background:#EB5757;"></i></a></td>
-          </tr>  
-        </table>
-    </div>
-
-    
-
-    <button type="submit" class="btn" id="btn-repo" style="background:#27AE60;">Finalizar inscripción</button>
-   
-    </form>
-    </div>
-    <br>
-        <br>
-        <br>
+        <div class="formtab">
+            <h2>Materias a inscribir</h2>
+            <form action="" name="formulario" id="inscripcion">
+                <div class="search-container">
+                    <table class="tablas">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre de la materia</th>
+                                <th>Grupo de la materia</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>Lenguajes Interpretados en el servidor</td>
+                            <td>01T</td>
+                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                        </tr> 
+                        <tr>
+                            <td>2</td>
+                            <td>[Nombre de materia 2]</td>
+                            <td>01T</td>
+                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-inscribir">
+                    <input type="submit" id="btn-repo-2">
+                    <label for="btn-repo-2" class="btn">Finalizar inscripción <i class="fa fa-check icon" id="i-pdf-2"></i></label>
+                </div>
+            </form>
+        </div>
     </article>
-    </section>
+</section>
 
-
-
-    <div id="creditos" style="top: 66em;">
-   <h5>Copyright © 2020-Universidad Don Bosco</h5>
-</div> 
+<div id="creditos">
+    <h5>Copyright © 2020-Universidad Don Bosco</h5>
+</div>
 </body>
 </html>
