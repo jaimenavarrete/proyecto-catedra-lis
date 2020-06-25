@@ -6,6 +6,7 @@
 }
 
 body {
+  background: #F2F2F2;
   font-size: 18px;
 }
 
@@ -14,30 +15,215 @@ h2,
 h3 {
   font-family: 'Montserrat', Arial, sans-serif, helvetica;
 }
-h1{
-  color: #fff;
+
+h1 {
+  color:#258AC1;
+  font-size: 50px;
+  margin: 50px 0;
   text-align: center;
-  font-size: 2em;
 }
-h2{
+
+h2 {
+  border-bottom: 5px solid #258AC1;
+  color: #258AC1;
+  margin: 0 0 20px 0;
+  font-size: 30px;
+}
+
+/*** CONTENEDORES PRINCIPALES DE LAS SECCIONES DE LAS PAGINAS ***/
+
+#formtab {
+  background: #fff;
+  border: 3px solid #258AC1;
+  border-radius: 5px;
+  margin: 0 auto 42px auto;
+  padding: 25px;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+/*** TABLAS DE LAS PAGINAS ***/
+
+.tablas {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+td {
+  padding: 10px;
+}
+
+th {
+  padding: 20px;
+}
+
+thead {
+  background-color:#3CA4DA ;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+/*** ICONOS DE LAS PAGINAS ***/
+
+.icon {
+  color: #FFF;
+  padding: 10px;
+  text-align: center;
+}
+
+.icon-login-registro {
+  background: #258AC1;
+  width: 60px;
+}
+
+.icon-modify {
+  background: #27AE60;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+.icon-delete {
+  background: #EB5757;
+  border: 1px solid #212121;
+  margin-right: 10px;
+}
+
+/*** SECCION DE BUSQUEDA Y BOTONES DE LAS PAGINAS ***/
+
+.search-container {
+  margin-bottom: 20px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.select-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-container .icon-delete {
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.select-container select {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.select-container h4 {
+  margin-right: 10px;
+}
+
+.select-container input[type="submit"] {
+  display: none;
+}
+
+/*** BOTONES DE LAS PAGINAS ***/
+
+.btn {
+  background-color: #27AE60;
+  color: white;
+  padding: 5px 50px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius:6px;
+}
+
+.btne {
+  background-color: white;
   color: #3CA4DA;;
+  padding: 15px 20px;
+  cursor: pointer;
+  width: 100%;
 }
-h4 {
-  color: black;
+
+.btn:hover {
+  opacity: 1;
 }
-h5 {
-  color: #fff;
+
+/*** BARRA DE NAVEGACION - HEADER ***/
+
+#navegador {
+  background:#3CA4DA;
+  font-weight: bold;
+  width: 100%;
+}
+
+#navegador nav {
+  margin: 0 auto;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+#navegador ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   text-align: center;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+#navegador li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#navegador li a {
+ display: block;
+ color:#fff;
+ padding: 20px 20px;
+ text-align: center;
+ text-decoration: none;
+}
+
+#navegador li .imagen {
+  padding: 0;
+}
+
+#navegador li a:not(.imagen):hover {
+  background: #FFF;
+  color: #3CA4DA;
+}
+
+#navegador li a:hover .icon {
+  color: #3CA4DA;
+}
+
+/*** BARRA DE CREDITOS - FOOTER***/
+
+#creditos {
+  background-color:#3CA4DA;
+  box-shadow: 0 -2px 2px rgba(0,0,0,.75);
+  color: #fff;
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
 }
 
 /*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
 
-#freg{
+#freg {
   background-image: url(../img/fondo.png);
   background-color: #3CA4DA;
   background-repeat: no-repeat;
   background-position: 100% 0;
 }
+
 #freg section {
   margin-top: 100px;
 }
@@ -52,77 +238,66 @@ h5 {
   width: 100%;
   max-width: 500px;
 }
+
 .form-horizontal h2 {
   border-bottom: 5px solid #258AC1;
   color: #258AC1;
   font-size: 30px;
   text-transform: uppercase;
 }
+
 .form-horizontal h4 {
   margin: 10px 0;
 }
+
 .form-horizontal i {
   border: 2px solid #000;
   border-radius: 5px 0 0 5px;
   margin-right: 5px;
   line-height: 1.5;
 }
+
+.form-horizontal .input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
 .form-horizontal .input-field {
   border: 2px solid #000;
   border-radius: 0 5px 5px 0;
+  outline: none;
+  padding: 13px 10px;
+  width: 100%;
 }
+
+.form-horizontal .input-field:focus {
+  border: 2px solid #3CA4DA;;
+}
+
 .form-horizontal .form-options input[type="checkbox"] {
   margin-right: 70px;
 }
+
 .form-horizontal .form-options {
   font-weight: bold;
   margin: 25px 0;
   text-align: center;
 }
+
 .form-horizontal a {
   color: #258AC1;
 }
+
 .form-horizontal .btn {
   border-width: 2px;
   padding: 10px;
   width: 100%;
 }
 
-/*Barra Menu - Header*/
-
-#navegador ul{
-  list-style-type: none;
-  margin:0px;
-  padding:0px;
-  text-align: center;
-  background:#3CA4DA ;
-  overflow: hidden;
-}
-
-#navegador li{
-float: left;
-
-}
-
-#navegador li a {
- display: block;
- color:#fff;
- text-align: center;
- padding: 20px 20px;
- text-decoration: none;
-}
-
-#navegador li a:hover{
-  color: #ffffff;
-}
-
-#cerrar{
-  padding-left:33em;
-  
-}
 /***********************************************************************************************************************************************/
 /* Rectangulos*/
-#rectanglep{
+#rectanglep {
   margin-top: 8em;
   margin-left: 10em;
   width:26em;
@@ -131,7 +306,7 @@ float: left;
   border-radius:4px;
 }
 
-#rectangles{
+#rectangles {
   margin-top: -25.75em;
   margin-left: 10.25em;
   width:25.5em;
@@ -140,7 +315,7 @@ float: left;
   border-radius:4px;
 }
 
-#rectangles1{
+#rectangles1 {
   margin-top: -25.75em;
   margin-left:10.25em;
   width:25.5em;
@@ -148,152 +323,32 @@ float: left;
   background:#3CA4DA;
  
 }
-#rectangles button{
+
+#rectangles button {
   margin-top: 20em;
   margin-left: 3em;
   width: 80%;
 }
 /************************************************************************************************************************************************/
-#creditos{
-  background-color:#3CA4DA;
-  position: absolute;
-  width: 100%;
-  height: 66px;
-  left: 0px;
-  top: 2600px;
-}
-#fuente{
+
+#fuente {
   color: #258AC1;;
   text-align: center;
   line-height: 61px;
   margin-top: -8em;
   font-size: 3em;
 }
-b{
+
+b {
 color: black;
 font-size: 12px;
 width: bold;
 }
 
-#fontm{
+#fontm {
   color: #3CA4DA;
 }
-.input-container {
-  display: flex;
-  width: 100%;
-  margin-bottom: 25px;
-}
 
-.input-container select{
-  width: 100%;
-}
-
-.input-container .lista-grupos{
-  display: flex;
-  width: 25%;
-  height: 30px;
-  float:left;
-  margin-left:2em;
-  margin-top: 6px;
-}
-
-.input-container-repo {
-  display: flex;
-  height: 20px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  float:left;margin-left:9em;
-}
-
-.input-container-repo .select_grupos_lab{
-  
-  margin-left: 25px;
-}
-
-.input-container-repo .nombre_grupos_lab{
-  margin-left: 200px;
-}
-
-.input-container-repo .select_grupos_nombre{
-  
-  margin-left: 200px;
-}
-
-.input-container-repo .select_grupos_teoria{
-  
-  margin-left: 70px;
-}
-
-
-#btn-repo{
-  margin-left: 760px;
-  margin-top: 40px;
-  width: 230px;
-  height: 47px;
-  left: 1066px;
-  top: 868px;
-}
-
-#btn-grupos{
-  margin-left: 15px;
-  margin-top: 3px;
-  width: 500px;
-  height: 50px;
-  left: 1066px;
-  top: 868px;
-}
-
-
-
-.icon {
-  padding: 10px;
-  background: #3CA4DA;;
-  color: white;
-  min-width: 50px;
-  text-align: center;
-}
-
-.input-field {
-  width: 100%;
-  padding: 13px 10px;
-  outline: none;
-}
-
-.input-field:focus {
-  border: 2px solid #3CA4DA;;
-}
-
-
-.btn {
-  background-color: #258AC1;;
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  opacity: 0.9;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius:6px;
-}
-
-
-.btne {
-  background-color: white;
-  color: #3CA4DA;;
-  padding: 15px 20px;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-.btn:hover {
-  opacity: 1;
-}
-#fondo {
-  background: #E5E5E5;
-}
-#fondo h1{
-  color:#258AC1;
-  text-align: center;
-}
 /***********************************************************************************************************************************************************/
 /* Tabla de informacion personal*/
 #forminf {
@@ -306,7 +361,8 @@ width: bold;
   border: 2px solid #258AC1;
   box-sizing: border-box;
 }
-#forminf h4{
+
+#forminf h4 {
   color: black;
   text-align: left;
 }
@@ -323,32 +379,7 @@ width: bold;
   box-sizing: border-box;
   float:left;
 }
-#formtab {
-  width:65.5em;
-	padding:25px;
-  border-radius:4px;
-  margin-left: 10em;
-  margin-top: 2.55em;
-  background-color:#fff;
-  border: 2px solid #258AC1;
-  box-sizing: border-box;
-  float:left;
-}
 
-#formtab .form-horizontal {
-  max-width: 100%;
-}
-
-#formtab #i-pdf{
-  border:none;
-  background:#27AE60;
-  margin-top: -20px;
-}
-#formtab i{
-  border: 1px solid #000000;
-box-sizing: border-box;
-border-radius: 4px;
-}
 /***********************************************************************************************************************************************************/
 /*Cuadro que muestra las materias inscritas*/
 #formm {
@@ -363,57 +394,23 @@ border-radius: 4px;
   float:left;margin-left:18px;
 }
 
-#formm h4{
+#formm h4 {
   font-size: 13px;
 }
 /***********************************************************************************************************************************************************/
 
 /*Fotos circulares*/
 .circular--squaremax {
-  border-top-left-radius: 50% 50%;
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
+  border-radius: 50%;
   width:150px;
   height:150px;
-  margin-left: 18.2em;
   margin-top: -4.9em;
   overflow:hidden;
 }
 
 .circular--squaremin {
-  border-top-left-radius: 50% 50%;
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
+  border-radius: 50%;
   width:50px;
   height:50px;
-  margin:10px;
-  margin-left: 45px;
   overflow:hidden;
 }
-/************************************************************************************************************************************************/
-/*Tablas*/
-
-.input-container .tablas{
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
- 
-}
-
- th,td{
-
-padding: 10px;
-}
-
-thead{
-  background-color:#3CA4DA ;
-  color: white;
-}
-tr:nth-child(even){
-  background-color: #ddd;
-}
-
-/************************************************************************************************************************************************/
-
