@@ -55,6 +55,12 @@ input[type="submit"] {
   max-width: 1500px;
 }
 
+section{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
 /*** TABLAS DE LAS PAGINAS ***/
 
 /* Tablas generales */
@@ -203,55 +209,130 @@ input[type="submit"] {
 }
 
 /*** BARRA DE NAVEGACION - HEADER ***/
-
-#navegador {
-  background:#3CA4DA;
+header{
+  width: 100%;
+  height: 75px;
+  background-color:#3CA4DA  ;
+  position: absolute;
+  top:0;
+  left: 0;
   box-shadow: 0 2px 2px rgba(0,0,0,.75);
   font-weight: bold;
-  width: 100%;
 }
 
-#navegador nav {
-  margin: 0 auto;
-
-  width: 100%;
-  max-width: 1500px;
+#navegador{
+  width: 88%;
+  margin:auto;
 }
 
-#navegador ul {
+#menu-bar{
+  display: none;
+}
+
+header label{
+  float: right;
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+.menu{
+  position: absolute;
+  top:60px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #3CA4DA ;
+  opacity: 0.9;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+}
+
+#menu-bar:checked ~ .menu{
+transform: translateX(0%);
+}
+header #navegador{
+  display:table;
+}
+
+#navegador ul{
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-
-  display: flex;
-  justify-content: space-between;
+  margin:0px;
+  padding:0px;
+  text-align: justify;
+  background:#3CA4DA ;
+  overflow: hidden;
 }
 
-#navegador li {
-  display: inline-block;
-  vertical-align: middle;
+#navegador li{
+display: block;
+height: 50px;
+padding: 15px;
 }
 
 #navegador li a {
- display: block;
  color:#fff;
- padding: 20px 20px;
- text-align: center;
  text-decoration: none;
 }
 
-#navegador li .imagen {
-  padding: 0;
+#navegador li a:hover{
+  color: #ffffff;
 }
+  .cerrar{
+  float: right;
+  visibility: hidden;
+   }
 
-#navegador li a:not(.imagen):hover {
-  background: #FFF;
-  color: #3CA4DA;
-}
+   .cerrar-m{
+    visibility: visible;
+     }
 
-#navegador li a:hover .icon {
-  color: #3CA4DA;
+/*Ajuste de HEADER para escritorio*/
+
+
+
+@media (min-width:970px){
+  .menu{
+    position: static;
+    width: 70%;
+    height: 50px;
+    transform:translateX(0%);
+    float: left;
+    display: flex;
+    transition: all 0.0s;
+  }
+
+  #navegador li{
+    float: left;
+    
+    }
+  
+  #navegador .cerrar{
+      color:#fff;
+      text-decoration: none;
+      list-style-type: none;
+      margin-top:14px;
+      padding:0px;
+      text-align: center;
+      background:#3CA4DA ;
+      overflow: hidden;
+    }
+
+  header label{
+      visibility: hidden;
+    }
+
+  .menu #cerrar{
+      padding-left:33em;
+    }
+  .cerrar{
+   float: right;
+   visibility: visible;
+    }
+
+  .cerrar-m{
+      visibility: hidden;
+       }
+
 }
 
 /*** BARRA DE CREDITOS - FOOTER***/
@@ -260,10 +341,9 @@ input[type="submit"] {
   background-color:#3CA4DA;
   box-shadow: 0 -2px 2px rgba(0,0,0,.75);
   color: #fff;
-  margin: 0;
   padding: 5px 0;
-  text-align: center;
   width: 100%;
+  text-align: center;
 }
 
 /*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
@@ -347,6 +427,9 @@ input[type="submit"] {
 }
 
 /*** SECCION DEL PERFIL DEL USUARIO - PAGINA DE PERFIL PERSONAL ***/
+.contenido{
+  margin-top: 7em;
+}
 
 .seccion-perfil {
   background-color: #3CA4DA;
@@ -365,6 +448,8 @@ input[type="submit"] {
   width:50px;
   height:50px;
   overflow:hidden;
+  margin-top:10px;
+  float: left;
 }
 
 /*** CUADROS DE MATERIAS INSCRITAS - PAGINA DE PERFIL PERSONAL ***/
