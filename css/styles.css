@@ -232,7 +232,7 @@ header{
 
 header label{
   float: right;
-  margin: 2px 0;
+  margin: 8px 0;
   cursor: pointer;
 }
 
@@ -349,14 +349,25 @@ padding: 15px;
 /*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
 
 #freg {
-  background-image: url(../img/fondo.png);
+  background-image: url(../img/fondo_.png);
   background-color: #3CA4DA;
   background-repeat: no-repeat;
-  background-position: 100% 0;
+  background-position: right;
+  background-size: 45%;
 }
 
-#freg section {
+.frm-l {
+  margin-top: 300px;
+  margin-right: 100%;
+  margin-bottom: 300px;
+  width: 500px;
+}
+
+.frm-r {
   margin-top: 100px;
+  margin-right: 50%;
+  margin-bottom: 100px;
+  width: 435px;
 }
 
 /*** PAGINAS DE REGISTRO E INICIO DE SESION ***/
@@ -544,5 +555,35 @@ padding: 15px;
     .downloader-container {
       justify-content: flex-end;
     }
+
+    .formtab .centrar-tab{
+      justify-content: center;
+      align-items: center;
+      display: flexbox;
+    }
+/*Formularios de login y registro*/
+  #freg {
+  background-size: 38%;
+   } 
+
+    .frm-l {
+      margin-top: 300px;
+      margin-right: 100%;
+      margin-bottom: 300px;
+      width: 400px;
+    }
+    
+    .frm-r {
+      margin-top: 100px;
+      margin-right: 50%;
+      margin-bottom: 100px;
+      width: 400px;
+    }
+.form-horizontal .form-options input[type="checkbox"] {
+  margin-right: 180px;
+}
+}
+
+@media (min-width:375px) and (max-width:427px){
 
 }

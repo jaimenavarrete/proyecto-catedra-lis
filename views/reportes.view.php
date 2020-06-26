@@ -197,6 +197,7 @@
                     <td>3</td>
                 </tr> 
             </table>
+            </div>
         </div>
 
         <div class="formtab">

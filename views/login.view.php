@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="freg">
-<section>
+<section class="frm-l">
     <article>
-        <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
+        <form action="" class="form-horizontal" name="formulario" class="frm-usu" method="post">
             <div>
                 <h2>Inicio de sesión</h2>
             </div>            
