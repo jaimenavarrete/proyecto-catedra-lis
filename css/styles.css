@@ -135,11 +135,12 @@ section{
 
 /*** SECCIONES DE BUSQUEDA Y SECCIONES DE BOTONES DE LAS PAGINAS ***/
 
+@media (min-width:1024px)
+{
 /* Contenedor para ordenar las secciones que contengan varias filas*/
 .search-container {
   margin-bottom: 20px;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -178,7 +179,7 @@ section{
 .select-container h4 {
   margin-right: 10px;
 }
-
+}
 /*** BOTONES DE LAS PAGINAS ***/
 
 /* Diseño de Botones Submit, creados a partir de label*/
@@ -288,15 +289,16 @@ padding: 15px;
 
 /*Ajuste de HEADER para escritorio*/
 
-@media (min-width:1024px){
+@media (min-width:960px){
   .menu{
     position: static;
-    width: auto;
     height: auto;
     transform:translateX(0%);
     float: left;
     display: flex;
-    
+    height: 50px;
+    width: 70%;
+    transition: all 0s;
   }
 
   #navegador li{
@@ -484,4 +486,63 @@ padding: 15px;
   text-align: center;
   text-decoration: none;
   width: 100%;
+}
+/*Versión tablet*/
+@media (min-width:426px) and (max-width:1023px){
+  /*Muesta las materias centradas*/
+  .sc-downloader {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  
+  .materias-container {
+    display: flexbox;
+    justify-content: center
+  }
+      .sc-tab {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .select-container{
+      display: flex;
+      align-items: center;
+    }
+
+    .formtab .sc-tab {
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+    }
+
+
+    .select-container .btn-g{
+      margin: 10px 0 10px 0;
+      margin-left: 30%;
+      margin-right: 30%;
+      text-align: center;
+    }
+
+    h1{
+      font-size:35px ;
+    }
+  
+    h2{
+      font-size: 20px;
+    }
+      
+    .select-container label {
+      padding: 15px 40px;
+    }
+
+
+    .downloader-container {
+      justify-content: flex-end;
+    }
+
 }

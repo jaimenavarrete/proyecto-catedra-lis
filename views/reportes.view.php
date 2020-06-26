@@ -13,7 +13,7 @@
 <header>
 <div id="navegador">
 <input type="checkbox" id="menu-bar">
-<label for="menu-bar" class="fa fa-bars icon" style="font-size:28px"></label>
+<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
 <a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
 <a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
     <nav class="menu">
@@ -35,7 +35,7 @@
 
         <div class="formtab">
             <h2>Docentes registrados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
@@ -91,7 +91,7 @@
 
         <div class="formtab">
             <h2>Alumnos registrados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
@@ -147,7 +147,7 @@
 
         <div class="formtab">
             <h2>Grupos formados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
@@ -201,7 +201,7 @@
 
         <div class="formtab">
             <h2>Alumnos sin grupo</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
