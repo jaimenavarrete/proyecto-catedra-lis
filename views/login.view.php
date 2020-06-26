@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body id="freg">
-<section>
+<section class="frm-l">
     <article>
         <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
             <div>
@@ -27,7 +27,7 @@
             <div class="form-options">
                 <label for="recuerdame">Recuérdame</label>
                 <input type="checkbox" name="recordar" id="recuerdame">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="#" class="olvidar">¿Olvidaste tu contraseña?</a>
             </div>
 
             <input type="submit" class="btn" value="Ingresar">

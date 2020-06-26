@@ -487,3 +487,35 @@ padding: 15px;
   text-decoration: none;
   width: 100%;
 }
+
+/*** Login responsive ***/
+
+@media (max-width:625px){
+      .frm-l {
+        margin-top: 300px;
+        margin-right: 100%;
+        margin-bottom: 300px;
+        width: 400px;
+      }
+      
+      .frm-r {
+        margin-top: 100px;
+        margin-right: 50%;
+        margin-bottom: 100px;
+        width: 400px;
+      }
+
+  .frm-l #salario .form-options .olvidar{
+      display: flex;
+      padding: 10px 0;
+      
+  }
+
+  .frm-l #salario .form-options label{
+    
+  }
+  .form-horizontal .form-options input[type="checkbox"] {
+    margin-right: 175px;
+    
+  }
+}
