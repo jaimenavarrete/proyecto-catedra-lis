@@ -41,6 +41,7 @@
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -87,6 +88,7 @@
                     <td>3</td>
                 </tr> 
             </table>
+            </div>
         </div>
 
         <div class="formtab">
@@ -97,6 +99,7 @@
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -144,6 +147,7 @@
                 </tr> 
             </table>
         </div>
+        </div>
 
         <div class="formtab">
             <h2>Grupos formados</h2>
@@ -153,6 +157,7 @@
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -208,6 +213,7 @@
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -254,6 +260,7 @@
                     <td>02T</td>
                 </tr> 
             </table>
+        </div>
         </div>
     </article>
 </section>

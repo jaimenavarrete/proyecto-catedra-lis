@@ -467,7 +467,7 @@ padding: 15px;
 
 .materias-container {
   display: flex;
-  flex-wrap: wrap;
+  align-content: left;
 }
 
 .materias-container .formm {
@@ -477,7 +477,6 @@ padding: 15px;
   border-radius: 5px;
   margin: 0 10px 20px 0;
   padding: 25px;
-
   width: 24%;
   min-width: 300px;
 }
@@ -499,7 +498,7 @@ padding: 15px;
   width: 100%;
 }
 /*Versión tablet*/
-@media (min-width:426px) and (max-width:1023px){
+@media (min-width:625px) and (max-width:1023px){
   /*Muesta las materias centradas*/
   .sc-downloader {
     margin-bottom: 20px;
@@ -509,10 +508,7 @@ padding: 15px;
     align-content: center;
   }
   
-  .materias-container {
-    display: flexbox;
-    justify-content: center
-  }
+ 
       .sc-tab {
         display: flex;
         justify-content: space-around;
@@ -584,6 +580,10 @@ padding: 15px;
 }
 }
 
-@media (min-width:375px) and (max-width:427px){
-
+@media (min-width:300px){
+  .bar-scroll{
+  width: 100%; 
+  height: 100%; 
+  overflow-x: auto;
+  }
 }

@@ -85,6 +85,7 @@
             <h2>Materias a inscribir</h2>
             <form action="" name="formulario" id="inscripcion">
                 <div class="search-container">
+                <div class="bar-scroll">
                     <table class="tablas">
                         <thead>
                             <tr>
@@ -108,11 +109,13 @@
                         </tr>
                     </table>
                 </div>
+                </div>
                 <div class="btn-inscribir">
                     <input type="submit" id="btn-repo-2">
                     <label for="btn-repo-2" class="btn">Finalizar inscripción <i class="fa fa-check icon" id="i-pdf-2"></i></label>
                 </div>
             </form>
+        </div>
         </div>
     </article>
 </section>

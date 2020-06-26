@@ -56,6 +56,7 @@
 
         <div class="formtab">
             <h2>Información de la materia actual</h2>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -73,9 +74,10 @@
                 </tr>                     
             </table>
         </div>
-
+        </div>
         <div class="formtab">
             <h2>Información de los alumnos de la materia actual</h2>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -117,6 +119,7 @@
                 </tr> 
             </table>
         </div>
+        </div>
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
@@ -135,6 +138,7 @@
                     <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
                 </div>
             </form>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -175,6 +179,7 @@
                     <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                 </tr> 
             </table>
+        </div>
         </div>
     </article>
 </section>
