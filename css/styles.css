@@ -98,20 +98,10 @@ section{
   border-bottom: 1px solid #D9D9D9;
 }
 
-<<<<<<< HEAD
 .tabla-datos-perfil td {
   
   width: 20%;
   max-width: 200px;
-=======
-#btn-grupos{
-  margin-left: 400px;
-  margin-top: 3px;
-  width: 300px;
-  height: 50px;
-  left: 1066px;
-  top: 868px;
->>>>>>> parent of 327a190... Se agregaron elementos nuevos
 }
 
 .tabla-datos-perfil h4 {
@@ -145,11 +135,12 @@ section{
 
 /*** SECCIONES DE BUSQUEDA Y SECCIONES DE BOTONES DE LAS PAGINAS ***/
 
+@media (min-width:1024px)
+{
 /* Contenedor para ordenar las secciones que contengan varias filas*/
 .search-container {
   margin-bottom: 20px;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -188,7 +179,7 @@ section{
 .select-container h4 {
   margin-right: 10px;
 }
-
+}
 /*** BOTONES DE LAS PAGINAS ***/
 
 /* Diseño de Botones Submit, creados a partir de label*/
@@ -241,7 +232,7 @@ header{
 
 header label{
   float: right;
-  margin: 2px 0;
+  margin: 8px 0;
   cursor: pointer;
 }
 
@@ -253,8 +244,8 @@ header label{
   height: 100vh;
   background: #3CA4DA ;
   opacity: 0.9;
+  transition: all 0.5s;
   transform: translateX(-100%);
-  transition: all 0.3s;
 }
 
 #menu-bar:checked ~ .menu{
@@ -298,17 +289,16 @@ padding: 15px;
 
 /*Ajuste de HEADER para escritorio*/
 
-
-
-@media (min-width:970px){
+@media (min-width:960px){
   .menu{
     position: static;
-    width: 70%;
-    height: 50px;
+    height: auto;
     transform:translateX(0%);
     float: left;
     display: flex;
-    transition: all 0.0s;
+    height: 50px;
+    width: 70%;
+    transition: all 0s;
   }
 
   #navegador li{
@@ -359,14 +349,25 @@ padding: 15px;
 /*** FONDO DE PAGINAS DE REGISTRO E INICIO DE SESION ***/
 
 #freg {
-  background-image: url(../img/fondo.png);
+  background-image: url(../img/fondo_.png);
   background-color: #3CA4DA;
   background-repeat: no-repeat;
-  background-position: 100% 0;
+  background-position: right;
+  background-size: 45%;
 }
 
-#freg section {
+.frm-l {
+  margin-top: 300px;
+  margin-right: 100%;
+  margin-bottom: 300px;
+  width: 500px;
+}
+
+.frm-r {
   margin-top: 100px;
+  margin-right: 50%;
+  margin-bottom: 100px;
+  width: 435px;
 }
 
 /*** PAGINAS DE REGISTRO E INICIO DE SESION ***/
@@ -466,7 +467,7 @@ padding: 15px;
 
 .materias-container {
   display: flex;
-  flex-wrap: wrap;
+  align-content: left;
 }
 
 .materias-container .formm {
@@ -476,7 +477,6 @@ padding: 15px;
   border-radius: 5px;
   margin: 0 10px 20px 0;
   padding: 25px;
-
   width: 24%;
   min-width: 300px;
 }
@@ -498,7 +498,7 @@ padding: 15px;
   width: 100%;
 }
 /*Versión tablet*/
-@media (min-width:426px) and (max-width:1023px){
+@media (min-width:625px) and (max-width:1023px){
   /*Muesta las materias centradas*/
   .sc-downloader {
     margin-bottom: 20px;
@@ -508,10 +508,7 @@ padding: 15px;
     align-content: center;
   }
   
-  .materias-container {
-    display: flexbox;
-    justify-content: center
-  }
+ 
       .sc-tab {
         display: flex;
         justify-content: space-around;
@@ -530,28 +527,63 @@ padding: 15px;
       align-content: center;
     }
 
-/*** Login responsive celular ***/
 
-@media (max-width:625px){
-  #freg{
-    background-image: none;
-  }
+    .select-container .btn-g{
+      margin: 10px 0 10px 0;
+      margin-left: 30%;
+      margin-right: 30%;
+      text-align: center;
+    }
 
-  .frm-l #salario .form-options .olvidar{
-      display: flex;
-      padding: 10px 0;
-      font-size: medium;
+    h1{
+      font-size:35px ;
+    }
+  
+    h2{
+      font-size: 20px;
+    }
       
-      
-  }
+    .select-container label {
+      padding: 15px 40px;
+    }
 
-  .form-horizontal .form-options label {
-    display: flex;
-    width: 60%;
-    flex-direction: row;
+
+    .downloader-container {
+      justify-content: flex-end;
+    }
+
+    .formtab .centrar-tab{
+      justify-content: center;
+      align-items: center;
+      display: flexbox;
+    }
+/*Formularios de login y registro*/
+  #freg {
+  background-size: 35%;
+   } 
+
+    .frm-l {
+      margin-top: 300px;
+      margin-right: 100%;
+      margin-bottom: 300px;
+      width: 400px;
+    }
     
+    .frm-r {
+      margin-top: 100px;
+      margin-right: 50%;
+      margin-bottom: 100px;
+      width: 400px;
+    }
+.form-horizontal .form-options input[type="checkbox"] {
+  margin-right: 180px;
+}
+}
+
+@media (min-width:300px){
+  .bar-scroll{
+  width: 100%; 
+  height: 100%; 
+  overflow-x: auto;
   }
-
-@media (min-width:375px) and (max-width:427px){
-
 }

@@ -12,7 +12,7 @@
 <body id="freg">
 <section class="frm-l">
     <article>
-        <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
+        <form action="" class="form-horizontal" name="formulario" class="frm-usu" method="post">
             <div>
                 <h2>Inicio de sesión</h2>
             </div>            
@@ -25,12 +25,10 @@
                 <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:">
             </div>
             <div class="form-options">
-                <label for="">Recuérdame</label>
+                <label for="recuerdame">Recuérdame</label>
                 <input type="checkbox" name="recordar" id="recuerdame">
-                <a href="#" class="olvidar">¿Olvidaste tu contraseña?</a>
+                <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
-
-           
 
             <input type="submit" class="btn" value="Ingresar">
             
