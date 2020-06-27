@@ -498,7 +498,7 @@ padding: 15px;
   width: 100%;
 }
 /*Versión tablet*/
-@media (min-width:625px) and (max-width:1023px){
+@media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
   .sc-downloader {
     margin-bottom: 20px;
@@ -586,4 +586,40 @@ padding: 15px;
   height: 100%; 
   overflow-x: auto;
   }
+}
+
+@media (max-width:625px){
+  #freg{
+    background-image: none;
+  }
+  .frm-l {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .frm-r {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .form-options .olvidar{
+      display: flex;
+      margin-left: 15%;
+      margin-right: 15%;
+      padding: 10px 0;
+      font-size: medium;
+  }
+
+  .form-horizontal .form-options label {
+    margin-right: 0%;
+  }
+
+  .form-horizontal .form-options input[type="checkbox"] {
+    margin-right: 55%;
+
+  }
+   
+
 }

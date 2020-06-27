@@ -27,7 +27,7 @@
             <div class="form-options">
                 <label for="recuerdame">Recuérdame</label>
                 <input type="checkbox" name="recordar" id="recuerdame">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="#" class="olvidar">¿Olvidaste tu contraseña?</a>
             </div>
 
             <input type="submit" class="btn" value="Ingresar">
