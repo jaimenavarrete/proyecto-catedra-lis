@@ -124,18 +124,21 @@
                             <td>3</td>
                             <td>[Nombre del alumno 3]</td>
                             <td>[Correo del alumno 3]</td>
+                            <td>[Sin grupo]</td>
                             <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                         </tr> 
                         <tr>
                             <td>4</td>
                             <td>[Nombre del alumno 4]</td>
                             <td>[Correo del alumno 4]</td>
+                            <td>[Sin grupo]</td>
                             <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                         </tr> 
                         <tr>
                             <td>5</td>
                             <td>[Nombre del alumno 5]</td>
                             <td>[Correo del alumno 5]</td>
+                            <td>[Sin grupo]</td>
                             <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                         </tr> 
                     </table>
