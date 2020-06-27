@@ -573,7 +573,7 @@ padding: 15px;
   margin-right: 180px;
 }
 }
-
+/*scroll bar para las tablas*/
 @media (min-width:300px){
   .bar-scroll{
   width: 100%; 
@@ -582,7 +582,7 @@ padding: 15px;
   }
 }
 
-
+/*Version movil*/
 @media (max-width:625px){
   #freg{
     background-image: none;
