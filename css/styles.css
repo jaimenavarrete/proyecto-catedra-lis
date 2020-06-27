@@ -487,6 +487,38 @@ padding: 15px;
   text-decoration: none;
   width: 100%;
 }
+/*Versión tablet*/
+@media (min-width:426px) and (max-width:1023px){
+  /*Muesta las materias centradas*/
+  .sc-downloader {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  
+  .materias-container {
+    display: flexbox;
+    justify-content: center
+  }
+      .sc-tab {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .select-container{
+      display: flex;
+      align-items: center;
+    }
+
+    .formtab .sc-tab {
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+    }
 
 /*** Login responsive celular ***/
 
@@ -510,11 +542,6 @@ padding: 15px;
     
   }
 
-  .form-horizontal .form-options input[type="checkbox"] {
-   display:flex;
-  justify-content: space-between;
-  
-  }
-   
+@media (min-width:375px) and (max-width:427px){
 
 }
