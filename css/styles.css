@@ -497,29 +497,6 @@ padding: 15px;
   text-decoration: none;
   width: 100%;
 }
-<<<<<<< HEAD
-
-/*** Login responsive celular ***/
-
-@media (max-width:625px){
-  #freg{
-    background-image: none;
-  }
-
-  .frm-l #salario .form-options .olvidar{
-      display: flex;
-      padding: 10px 0;
-      
-  }
-
-  .form-horizontal .form-options input[type="checkbox"] {
-    margin-right: 175px;
-    
-  }
-   
-
-}
-=======
 /*Versión tablet*/
 @media (min-width:625px) and (max-width:1023px){
   /*Muesta las materias centradas*/
@@ -610,4 +587,3 @@ padding: 15px;
   overflow-x: auto;
   }
 }
->>>>>>> René
