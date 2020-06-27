@@ -31,7 +31,7 @@
     <article>
             <h1 id="fuente">PERFIL PERSONAL</h1>
             <div class="formtab seccion-perfil">
-                <form action="">
+                <form action="modificar_usuario.php">
                     <div>
                         <img class="circular--squaremax" src="img/user.png" />
                     </div>
