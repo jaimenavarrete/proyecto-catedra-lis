@@ -43,13 +43,13 @@
                 </div>
                 <div class="select-container">
                     <h4>Grupo:</h4>
-                    <select name="grupo" >
-                        <option value="" >01T</option>
+                    <select name="grupo"  >
+                    <option value="">01T</option>
                     </select>
                 </div>
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
-                    <label for="btn-repo" class="btn">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                    <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
                 </div>
             </form>
         </div>
@@ -120,7 +120,7 @@
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
-            <form class="search-container">
+            <form class="search-container  sc-tab" >
                 <div class="select-container">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" class="materias">
