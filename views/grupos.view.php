@@ -123,7 +123,7 @@
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
-            <form class="search-container sc-tab">
+            <form class="search-container sc-tab" action="crear_grupos.php">
                 <div class="select-container">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" class="grupo-creacion">
