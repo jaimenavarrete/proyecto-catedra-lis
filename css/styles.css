@@ -98,10 +98,20 @@ section{
   border-bottom: 1px solid #D9D9D9;
 }
 
+<<<<<<< HEAD
 .tabla-datos-perfil td {
   
   width: 20%;
   max-width: 200px;
+=======
+#btn-grupos{
+  margin-left: 400px;
+  margin-top: 3px;
+  width: 300px;
+  height: 50px;
+  left: 1066px;
+  top: 868px;
+>>>>>>> parent of 327a190... Se agregaron elementos nuevos
 }
 
 .tabla-datos-perfil h4 {
