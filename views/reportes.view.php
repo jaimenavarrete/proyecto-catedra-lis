@@ -10,34 +10,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<header>
 <div id="navegador">
-    <nav>
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
+<a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
+<a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
+    <nav class="menu">
         <ul>
             <div class="separador-links">
-                <li><a href="perfil.php" class="imagen"><img class="circular--squaremin" src="img/user.png" /></a></li>
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="#">Reportes <i class="fa fa-book icon"></i></a></li>
-            </div>
-            <div class="separador-links">
-                <li><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
-            </div>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
+                <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
+                </div>
         </ul>
     </nav>
 </div>
-<section>
+</header>
+<section class="contenido">
     <article>
         <h1>REPORTES MATERIAS</h1>
 
         <div class="formtab">
             <h2>Docentes registrados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -84,16 +88,18 @@
                     <td>3</td>
                 </tr> 
             </table>
+            </div>
         </div>
 
         <div class="formtab">
             <h2>Alumnos registrados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -141,15 +147,17 @@
                 </tr> 
             </table>
         </div>
+        </div>
 
         <div class="formtab">
             <h2>Grupos formados</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -194,16 +202,18 @@
                     <td>3</td>
                 </tr> 
             </table>
+            </div>
         </div>
 
         <div class="formtab">
             <h2>Alumnos sin grupo</h2>
-            <div class="search-container downloader-container">
+            <div class="search-container downloader-container sc-downloader">
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
             </div>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -250,6 +260,7 @@
                     <td>02T</td>
                 </tr> 
             </table>
+        </div>
         </div>
     </article>
 </section>
