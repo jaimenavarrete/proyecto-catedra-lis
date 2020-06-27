@@ -25,7 +25,7 @@
                 <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:">
             </div>
             <div class="form-options">
-                <label for="recuerdame">Recuérdame</label>
+                <label for="">Recuérdame</label>
                 <input type="checkbox" name="recordar" id="recuerdame">
                 <a href="#" class="olvidar">¿Olvidaste tu contraseña?</a>
             </div>

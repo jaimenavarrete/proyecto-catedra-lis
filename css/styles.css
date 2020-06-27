@@ -498,12 +498,22 @@ padding: 15px;
   .frm-l #salario .form-options .olvidar{
       display: flex;
       padding: 10px 0;
+      font-size: medium;
+      
       
   }
 
-  .form-horizontal .form-options input[type="checkbox"] {
-    margin-right: 175px;
+  .form-horizontal .form-options label {
+    display: flex;
+    width: 60%;
+    flex-direction: row;
     
+  }
+
+  .form-horizontal .form-options input[type="checkbox"] {
+   display:flex;
+  justify-content: space-between;
+  
   }
    
 
