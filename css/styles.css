@@ -497,6 +497,42 @@ padding: 15px;
   text-decoration: none;
   width: 100%;
 }
+
+
+
+/*** Login responsive celular ***/
+@media (max-width:625px){
+  #freg{
+    background-image: none;
+  }
+
+  .frm-l #salario .form-options .olvidar{
+      display: flex;
+      padding: 10px 0;
+      font-size: medium;
+      
+      
+  }
+
+  .form-horizontal .form-options label {
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    
+  }
+
+  .form-horizontal .form-options input[type="checkbox"] {
+   display:flex;
+  justify-content: space-between;
+  
+  }
+
+   
+
+
+
+
+
 /*Versión tablet*/
 @media (min-width:625px) and (max-width:1023px){
   /*Muesta las materias centradas*/
@@ -558,9 +594,7 @@ padding: 15px;
       display: flexbox;
     }
 /*Formularios de login y registro*/
-  #freg {
-  background-size: 35%;
-   } 
+   
 
     .frm-l {
       margin-top: 300px;
@@ -580,7 +614,7 @@ padding: 15px;
 }
 }
 
-@media (min-width:300px){
+@media (min-width:100px){
   .bar-scroll{
   width: 100%; 
   height: 100%; 
