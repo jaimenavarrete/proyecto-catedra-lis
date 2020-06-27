@@ -57,8 +57,8 @@
 
             <div class="search-container sc-downloader">
                 <div class="select-container">
-                    <h4>Cupo:</h4>
-                    <input type="text" name="cupos" id="cupos" readonly>
+                    <h4>Cupos:</h4>
+                    <input type="text" name="cupos" id="cupos" readonly value="27">
                 </div>
 
                 <div class="select-container">

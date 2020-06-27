@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
 <div id="navegador">
 <input type="checkbox" id="menu-bar">
 <label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>

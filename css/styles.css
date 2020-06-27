@@ -172,8 +172,11 @@ section{
 }
 
 .select-container input {
-  background: #F0F0F0;
   border: 1px solid #212121;
+}
+
+.select-container #cupos {
+  background: #F0F0F0;
 }
 
 .select-container h4 {
