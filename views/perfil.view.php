@@ -79,7 +79,7 @@
             </div>
             <div class="formtab">
                 <h2>Materias inscritas</h2>
-                
+               <div class="bar-scroll">
                 <div class="materias-container">
                     <div class="formm">
                         <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
@@ -105,6 +105,7 @@
                         <h4>Nombre:</h4>
                         <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
                         <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                    </div>
                     </div>
                 </div>
             </div>

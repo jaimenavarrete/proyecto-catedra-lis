@@ -13,7 +13,7 @@
 <header>
 <div id="navegador">
 <input type="checkbox" id="menu-bar">
-<label for="menu-bar" class="fa fa-bars icon" style="font-size:28px"></label>
+<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
 <a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
 <a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
     <nav class="menu">
@@ -49,13 +49,14 @@
                 </div>
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
-                    <label for="btn-repo" class="btn">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                    <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
                 </div>
             </form>
         </div>
 
         <div class="formtab">
             <h2>Información de la materia actual</h2>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -73,9 +74,10 @@
                 </tr>                     
             </table>
         </div>
-
+        </div>
         <div class="formtab">
             <h2>Información de los alumnos de la materia actual</h2>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -117,10 +119,11 @@
                 </tr> 
             </table>
         </div>
+        </div>
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
-            <form class="search-container">
+            <form class="search-container sc-tab">
                 <div class="select-container">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" class="materias">
@@ -135,6 +138,7 @@
                     <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
                 </div>
             </form>
+            <div class="bar-scroll">
             <table class="tablas">
                 <thead>
                     <tr>
@@ -175,6 +179,7 @@
                     <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                 </tr> 
             </table>
+        </div>
         </div>
     </article>
 </section>
