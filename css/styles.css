@@ -500,16 +500,10 @@ padding: 15px;
 /*Versión tablet*/
 @media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
-  .sc-downloader {
-    margin-bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-  }
+  
   
  
-      .sc-tab {
+    .sc-tab {
         display: flex;
         justify-content: space-around;
     }
@@ -588,6 +582,7 @@ padding: 15px;
   }
 }
 
+
 @media (max-width:625px){
   #freg{
     background-image: none;
@@ -622,4 +617,60 @@ padding: 15px;
   }
    
 
+}
+
+/*Pagina grupos de las materias*/
+
+@media (max-width:723px){
+
+    .contenido .formtab .search-container .select-container .btn-g{
+      display: flex;
+      display: inline-block;
+      font-size: 1em;
+      margin: 20px 45px;
+      padding: 0px 50px;
+      text-align: center;
+      width: 250px;
+    }
+
+    .contenido .formtab .search-container .select-container .materias{
+      font-size: medium;
+      
+    }
+
+    .formtab .sc-tab{
+      flex-direction: column;
+    }
+
+    .formtab .sc-tab .select-container a{
+      display: inline-block;
+      padding: 20px 0px;
+      
+      
+    }
+
+    .formtab .sc-tab #i-pdf{
+      display: inline-block;
+      width: 30px;
+      padding: 20px;
+    
+      
+    }
+
+    
+}
+
+
+@media (max-width:1024px){
+
+  .formtab .downloader-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+  
+    
+      
+        
+  
+  }
 }

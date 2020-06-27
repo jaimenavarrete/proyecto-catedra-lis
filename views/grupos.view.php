@@ -37,7 +37,7 @@
             <form class="search-container">
                 <div class="select-container">
                     <h4>Materia:</h4>
-                    <select name="materias">
+                    <select name="materias" class="materias">
                         <option value="">Lenguajes interpretados en el servidor</option>
                     </select>
                 </div>
@@ -126,15 +126,17 @@
             <form class="search-container sc-tab">
                 <div class="select-container">
                     <h4>Grupo:</h4>
-                    <select name="lista-grupos" class="materias">
+                    <select name="lista-grupos" class="grupo-creacion">
                         <option value="">Grupo 1</option>
                         <option value="">Grupo 2</option>
                     </select>
                 </div>
                 <div class="select-container">
-                    <a href="#"><i class="fa fa-trash icon icon-delete"> </i></a>
+                    <a href="#"><i class="fa fa-trash icon icon-delete"> </i></a>   
+                </div>
 
-                    <input type="submit" id="btn-grupos">
+                <div class="select-container">
+                <input type="submit" id="btn-grupos">
                     <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
                 </div>
             </form>
