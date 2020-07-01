@@ -172,8 +172,11 @@ section{
 }
 
 .select-container input {
-  background: #F0F0F0;
   border: 1px solid #212121;
+}
+
+.select-container #cupos {
+  background: #F0F0F0;
 }
 
 .select-container h4 {
@@ -534,18 +537,12 @@ padding: 15px;
 
 
 /*Versión tablet*/
-@media (min-width:625px) and (max-width:1023px){
+@media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
-  .sc-downloader {
-    margin-bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-  }
+  
   
  
-      .sc-tab {
+    .sc-tab {
         display: flex;
         justify-content: space-around;
     }
@@ -613,11 +610,105 @@ padding: 15px;
   margin-right: 180px;
 }
 }
-
-@media (min-width:100px){
+/*scroll bar para las tablas*/
+@media (min-width:300px){
   .bar-scroll{
   width: 100%; 
   height: 100%; 
   overflow-x: auto;
   }
+}
+
+/*Version movil*/
+@media (max-width:625px){
+  #freg{
+    background-image: none;
+  }
+  .frm-l {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .frm-r {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .form-options .olvidar{
+      display: flex;
+      margin-left: 15%;
+      margin-right: 15%;
+      padding: 10px 0;
+      font-size: medium;
+  }
+
+  .form-horizontal .form-options label {
+    margin-right: 0%;
+  }
+
+  .form-horizontal .form-options input[type="checkbox"] {
+    margin-right: 55%;
+
+  }
+   
+
+}
+
+/*Pagina grupos de las materias*/
+
+@media (max-width:723px){
+
+    .contenido .formtab .search-container .select-container .btn-g{
+      display: flex;
+      display: inline-block;
+      font-size: 1em;
+      margin: 20px 45px;
+      padding: 0px 50px;
+      text-align: center;
+      width: 250px;
+    }
+
+    .contenido .formtab .search-container .select-container .materias{
+      font-size: medium;
+      
+    }
+
+    .formtab .sc-tab{
+      flex-direction: column;
+    }
+
+    .formtab .sc-tab .select-container a{
+      display: inline-block;
+      padding: 20px 0px;
+      
+      
+    }
+
+    .formtab .sc-tab #i-pdf{
+      display: inline-block;
+      width: 30px;
+      padding: 20px;
+    
+      
+    }
+
+    
+}
+
+
+@media (max-width:1024px){
+
+  .formtab .downloader-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+  
+    
+      
+        
+  
+  }
+}
 }

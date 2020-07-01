@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
 <div id="navegador">
 <input type="checkbox" id="menu-bar">
 <label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
@@ -33,7 +33,7 @@
     <article>
             <h1 id="fuente">PERFIL PERSONAL</h1>
             <div class="formtab seccion-perfil">
-                <form action="">
+                <form action="modificar_usuario.php">
                     <div>
                         <img class="circular--squaremax" src="img/user.png" />
                     </div>

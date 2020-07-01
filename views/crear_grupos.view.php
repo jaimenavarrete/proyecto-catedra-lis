@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripción de materias</title>
+    <title>Creación de grupos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -31,11 +31,11 @@
 </header>
 <section class="contenido">
     <article>
-        <h1>INSCRIPCION DE MATERIAS</h1>
+        <h1>CREACIÓN DE GRUPOS DE PROYECTO</h1>
         <div class="formtab">
-            <h2>Proceso de inscripción</h2>
+            <h2>Proceso de creación</h2>
 
-            <div class="search-container sc-downloader">
+            <div class="search-container">
                 <div class="select-container">
                     <h4>Materia:</h4>
                     <select name="materias" id="materias" class="materias">
@@ -55,15 +55,15 @@
                 </div>
             </div>
 
-            <div class="search-container sc-downloader">
+            <div class="search-container">
                 <div class="select-container">
-                    <h4>Cupos:</h4>
-                    <input type="text" name="cupos" id="cupos" readonly value="27">
+                    <h4>Cantidad de integrantes:</h4>
+                    <input type="text" name="cupos">
                 </div>
 
                 <div class="select-container">
                     <h4>Grupo laboratorio:</h4>
-                    <select name="grupo" id="grupo" class="select_grupos_lab">
+                    <select name="grupo" id="grupo" class="select_grupos_lab" disabled>
                         <option value="">01L</option>
                         <option value="">04L</option>
                         <option value="">02L</option>
@@ -73,7 +73,7 @@
 
             <div class="btn-inscribir">
                 <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+                <label for="btn-repo" class="btn">Crear grupos <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
         </div>
     </article>
@@ -82,40 +82,69 @@
 <section>
     <article>
         <div class="formtab">
-            <h2>Materias a inscribir</h2>
+            <h2>Grupos creados</h2>
             <form action="" name="formulario" id="inscripcion">
                 <div class="search-container">
+                    <div class="select-container">
+                        <h4>Grupo:</h4>
+                        <select name="lista-grupos" class="grupo-creacion">
+                            <option value="">Sin grupo</option>
+                            <option value="">Grupo 1</option>
+                            <option value="">Grupo 2</option>
+                            <option value="">Grupo 3</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="bar-scroll">
                     <table class="tablas">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nombre de la materia</th>
-                                <th>Grupo de la materia</th>
+                                <th>Nombre del alumno</th>
+                                <th>Correo electrónico</th>
+                                <th>Grupo actual</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
                         <tr>
                             <td>1</td>
-                            <td>Lenguajes Interpretados en el servidor</td>
-                            <td>01T</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td>[Nombre del alumno 1]</td>
+                            <td>[Correo del alumno 1]</td>
+                            <td>[Sin grupo]</td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
                         </tr> 
                         <tr>
                             <td>2</td>
-                            <td>[Nombre de materia 2]</td>
-                            <td>01T</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr>
+                            <td>[Nombre del alumno 2]</td>
+                            <td>[Correo del alumno 2]</td>
+                            <td>[Sin grupo]</td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                        </tr> 
+                        <tr>
+                            <td>3</td>
+                            <td>[Nombre del alumno 3]</td>
+                            <td>[Correo del alumno 3]</td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                        </tr> 
+                        <tr>
+                            <td>4</td>
+                            <td>[Nombre del alumno 4]</td>
+                            <td>[Correo del alumno 4]</td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                        </tr> 
+                        <tr>
+                            <td>5</td>
+                            <td>[Nombre del alumno 5]</td>
+                            <td>[Correo del alumno 5]</td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                        </tr> 
                     </table>
-                </div>
                 </div>
                 <div class="btn-inscribir">
                     <input type="submit" id="btn-repo-2">
-                    <label for="btn-repo-2" class="btn">Finalizar inscripción <i class="fa fa-check icon" id="i-pdf-2"></i></label>
+                    <label for="btn-repo-2" class="btn">Confirmar grupos <i class="fa fa-check icon" id="i-pdf-2"></i></label>
                 </div>
             </form>
-        </div>
         </div>
     </article>
 </section>
