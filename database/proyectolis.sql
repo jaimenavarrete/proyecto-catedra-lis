@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2020 a las 02:56:22
+-- Tiempo de generación: 24-06-2020 a las 15:24:52
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -50,7 +50,9 @@ CREATE TABLE `empleado` (
   `Edad` int(11) DEFAULT NULL,
   `Correo` varchar(320) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
-  `Codigo_rol` int(11) DEFAULT NULL
+  `Codigo_rol` int(11) DEFAULT NULL,
+  `Activo` tinyint(1) DEFAULT NULL,
+  `Hora_bloqueo` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,7 +80,9 @@ CREATE TABLE `estudiante` (
   `Edad` int(11) DEFAULT NULL,
   `Correo` varchar(320) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
-  `Codigo_rol` int(11) DEFAULT NULL
+  `Codigo_rol` int(11) DEFAULT NULL,
+  `Activo` tinyint(1) DEFAULT NULL,
+  `Hora_bloqueo` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

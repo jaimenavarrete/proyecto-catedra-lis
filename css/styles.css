@@ -172,15 +172,15 @@ section{
 }
 
 .select-container input {
-  border: 1px solid #212121;
-}
-
-.select-container #cupos {
   background: #F0F0F0;
+  border: 1px solid #212121;
 }
 
 .select-container h4 {
   margin-right: 10px;
+}
+.trash {
+  margin-left: 450%;
 }
 }
 /*** BOTONES DE LAS PAGINAS ***/
@@ -539,10 +539,16 @@ padding: 15px;
 /*Versión tablet*/
 @media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
-  
+  .sc-downloader {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
   
  
-    .sc-tab {
+      .sc-tab {
         display: flex;
         justify-content: space-around;
     }
@@ -560,7 +566,10 @@ padding: 15px;
       align-content: center;
     }
 
-
+    .trash {
+      margin-left: 140%;
+      margin-bottom: 12px;
+    }
     .select-container .btn-g{
       margin: 10px 0 10px 0;
       margin-left: 30%;
@@ -590,6 +599,37 @@ padding: 15px;
       align-items: center;
       display: flexbox;
     }
+
+    .sc .btn {
+      background-color: #27AE60;
+      color: white;
+      font-weight: bold;
+      padding: 5px 15px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      float: right;
+      border: 1px solid #000000;
+      border-radius:6px;
+    }
+    
+    .btn-inscribir {
+      margin: 60px 0 30px 0;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .btn-inscribir label {
+      padding: 15px 15px;
+    }
+    .select-container .btn-g{
+      margin: 10px 0 10px 0;
+      margin-left: 15%;
+      margin-right: 15%;
+      width: 100%;
+      padding: 10px 3px;
+    }
+  
+  
 /*Formularios de login y registro*/
    
 
@@ -610,7 +650,7 @@ padding: 15px;
   margin-right: 180px;
 }
 }
-/*scroll bar para las tablas*/
+
 @media (min-width:300px){
   .bar-scroll{
   width: 100%; 
@@ -619,7 +659,6 @@ padding: 15px;
   }
 }
 
-/*Version movil*/
 @media (max-width:625px){
   #freg{
     background-image: none;
@@ -652,63 +691,55 @@ padding: 15px;
     margin-right: 55%;
 
   }
-   
 
-}
-
-/*Pagina grupos de las materias*/
-
-@media (max-width:723px){
-
-    .contenido .formtab .search-container .select-container .btn-g{
-      display: flex;
-      display: inline-block;
-      font-size: 1em;
-      margin: 20px 45px;
-      padding: 0px 50px;
-      text-align: center;
-      width: 250px;
-    }
-
-    .contenido .formtab .search-container .select-container .materias{
-      font-size: medium;
-      
-    }
-
-    .formtab .sc-tab{
-      flex-direction: column;
-    }
-
-    .formtab .sc-tab .select-container a{
-      display: inline-block;
-      padding: 20px 0px;
-      
-      
-    }
-
-    .formtab .sc-tab #i-pdf{
-      display: inline-block;
-      width: 30px;
-      padding: 20px;
-    
-      
-    }
-
-    
-}
-
-
-@media (max-width:1024px){
-
-  .formtab .downloader-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0px;
-  
-    
-      
-        
-  
+  .sc .btn {
+    background-color: #27AE60;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    float: right;
+    border: 1px solid #000000;
+    border-radius:6px;
   }
+  
+  .btn-inscribir {
+    margin: 60px 0 30px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .btn-inscribir label {
+    padding: 15px 10px;
+  }
+  .select-container .btn-g{
+    margin: 10px 0 10px 0;
+    margin-left: 28%;
+    margin-right: 10%;
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  h1{
+    font-size:30px ;
+  }
+
+  h2{
+    font-size: 18px;
 }
+
+select{
+  font-size: 14px;
+}
+
+.sc h4{
+  font-size: 15px;
+}
+
+.btn-modificar-perfil label {
+  padding: 15px 14px;
+}
+}
+
 }

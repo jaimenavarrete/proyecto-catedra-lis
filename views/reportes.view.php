@@ -36,7 +36,7 @@
         <div class="formtab">
             <h2>Docentes registrados</h2>
             <div class="search-container downloader-container sc-downloader">
-                <div class="select-container">
+                <div class="select-container sc">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
@@ -94,7 +94,7 @@
         <div class="formtab">
             <h2>Alumnos registrados</h2>
             <div class="search-container downloader-container sc-downloader">
-                <div class="select-container">
+                <div class="select-container sc">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
@@ -152,7 +152,7 @@
         <div class="formtab">
             <h2>Grupos formados</h2>
             <div class="search-container downloader-container sc-downloader">
-                <div class="select-container">
+                <div class="select-container sc">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>
@@ -208,7 +208,7 @@
         <div class="formtab">
             <h2>Alumnos sin grupo</h2>
             <div class="search-container downloader-container sc-downloader">
-                <div class="select-container">
+                <div class="select-container sc">
                     <input type="submit" id="btn-repo">
                     <label for="btn-repo" class="btn">Descargar PDF<i class="fa fa-file  icon" id="i-pdf"></i></label>
                 </div>

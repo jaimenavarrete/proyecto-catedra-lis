@@ -35,13 +35,13 @@
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
             <form class="search-container">
-                <div class="select-container">
+                <div class="select-container sc">
                     <h4>Materia:</h4>
                     <select name="materias" class="materias">
                         <option value="">Lenguajes interpretados en el servidor</option>
                     </select>
                 </div>
-                <div class="select-container">
+                <div class="select-container sc">
                     <h4>Grupo:</h4>
                     <select name="grupo" >
                         <option value="" >01T</option>
@@ -124,7 +124,7 @@
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
             <form class="search-container sc-tab" action="crear_grupos.php">
-                <div class="select-container">
+                <div class="select-container sc">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" class="grupo-creacion">
                         <option value="">Grupo 1</option>
@@ -132,10 +132,10 @@
                     </select>
                 </div>
                 <div class="select-container">
-                    <a href="#"><i class="fa fa-trash icon icon-delete"> </i></a>   
+                    <a href="#" class="trash"><i class="fa fa-trash icon icon-delete"> </i></a>   
                 </div>
 
-                <div class="select-container">
+                <div class="select-container sc">
                 <input type="submit" id="btn-grupos">
                     <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
                 </div>
