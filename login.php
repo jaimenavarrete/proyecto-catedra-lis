@@ -7,22 +7,22 @@
     <body>
     <?php
         session_start();
-        $_SESSION['contar'] = 0;
 
-        if(!isset($_POST['Enviar'])):
+        if(!isset($_POST['Enviar'])) {
             date_default_timezone_set('America/El_Salvador');
             $fecha = Date('Y-m-d h:i:s');
             echo $fecha;
+        }
      ?> 
-     <!--Declaración de formulario-->
-     <form class="login" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <label>Ingrese su usuario:</label>
-        <input type="text" name="usuario" required><br>
-        <label>Ingrese su contraseña:</label>
-        <input type="password" name="passwd" required><br>
-        <input type="submit" name="Enviar" value="Iniciar Sesión"><br>
-        <a href="registro.php">¿Aún no tienes cuenta de usuario?</a>
-     </form>
+      <!--Declaración de formulario-->
+      <form class="login" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+          <label>Ingrese su usuario:</label>
+          <input type="text" name="usuario" required><br>
+          <label>Ingrese su contraseña:</label>
+          <input type="password" name="passwd" required><br>
+          <input type="submit" name="Enviar" value="Iniciar Sesión"><br>
+          <a href="registro.php">¿Aún no tienes cuenta de usuario?</a>
+       </form>
      <?php
         //Variables de conexion a la base de datos
         $server = "localhost";
@@ -40,27 +40,30 @@
         $buscarUsuario="SELECT Usuario, Password FROM usuarios WHERE Usuario='$usuario'";
         $resultado = $conexion->query($buscarUsuario);
         $resultado = $resultado->fetch();
-        if($resultado){
-            while($row = $resultado->fetch_assoc()) {
-                $verificar_password = password_verify($contra, $row["Password"]);
-                switch($verificar_password){ //Valores booleanos en condicional
-                    case 0 : //0 --> El hash de las contraseñas no coinciden
-                        $_SESSION['contar'] += 1;
+        if($resultado->num_rows){
+            $row = $resultado->fetch_assoc();
+            $verificar_password = password_verify($contra, $row["Password"]);
+            switch($verificar_password){ //Valores booleanos en condicional
+                case 0 : //0 --> El hash de las contraseñas no coinciden
+                    if(!isset($_SESSION['intentos'])){
+                        $_SESSION['intentos'] = 1;
+                    }
+                    else {
+                        $_SESSION['intentos'] += 1;
+                    }
 
-                        if($_SESSION['contar'] >= 3){ //Si la variable sesión llega 3 intentos, la cuenta se bloquea y se destruye la sesión
-                            //Consulta de tipo UPDATE
-                            session_destroy();
-                            echo "SU CUENTA HA SIDO BLOQUEADA PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS <br>";
-                        }else{
-                            echo "Contraseña incorrecta <br> Lleva " . $_SESSION['contar'] . " intentos fallidos";
-                            echo "<a href=\"{$_SERVER['PHP_SELF']}\">Intentar de nuevo</a>";
-                        }
-                        break;
-                    case 1 : //1 --> El hash de las contraseñas si coinciden
-                        echo "Inicio de sesión exitoso <br>";
-                        echo "<a href=\"{$_SERVER['PHP_SELF']}\">Cerrar sesión</a>";
-                        break;
-                }
+                    if($_SESSION['intentos'] >= 3){ //Si la variable sesión llega 3 intentos, la cuenta se bloquea y se destruye la sesión
+                        session_destroy();
+                        echo "SU CUENTA HA SIDO BLOQUEADA PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS <br>";
+                    }else{
+                        echo "Contraseña incorrecta <br> Lleva " . $_SESSION['intentos'] . " intentos fallidos";
+                        echo "<a href=\"{$_SERVER['PHP_SELF']}\">Intentar de nuevo</a>";
+                    }
+                    break;
+                case 1 : //1 --> El hash de las contraseñas si coinciden
+                    echo "Inicio de sesión exitoso <br>";
+                    echo "<a href=\"{$_SERVER['PHP_SELF']}\">Cerrar sesión</a>";
+                    break;
             }
         }else{ 
             //Si el query presenta un error
