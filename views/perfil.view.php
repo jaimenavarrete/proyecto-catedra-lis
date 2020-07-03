@@ -1,3 +1,20 @@
+<?php
+include("cn.php");
+session_start();
+/*
+if(!isset($_SESSION['id_usuario'])){
+    header("Location:index.php");
+}*/
+
+$iduser="jm1";/* esta parte solo es de ejemplo se modificara despues por $_SESSION['id_usuario'] que tomara el valor de la ventana de login*/ 
+
+$consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
+Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$iduser'";
+$resultado=$conexion->query($consulta);
+$row=$resultado->fetch_assoc();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,31 +66,27 @@
                 <table class="tabla-datos-perfil">
                     <tr>
                         <td><h4>Usuario:</h4></td>  
-                        <td><p>[Usuario de la persona]</p></td>                     
+                        <td><p><?php echo utf8_decode($row['Usuario_estudiante']); ?></p></td>                     
                     </tr>
                     <tr>
                         <td><h4>Nombres:</h4></td>
-                        <td><p>[Nombres de la persona]</p></td>                        
+                        <td><p><?php echo utf8_decode($row['Nombres_estudiante']); ?></p></td>                        
                     </tr>
                     <tr>
                         <td><h4>Apellidos:</h4></td>      
-                        <td><p>[Apellidos de la persona]</p></td>                   
-                    </tr>
-                    <tr>
-                        <td><h4>Fecha de nacimiento:</h4></td>   
-                        <td><p>[Fecha de nacimiento de la persona]</p></td>                      
+                        <td><p><?php echo utf8_decode($row['Apellidos_estudiante']); ?></p></td>                   
                     </tr>
                     <tr>
                         <td><h4>Email:</h4></td> 
-                        <td><p>[Email de la persona]</p></td>                         
+                        <td><p><?php echo utf8_decode($row['Correo']); ?></p></td>                         
                     </tr>
                     <tr>
                         <td><h4>Edad:</h4></td>  
-                        <td><p>[Edad de la persona]</p></td>                        
+                        <td><p><?php echo utf8_decode($row['Edad']); ?></p></td>                        
                     </tr>
                     <tr>
                         <td><h4>Número de teléfono:</h4></td>
-                        <td><p>[Número de teléfono de la persona]</p></td>  
+                        <td><p><?php echo utf8_decode($row['Telefono']); ?></p></td>  
                     </tr>
                 </table>
             </div>

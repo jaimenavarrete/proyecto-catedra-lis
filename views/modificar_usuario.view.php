@@ -57,7 +57,7 @@
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="date" id="cumple" name="cumple" placeholder="dd/mm/yyyy" required>
+                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Años" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
