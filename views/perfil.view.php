@@ -12,8 +12,12 @@ $consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiant
 Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$iduser'";
 $resultado=$conexion->query($consulta);
 $row=$resultado->fetch_assoc();
-?>
 
+$consulta1="SELECT Usuario_estudiante, Codigo_grupo, Codigo_materia, Nombre_materia FROM inscripcion INNER JOIN materia 
+USING (Codigo_materia) INNER JOIN estudiante USING (Usuario_estudiante) WHERE Usuario_estudiante='$iduser'";
+$resultado1=mysqli_query($conexion,$consulta1);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,35 +96,25 @@ $row=$resultado->fetch_assoc();
             </div>
             <div class="formtab">
                 <h2>Materias inscritas</h2>
+               
                <div class="bar-scroll">
+               
                 <div class="materias-container">
+                <?php while($contador=mysqli_fetch_array($resultado1)){
+                ?>
                     <div class="formm">
-                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
+                        <h4>Codigo: <span><?php echo $contador['Codigo_materia'] ?></span> Grupo: <span><span><?php echo $contador['Codigo_grupo'] ?></span></h4>
                         <h4>Nombre:</h4>
-                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
+                        <h3><span><?php echo $contador['Nombre_materia'] ?></h3>
                         <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
                     </div>
-                    <div class="formm">            
-                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
-                        <h4>Nombre:</h4>
-                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
-                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                <?php 
+                }
+                ?>
                     </div>
-                    <div class="formm">
-                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
-                        <h4>Nombre:</h4>
-                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
-                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
-                    </div>
-                    <div class="formm">     
-                        <h4>Codigo: <span>LIS104</span> Grupo: <span>01T</span></h4>
-                        <h4></h4>
-                        <h4>Nombre:</h4>
-                        <h3>LENGUAJES INTERP. EN EL SERVIDOR</h3>
-                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
-                    </div>
-                    </div>
+             
                 </div>
+               
             </div>
     </article>
 </section>
