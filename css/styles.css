@@ -169,6 +169,7 @@ section{
   border-radius: 5px;
   cursor: pointer;
   padding: 10px 20px;
+  max-width: 350px;
 }
 
 .select-container input {
