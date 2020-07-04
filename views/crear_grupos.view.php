@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script type = "text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: "queries/fetch_subjects.php",
+            type: 'get',
+            dataType: 'json',
+            success: function(response){
+                var len = response.length;
+                for(i=0; i<len; i++){
+                    var id = response[i].id;
+                    var name = response[i].name;
+
+                    var option = '<option value="'+id+'">'+name+'</option>';
+                    $('#materia1').append(option);
+                    $('#materia2').append(option);
+                    console.log(option);
+                }
+            },
+            error:function (jqXHR, exception) {
+                console.log(exception);
+            }
+        });
+    });
+        
+    </script>
 </head>
 <body>
 <header>
@@ -37,20 +63,15 @@
 
             <div class="search-container">
                 <div class="select-container">
-                    <h4>Materia:</h4>
-                    <select name="materias" id="materias" class="materias">
-                        <option value="">Matematica 1</option>
-                        <option value="">Matematica 2</option>
-                        <option value="">Matematica 3</option>
+                    <h4>Primera materia:</h4>
+                    <select name="materia1" id="materia1" class="materias">
+
                     </select>
                 </div>
 
                 <div class="select-container">
-                    <h4>Grupo teoria:</h4>
-                    <select name="grupo" id="grupo" class="materias">
-                        <option value="">01T</option>
-                        <option value="">04T</option>
-                        <option value="">02T</option>
+                    <h4>Segunda materia:</h4>
+                    <select name="materia2" id="materia2" class="materias">
                     </select>
                 </div>
             </div>
@@ -58,16 +79,7 @@
             <div class="search-container">
                 <div class="select-container">
                     <h4>Cantidad de integrantes:</h4>
-                    <input type="text" name="cupos">
-                </div>
-
-                <div class="select-container">
-                    <h4>Grupo laboratorio:</h4>
-                    <select name="grupo" id="grupo" class="select_grupos_lab" disabled>
-                        <option value="">01L</option>
-                        <option value="">04L</option>
-                        <option value="">02L</option>
-                    </select>
+                    <input type="number" name="cupos" min="1">
                 </div>
             </div>
 
