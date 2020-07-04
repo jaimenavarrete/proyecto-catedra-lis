@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-07-2020 a las 05:40:41
+-- Tiempo de generación: 05-07-2020 a las 01:38:45
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -36,6 +36,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `count_registers` (IN `cod_materia` 
 	WHERE Codigo_materia = "POO104";
 END$$
 
+DROP PROCEDURE IF EXISTS `fetch_students`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fetch_students` (IN `subject` VARCHAR(6))  BEGIN
+	SELECT usuario_estudiante as "Estudiantes-inscritos" 
+    FROM inscripcion 
+    	INNER JOIN grupo on inscripcion.codigo_grupo = grupo.codigo_grupo
+    WHERE Codigo_materia = subject;
+END$$
+
 DROP PROCEDURE IF EXISTS `fetch_subjects`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `fetch_subjects` ()  BEGIN
 	SELECT Codigo_materia, Nombre_materia FROM materia;
@@ -50,13 +58,11 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `carrera`;
-CREATE TABLE IF NOT EXISTS `carrera` (
-  `Codigo_carrera` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `carrera` (
+  `Codigo_carrera` int(11) NOT NULL,
   `Nombre_carrera` varchar(25) DEFAULT NULL,
-  `Codigo_escuela` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_carrera`),
-  KEY `FK_Codigo_escuela_carrera` (`Codigo_escuela`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `Codigo_escuela` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `carrera`
@@ -76,7 +82,7 @@ INSERT INTO `carrera` (`Codigo_carrera`, `Nombre_carrera`, `Codigo_escuela`) VAL
 --
 
 DROP TABLE IF EXISTS `empleado`;
-CREATE TABLE IF NOT EXISTS `empleado` (
+CREATE TABLE `empleado` (
   `Usuario_empleado` varchar(8) NOT NULL,
   `Pass_empleado` varchar(100) DEFAULT NULL,
   `Nombres_empleado` varchar(25) DEFAULT NULL,
@@ -86,9 +92,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `Telefono` varchar(9) DEFAULT NULL,
   `Codigo_rol` int(11) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
-  `Hora_bloqueo` datetime DEFAULT NULL,
-  PRIMARY KEY (`Usuario_empleado`),
-  KEY `FK_Codigo_rol_empleado` (`Codigo_rol`)
+  `Hora_bloqueo` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -106,11 +110,10 @@ INSERT INTO `empleado` (`Usuario_empleado`, `Pass_empleado`, `Nombres_empleado`,
 --
 
 DROP TABLE IF EXISTS `escuela`;
-CREATE TABLE IF NOT EXISTS `escuela` (
-  `Codigo_escuela` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_escuela` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_escuela`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `escuela` (
+  `Codigo_escuela` int(11) NOT NULL,
+  `Nombre_escuela` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `escuela`
@@ -131,7 +134,7 @@ INSERT INTO `escuela` (`Codigo_escuela`, `Nombre_escuela`) VALUES
 --
 
 DROP TABLE IF EXISTS `estudiante`;
-CREATE TABLE IF NOT EXISTS `estudiante` (
+CREATE TABLE `estudiante` (
   `Usuario_estudiante` varchar(8) NOT NULL,
   `Pass` varchar(100) DEFAULT NULL,
   `Nombres_estudiante` varchar(25) DEFAULT NULL,
@@ -142,9 +145,7 @@ CREATE TABLE IF NOT EXISTS `estudiante` (
   `Codigo_rol` int(11) DEFAULT NULL,
   `Grupo_proyecto` tinyint(1) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
-  `Hora_bloqueo` datetime DEFAULT NULL,
-  PRIMARY KEY (`Usuario_estudiante`),
-  KEY `FK_Codigo_rol_estudiante` (`Codigo_rol`)
+  `Hora_bloqueo` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -170,14 +171,12 @@ INSERT INTO `estudiante` (`Usuario_estudiante`, `Pass`, `Nombres_estudiante`, `A
 --
 
 DROP TABLE IF EXISTS `grupo`;
-CREATE TABLE IF NOT EXISTS `grupo` (
-  `Codigo_grupo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grupo` (
+  `Codigo_grupo` int(11) NOT NULL,
   `Nombre_grupo` varchar(3) DEFAULT NULL,
   `Tipo` tinyint(1) DEFAULT NULL,
-  `Codigo_materia` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_grupo`),
-  KEY `FK_Codigo_materia_grupo` (`Codigo_materia`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+  `Codigo_materia` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `grupo`
@@ -194,16 +193,12 @@ INSERT INTO `grupo` (`Codigo_grupo`, `Nombre_grupo`, `Tipo`, `Codigo_materia`) V
 --
 
 DROP TABLE IF EXISTS `inscripcion`;
-CREATE TABLE IF NOT EXISTS `inscripcion` (
-  `Codigo_inscripcion` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `inscripcion` (
+  `Codigo_inscripcion` int(11) NOT NULL,
   `Usuario_estudiante` varchar(8) DEFAULT NULL,
   `Codigo_grupo` int(11) DEFAULT NULL,
-  `Usuario_empleado` varchar(8) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_inscripcion`),
-  KEY `FK_Usuario_estudiante` (`Usuario_estudiante`),
-  KEY `FK_Codigo_grupo_inscripcion` (`Codigo_grupo`),
-  KEY `FK_Usuario_empleado_inscripcion` (`Usuario_empleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
+  `Usuario_empleado` varchar(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inscripcion`
@@ -228,10 +223,7 @@ INSERT INTO `inscripcion` (`Codigo_inscripcion`, `Usuario_estudiante`, `Codigo_g
 (34, 'AS173543', 2, 'LF155643'),
 (35, 'CF176243', 1, 'RC173243'),
 (36, 'CF176243', 2, 'LF155643'),
-(37, 'PO172243', 1, 'RC173243'),
-(38, 'PO172243', 2, 'LF155643'),
-(39, 'LJ173643', 1, 'RC173243'),
-(40, 'LJ173643', 2, 'LF155643');
+(37, 'PO172243', 1, 'RC173243');
 
 -- --------------------------------------------------------
 
@@ -240,12 +232,10 @@ INSERT INTO `inscripcion` (`Codigo_inscripcion`, `Usuario_estudiante`, `Codigo_g
 --
 
 DROP TABLE IF EXISTS `materia`;
-CREATE TABLE IF NOT EXISTS `materia` (
+CREATE TABLE `materia` (
   `Codigo_materia` varchar(6) NOT NULL,
   `Nombre_materia` varchar(50) DEFAULT NULL,
-  `Codigo_escuela` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_materia`),
-  KEY `FK_Codigo_escuela_materia` (`Codigo_escuela`)
+  `Codigo_escuela` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -265,11 +255,10 @@ INSERT INTO `materia` (`Codigo_materia`, `Nombre_materia`, `Codigo_escuela`) VAL
 --
 
 DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `Codigo_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_rol` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Codigo_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `roles` (
+  `Codigo_rol` int(11) NOT NULL,
+  `Nombre_rol` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -279,6 +268,100 @@ INSERT INTO `roles` (`Codigo_rol`, `Nombre_rol`) VALUES
 (1, 'Estudiante'),
 (2, 'Docente'),
 (3, 'Administra');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `carrera`
+--
+ALTER TABLE `carrera`
+  ADD PRIMARY KEY (`Codigo_carrera`),
+  ADD KEY `FK_Codigo_escuela_carrera` (`Codigo_escuela`);
+
+--
+-- Indices de la tabla `empleado`
+--
+ALTER TABLE `empleado`
+  ADD PRIMARY KEY (`Usuario_empleado`),
+  ADD KEY `FK_Codigo_rol_empleado` (`Codigo_rol`);
+
+--
+-- Indices de la tabla `escuela`
+--
+ALTER TABLE `escuela`
+  ADD PRIMARY KEY (`Codigo_escuela`);
+
+--
+-- Indices de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  ADD PRIMARY KEY (`Usuario_estudiante`),
+  ADD KEY `FK_Codigo_rol_estudiante` (`Codigo_rol`);
+
+--
+-- Indices de la tabla `grupo`
+--
+ALTER TABLE `grupo`
+  ADD PRIMARY KEY (`Codigo_grupo`),
+  ADD KEY `FK_Codigo_materia_grupo` (`Codigo_materia`);
+
+--
+-- Indices de la tabla `inscripcion`
+--
+ALTER TABLE `inscripcion`
+  ADD PRIMARY KEY (`Codigo_inscripcion`),
+  ADD KEY `FK_Usuario_estudiante` (`Usuario_estudiante`),
+  ADD KEY `FK_Codigo_grupo_inscripcion` (`Codigo_grupo`),
+  ADD KEY `FK_Usuario_empleado_inscripcion` (`Usuario_empleado`);
+
+--
+-- Indices de la tabla `materia`
+--
+ALTER TABLE `materia`
+  ADD PRIMARY KEY (`Codigo_materia`),
+  ADD KEY `FK_Codigo_escuela_materia` (`Codigo_escuela`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`Codigo_rol`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `carrera`
+--
+ALTER TABLE `carrera`
+  MODIFY `Codigo_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `escuela`
+--
+ALTER TABLE `escuela`
+  MODIFY `Codigo_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `grupo`
+--
+ALTER TABLE `grupo`
+  MODIFY `Codigo_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `inscripcion`
+--
+ALTER TABLE `inscripcion`
+  MODIFY `Codigo_inscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `Codigo_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
