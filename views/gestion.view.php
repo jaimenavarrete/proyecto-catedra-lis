@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Interno</title>
+    <title>Gestion Interna</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -36,11 +36,11 @@
         <div class="gestion">
         <div class="contenedor-g">
         <div class="boton-g"><a href="registro_interno.php">Registro    </a><i class="fa fa-pencil-square-o" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="">Escuelas    </a><i class="fa fa-graduation-cap" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="carreras.php">Carreras    </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
         </div>
         <div class="contenedor-g">
-        <div class="boton-g"><a href="">Carreras    </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="">Materias    </a><i class="fa fa-book" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="escuelas.php">Escuelas   </a><i class="fa fa-graduation-cap" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="materias.php">Materias    </a><i class="fa fa-book" style="font-size:45px;"></i></div>
         </div>
         </div>
     </article>
