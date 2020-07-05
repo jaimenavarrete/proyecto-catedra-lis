@@ -1,3 +1,9 @@
+<?php
+include("cn.php");
+$selecionar="SELECT * FROM escuela";
+$resultado=mysqli_query($conexion,$selecionar);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,20 +41,39 @@
         <h1>REGISTRO DE ESCUELAS</h1>
         <div class="formtab">
             <h2>Escuelas</h2>
-
-            <div class="search-container sc-downloader">
+            <div>
+            <form action="escuelas.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
-                    <h4>Codigo escuela: <input type="text" name="codigo_escuela" id=""></h4>
+                    <h4>Codigo escuela: <input type="text" name="codigo_escuela" required></h4>
                 </div>
 
                 <div class="select-container">
-                    <h4>Nombre escuela: <input type="text" name="nombre escuela" id=""></h4>
+                    <h4>Nombre escuela: <input type="text" name="nombre_escuela" required></h4>
                 </div>
             </div>
 
             <div class="btn-inscribir">
                 <input type="submit" id="btn-repo">
                 <label for="btn-repo" class="btn">Agregar escuela <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+            </div>
+            </form>
+            <div>
+            <?php 
+            /*Ingresa datos en la tabla escuelas*/
+            if(isset($_POST['codigo_escuela']) && isset($_POST['nombre_escuela'])){
+                $codigo_escuela=$_POST["codigo_escuela"];
+                $nombre_escuela=$_POST["nombre_escuela"];
+                $insertar="INSERT INTO escuela(Codigo_escuela, Nombre_escuela) VALUES('$codigo_escuela', '$nombre_escuela')";
+                if($conexion->query($insertar)===true){
+                    echo 'La escuela se ha registrado';
+                }
+                else{
+                    echo 'La escuela ya existe';
+                }
+                
+            }
+            mysqli_close($conexion);
+            ?>
             </div>
         </div>
     </article>
@@ -61,6 +86,7 @@
             <form action="" name="formulario" id="inscripcion">
                 <div class="search-container">
                 <div class="bar-scroll">
+                
                     <table class="tablas">
                         <thead>
                             <tr>
@@ -69,16 +95,16 @@
                                 <th>Opciones</th>
                             </tr>
                         </thead>
+                        <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                        ?>
                         <tr>
-                            <td>ECC</td>
-                            <td>Escuela Ciencias de la Computacion</td>
+                            <td><?php echo $mostrar['Codigo_escuela'] ?></td>
+                            <td><?php echo $mostrar['Nombre_escuela'] ?></td>
                             <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
-                        <tr>
-                            <td>EI</td>
-                            <td>Escuela Industrial</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr>
+                        <?php 
+                          }
+                        ?>
                     </table>
                 </div>
                 </div>

@@ -1,3 +1,11 @@
+<?php
+include("cn.php");
+$selecionar="SELECT * FROM escuela";
+$resultado=mysqli_query($conexion,$selecionar); 
+$selecionar1="SELECT * FROM materia";
+$resultado1=mysqli_query($conexion,$selecionar1); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,22 +44,27 @@
         <div class="formtab">
             <h2>Materias</h2>
 
-            <div class="search-container sc-downloader">
+            <div>
+                <form action="materias.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
-                    <h4>Codigo materia: <input type="text" name="codigo_escuela" id=""></h4>
+                    <h4>Codigo materia: <input type="text" name="codigo_materia" id=""></h4>
     
                 </div>
 
                 <div class="select-container">
-                    <h4>Nombre materia: <input type="text" name="codigo_escuela" id=""></h4>
+                    <h4>Nombre materia: <input type="text" name="nombre_materia" id=""></h4>
     
                 </div>
 
                 <div class="select-container">
                     <h4>Codigo escuela:</h4>
-                    <select name="grupo" id="grupo" class="select_grupos_lab">
-                    <option value="">ECC</option>
-                        <option value="">EI</option>
+                    <select name="codigo_escuela" id="grupo" class="select_grupos_lab">
+                    <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                    ?>
+                        <option><?php echo $mostrar['Codigo_escuela'] ?></option>
+                    <?php 
+                    }
+                    ?>
                     </select>
                 </div>
 
@@ -61,6 +74,26 @@
             <div class="btn-inscribir">
                 <input type="submit" id="btn-repo">
                 <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+            </div>
+            </form>
+            <div>
+            <?php 
+            /*Ingresa datos en la tabla escuelas*/
+            if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($_POST['codigo_escuela'])){
+                $codigo_materia=$_POST["codigo_materia"];
+                $nombre_materia=$_POST["nombre_materia"];
+                $codigo_escuela=$_POST["codigo_escuela"];
+                $insertar="INSERT INTO materia(Codigo_materia, Nombre_materia, Codigo_escuela) VALUES('$codigo_materia', '$nombre_materia', '$codigo_escuela')";
+                if($conexion->query($insertar)===true){
+                    echo 'La materia se ha registrado';
+                }
+                else{
+                    echo 'La materia ya existe';
+                }
+                
+            }
+            mysqli_close($conexion);
+            ?>
             </div>
         </div>
 
@@ -110,18 +143,17 @@
                                 <th>Opciones</th>
                             </tr>
                         </thead>
+                        <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
+                        ?>
                         <tr>
-                            <td>LIS</td>
-                            <td>Lenguajes Interpretados en el servidor</td>
-                            <td>ECC</td>
+                            <td><?php echo $mostrar['Codigo_materia'] ?></td>
+                            <td><?php echo $mostrar['Nombre_materia'] ?></td>
+                            <td><?php echo $mostrar['Codigo_escuela'] ?></td>
                             <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
-                        <tr>
-                            <td>I</td>
-                            <td>Industrial</td>
-                            <td>EI</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr>
+                        <?php 
+                          }
+                        ?>
                     </table>
                 </div>
                 </div>
