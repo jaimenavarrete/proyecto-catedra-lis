@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2020 a las 01:38:45
+-- Tiempo de generación: 06-07-2020 a las 19:37:07
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -28,12 +28,27 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `assign_group`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `assign_group` (IN `ce` VARCHAR(8), IN `gr` VARCHAR(8))  BEGIN
+	UPDATE estudiante SET grupo_proyecto = gr WHERE usuario_estudiante = ce;
+END$$
+
+DROP PROCEDURE IF EXISTS `count_groups`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `count_groups` (IN `s1` VARCHAR(6), IN `s2` VARCHAR(6))  BEGIN
+	SELECT COUNT('Codigo_grupo_proyecto') FROM grupo_proyecto WHERE codigo_materia_uno = s1 AND codigo_materia_dos = s2;
+END$$
+
 DROP PROCEDURE IF EXISTS `count_registers`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `count_registers` (IN `cod_materia` VARCHAR(6))  BEGIN
 	SELECT COUNT(*) as "Estudiantes-inscritos"
 	FROM inscripcion
 		INNER JOIN grupo on inscripcion.codigo_grupo = grupo.codigo_grupo
 	WHERE Codigo_materia = "POO104";
+END$$
+
+DROP PROCEDURE IF EXISTS `create_groups`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_groups` (IN `cg` VARCHAR(8), IN `c1` VARCHAR(6), IN `c2` VARCHAR(6), IN `ce` VARCHAR(8))  BEGIN
+	INSERT INTO grupo_proyecto(codigo_grupo_proyecto, codigo_materia_uno, codigo_materia_dos, codigo_empleado) VALUES (cg, c1, c2, ce);
 END$$
 
 DROP PROCEDURE IF EXISTS `fetch_students`$$
@@ -143,7 +158,7 @@ CREATE TABLE `estudiante` (
   `Correo` varchar(320) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
   `Codigo_rol` int(11) DEFAULT NULL,
-  `Grupo_proyecto` tinyint(1) DEFAULT NULL,
+  `Grupo_proyecto` varchar(8) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
   `Hora_bloqueo` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -153,16 +168,16 @@ CREATE TABLE `estudiante` (
 --
 
 INSERT INTO `estudiante` (`Usuario_estudiante`, `Pass`, `Nombres_estudiante`, `Apellidos_estudiante`, `Edad`, `Correo`, `Telefono`, `Codigo_rol`, `Grupo_proyecto`, `Activo`, `Hora_bloqueo`) VALUES
-('AS173543', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('CF176243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('CV173443', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('DC175204', '123456', 'Nombre de Prueba', 'Apellido de Prueba', 22, 'ejemploprueba@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('GF173243', '123456', 'Nombre de Ejemplo', 'Apellido de Ejemplo', 21, 'ejemplo@ejemplo.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('LJ173643', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('PO172243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('RF173243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('TD171243', '123456', 'Geovanny Diego', 'Fontan Trigueros', 21, 'diego@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00'),
-('TF170243', '123456', 'Diego Geovanny', 'Trigueros Fontan', 21, 'dieog@hotmail.com', '12345678', 1, 0, 0, '0000-00-00 00:00:00');
+('AS173543', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 'MDBPOO3', 0, '0000-00-00 00:00:00'),
+('CF176243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 'MDBPOO2', 0, '0000-00-00 00:00:00'),
+('CV173443', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 'MDBPOO4', 0, '0000-00-00 00:00:00'),
+('DC175204', '123456', 'Nombre de Prueba', 'Apellido de Prueba', 22, 'ejemploprueba@hotmail.com', '12345678', 1, 'MDBPOO3', 0, '0000-00-00 00:00:00'),
+('GF173243', '123456', 'Nombre de Ejemplo', 'Apellido de Ejemplo', 21, 'ejemplo@ejemplo.com', '12345678', 1, 'MDBPOO3', 0, '0000-00-00 00:00:00'),
+('LJ173643', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 'MDBPOO4', 0, '0000-00-00 00:00:00'),
+('PO172243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, '0', 0, '0000-00-00 00:00:00'),
+('RF173243', '123456', 'Nombre Ejemplo', 'Apellido Ejemplo', 21, 'ejemplo@hotmail.com', '12345678', 1, 'MDBPOO4', 0, '0000-00-00 00:00:00'),
+('TD171243', '123456', 'Geovanny Diego', 'Fontan Trigueros', 21, 'diego@hotmail.com', '12345678', 1, 'MDBPOO3', 0, '0000-00-00 00:00:00'),
+('TF170243', '123456', 'Diego Geovanny', 'Trigueros Fontan', 21, 'dieog@hotmail.com', '12345678', 1, 'MDBPOO4', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -185,6 +200,30 @@ CREATE TABLE `grupo` (
 INSERT INTO `grupo` (`Codigo_grupo`, `Nombre_grupo`, `Tipo`, `Codigo_materia`) VALUES
 (1, '01T', 0, 'POO104'),
 (2, '01T', 0, 'MDB104');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupo_proyecto`
+--
+
+DROP TABLE IF EXISTS `grupo_proyecto`;
+CREATE TABLE `grupo_proyecto` (
+  `Codigo_grupo_proyecto` varchar(8) NOT NULL,
+  `Codigo_materia_uno` varchar(6) DEFAULT NULL,
+  `Codigo_materia_dos` varchar(6) DEFAULT NULL,
+  `Codigo_empleado` varchar(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `grupo_proyecto`
+--
+
+INSERT INTO `grupo_proyecto` (`Codigo_grupo_proyecto`, `Codigo_materia_uno`, `Codigo_materia_dos`, `Codigo_empleado`) VALUES
+('MDBPOO1', 'MDB104', 'POO104', 'LF155643'),
+('MDBPOO2', 'MDB104', 'POO104', 'LF155643'),
+('MDBPOO3', 'MDB104', 'POO104', 'LF155643'),
+('MDBPOO4', 'MDB104', 'POO104', 'LF155643');
 
 -- --------------------------------------------------------
 
@@ -308,6 +347,15 @@ ALTER TABLE `grupo`
   ADD KEY `FK_Codigo_materia_grupo` (`Codigo_materia`);
 
 --
+-- Indices de la tabla `grupo_proyecto`
+--
+ALTER TABLE `grupo_proyecto`
+  ADD PRIMARY KEY (`Codigo_grupo_proyecto`),
+  ADD KEY `FK_codigo_materia_uno` (`Codigo_materia_uno`),
+  ADD KEY `FK_codigo_materia_dos` (`Codigo_materia_dos`),
+  ADD KEY `FK_codigo_empleado_lastmod` (`Codigo_empleado`);
+
+--
 -- Indices de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
@@ -390,6 +438,14 @@ ALTER TABLE `estudiante`
 --
 ALTER TABLE `grupo`
   ADD CONSTRAINT `FK_Codigo_materia_grupo` FOREIGN KEY (`Codigo_materia`) REFERENCES `materia` (`Codigo_materia`);
+
+--
+-- Filtros para la tabla `grupo_proyecto`
+--
+ALTER TABLE `grupo_proyecto`
+  ADD CONSTRAINT `FK_codigo_empleado_lastmod` FOREIGN KEY (`Codigo_empleado`) REFERENCES `empleado` (`Usuario_empleado`),
+  ADD CONSTRAINT `FK_codigo_materia_dos` FOREIGN KEY (`Codigo_materia_dos`) REFERENCES `materia` (`Codigo_materia`),
+  ADD CONSTRAINT `FK_codigo_materia_uno` FOREIGN KEY (`Codigo_materia_uno`) REFERENCES `materia` (`Codigo_materia`);
 
 --
 -- Filtros para la tabla `inscripcion`
