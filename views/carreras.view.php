@@ -1,11 +1,4 @@
-<?php
-include("cn.php");
-$selecionar="SELECT * FROM escuela";
-$resultado=mysqli_query($conexion,$selecionar);
-
-$selecionar1="SELECT * FROM carrera";
-$resultado1=mysqli_query($conexion,$selecionar1);
-?>
+<?php include("consultas/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +38,7 @@ $resultado1=mysqli_query($conexion,$selecionar1);
             <h2>Carreras</h2>
 
             <div>
-            <form action="carreras.php" method="POST" class="search-container sc-downloader">
+            <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
                     <h4>Codigo carrera: <input type="text" name="codigo_carrera" id="" required></h4>
                 </div>
@@ -56,7 +49,7 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                 <div class="select-container">
                     <h4>Codigo escuela:</h4>
                     <select name="codigo_escuela" class="select_grupos_lab">
-                    <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                    <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
                     ?>
                         <option><?php echo $mostrar['Codigo_escuela'] ?></option>
                     <?php 
@@ -71,26 +64,6 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                 <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
             </form>
-            <div>
-            <?php 
-            /*Ingresa datos en la tabla escuelas*/
-            if(isset($_POST['codigo_carrera']) && isset($_POST['nombre_carrera']) && isset($_POST['codigo_escuela'])){
-                $codigo_carrera=$_POST["codigo_carrera"];
-                $nombre_carrera=$_POST["nombre_carrera"];
-                $codigo_escuela=$_POST["codigo_escuela"];
-                $insertar="INSERT INTO carrera(Codigo_carrera, Nombre_carrera, Codigo_escuela) VALUES('$codigo_carrera', '$nombre_carrera', '$codigo_escuela')";
-                if($conexion->query($insertar)===true){
-                    echo 'La carrera se ha registrado';
-                }
-                else{
-                    echo 'La carrera ya existe';
-                }
-                
-            }
-            mysqli_close($conexion);
-            ?>
-            </div>
-
         </div>
     </article>
 </section>
@@ -111,7 +84,7 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
+                        <?php while($mostrar=mysqli_fetch_array($resultado2)){ 
                         ?>
                         <tr>
                             <td><?php echo $mostrar['Codigo_carrera'] ?></td>

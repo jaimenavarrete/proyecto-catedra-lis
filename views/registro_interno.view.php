@@ -1,3 +1,4 @@
+<?php include("consultas/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,49 +37,54 @@
         <div class="formtab">
             <h2>Datos de registro</h2>
 
-            <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
+            <form action="consultas/datos.php" class="form-horizontal"  name="formulario" method="POST">
                 <div class="input-container">
                     <i class="fa fa-user-circle-o icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Usuario:" required>
+                    <input class="input-field" type="text" name="Usuario" placeholder="Usuario:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Nombre:" required>
+                    <input class="input-field" type="text" name="Nombre" placeholder="Nombre:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Apellido:" required>
+                    <input class="input-field" type="text" name="Apellido" placeholder="Apellido:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="edad" placeholder="Edad:" required>
+                    <input class="input-field" type="number" name="Edad" placeholder="Edad:" min="0" max="100" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-certificate icon icon-login-registro"></i>
-                    <select name="rol" class="input-field">
-                    <option value="docente">Docente</option>
-                    <option value="administrador">Admin</option>
+                    <select name="Rol" class="input-field">
+                    <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                    ?>
+                    <option value="<?php echo $mostrar['Codigo_rol'] ?>"><?php echo $mostrar['Nombre_rol'] ?></option>
+                    <?php 
+                    }
+                    ?>
                     </select>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="email" placeholder="Email:" required>
+                    <input class="input-field" type="text" name="Correo" placeholder="Email:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-phone icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="tel" placeholder="Numero de teléfono:" required>
+                    <input class="input-field" type="text" name="Telefono" placeholder="Numero de teléfono:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:" required>
+                    <input class="input-field" type="password" name="Passwd" placeholder="Ingrese su contraseña:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:" required>
+                    <input class="input-field" type="password" name="PasswdRep" placeholder="Repita su contraseña:" required>
                 </div>
 
-                <button type="submit" class="btn" value="Ingresar">Registrar</button>
+                <button type="submit" class="btn" name="submit" value="Ingresar">Registrar</button>
             </form>
+            <div>
         </div>
     </article>
 </section>

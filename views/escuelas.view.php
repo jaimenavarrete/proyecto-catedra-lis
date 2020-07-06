@@ -1,9 +1,4 @@
-<?php
-include("cn.php");
-$selecionar="SELECT * FROM escuela";
-$resultado=mysqli_query($conexion,$selecionar);
-?>
-
+<?php include("consultas/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +37,7 @@ $resultado=mysqli_query($conexion,$selecionar);
         <div class="formtab">
             <h2>Escuelas</h2>
             <div>
-            <form action="escuelas.php" method="POST" class="search-container sc-downloader">
+            <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
                     <h4>Codigo escuela: <input type="text" name="codigo_escuela" required></h4>
                 </div>
@@ -57,24 +52,6 @@ $resultado=mysqli_query($conexion,$selecionar);
                 <label for="btn-repo" class="btn">Agregar escuela <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
             </form>
-            <div>
-            <?php 
-            /*Ingresa datos en la tabla escuelas*/
-            if(isset($_POST['codigo_escuela']) && isset($_POST['nombre_escuela'])){
-                $codigo_escuela=$_POST["codigo_escuela"];
-                $nombre_escuela=$_POST["nombre_escuela"];
-                $insertar="INSERT INTO escuela(Codigo_escuela, Nombre_escuela) VALUES('$codigo_escuela', '$nombre_escuela')";
-                if($conexion->query($insertar)===true){
-                    echo 'La escuela se ha registrado';
-                }
-                else{
-                    echo 'La escuela ya existe';
-                }
-                
-            }
-            mysqli_close($conexion);
-            ?>
-            </div>
         </div>
     </article>
 </section>
@@ -95,7 +72,7 @@ $resultado=mysqli_query($conexion,$selecionar);
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                        <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
                         ?>
                         <tr>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>

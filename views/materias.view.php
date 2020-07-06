@@ -1,11 +1,4 @@
-<?php
-include("cn.php");
-$selecionar="SELECT * FROM escuela";
-$resultado=mysqli_query($conexion,$selecionar); 
-$selecionar1="SELECT * FROM materia";
-$resultado1=mysqli_query($conexion,$selecionar1); 
-?>
-
+<?php include("consultas/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +38,7 @@ $resultado1=mysqli_query($conexion,$selecionar1);
             <h2>Materias</h2>
 
             <div>
-                <form action="materias.php" method="POST" class="search-container sc-downloader">
+                <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
                     <h4>Codigo materia: <input type="text" name="codigo_materia" id=""></h4>
     
@@ -59,7 +52,7 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                 <div class="select-container">
                     <h4>Codigo escuela:</h4>
                     <select name="codigo_escuela" id="grupo" class="select_grupos_lab">
-                    <?php while($mostrar=mysqli_fetch_array($resultado)){ 
+                    <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
                     ?>
                         <option><?php echo $mostrar['Codigo_escuela'] ?></option>
                     <?php 
@@ -76,25 +69,6 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                 <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
             </form>
-            <div>
-            <?php 
-            /*Ingresa datos en la tabla escuelas*/
-            if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($_POST['codigo_escuela'])){
-                $codigo_materia=$_POST["codigo_materia"];
-                $nombre_materia=$_POST["nombre_materia"];
-                $codigo_escuela=$_POST["codigo_escuela"];
-                $insertar="INSERT INTO materia(Codigo_materia, Nombre_materia, Codigo_escuela) VALUES('$codigo_materia', '$nombre_materia', '$codigo_escuela')";
-                if($conexion->query($insertar)===true){
-                    echo 'La materia se ha registrado';
-                }
-                else{
-                    echo 'La materia ya existe';
-                }
-                
-            }
-            mysqli_close($conexion);
-            ?>
-            </div>
         </div>
 
         <div class="formtab">
@@ -143,13 +117,13 @@ $resultado1=mysqli_query($conexion,$selecionar1);
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
+                        <?php while($mostrar=mysqli_fetch_array($resultado3)){ 
                         ?>
                         <tr>
                             <td><?php echo $mostrar['Codigo_materia'] ?></td>
                             <td><?php echo $mostrar['Nombre_materia'] ?></td>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }
