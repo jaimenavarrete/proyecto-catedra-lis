@@ -5,4 +5,4 @@ if(!$conexion){
     echo 'Error';
 }else{
     echo 'Conexion exitosa';
-}/*
+}*/

@@ -24,25 +24,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `proyectolis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `proyectolis`;
 
-DELIMITER $$
---
--- Procedimientos
---
-DROP PROCEDURE IF EXISTS `count_registers`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `count_registers` (IN `cod_materia` VARCHAR(6))  BEGIN
-	SELECT COUNT(*) as "Estudiantes-inscritos"
-	FROM inscripcion
-		INNER JOIN grupo on inscripcion.codigo_grupo = grupo.codigo_grupo
-	WHERE Codigo_materia = "POO104";
-END$$
-
-DROP PROCEDURE IF EXISTS `fetch_subjects`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `fetch_subjects` ()  BEGIN
-	SELECT Codigo_materia, Nombre_materia FROM materia;
-END$$
-
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -326,3 +307,22 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `count_registers`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `count_registers` (IN `cod_materia` VARCHAR(6))  BEGIN
+	SELECT COUNT(*) as "Estudiantes-inscritos"
+	FROM inscripcion
+		INNER JOIN grupo on inscripcion.codigo_grupo = grupo.codigo_grupo
+	WHERE Codigo_materia = "POO104";
+END$$
+
+DROP PROCEDURE IF EXISTS `fetch_subjects`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fetch_subjects` ()  BEGIN
+	SELECT Codigo_materia, Nombre_materia FROM materia;
+END$$
+
+DELIMITER ;

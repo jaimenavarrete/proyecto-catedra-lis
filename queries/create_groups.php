@@ -17,7 +17,7 @@ function create_groups($n1, $n2, $amount){
     $total_students = $n1 + $n2;
     $total_groups = floor($total_students/$amount);
     $students_out = $total_students - ($total_groups*$amount);
-    return array($total_groups, $students_out);;
+    return array($total_groups, $students_out);
 }
 if(isset($_GET['create_groups'])){
     $s1 = $_GET['materia1'];
