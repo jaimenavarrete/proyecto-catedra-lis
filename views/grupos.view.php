@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/ajax.js"></script>
 </head>
 <body>
 <header>
@@ -34,8 +36,8 @@
     <!-- Ventanas emergentes (Pop-ups) -->
 
     <?php 
-        require('popups/quitar-alumno-grupo.php'); 
-        require('popups/modificar-alumno-grupo.php'); 
+        require_once('popups/quitar-alumno-grupo.php'); 
+        require_once('popups/modificar-alumno-grupo.php'); 
     ?>
 
     <!-- Fin de ventanas emergentes -->
@@ -44,32 +46,28 @@
         <h1>GRUPOS DE LAS MATERIAS</h1>
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
-            <form action="">
+            <form action="<? htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="search-container">
                     <div class="select-container sc">
                         <h4>Materia 1:</h4>
-                        <select name="materias" class="materias">
-                            <option value="">Lenguajes interpretados en el servidor</option>
+                        <select name="materia1" id="materia1" class="materias">
                         </select>
                     </div>
                     <div class="select-container sc">
                         <h4>Grupo 1:</h4>
-                        <select name="grupo" >
-                            <option value="" >01T</option>
+                        <select name="grupo1" id="grupo1">
                         </select>
                     </div>
                 </div>
                 <div class="search-container">
                     <div class="select-container sc">
                         <h4>Materia 2:</h4>
-                        <select name="materias" class="materias">
-                            <option value="">Lenguajes interpretados en el servidor</option>
+                        <select name="materia2" id="materia2" class="materias">
                         </select>
                     </div>
                     <div class="select-container sc">
                         <h4>Grupo 2:</h4>
-                        <select name="grupo" >
-                            <option value="" >01T</option>
+                        <select name="grupo" id="grupo2">
                         </select>
                     </div>
                 </div>
@@ -83,9 +81,9 @@
         </div>
 
         <div class="formtab">
-            <h2>Información de la materia actual</h2>
+            <h2>Información de las materias actuales</h2>
             <div class="bar-scroll">
-            <table class="tablas">
+            <table class="tablas" id="materias-actuales">
                 <thead>
                     <tr>
                         <th>Codigo</th>
@@ -93,11 +91,27 @@
                         <th>Grupo de la materia</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>LIS104</td>
-                    <td>Lenguajes Intrepretados en el servidor</td>
-                    <td>1T</td>
-                </tr>                     
+
+                <?php
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    if(mysqli_num_rows($query)>0){
+                        while($row = mysqli_fetch_array($query)){
+                            $codigo = $row['Codigo_materia'];
+                            $materia = $row['Nombre_materia'];
+                            $grupo = $row['Nombre_grupo'];
+    
+                            $fila = '<tr>';
+                            $fila .= '<td>'. $codigo .'</td>';
+                            $fila .= '<td>'. $materia .'</td>';
+                            $fila .= '<td>'. $grupo .'</td>';
+                            $fila .= '</tr>';
+    
+                            echo $fila;
+                        }
+                    }
+                }              
+                ?>
+
             </table>
         </div>
         </div>
