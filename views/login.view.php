@@ -1,3 +1,12 @@
+<?php
+include 'cn.php';
+/*session_start();/*
+/*
+if(isset($_SESSION['id_usuario'])){
+    header("Location:perfil.php");
+}*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +27,7 @@
             </div>            
             <div class="input-container">
                 <i class="fa fa-user-circle-o icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="input" placeholder="Usuario:">
+                <input class="input-field" type="text" name="input" placeholder="Usuario:" id="id_usuario">
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon icon-login-registro"></i>

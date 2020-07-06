@@ -55,11 +55,11 @@
                 <div class="search-container">
                     <div class="select-container">
                         <h4>Cantidad de integrantes:</h4>
-                        <input type="number" name="cupos" min="1">
+                        <input type="number" name="cupos" min="2" step="2">
                     </div>
                 </div>
                 <div class="btn-inscribir">
-                    <input type="submit" id="btn-repo" name="create_groups">
+                    <input type="submit" id="btn-repo" name="create_groups" value="Crear">
                     <label for="btn-repo" class="btn">Crear grupos <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
                 </div>
             </form>            
