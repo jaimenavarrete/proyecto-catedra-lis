@@ -54,12 +54,13 @@ $resultado1=mysqli_query($conexion,$consulta1);
     <article>
             <h1 id="fuente">PERFIL PERSONAL</h1>
             <div class="formtab seccion-perfil">
-                <form action="modificar_usuario.php">
+                <form action="modificar_usuario.php"  method="post">
                     <div>
                         <img class="circular--squaremax" src="img/user.png" />
                     </div>
 
                     <div class="btn-modificar-perfil">
+                    <input type="hidden" name="idusuario" value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>">
                         <input type="submit" id="btn-repo">
                         <label for="btn-repo" class="btn">Modificar perfil<i class="fa fa-pencil icon" style="font-size:24px"></i></label>
                     </div>

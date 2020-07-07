@@ -1,3 +1,20 @@
+<?php
+include("cn.php");
+$id_usuario=$_POST["idusuario"];
+
+$consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
+Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$id_usuario'";
+$resultado=$conexion->query($consulta);
+$row=$resultado->fetch_assoc();
+
+/*  Modificar campos de la tablas */
+
+if(isset($_POST['btn_actualizar'])){
+        
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,41 +59,39 @@
         <div class="formtab">
             <h2>Nuevos datos del usuario</h2>
 
-            <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
+            <form action="modificar_usuario.php" class="form-horizontal" name="formulario" id="salario" method="post">
+                    <input class="input-field" type="hidden" id="usuario" name="usuario" placeholder="Usuario:" value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>" >
+                
                 <div class="input-container">
-                    <i class="fa fa-user-circle-o icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="usuario" name="usuario" placeholder="Usuario:" required>
+                    <i class="fa fa-address-card icon icon-login-registro"></i>
+                    <input class="input-field" type="text" id="nombre" name="nombre" placeholder="Nombre:" value="<?php echo utf8_decode($row['Nombres_estudiante']); ?>" required readonly>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="nombre" name="nombre" placeholder="Nombre:" required>
-                </div>
-                <div class="input-container">
-                    <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="apellido" name="apellido" placeholder="Apellido:" required>
+                    <input class="input-field" type="text" id="apellido" name="apellido" placeholder="Apellido:" value="<?php echo utf8_decode($row['Apellidos_estudiante']); ?>"  required readonly>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Años" required>
+                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Edad" value="<?php echo utf8_decode($row['Edad']); ?>" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
-                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" required>
+                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" value="<?php echo utf8_decode($row['Correo']); ?>" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-phone icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" required>
+                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" value="<?php echo utf8_decode($row['Telefono']); ?>" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" id="password" name="password" placeholder="Ingrese su contraseña:" required>
+                    <input class="input-field" type="password" id="password" name="password" placeholder="Ingrese su contraseña:"  >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" id="password_rep" name="password_rep" placeholder="Repita su contraseña:" required>
+                    <input class="input-field" type="password" id="password_rep" name="password_rep" placeholder="Repita su contraseña:" >
                 </div>
 
-                <button type="submit" class="btn" value="Ingresar">Actualizar datos</button>
+                <button type="submit" class="btn" value="Ingresar" name="btn_actualizar">Actualizar datos</button>
             </form>
         </div>
     </article>
