@@ -42,6 +42,8 @@ function mostrarMaterias() {
     });
 }
 
+// Funcion para mostrar los alumnos de los grupos de proyecto
+
 function mostrarAlumnosGrupo() {
     var grupoProyecto = $("#lista-grupos option:selected").text();
 
@@ -80,6 +82,9 @@ function mostrarAlumnosGrupo() {
                 e.preventDefault();
                 var usuarioAlumno = $(this).attr('user');
                 $('#overlay-quitar-alumno-grupo').addClass('overlay-active');
+
+                var usuario = document.getElementById('alumno_a_quitar');
+                usuario.value = usuarioAlumno;
             });
         },
         error:function (exception) {
@@ -88,4 +93,45 @@ function mostrarAlumnosGrupo() {
     });
 }
 
+// ******************************************************************
+// Funciones para edicion de grupos
+// ******************************************************************
+
+// Funcion para quitar alumno del grupo
+
+function quitarAlumno() {
+    $.ajax({
+        url: 'queries/edit_student.php',
+        type: 'post',
+        dataType: 'json',
+        async: true,
+        data: $('#form_quitar_alumno_grupo').serialize(),
+
+        success: function(response){
+            console.log(response);
+        },
+        error:function (exception) {
+            console.log(exception);
+        }
+    });
+}
+
+function quitarAlumno() {
+    $.ajax({
+        url: 'queries/edit_student.php',
+        type: 'post',
+        dataType: 'json',
+        async: true,
+        data: $('#form_quitar_alumno_grupo').serialize(),
+
+        success: function(response){
+            console.log(response);
+        },
+        error:function (exception) {
+            console.log(exception);
+        }
+    });
+}
+
+// Ejecutar funcion para mostrar materias actuales disponibles
 mostrarMaterias();

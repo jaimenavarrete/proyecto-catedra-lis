@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="js/ajax.js"></script>
 </head>
 <body>
 <header>
@@ -131,7 +129,7 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td colspan='4' class='tabla-vacia'>No hay materias elegidas actualmente</td>
+                    <td colspan='4' class='tabla-vacia'>No hay alumnos en este grupo de proyecto</td>
                 </tr>
             </table>
         </div>
@@ -143,6 +141,11 @@
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>
 
+<!-- Scripts a ejecutar en la pagina -->
+
+<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="js/ajax.js"></script>
 <script src="js/popup.js"></script>
+
 </body>
 </html>
