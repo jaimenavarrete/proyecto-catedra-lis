@@ -77,7 +77,7 @@
                         <tr>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
                             <td><?php echo $mostrar['Nombre_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="consultas/datos.php?id_escuela=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }

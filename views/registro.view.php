@@ -57,6 +57,51 @@
                 <a href="login.php">Inicia Sesión</a>
             </div>
         </form>
+
+        <div class="formtab">
+            <h2>Información de los alumnos de la materia actual</h2>
+            <div class="bar-scroll">
+            <table class="tablas">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre del alumno</th>
+                        <th>Grupo del alumno</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>1</td>
+                    <td>[Nombre del alumno 1]</td>
+                    <td>Grupo 1</td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <tr>
+                    <td>2</td>
+                    <td>[Nombre del alumno 2]</td>
+                    <td>Grupo 2</td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <tr>
+                    <td>3</td>
+                    <td>[Nombre del alumno 3]</td>
+                    <td>[Sin grupo]</td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <tr>
+                    <td>4</td>
+                    <td>[Nombre del alumno 4]</td>
+                    <td>[Sin grupo]</td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <tr>
+                    <td>5</td>
+                    <td>[Nombre del alumno 5]</td>
+                    <td>Grupo 1</td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+            </table>
+        </div>
     </article>
 </section>
 </body>

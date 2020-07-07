@@ -90,7 +90,7 @@
                             <td><?php echo $mostrar['Codigo_carrera'] ?></td>
                             <td><?php echo $mostrar['Nombre_carrera'] ?></td>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="consultas/datos.php?id_carrera=<?php echo $mostrar['Codigo_carrera'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }

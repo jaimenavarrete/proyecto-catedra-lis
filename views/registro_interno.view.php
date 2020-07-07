@@ -87,7 +87,85 @@
             <div>
         </div>
     </article>
+    <div class="formtab">
+            <h2>Empleados registrados</h2>
+            <div class="bar-scroll">
+            <table class="tablas">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Activo</th>
+                        <th>Hora de bloqueo</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tr>
+                <?php while($mostrar=mysqli_fetch_array($resultado4)){ 
+                ?>
+                    <td><?php echo $mostrar['Usuario_empleado'] ?></td>
+                    <td><?php echo $mostrar['Nombres_empleado'] ?></td>
+                    <td><?php echo $mostrar['Apellidos_empleado'] ?></td>
+                    <td><?php echo $mostrar['Edad'] ?></td>
+                    <td><?php echo $mostrar['Correo'] ?></td>
+                    <td><?php echo $mostrar['Telefono'] ?></td>
+                    <td><?php echo $mostrar['Nombre_rol'] ?></td>
+                    <td><?php echo $mostrar['Activo'] ?></td>
+                    <td><?php echo $mostrar['Hora_bloqueo'] ?></td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a><a href="consultas/datos.php?id_empleado=<?php echo $mostrar['Usuario_empleado'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <?php 
+                }
+                ?>
+            </table>
+        </div>
+        </div>
+
+        <div class="formtab">
+            <h2>Alumnos registrados</h2>
+            <div class="bar-scroll">
+            <table class="tablas">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Activo</th>
+                        <th>Hora de bloqueo</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tr>
+                <?php while($mostrar=mysqli_fetch_array($resultado5)){ 
+                ?>
+                    <td><?php echo $mostrar['Usuario_estudiante'] ?></td>
+                    <td><?php echo $mostrar['Nombres_estudiante'] ?></td>
+                    <td><?php echo $mostrar['Apellidos_estudiante'] ?></td>
+                    <td><?php echo $mostrar['Edad'] ?></td>
+                    <td><?php echo $mostrar['Correo'] ?></td>
+                    <td><?php echo $mostrar['Telefono'] ?></td>
+                    <td><?php echo $mostrar['Nombre_rol'] ?></td>
+                    <td><?php echo $mostrar['Activo'] ?></td>
+                    <td><?php echo $mostrar['Hora_bloqueo'] ?></td>
+                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a><a href="consultas/datos.php?id_estudiante=<?php echo $mostrar['Usuario_estudiante'];?>">   <i class="fa fa-trash icon icon-delete"></i></a></td>
+                </tr> 
+                <?php 
+                }
+                ?>
+            </table>
+        </div>
+        </div>
 </section>
+
 
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>

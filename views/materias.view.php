@@ -72,38 +72,6 @@
         </div>
 
         <div class="formtab">
-            <h2>Grupos</h2>
-
-            <div class="search-container sc-downloader">
-                <div class="select-container">
-                    <h4>Codigo grupo: <input type="text" name="codigo_grupo" id=""></h4>
-    
-                </div>
-
-                <div class="select-container">
-                    <h4>Numero grupo: <input type="text" name="numero_grupo" id=""></h4>
-    
-                </div>
-
-                <div class="select-container">
-                    <h4>Tipo: <input type="text" name="tipo" id=""></h4>
-                    </select>
-                </div>
-
-            </div>
-            
-           
-            <div class="btn-inscribir">
-                <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar grupo <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
-            </div>
-        </div>
-    </article>
-</section>
-
-<section>
-    <article>
-        <div class="formtab">
             <h2>Materias registradas</h2>
             <form action="" name="formulario" id="inscripcion">
                 <div class="search-container">
@@ -123,7 +91,7 @@
                             <td><?php echo $mostrar['Codigo_materia'] ?></td>
                             <td><?php echo $mostrar['Nombre_materia'] ?></td>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_materia=<?php echo $mostrar['Codigo_materia'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }
@@ -134,8 +102,49 @@
             </form>
         </div>
         </div>
+
+
+
+        <div class="formtab">
+            <h2>Grupos</h2>
+
+            <div class="search-container sc-downloader">
+                <div class="select-container">
+                    <h4>Codigo grupo: <input type="text" name="codigo_grupo" id=""></h4>
+    
+                </div>
+
+                <div class="select-container">
+                    <h4>Numero grupo: <input type="text" name="numero_grupo" id=""></h4>
+    
+                </div>
+
+                <div class="select-container">
+                    <h4>Tipo: <input type="text" name="tipo" id=""></h4>
+                    </select>
+                </div>
+               <div class="select-container">
+               <h4>Codigo materia:</h4>
+               <select name="Rol" class="input-field">
+                    <?php while($mostrar=mysqli_fetch_array($resultado6)){ 
+                    ?>
+                    <option><?php echo $mostrar['Codigo_materia'] ?></option>
+                    <?php 
+                    }
+                    ?>
+                    </select>
+               </div>
+            </div>
+            
+           
+            <div class="btn-inscribir">
+                <input type="submit" id="btn-repo">
+                <label for="btn-repo" class="btn">Agregar grupo <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+            </div>
+        </div>
     </article>
 </section>
+
 
 <section>
     <article>
