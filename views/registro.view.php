@@ -12,46 +12,44 @@
 <body id="freg">
 <section class="frm-r">
     <article>
-        <form action="" class="form-horizontal" name="formr" method="post">
+        <form action="RegistroEstudiantes.php" class="form-horizontal" name="formr" method="post">
             <div>
                 <h2>Registro</h2>
             </div>
-        
+
             <div class="input-container">
                 <i class="fa fa-user-circle-o icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="input" placeholder="Usuario:" required>
+                <input class="input-field" type="text" name="Usuario" placeholder="Usuario:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-address-card icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="input" placeholder="Nombre:" required>
+                <input class="input-field" type="text" name="Nombre" placeholder="Nombre:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-address-card icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="input" placeholder="Apellido:" required>
+                <input class="input-field" type="text" name="Apellido" placeholder="Apellido:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                <input class="input-field" type="date" name="fechan" placeholder="dd/mm/yyyy" required>
+                <input class="input-field" type="number" name="Edad" placeholder="Edad:" min="0" max="100" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-envelope icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="email" placeholder="Email:" required>
+                <input class="input-field" type="text" name="Correo" placeholder="Email:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-phone icon icon-login-registro"></i>
-                <input class="input-field" type="text" name="tel" placeholder="Numero de teléfono:" required>
+                <input class="input-field" type="text" name="Telefono" placeholder="Numero de teléfono:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon icon-login-registro"></i>
-                <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:" required>
+                <input class="input-field" type="password" name="Passwd" placeholder="Ingrese su contraseña:" required>
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon icon-login-registro"></i>
-                <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:" required>
+                <input class="input-field" type="password" name="PasswdRep" placeholder="Repita su contraseña:" required>
             </div>
-
-            <input type="submit" class="btn">
-
+            <input type="submit" class="btn" name="submit">
             <div class="form-options">
                 <h4>¿Ya tienes cuenta?</h4>
                 <a href="login.php">Inicia Sesión</a>
