@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/ajax.js"></script>
+    <script src="js/popup.js"></script>
 </head>
 <body>
 <header>
@@ -34,10 +35,28 @@
 <section class="contenido">
 
     <!-- Ventanas emergentes (Pop-ups) -->
+    <div class="overlay" id="overlay-quitar-alumno-grupo">
+        <div class="popup">
+            <a href="#" class="btn-cerrar-popup" id="btn-cerrar-popup"><i class="fa fa-times"></i></a>
+            <h2>Modificar grupo del alumno</h2>
+            <p>¿Está seguro que desea cambiar al alumno, del grupo de proyecto?</p>
+            <form action="" method="post" name="form-quitar-alumno-grupo" id="form-quitar-alumno-grupo" onsubmit="event.preventDefault(); sendQuitarAlumno();">
+                <div class="contenedor-btn-popup">
+                    <input type="hidden" name="alumno-a-quitar" id="alumno-a-quitar" required>
+                    <input type="hidden" name="grupo-a-quitar" id="grupo-a-quitar" required>
+                    <input type="hidden" name="action" value="quitarAlumno" required>
+                    <!-- <input type="submit" id="quitar-alumno-grupo">
+                    <label for="quitar-alumno-grupo" class="btn">Quitar alumno</label> -->
+                    <button type="submit" class="btn">Quitar alumno</button>
+                    <a href="#" class="btn btn-cerrar-popup" onclick="cerrarModal();">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <?php 
         require_once('popups/quitar-alumno-grupo.php'); 
-        require_once('popups/modificar-alumno-grupo.php'); 
+        // require_once('popups/modificar-alumno-grupo.php'); 
     ?>
 
     <!-- Fin de ventanas emergentes -->
@@ -49,25 +68,13 @@
             <form action="<? htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="search-container">
                     <div class="select-container sc">
-                        <h4>Materia 1:</h4>
-                        <select name="materia1" id="materia1" class="materias">
+                        <h4>Materia:</h4>
+                        <select name="materia" id="materia" class="materias">
                         </select>
                     </div>
                     <div class="select-container sc">
-                        <h4>Grupo 1:</h4>
-                        <select name="grupo1" id="grupo1">
-                        </select>
-                    </div>
-                </div>
-                <div class="search-container">
-                    <div class="select-container sc">
-                        <h4>Materia 2:</h4>
-                        <select name="materia2" id="materia2" class="materias">
-                        </select>
-                    </div>
-                    <div class="select-container sc">
-                        <h4>Grupo 2:</h4>
-                        <select name="grupo" id="grupo2">
+                        <h4>Grupo:</h4>
+                        <select name="grupo" id="grupo">
                         </select>
                     </div>
                 </div>
@@ -92,25 +99,7 @@
                     </tr>
                 </thead>
 
-                <?php
-                if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    if(mysqli_num_rows($query)>0){
-                        while($row = mysqli_fetch_array($query)){
-                            $codigo = $row['Codigo_materia'];
-                            $materia = $row['Nombre_materia'];
-                            $grupo = $row['Nombre_grupo'];
-    
-                            $fila = '<tr>';
-                            $fila .= '<td>'. $codigo .'</td>';
-                            $fila .= '<td>'. $materia .'</td>';
-                            $fila .= '<td>'. $grupo .'</td>';
-                            $fila .= '</tr>';
-    
-                            echo $fila;
-                        }
-                    }
-                }              
-                ?>
+                <?php echo mostrarMateriasTabla($query1); ?>
 
             </table>
         </div>
@@ -127,59 +116,29 @@
                         <th>Grupo del alumno</th>                        
                     </tr>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>[Nombre del alumno 1]</td>
-                    <td>[Correo del alumno 1]</td>
-                    <td>1</td>
-                </tr> 
-                <tr>
-                    <td>2</td>
-                    <td>[Nombre del alumno 2]</td>
-                    <td>[Correo del alumno 2]</td>
-                    <td>2</td>
-                </tr> 
-                <tr>
-                    <td>3</td>
-                    <td>[Nombre del alumno 3]</td>
-                    <td>[Correo del alumno 3]</td>
-                    <td>0</td>
-                </tr> 
-                <tr>
-                    <td>4</td>
-                    <td>[Nombre del alumno 4]</td>
-                    <td>[Correo del alumno 4]</td>
-                    <td>0</td>
-                </tr> 
-                <tr>
-                    <td>5</td>
-                    <td>[Nombre del alumno 5]</td>
-                    <td>[Correo del alumno 5]</td>
-                    <td>1</td>
-                </tr> 
+
+                <?php echo mostrarAlumnosTabla($query2); ?>
+
             </table>
         </div>
         </div>
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
-            <form class="search-container sc-tab" action="crear_grupos.php">
-                <div class="select-container sc">
+            <div class="search-container sc-tab">
+                <form class="select-container sc">
                     <h4>Grupo:</h4>
-                    <select name="lista-grupos" class="grupo-creacion">
-                        <option value="">Grupo 1</option>
-                        <option value="">Grupo 2</option>
+                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion">
+                        <?php echo mostrarGruposTabla($query3); ?>
                     </select>
 
                     <input type="submit" id="btn-borrar-grupo">
                     <label for="btn-borrar-grupo"><i class="fa fa-trash icon icon-delete"> </i></label>
-                </div>
+                </form>
                 <div class="select-container sc">
-                    <!-- <a href="#" class="trash"><i class="fa fa-trash icon icon-delete"> </i></a>  -->
-                    <input type="submit" id="btn-grupos">
-                    <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
+                    <a href="crear_grupos.php" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></a>
                 </div>
-            </form>
+            </div>
             <div class="bar-scroll">
             <table class="tablas">
                 <thead>
@@ -194,15 +153,16 @@
                     <td>1</td>
                     <td>[Nombre del alumno 1]</td>
                     <td>[Correo del alumno 1]</td>
-                    <td>
-                        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                    <!-- <td>
+                        <form action="views/popups/modificar-alumno-grupo.php" method="get">
                             <input type="hidden" name="carnet" value="NC180383">
                             <input type="submit" id="modificar-alumno" name="modificar-alumno">
                             <input type="submit" id="quitar-alumno" name="quitar-alumno">
                             <label for="modificar-alumno" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></label> <label for="quitar-alumno" class="btn-popup-modificar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
                         </form>
-                    </td>
+                    </td> -->
                     <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
+                    <td><a href="#" class="btn-popup-modificar-grupo" user="josenava123"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#" class="btn-popup-quitar-grupo" user="josenava123"><i class="fa fa-trash icon icon-delete"></i></a></td>
                 </tr> 
                 <tr>
                     <td>2</td>

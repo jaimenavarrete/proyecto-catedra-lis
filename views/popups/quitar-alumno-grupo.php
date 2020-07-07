@@ -1,5 +1,5 @@
 <!-- Ventana de quitar alumno del grupo de proyecto -->
-<?php if(isset($_POST['quitar-alumno'])) : ?>
+<!-- <?php if(isset($_POST['quitar-alumno'])) : ?>
     <div class="overlay overlay-active" id="overlay-quitar-alumno-grupo">
 <?php else : ?>
     <div class="overlay" id="overlay-quitar-alumno-grupo">
@@ -16,4 +16,4 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->

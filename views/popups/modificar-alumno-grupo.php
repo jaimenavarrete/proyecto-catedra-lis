@@ -12,7 +12,7 @@
             <div class="contenedor-btn-popup">
                 <input type="submit" id="quitar-alumno-grupo">
                 <label for="quitar-alumno-grupo" class="btn">Quitar alumno</label>
-                <a href="#" class="btn btn-cerrar-popup">Cancelar</a>
+                <a href="../../grupos.php" class="btn btn-cerrar-popup">Cancelar</a>
             </div>
         </form>
     </div>
