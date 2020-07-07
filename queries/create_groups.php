@@ -1,6 +1,6 @@
 <?php
 //Llamada a la conexión a la base de datos
-require_once ("../database/conn.php");
+require_once ("database/conn.php");
 //Lista de estudiantes inscritos en una materia
 function count_students($connection, $subject){
     $list = [];
@@ -45,15 +45,15 @@ function get_name($subject1, $subject2, $connection){
     $number = mysqli_fetch_array($result);
     $name = substr($subject1, 0, 3) . substr($subject2, 0, 3);
     $name = $name . ($number[0]+1);
+    $return = array($name, $number[0]);
     mysqli_next_result($connection);
-    return $name;
+    return $return;
 }
-function insert_group($connection, $group_name, $employee, $sbjt1, $sbjt2){
-    $stmt = "CALL create_groups('$group_name', '$sbjt1', '$sbjt2', '$employee')";
+function insert_group($connection, $group_name, $employee, $sbjt1, $sbjt2, $group_number){
+    $stmt = "CALL create_groups('$group_name', '$sbjt1', '$sbjt2', '$employee', $group_number)";
     $result = mysqli_query($connection, $stmt);
     if($result){
         mysqli_next_result($connection);
-        echo "Grupo creado";    
     }else{
         echo mysqli_error($connection). $stmt;
     }
@@ -63,8 +63,7 @@ function add_student($connection, $student, $group){
     $stmt = "CALL assign_group('$student', '$group')";
     $result = mysqli_query($connection, $stmt);
     if($result){
-        mysqli_next_result($connection);
-        echo "Grupo asignado";    
+        mysqli_next_result($connection);   
     }else{
         echo mysqli_error($connection). $stmt;
     }
@@ -110,15 +109,21 @@ if(isset($_GET['create_groups']) && isset($_GET["cupos"])){
     for ($i=0; $i < $groups; $i++) {
         echo ("Grupo ".($i+1).": ");
         $name = get_name($s1, $s2, $con);
-        insert_group($con, $name, "LF155643", $s1, $s2);
+        $nombre_grupo = $name[0];
+        $numero_grupo = $name[1]+1;
+        insert_group($con, $nombre_grupo, "LF155643", $s1, $s2, $numero_grupo);
         //Segundo for para los cupos de cada grupo
         for ($j=0; $j < $n; $j++) { 
             $idx = get_idx(count($all_students), $added);
-            echo $all_students[$idx];
+            echo $all_students[$idx]." ";
             array_push($added, $idx);
-            add_student($con, $all_students[$idx], $name);
+            add_student($con, $all_students[$idx], $nombre_grupo);
         }
         echo nl2br("\r\n");
+    }
+    echo "Estudiante/s sin grupo: ";
+    for ($o=0; $o < count($out); $o++) { 
+        echo $out[$o]." ";
     }
 }
 
