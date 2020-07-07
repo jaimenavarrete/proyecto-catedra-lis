@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/ajax.js"></script>
-    <script src="js/popup.js"></script>
 </head>
 <body>
 <header>
@@ -35,28 +34,10 @@
 <section class="contenido">
 
     <!-- Ventanas emergentes (Pop-ups) -->
-    <div class="overlay" id="overlay-quitar-alumno-grupo">
-        <div class="popup">
-            <a href="#" class="btn-cerrar-popup" id="btn-cerrar-popup"><i class="fa fa-times"></i></a>
-            <h2>Modificar grupo del alumno</h2>
-            <p>¿Está seguro que desea cambiar al alumno, del grupo de proyecto?</p>
-            <form action="" method="post" name="form-quitar-alumno-grupo" id="form-quitar-alumno-grupo" onsubmit="event.preventDefault(); sendQuitarAlumno();">
-                <div class="contenedor-btn-popup">
-                    <input type="hidden" name="alumno-a-quitar" id="alumno-a-quitar" required>
-                    <input type="hidden" name="grupo-a-quitar" id="grupo-a-quitar" required>
-                    <input type="hidden" name="action" value="quitarAlumno" required>
-                    <!-- <input type="submit" id="quitar-alumno-grupo">
-                    <label for="quitar-alumno-grupo" class="btn">Quitar alumno</label> -->
-                    <button type="submit" class="btn">Quitar alumno</button>
-                    <a href="#" class="btn btn-cerrar-popup" onclick="cerrarModal();">Cancelar</a>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <?php 
         require_once('popups/quitar-alumno-grupo.php'); 
-        // require_once('popups/modificar-alumno-grupo.php'); 
+        require_once('popups/modificar-alumno-grupo.php'); 
     ?>
 
     <!-- Fin de ventanas emergentes -->
@@ -65,16 +46,16 @@
         <h1>GRUPOS DE LAS MATERIAS</h1>
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
-            <form action="<? htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="search-container">
                     <div class="select-container sc">
                         <h4>Materia:</h4>
-                        <select name="materia" id="materia" class="materias">
+                        <select name="materia" id="materia" class="materias" required>
                         </select>
                     </div>
                     <div class="select-container sc">
                         <h4>Grupo:</h4>
-                        <select name="grupo" id="grupo">
+                        <select name="grupo" id="grupo" required>
                         </select>
                     </div>
                 </div>
@@ -128,7 +109,7 @@
             <div class="search-container sc-tab">
                 <form class="select-container sc">
                     <h4>Grupo:</h4>
-                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion">
+                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="mostrarAlumnosGrupo();">
                         <?php echo mostrarGruposTabla($query3); ?>
                     </select>
 
@@ -140,7 +121,7 @@
                 </div>
             </div>
             <div class="bar-scroll">
-            <table class="tablas">
+            <table class="tablas" id="alumnos-grupo">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -150,48 +131,8 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>1</td>
-                    <td>[Nombre del alumno 1]</td>
-                    <td>[Correo del alumno 1]</td>
-                    <!-- <td>
-                        <form action="views/popups/modificar-alumno-grupo.php" method="get">
-                            <input type="hidden" name="carnet" value="NC180383">
-                            <input type="submit" id="modificar-alumno" name="modificar-alumno">
-                            <input type="submit" id="quitar-alumno" name="quitar-alumno">
-                            <label for="modificar-alumno" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></label> <label for="quitar-alumno" class="btn-popup-modificar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
-                        </form>
-                    </td> -->
-                    <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
-                    <td><a href="#" class="btn-popup-modificar-grupo" user="josenava123"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#" class="btn-popup-quitar-grupo" user="josenava123"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>2</td>
-                    <td>[Nombre del alumno 2]</td>
-                    <td>[Correo del alumno 2]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                    <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
-                </tr> 
-                <tr>
-                    <td>3</td>
-                    <td>[Nombre del alumno 3]</td>
-                    <td>[Correo del alumno 3]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                    <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
-                </tr> 
-                <tr>
-                    <td>4</td>
-                    <td>[Nombre del alumno 4]</td>
-                    <td>[Correo del alumno 4]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                    <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
-                </tr> 
-                <tr>
-                    <td>5</td>
-                    <td>[Nombre del alumno 5]</td>
-                    <td>[Correo del alumno 5]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                    <!-- <td><a href="#" class="btn-popup-modificar-grupo"><i class="fa fa-pencil icon icon-modify"></i></a></td> -->
-                </tr> 
+                    <td colspan='4' class='tabla-vacia'>No hay materias elegidas actualmente</td>
+                </tr>
             </table>
         </div>
         </div>

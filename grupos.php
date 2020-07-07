@@ -61,7 +61,7 @@ function mostrarAlumnosTabla($consulta) {
 function mostrarGruposTabla($consulta) {
     if(isset($_POST['materia'])) {
         if(mysqli_num_rows($consulta)>0){
-            $fila = '';
+            $fila = "<option value'#'>[Seleccionar grupo]</option>";
 
             while($row = mysqli_fetch_array($consulta)){
                 $grupoProyecto = $row['Codigo_grupo_proyecto'];
@@ -70,11 +70,11 @@ function mostrarGruposTabla($consulta) {
             }
         }
         else {
-            $fila = "<option value'0'>[Sin grupos]</option>";
+            $fila = "<option value'#'>[Sin grupos]</option>";
         }
     }        
     else {
-        $fila = "<option value'0'>[Sin grupos]</option>";
+        $fila = "<option value'#'>[Sin grupos]</option>";
     }     
     
     return $fila;
