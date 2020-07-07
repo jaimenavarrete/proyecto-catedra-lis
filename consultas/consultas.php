@@ -17,13 +17,17 @@ $resultado2=mysqli_query($conexion,$selecionar2);
 $selecionar3="SELECT * FROM materia";
 $resultado3=mysqli_query($conexion,$selecionar3); 
 
-$selecionar6="SELECT Codigo_materia FROM materia";
-$resultado6=mysqli_query($conexion,$selecionar6);
-
 $selecionar4="SELECT Usuario_empleado, Nombres_empleado, Apellidos_empleado, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM empleado INNER JOIN roles USING (Codigo_rol)";
 $resultado4=mysqli_query($conexion,$selecionar4); 
 
 $selecionar5="SELECT Usuario_estudiante, Nombres_estudiante, Apellidos_estudiante, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM estudiante INNER JOIN roles USING (Codigo_rol)";
 $resultado5=mysqli_query($conexion,$selecionar5);
+
+$selecionar6="SELECT Codigo_materia FROM materia";
+$resultado6=mysqli_query($conexion,$selecionar6);
+
+$selecionar7="SELECT * FROM grupo";
+$resultado7=mysqli_query($conexion,$selecionar7);
+
 mysqli_close($conexion);
 ?>

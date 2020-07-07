@@ -20,9 +20,6 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil <i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos <i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -32,15 +29,21 @@
 </header>
 <section class="contenido">
     <article>
-        <h1>MENÚ DE GESTÓN INTERNA</h1>
+        <h1>MENÚ DE GESTIÓN INTERNA</h1>
         <div class="gestion">
         <div class="contenedor-g">
-        <div class="boton-g"><a href="registro_interno.php">Registro    </a><i class="fa fa-pencil-square-o" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="carreras.php">Carreras    </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="registro_interno.php">Registros      </a><i class="fa fa-pencil-square-o" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="materias.php">Materias      </a><i class="fa fa-book" style="font-size:45px;"></i></div>
         </div>
+
         <div class="contenedor-g">
-        <div class="boton-g"><a href="escuelas.php">Escuelas   </a><i class="fa fa-graduation-cap" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="materias.php">Materias    </a><i class="fa fa-book" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="escuelas.php">Escuelas     </a><i class="fa fa-graduation-cap" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="grupos_admin.php">Grupos     </a><i class="fa fa-users" style="font-size:45px;"></i></div>
+        </div>
+
+        <div class="contenedor-g">
+        <div class="boton-g"><a href="carreras.php">Carreras     </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="reportes.php">Reportes     </a><i class="fa fa-file" style="font-size:45px;"></i></div>
         </div>
         </div>
     </article>

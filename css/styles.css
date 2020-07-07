@@ -144,10 +144,10 @@ section{
   background-color:#3CA4DA;
   color: white;
   font-weight: bold;
-  padding: 50px 50px;
+  padding: 60px 60px;
   cursor: pointer;
   border: 1px solid #000000;
-  text-align: left;
+  text-align: center;
   margin: 30px;
 }
 

@@ -216,7 +216,7 @@ if(!empty($_REQUEST['id_escuela'])){
       </div>
       <div class=\"select-container\">
       <input type=\"hidden\" name=\"codigo_esc\" value=\"$codigo_esc\">
-      <a href=\"../materias.php\" class=\"btn-cancel\">Cancelar</a>
+      <a href=\"../escuelas.php\" class=\"btn-cancel\">Cancelar</a>
       <button type=\"submit\" value=\"Aceptar\" class=\"btn-ok\">Aceptar</button>
       <label for=\"btn-repo\" Aceptar</label>
       </div>
@@ -320,10 +320,71 @@ if(!empty($_REQUEST['id_escuela'])){
           header("Location: ../registro_interno.php");
         }
       }
-  
+ /*Actualiza información*/
+ /*Actualiza datos de la tabla escuela*/
+ if(!empty($_REQUEST['id_esc'])){
+
+   if(!empty($_POST)){
+     $alert='';
+      if(empty($_POST['nombre_esc'])){
+        echo "Todos los campos son obligatorios.";
+      }
+      else{
+        $codigo_esc=$_POST['codigo_esc'];
+        $nombre_esc=$_POST['nombre_esc'];
+
+        $query=mysqli_query($conexion,"SELECT * FROM escuela WHERE (Nombre_escuela='$nombre_esc' AND Codigo_escuela!='$codigo_esc')");
+        $result=mysqli_fetch_array($query);
+        if($result > 0){
+          echo "<h4>Esta escuela ya se encuentra registrada.";
+        }else{
+            $query_update=mysqli_query($conexion,"UPDATE escuela SET  Nombre_escuela='$nombre_esc' WHERE Codigo_escuela ='$codigo_esc' ");
+            if($query_update){
+              echo "Usuario actualizado.";
+              header("Location: ../escuelas.php");
+            }
+            else{
+            echo "Error al actualizar la información.";
+            }
+          }
+      }
+   }
+
+  $codigo_es=$_REQUEST['id_esc'];
+  $query=mysqli_query($conexion,"SELECT * FROM escuela WHERE Codigo_escuela='$codigo_es'");
+  $result=mysqli_num_rows($query);
+  if($result > 0){
+    while($mostrar = mysqli_fetch_array($query)){
+      $codigo_esc=$mostrar['Codigo_escuela'];
+      $nombre_esc=$mostrar['Nombre_escuela'];
+    }
+    echo "<div class=\"formtab\">
+    <h2>Actualizar escuelas</h2>
+    <div>
+    <form action=\"\" method=\"POST\" class=\"search-container sc-downloader\">
+    <div class=\"select-container\">
+    <input type=\"text\" name=\"codigo_esc\" value=\"$codigo_esc\" readonly>
+      </div>
+        <div class=\"select-container\">
+            <h4>Nombre escuela: <input type=\"text\" name=\"nombre_esc\" value=\"$nombre_esc\" required></h4>
+        </div>
+    </div>
+
+    <div class=\"btn-inscribir\">
+        <input type=\"submit\" id=\"btn-repo\">
+        <label for=\"btn-repo\" class=\"btn\">Actualizar escuela <i class=\"fa fa-plus icon\" id=\"i-pdf-2\"></i></label>
+    </div>
+    </form>
+</div><br><br><br><br>";
+  }
+  else{
+    header("Location: ../escuelas.php");
+  }
+
+ }
 
 mysqli_close($conexion);
-?>
+?> 
  </article>
 </section>
 

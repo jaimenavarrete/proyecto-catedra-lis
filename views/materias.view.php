@@ -21,9 +21,6 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -48,7 +45,6 @@
                     <h4>Nombre materia: <input type="text" name="nombre_materia" id=""></h4>
     
                 </div>
-
                 <div class="select-container">
                     <h4>Codigo escuela:</h4>
                     <select name="codigo_escuela" id="grupo" class="select_grupos_lab">
@@ -109,20 +105,19 @@
             <h2>Grupos</h2>
 
             <div class="search-container sc-downloader">
-                <div class="select-container">
-                    <h4>Codigo grupo: <input type="text" name="codigo_grupo" id=""></h4>
-    
-                </div>
 
                 <div class="select-container">
                     <h4>Numero grupo: <input type="text" name="numero_grupo" id=""></h4>
-    
                 </div>
-
+                
+                <div class="select-container">
+                    <h4>Cupos: <input type="text" name="cupos" id=""></h4>
+                </div>
+                
                 <div class="select-container">
                     <h4>Tipo: <input type="text" name="tipo" id=""></h4>
-                    </select>
                 </div>
+
                <div class="select-container">
                <h4>Codigo materia:</h4>
                <select name="Rol" class="input-field">
@@ -159,21 +154,22 @@
                                 <th>Codigo Grupo</th>
                                 <th>Numero Grupo</th>
                                 <th>Tipo</th>
+                                <th>Codigo Materia</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
+                        <?php while($mostrar=mysqli_fetch_array($resultado7)){ 
+                    ?>
                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>T</td>
+                            <td><?php echo $mostrar['Codigo_grupo'] ?></td>
+                            <td><?php echo $mostrar['Nombre_grupo'] ?></td>
+                            <td><?php echo $mostrar['Tipo'] ?></td>
+                            <td><?php echo $mostrar['Codigo_materia'] ?></td>
                             <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
-                        <tr>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>L</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr>
+                        <?php 
+                    }
+                    ?>
                     </table>
                 </div>
                 </div>

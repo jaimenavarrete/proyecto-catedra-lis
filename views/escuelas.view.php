@@ -21,9 +21,6 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -77,7 +74,7 @@
                         <tr>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
                             <td><?php echo $mostrar['Nombre_escuela'] ?></td>
-                            <td><a href="consultas/datos.php?id_escuela=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="consultas/datos.php?id_esc=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_escuela=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }
