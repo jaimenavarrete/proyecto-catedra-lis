@@ -36,7 +36,7 @@ function mostrarMaterias() {
                 }
             }
         },
-        error:function (jqXHR, exception) {
+        error:function (exception) {
             console.log(exception);
         }
     });
@@ -49,7 +49,7 @@ mostrarMaterias();
 
 function mostrarAlumnosGrupo() {
     // Obtener el grupo seleccionado actualmente
-    var grupoProyecto = $("#lista-grupos option:selected").text();
+    var grupoProyecto = $("#lista-grupos option:selected").val();
     // Agregar el valor del grupo seleccionado al boton para borrar el grupo
     $('#btn-popup-borrar-grupo').attr("group", grupoProyecto);
 

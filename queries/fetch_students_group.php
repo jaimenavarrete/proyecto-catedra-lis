@@ -4,9 +4,19 @@ header("Content-type:application/json");
 // Agregar la base de datos
 include ("../database/conn.php");
 
+// $stmt = "SELECT e.Usuario_estudiante, e.Nombres_estudiante, e.Apellidos_estudiante, e.Correo FROM inscripcion i
+//          INNER JOIN estudiante e
+//          ON i.Usuario_estudiante = e.Usuario_estudiante
+//          INNER JOIN grupo g
+//          ON i.Codigo_grupo = g.Codigo_grupo
+//          INNER JOIN grupo_proyecto gp
+//          ON e.Grupo_proyecto = gp.Codigo_grupo_proyecto
+//          WHERE e.Grupo_proyecto='" . $_POST['grupoProyecto'] . "' AND (gp.Codigo_materia_uno='" . $_POST['materia'] . "' OR gp.Codigo_materia_dos='" . $_POST['materia'] . "') AND g.Nombre_grupo ='" . $_POST['grupo'] . "'";
+
 // Consultas utilizadas
 $stmt = "SELECT Usuario_estudiante, Nombres_estudiante, Apellidos_estudiante, Correo FROM estudiante
          WHERE Grupo_proyecto='" . $_POST['grupoProyecto'] . "'";
+
 $query = mysqli_query($con, $stmt);
 
 if(mysqli_num_rows($query) > 0){

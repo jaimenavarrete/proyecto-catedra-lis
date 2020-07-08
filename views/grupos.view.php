@@ -45,7 +45,7 @@
         <h1>GRUPOS DE LAS MATERIAS</h1>
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
                 <div class="search-container">
                     <div class="select-container sc">
                         <h4>Materia:</h4>

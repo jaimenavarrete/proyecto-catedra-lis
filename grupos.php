@@ -37,12 +37,18 @@ function mostrarAlumnosTabla($consulta) {
                 $nombre = $row['Nombres_estudiante'];
                 $apellido = $row['Apellidos_estudiante'];
                 $correo = $row['Correo'];
-                $grupoProyecto = $row['Grupo_proyecto'];
+                $grupoProyecto = $row['numero_grupo'];
 
                 $fila .= '<tr><td>' . $contar . '</td>';
                 $fila .= '<td>' . $apellido . ', ' . $nombre . '</td>';
                 $fila .= '<td>' . $correo . '</td>';
-                $fila .= '<td>'. $grupoProyecto . '</td></tr>';
+                
+                if(isset($grupoProyecto)) {
+                    $fila .= '<td>Grupo '. ($grupoProyecto+1) . '</td></tr>';
+                }
+                else{
+                    $fila .= '<td>0</td></tr>';
+                }
 
                 $contar += 1;
             }
@@ -61,13 +67,14 @@ function mostrarAlumnosTabla($consulta) {
 function mostrarGruposTabla($consulta) {
     if(isset($_POST['materia'])) {
         if(mysqli_num_rows($consulta)>0){
-            $fila = "<option value'#'>[Seleccionar grupo]</option>";
-            $fila = "<option value'0'>[Sin grupo]</option>";
+            $fila = "<option value='#'>Seleccionar grupo</option>";
+            $fila .= "<option value='0'>[Sin grupo]</option>";
 
             while($row = mysqli_fetch_array($consulta)){
                 $grupoProyecto = $row['Codigo_grupo_proyecto'];
+                $numeroGrupo = $row['numero_grupo'];
 
-                $fila .= "<option value='$grupoProyecto'>$grupoProyecto</option>";
+                $fila .= "<option value='$grupoProyecto'>Grupo " . ($numeroGrupo+1) . "</option>";
             }
         }
         else {
@@ -97,16 +104,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query1 = mysqli_query($con, $stmt1);
 
     // Buscar en la base de datos, los alumnos pertenecientes a las materias y grupos
-    $stmt2 = "SELECT e.Nombres_estudiante, e.Apellidos_estudiante, e.Correo, e.Grupo_proyecto FROM inscripcion i
-             INNER JOIN grupo AS g
-             ON i.Codigo_grupo = g.Codigo_grupo
-             INNER JOIN estudiante AS e
+    $stmt2 = "SELECT e.Nombres_estudiante, e.Apellidos_estudiante, e.Correo, e.Grupo_proyecto, gp.numero_grupo FROM inscripcion i
+             LEFT JOIN estudiante AS e
              ON i.Usuario_estudiante = e.Usuario_estudiante
-             WHERE g.Nombre_grupo='$grupo' && g.Codigo_materia='$materia'";
+             LEFT JOIN grupo_proyecto AS gp
+             ON e.Grupo_proyecto = gp.Codigo_grupo_proyecto
+             LEFT JOIN grupo AS g
+             ON i.Codigo_grupo = g.Codigo_grupo
+             WHERE g.Nombre_grupo='$grupo' && g.Codigo_materia='$materia'
+             ORDER BY e.Apellidos_estudiante";
     $query2 = mysqli_query($con, $stmt2);
 
     // Buscar en la base de datos, los grupos actuales que pertenezcan a las materias colocadas
-    $stmt3 = "SELECT Codigo_grupo_proyecto FROM grupo_proyecto
+    $stmt3 = "SELECT Codigo_grupo_proyecto, numero_grupo FROM grupo_proyecto
               WHERE Codigo_materia_uno='$materia' OR Codigo_materia_dos='$materia'";
     $query3 = mysqli_query($con, $stmt3);
     $query4 = mysqli_query($con, $stmt3);
