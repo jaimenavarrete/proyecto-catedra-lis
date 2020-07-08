@@ -144,10 +144,41 @@ section{
   margin-right: 10px;
 }
 
+
 /*** SECCIONES DE BUSQUEDA Y SECCIONES DE BOTONES DE LAS PAGINAS ***/
 
 @media (min-width:1024px)
 {
+  /* Diseño de botones de gestión*/
+.boton-g{
+  border-radius: 6px ;
+  background-color:#3CA4DA;
+  color: white;
+  font-weight: bold;
+  padding: 50px 50px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  text-align: left;
+  margin: 30px;
+}
+
+.boton-g a{
+  text-decoration: none;
+  color: white;
+  font-size: 40px;
+  padding: 50px 50px;
+}
+
+.contenedor-g{
+  float: left;
+}
+
+.gestion{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
 /* Contenedor para ordenar las secciones que contengan varias filas*/
 .search-container {
   margin-bottom: 20px;
@@ -187,9 +218,15 @@ section{
   margin-right: 10px;
 }
 
-.select-container input {
+.select-container #cupos {
   background: #F0F0F0;
   border: 1px solid #212121;
+}
+
+.select-container input {
+  background: #fff;
+  border: 1px solid #212121;
+  cursor: auto;
 }
 
 .select-container h4 {
@@ -561,6 +598,35 @@ padding: 15px;
 /*Versión tablet*/
 @media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
+  .boton-g{
+    border-radius: 6px ;
+    background-color:#3CA4DA;
+    color: white;
+    font-weight: bold;
+    padding: 30px 30px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .boton-g a{
+    text-decoration: none;
+    color: white;
+    font-size: 50px;
+    padding: 30px 30px;
+  }
+  
+  .contenedor-g{
+    float: left;
+  }
+  
+  .gestion{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
   .sc-downloader {
     margin-bottom: 20px;
     width: 100%;
@@ -683,6 +749,36 @@ padding: 15px;
 }
 
 @media (max-width:625px){
+    /* Diseño de botones de gestión*/
+.boton-g{
+  border-radius: 6px ;
+  background-color:#3CA4DA;
+  color: white;
+  font-weight: bold;
+  padding: 12px 12px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  text-align: center;
+  margin: 30px;
+}
+
+.boton-g a{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  padding: 12px 12px;
+}
+
+.contenedor-g{
+  float: left;
+}
+
+.gestion{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
   #freg{
     background-image: none;
   }
