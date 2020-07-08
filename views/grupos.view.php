@@ -108,7 +108,7 @@
                 <form class="select-container sc">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="mostrarAlumnosGrupo();">
-                        <?php echo mostrarGruposTabla($query3); ?>
+                        <?php echo mostrarGruposTabla($query4); ?>
                     </select>
 
                     <input type="submit" id="btn-borrar-grupo">

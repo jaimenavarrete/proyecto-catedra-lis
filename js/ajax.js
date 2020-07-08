@@ -86,6 +86,15 @@ function mostrarAlumnosGrupo() {
                 var usuario = document.getElementById('alumno_a_quitar');
                 usuario.value = usuarioAlumno;
             });
+            // Funcion para el boton de modificar grupo del alumno
+            $('.btn-popup-modificar-grupo').click(function(e) {
+                e.preventDefault();
+                var usuarioAlumno = $(this).attr('user');
+                $('#overlay-modificar-alumno-grupo').addClass('overlay-active');
+
+                var usuario = document.getElementById('alumno_a_modificar');
+                usuario.value = usuarioAlumno;
+            });
         },
         error:function (exception) {
             console.log(exception);
@@ -116,13 +125,13 @@ function quitarAlumno() {
     });
 }
 
-function quitarAlumno() {
+function modificarAlumno() {
     $.ajax({
         url: 'queries/edit_student.php',
         type: 'post',
         dataType: 'json',
         async: true,
-        data: $('#form_quitar_alumno_grupo').serialize(),
+        data: $('#form_modificar_alumno_grupo').serialize(),
 
         success: function(response){
             console.log(response);

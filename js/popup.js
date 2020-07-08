@@ -5,4 +5,5 @@
 
 function cerrarModal() {
     $('#overlay-quitar-alumno-grupo').removeClass('overlay-active');
+    $('#overlay-modificar-alumno-grupo').removeClass('overlay-active');
 }

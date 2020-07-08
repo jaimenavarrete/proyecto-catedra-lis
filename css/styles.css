@@ -821,6 +821,13 @@ select{
   margin-bottom: 30px;
 }
 
+.popup select {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 100%;
+}
+
 .popup .contenedor-btn-popup {
   margin-bottom: 20px;
   display: flex;

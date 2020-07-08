@@ -66,15 +66,15 @@ function mostrarGruposTabla($consulta) {
             while($row = mysqli_fetch_array($consulta)){
                 $grupoProyecto = $row['Codigo_grupo_proyecto'];
 
-                $fila .= "<option value'$gruposProyecto'>$grupoProyecto</option>";
+                $fila .= "<option value='$grupoProyecto'>$grupoProyecto</option>";
             }
         }
         else {
-            $fila = "<option value'#'>[Sin grupos]</option>";
+            $fila = "<option value='#'>[Sin grupos]</option>";
         }
     }        
     else {
-        $fila = "<option value'#'>[Sin grupos]</option>";
+        $fila = "<option value='#'>[Sin grupos]</option>";
     }     
     
     return $fila;
@@ -89,25 +89,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $materia = $_POST['materia'];
 
     // Buscar en la base de datos, las materias que se han seleccionado
-    $stmt = "SELECT g.Nombre_grupo, g.Codigo_materia, m.Nombre_materia FROM grupo g
+    $stmt1 = "SELECT g.Nombre_grupo, g.Codigo_materia, m.Nombre_materia FROM grupo g
              INNER JOIN materia AS m
              ON g.Codigo_materia = m.Codigo_materia
              WHERE g.Nombre_grupo='$grupo' && m.Codigo_materia='$materia'";
-    $query1 = mysqli_query($con, $stmt);
+    $query1 = mysqli_query($con, $stmt1);
 
     // Buscar en la base de datos, los alumnos pertenecientes a las materias y grupos
-    $stmt = "SELECT e.Nombres_estudiante, e.Apellidos_estudiante, e.Correo, e.Grupo_proyecto FROM inscripcion i
+    $stmt2 = "SELECT e.Nombres_estudiante, e.Apellidos_estudiante, e.Correo, e.Grupo_proyecto FROM inscripcion i
              INNER JOIN grupo AS g
              ON i.Codigo_grupo = g.Codigo_grupo
              INNER JOIN estudiante AS e
              ON i.Usuario_estudiante = e.Usuario_estudiante
              WHERE g.Nombre_grupo='$grupo' && g.Codigo_materia='$materia'";
-    $query2 = mysqli_query($con, $stmt);
+    $query2 = mysqli_query($con, $stmt2);
 
     // Buscar en la base de datos, los grupos actuales que pertenezcan a las materias colocadas
-    $stmt = "SELECT Codigo_grupo_proyecto FROM grupo_proyecto
-             WHERE Codigo_materia_uno='$materia' OR Codigo_materia_dos='$materia'";
-    $query3 = mysqli_query($con, $stmt);
+    $stmt3 = "SELECT Codigo_grupo_proyecto FROM grupo_proyecto
+              WHERE Codigo_materia_uno='$materia' OR Codigo_materia_dos='$materia'";
+    $query3 = mysqli_query($con, $stmt3);
+    $query4 = mysqli_query($con, $stmt3);
 }
 
 require 'views/grupos.view.php';

@@ -11,5 +11,16 @@ if($_POST['action'] == 'quitarAlumno') {
 
     echo 'OK';
 }
+elseif($_POST['action'] == 'modificarAlumno') {
+    $alumno = $_POST['alumno_a_modificar'];
+    $grupo = $_POST['grupo_a_modificar'];
+
+    // Consultas utilizadas
+    $stmt = "UPDATE estudiante SET Grupo_proyecto='$grupo'
+             WHERE Usuario_estudiante='$alumno'";
+    $query = mysqli_query($con, $stmt);
+
+    echo 'OK';
+}
 
 ?>
