@@ -24,8 +24,25 @@
                     var option = '<option value="'+id+'">'+name+'</option>';
                     $('#materia1').append(option);
                     $('#materia2').append(option);
-                    console.log(option);
                 }
+                //Llamada del segundo ajax
+                $.ajax({
+                    url: "queries/fetch_groups.php",
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response){
+                        var len = response.length;
+                        for(i=0; i<len; i++){
+                            var id = response[i].id;
+                            var name = Number(response[i].materia) + 1;
+                            var option = '<option value="'+id+'">'+'Grupo '+name+'</option>';
+                            $('#lista-grupos').append(option);
+                        }
+                    },
+                    error:function (jqXHR, exception) {
+                        console.log(exception);
+                    }
+                });
             },
             error:function (jqXHR, exception) {
                 console.log(exception);
@@ -33,6 +50,33 @@
         });
     });
         
+    function showStudents(){
+        if($('#lista-grupos option:selected').val() != ""){
+            $.ajax({ 
+                url: 'queries/fetch_students_group.php',
+                type: 'post',
+                data:{grupoProyecto: $('#lista-grupos option:selected').val()},
+                datatype: 'json',
+                success: function(data){ 
+                    var len = data.length;
+                    $("#grupos").empty();
+                    for(i=0; i<len; i++){
+                        var numero = data[i].numero;
+                        var nombre = data[i].nombres + data[i].apellidos;
+                        var correo = data[i].correo;
+                        var td = "<td>"+numero+"</td>"+"<td>"+nombre+"</td>"+"<td>"+correo+"</td>";
+                        $("#grupos").append("<tr>");
+                        $("#grupos").append(td);
+                        $("#grupos").append("</tr>");
+                    
+                    }
+                },
+                error:function (jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        }
+    }
     </script>
 </head>
 <body>
@@ -103,11 +147,8 @@
                 <div class="search-container">
                     <div class="select-container">
                         <h4>Grupo:</h4>
-                        <select name="lista-grupos" class="grupo-creacion">
-                            <option value="">Sin grupo</option>
-                            <option value="">Grupo 1</option>
-                            <option value="">Grupo 2</option>
-                            <option value="">Grupo 3</option>
+                        <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="showStudents();">
+                            <option value=" ">----Seleccione un grupo----</option>
                         </select>
                     </div>
                 </div>
@@ -118,50 +159,16 @@
                                 <th>#</th>
                                 <th>Nombre del alumno</th>
                                 <th>Correo electrónico</th>
-                                <th>Grupo actual</th>
-                                <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>[Nombre del alumno 1]</td>
-                            <td>[Correo del alumno 1]</td>
-                            <td>[Sin grupo]</td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                        </tr> 
-                        <tr>
-                            <td>2</td>
-                            <td>[Nombre del alumno 2]</td>
-                            <td>[Correo del alumno 2]</td>
-                            <td>[Sin grupo]</td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                        </tr> 
-                        <tr>
-                            <td>3</td>
-                            <td>[Nombre del alumno 3]</td>
-                            <td>[Correo del alumno 3]</td>
-                            <td>[Sin grupo]</td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                        </tr> 
-                        <tr>
-                            <td>4</td>
-                            <td>[Nombre del alumno 4]</td>
-                            <td>[Correo del alumno 4]</td>
-                            <td>[Sin grupo]</td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                        </tr> 
-                        <tr>
-                            <td>5</td>
-                            <td>[Nombre del alumno 5]</td>
-                            <td>[Correo del alumno 5]</td>
-                            <td>[Sin grupo]</td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                        </tr> 
+                        <tbody id="grupos">
+                            <tr>
+                                <td>1</td>
+                                <td>[Nombre del alumno 1]</td>
+                                <td>[Correo del alumno 1]</td>
+                            </tr> 
+                        </tbody>
                     </table>
-                </div>
-                <div class="btn-inscribir">
-                    <input type="submit" id="btn-repo-2">
-                    <label for="btn-repo-2" class="btn">Confirmar grupos <i class="fa fa-check icon" id="i-pdf-2"></i></label>
                 </div>
             </form>
         </div>
@@ -171,5 +178,7 @@
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>
+<!-- llamada a los scripts -->
+<script src="js/ajax.js"></script>
 </body>
 </html>
