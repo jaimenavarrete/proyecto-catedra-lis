@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2020 a las 22:32:46
+-- Tiempo de generación: 07-07-2020 a las 17:42:35
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `carrera`;
 CREATE TABLE `carrera` (
   `Codigo_carrera` int(11) NOT NULL,
   `Nombre_carrera` varchar(25) DEFAULT NULL,
-  `Codigo_escuela` int(11) DEFAULT NULL
+  `Codigo_escuela` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -84,11 +84,11 @@ CREATE TABLE `carrera` (
 --
 
 INSERT INTO `carrera` (`Codigo_carrera`, `Nombre_carrera`, `Codigo_escuela`) VALUES
-(1, 'Ingeniería en Ciencias de', 1),
-(2, 'Ingeniería Industrial', 4),
-(3, 'Ingeniería Biomédica', 3),
-(4, 'Licenciatura en Diseño Gr', 2),
-(5, 'Licenciatura en Diseño In', 2);
+(1, 'Ingeniería en Ciencias de', '1'),
+(2, 'Ingeniería Industrial', '4'),
+(3, 'Ingeniería Biomédica', '3'),
+(4, 'Licenciatura en Diseño Gr', '2'),
+(5, 'Licenciatura en Diseño In', '2');
 
 -- --------------------------------------------------------
 
@@ -100,8 +100,8 @@ DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE `empleado` (
   `Usuario_empleado` varchar(8) NOT NULL,
   `Pass_empleado` varchar(100) DEFAULT NULL,
-  `Nombres_empleado` varchar(25) DEFAULT NULL,
-  `Apellidos_empleado` varchar(25) DEFAULT NULL,
+  `Nombres_empleado` varchar(50) DEFAULT NULL,
+  `Apellidos_empleado` varchar(50) DEFAULT NULL,
   `Edad` int(11) DEFAULT NULL,
   `Correo` varchar(320) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
@@ -126,7 +126,7 @@ INSERT INTO `empleado` (`Usuario_empleado`, `Pass_empleado`, `Nombres_empleado`,
 
 DROP TABLE IF EXISTS `escuela`;
 CREATE TABLE `escuela` (
-  `Codigo_escuela` int(11) NOT NULL,
+  `Codigo_escuela` varchar(6) NOT NULL,
   `Nombre_escuela` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -135,12 +135,12 @@ CREATE TABLE `escuela` (
 --
 
 INSERT INTO `escuela` (`Codigo_escuela`, `Nombre_escuela`) VALUES
-(1, 'Escuela de Ingeniería en Ciencias de la Computació'),
-(2, 'Escuela de Diseño'),
-(3, 'Ciencias Básicas'),
-(4, 'Escuela de Ingeniería Industrial'),
-(5, 'Escuela de Ingeniería Biomédica'),
-(6, 'Escuela de Comunicaciones');
+('1', 'Escuela de Ingeniería en Ciencias de la Computació'),
+('2', 'Escuela de Diseño'),
+('3', 'Ciencias Básicas'),
+('4', 'Escuela de Ingeniería Industrial'),
+('5', 'Escuela de Ingeniería Biomédica'),
+('6', 'Escuela de Comunicaciones');
 
 -- --------------------------------------------------------
 
@@ -152,8 +152,8 @@ DROP TABLE IF EXISTS `estudiante`;
 CREATE TABLE `estudiante` (
   `Usuario_estudiante` varchar(8) NOT NULL,
   `Pass` varchar(100) DEFAULT NULL,
-  `Nombres_estudiante` varchar(25) DEFAULT NULL,
-  `Apellidos_estudiante` varchar(25) DEFAULT NULL,
+  `Nombres_estudiante` varchar(50) DEFAULT NULL,
+  `Apellidos_estudiante` varchar(50) DEFAULT NULL,
   `Edad` int(11) DEFAULT NULL,
   `Correo` varchar(320) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
@@ -190,16 +190,17 @@ CREATE TABLE `grupo` (
   `Codigo_grupo` int(11) NOT NULL,
   `Nombre_grupo` varchar(3) DEFAULT NULL,
   `Tipo` tinyint(1) DEFAULT NULL,
-  `Codigo_materia` varchar(6) DEFAULT NULL
+  `Codigo_materia` varchar(6) DEFAULT NULL,
+  `cupos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `grupo`
 --
 
-INSERT INTO `grupo` (`Codigo_grupo`, `Nombre_grupo`, `Tipo`, `Codigo_materia`) VALUES
-(1, '01T', 0, 'POO104'),
-(2, '01T', 0, 'MDB104');
+INSERT INTO `grupo` (`Codigo_grupo`, `Nombre_grupo`, `Tipo`, `Codigo_materia`, `cupos`) VALUES
+(1, '01T', 0, 'POO104', NULL),
+(2, '01T', 0, 'MDB104', NULL);
 
 -- --------------------------------------------------------
 
@@ -273,7 +274,7 @@ DROP TABLE IF EXISTS `materia`;
 CREATE TABLE `materia` (
   `Codigo_materia` varchar(6) NOT NULL,
   `Nombre_materia` varchar(50) DEFAULT NULL,
-  `Codigo_escuela` int(11) DEFAULT NULL
+  `Codigo_escuela` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -281,10 +282,10 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`Codigo_materia`, `Nombre_materia`, `Codigo_escuela`) VALUES
-('ADS104', 'Análisis y Diseño de Sistemas', 1),
-('CVV501', 'Cálculo de Varias Variables', 3),
-('MDB104', 'Modelamiento y Diseño de Bases de Datos', 1),
-('POO104', 'Programación Orientada a Objetos', 1);
+('ADS104', 'Análisis y Diseño de Sistemas', '1'),
+('CVV501', 'Cálculo de Varias Variables', '3'),
+('MDB104', 'Modelamiento y Diseño de Bases de Datos', '1'),
+('POO104', 'Programación Orientada a Objetos', '1');
 
 -- --------------------------------------------------------
 
@@ -305,7 +306,7 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`Codigo_rol`, `Nombre_rol`) VALUES
 (1, 'Estudiante'),
 (2, 'Docente'),
-(3, 'Administra');
+(3, 'Admin');
 
 --
 -- Índices para tablas volcadas
@@ -385,12 +386,6 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `carrera`
   MODIFY `Codigo_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `escuela`
---
-ALTER TABLE `escuela`
-  MODIFY `Codigo_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carreras</title>
+    <title>Grupos Materia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -31,64 +31,78 @@
 </header>
 <section class="contenido">
     <article>
-        <h1>REGISTRO DE CARRERAS</h1>
-        <div class="formtab">
-            <h2>Carreras</h2>
+    <h1>REGISTRO DE GRUPOS TEORICOS Y LABORATORIO</h1>
+    <div class="formtab">
+            <h2>Grupos</h2>
 
             <div>
             <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
-                <div class="select-container">
-                    <h4>Nombre carrera: <input type="text" name="nombre_carrera" id="" required></h4>
+            <div class="select-container">
+                    <h4>Nombre: <input type="text" name="nombre" id=""></h4>
                 </div>
+                
+                 <div class="select-container">
+                    <h4>Tipo: <input type="text" name="tipo" id=""></h4>
+                </div>
+
+
                 <div class="select-container">
-                    <h4>Codigo escuela:</h4>
-                    <select name="codigo_escuela" class="select_grupos_lab">
-                    <?php while($mostrar=mysqli_fetch_array($resultado1)){ 
+                    <h4>Cupos: <input type="text" name="cupos" id=""></h4>
+                </div>
+                
+               <div class="select-container">
+               <h4>Codigo materia:</h4>
+               <select name="cod_mat" class="input-field">
+                    <?php while($mostrar=mysqli_fetch_array($resultado6)){ 
                     ?>
-                        <option><?php echo $mostrar['Codigo_escuela'] ?></option>
+                    <option><?php echo $mostrar['Codigo_materia'] ?></option>
                     <?php 
                     }
                     ?>
                     </select>
-                </div>
+               </div>
             </div>
-
+            
+           
             <div class="btn-inscribir">
                 <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+                <label for="btn-repo" class="btn">Agregar grupo <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
             </form>
         </div>
+        </section>
     </article>
-</section>
-
 <section>
     <article>
         <div class="formtab">
-            <h2>Carreras registradas</h2>
+            <h2>Grupos registradas</h2>
             <form action="" name="formulario" id="inscripcion">
                 <div class="search-container">
                 <div class="bar-scroll">
                     <table class="tablas">
                         <thead>
                             <tr>
-                                <th>Codigo Carrera</th>
-                                <th>Nombre Carrera</th>
-                                <th>Codigo Escuela</th>
+                                <th>Codigo Grupo</th>
+                                <th>Numero Grupo</th>
+                                <th>Tipo</th>
+                                <th>Cupo</th>
+                                <th>Codigo Materia</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <?php while($mostrar=mysqli_fetch_array($resultado2)){ 
-                        ?>
+                        <?php while($mostrar=mysqli_fetch_array($resultado7)){ 
+                    ?>
                         <tr>
-                            <td><?php echo $mostrar['Codigo_carrera'] ?></td>
-                            <td><?php echo $mostrar['Nombre_carrera'] ?></td>
-                            <td><?php echo $mostrar['Codigo_escuela'] ?></td>
-                            <td><a href="consultas/datos.php?id_ca=<?php echo $mostrar['Codigo_carrera'];?>"><i class="fa fa-pencil icon icon-modify"></i><a href="consultas/datos.php?id_carrera=<?php echo $mostrar['Codigo_carrera'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><?php echo $mostrar['Codigo_grupo'] ?></td>
+                            <td><?php echo $mostrar['Nombre_grupo'] ?></td>
+                            <td><?php echo $mostrar['Tipo'] ?></td>
+                            <td><?php echo $mostrar['cupos'] ?></td>
+                            <td><?php echo $mostrar['Codigo_materia'] ?></td>
+                            <td><a href="consultas/datos.php?id_gr=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_grupo=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
-                          }
-                        ?>
+                    }
+                    ?>
                     </table>
                 </div>
                 </div>
@@ -97,7 +111,6 @@
         </div>
     </article>
 </section>
-
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>

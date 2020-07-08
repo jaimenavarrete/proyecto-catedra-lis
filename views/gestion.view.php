@@ -20,6 +20,7 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil <i class="fa fa-user icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -38,13 +39,14 @@
 
         <div class="contenedor-g">
         <div class="boton-g"><a href="escuelas.php">Escuelas     </a><i class="fa fa-graduation-cap" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="grupos_admin.php">Grupos     </a><i class="fa fa-users" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="grupos_materia.php">Teo. Lab.     </a><i class="fa fa-tags" style="font-size:45px;"></i></div>
         </div>
 
         <div class="contenedor-g">
         <div class="boton-g"><a href="carreras.php">Carreras     </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="reportes.php">Reportes     </a><i class="fa fa-file" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="grupos_admin.php">Grupos     </a><i class="fa fa-users" style="font-size:45px;"></i></div>
         </div>
+
         </div>
     </article>
 </section>

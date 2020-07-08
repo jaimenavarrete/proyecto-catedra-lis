@@ -21,6 +21,7 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -32,10 +33,11 @@
     <article>
         <h1>REGISTRO DE MATERIAS</h1>
         <div class="formtab">
-            <h2>Materias</h2>
-
+    
             <div>
-                <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
+            <section>
+            <article>
+              <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
                     <h4>Codigo materia: <input type="text" name="codigo_materia" id=""></h4>
     
@@ -61,8 +63,8 @@
             
            
             <div class="btn-inscribir">
-                <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
+                <input type="submit" name="submit1" id="btn-repo">
+                <label for="btn-repo" name="submit1" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
             </form>
         </div>
@@ -87,7 +89,7 @@
                             <td><?php echo $mostrar['Codigo_materia'] ?></td>
                             <td><?php echo $mostrar['Nombre_materia'] ?></td>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_materia=<?php echo $mostrar['Codigo_materia'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="consultas/datos.php?id_ma=<?php echo $mostrar['Codigo_materia'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_materia=<?php echo $mostrar['Codigo_materia'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }
@@ -96,84 +98,8 @@
                 </div>
                 </div>
             </form>
-        </div>
-        </div>
-
-
-
-        <div class="formtab">
-            <h2>Grupos</h2>
-
-            <div class="search-container sc-downloader">
-
-                <div class="select-container">
-                    <h4>Numero grupo: <input type="text" name="numero_grupo" id=""></h4>
-                </div>
-                
-                <div class="select-container">
-                    <h4>Cupos: <input type="text" name="cupos" id=""></h4>
-                </div>
-                
-                <div class="select-container">
-                    <h4>Tipo: <input type="text" name="tipo" id=""></h4>
-                </div>
-
-               <div class="select-container">
-               <h4>Codigo materia:</h4>
-               <select name="Rol" class="input-field">
-                    <?php while($mostrar=mysqli_fetch_array($resultado6)){ 
-                    ?>
-                    <option><?php echo $mostrar['Codigo_materia'] ?></option>
-                    <?php 
-                    }
-                    ?>
-                    </select>
-               </div>
-            </div>
-            
-           
-            <div class="btn-inscribir">
-                <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar grupo <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
-            </div>
-        </div>
-    </article>
-</section>
-
-
-<section>
-    <article>
-        <div class="formtab">
-            <h2>Grupos registradas</h2>
-            <form action="" name="formulario" id="inscripcion">
-                <div class="search-container">
-                <div class="bar-scroll">
-                    <table class="tablas">
-                        <thead>
-                            <tr>
-                                <th>Codigo Grupo</th>
-                                <th>Numero Grupo</th>
-                                <th>Tipo</th>
-                                <th>Codigo Materia</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <?php while($mostrar=mysqli_fetch_array($resultado7)){ 
-                    ?>
-                        <tr>
-                            <td><?php echo $mostrar['Codigo_grupo'] ?></td>
-                            <td><?php echo $mostrar['Nombre_grupo'] ?></td>
-                            <td><?php echo $mostrar['Tipo'] ?></td>
-                            <td><?php echo $mostrar['Codigo_materia'] ?></td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr> 
-                        <?php 
-                    }
-                    ?>
-                    </table>
-                </div>
-                </div>
-            </form>
+            </section>
+            </article>
         </div>
         </div>
     </article>

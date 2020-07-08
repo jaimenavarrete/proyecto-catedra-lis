@@ -20,9 +20,6 @@
         <ul>
             <div class="separador-links">
                 <li><a href="../perfil.php">Mi perfil <i class="fa fa-user icon"></i></a></li>
-                <li><a href="../grupos.php">Grupos <i class="fa fa-users icon"></i></a></li>
-                <li><a href="../inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="../reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="../gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
@@ -78,7 +75,7 @@ include("cn.php");
 }
 
  /*Permite realizar insert a la tabla carrera*/
- if(isset($_POST['codigo_carrera']) && isset($_POST['nombre_carrera']) && isset($_POST['codigo_escuela'])){
+ if(isset($_POST['nombre_carrera']) && isset($_POST['codigo_escuela'])){
   $codigo_carrera=$_POST["codigo_carrera"];
   $nombre_carrera=$_POST["nombre_carrera"];
   $codigo_escuela=$_POST["codigo_escuela"];
@@ -97,7 +94,7 @@ if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($
   $codigo_materia=$_POST["codigo_materia"];
   $nombre_materia=$_POST["nombre_materia"];
   $codigo_escuela=$_POST["codigo_escuela"];
-  $insertar="INSERT INTO materia(Codigo_materia, Nombre_materia, Codigo_escuela) VALUES('$codigo_materia', '$nombre_materia', '$codigo_escuela')";
+  $insertar="INSERT INTO materia(Codigo_materia, Nombre_materia, Codigo_escuela) VALUES('$codigo_materia','$nombre_materia', '$codigo_escuela')";
   if($conexion->query($insertar)===true){
       echo 'La materia se ha registrado';
       header("Location: ../materias.php");
@@ -107,6 +104,23 @@ if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($
   }
   
 }
+
+  /*Permite realizar insert a la tabla grupo*/
+  if(isset($_POST['nombre']) && isset($_POST['tipo']) && isset($_POST['cod_mat']) && isset($_POST['cupos'])){
+    $nombre=$_POST["nombre"];
+    $tipo=$_POST["tipo"];
+    $cupos=$_POST["cupos"];
+    $codigo_mat=$_POST["cod_mat"];
+    $insertar="INSERT INTO grupo (Codigo_grupo, Nombre_grupo, Tipo, Codigo_materia, cupos) VALUES('', '$nombre', '$tipo', '$codigo_mat', '$cupos')";
+    if($conexion->query($insertar)===true){
+        echo 'El grupo se ha registrado';
+        header("Location: ../grupos_materia.php");
+    }
+    else{
+        echo 'El grupo ya existe';
+    }
+    
+  }
 
 /*Eliminar informacion*/
 /*Permite eliminar datos de la tabla materias*/
@@ -263,7 +277,7 @@ if(!empty($_REQUEST['id_escuela'])){
         </div>
         <div class=\"select-container\">
         <input type=\"hidden\" name=\"codigo_emp\" value=\"$usuario_emp\">
-        <a href=\"../materias.php\" class=\"btn-cancel\">Cancelar</a>
+        <a href=\"../registro_interno.php\" class=\"btn-cancel\">Cancelar</a>
         <button type=\"submit\" value=\"Aceptar\" class=\"btn-ok\">Aceptar</button>
         <label for=\"btn-repo\" Aceptar</label>
         </div>
@@ -310,7 +324,7 @@ if(!empty($_REQUEST['id_escuela'])){
           </div>
           <div class=\"select-container\">
           <input type=\"hidden\" name=\"codigo_est\" value=\"$usuario_emp\">
-          <a href=\"../materias.php\" class=\"btn-cancel\">Cancelar</a>
+          <a href=\"../registro_interno.php\" class=\"btn-cancel\">Cancelar</a>
           <button type=\"submit\" value=\"Aceptar\" class=\"btn-ok\">Aceptar</button>
           <label for=\"btn-repo\" Aceptar</label>
           </div>
@@ -320,6 +334,52 @@ if(!empty($_REQUEST['id_escuela'])){
           header("Location: ../registro_interno.php");
         }
       }
+
+      if(!empty($_REQUEST['id_grupo'])){
+        /*Permite eliminar datos de la tabla grupo*/
+        if(!empty($_POST)){
+          $codigo_grupo=$_POST['codigo_grupo'];
+          $query_delete=mysqli_query($conexion,"DELETE FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
+          if($query_delete){
+            header("Location: ../escuelas.php");
+          }else{
+            echo "Error al eliminar";
+          }
+          }
+        
+        /*Permite seleccionar la informacion que va ser eliminar de la tabla grupo y mostrar un mensaje si el usuario desea eliminar o no la información*/
+          $codigo_grupo=$_REQUEST['id_grupo'];
+          $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
+          $result=mysqli_num_rows($query);
+          if($result > 0){
+            while($mostrar = mysqli_fetch_array($query)){
+              $codigo_grupo=$mostrar['Codigo_grupo'];
+              $nombre_grupo=$mostrar['Nombre_grupo'];
+              $tipo=$mostrar['Tipo'];
+              $codigo_materia=$mostrar['Codigo_materia'];
+              $cupo=$mostrar['cupos'];
+            }
+            echo "<div class=\"formtab\">
+            <h2>¿Está seguro de eliminar la siguiente escuela?</h2>
+            <form class=\"search-container\" method=\"POST\" action=\"\">
+            <div class=\"select-container\">
+            <h4 class=\"txt-msg\"> Nombre: ",$nombre_grupo,"</h4>
+            <h4 class=\"txt-msg\"> Codigo Materia: ",$codigo_materia,"</h4>
+            <h4 class=\"txt-msg\"> Cupos: ",$cupo,"</h4>
+            </div>
+            <div class=\"select-container\">
+            <input type=\"hidden\" name=\"codigo_grupo\" value=\"$codigo_grupo\">
+            <a href=\"../grupos_materia.php\" class=\"btn-cancel\">Cancelar</a>
+            <button type=\"submit\" value=\"Aceptar\" class=\"btn-ok\">Aceptar</button>
+            <label for=\"btn-repo\" Aceptar</label>
+            </div>
+            </form>
+            </div><br><br><br><br>";
+          }else{
+            header("Location: ../grupos_materia.php");
+          }
+        }
+
  /*Actualiza información*/
  /*Actualiza datos de la tabla escuela*/
  if(!empty($_REQUEST['id_esc'])){
@@ -363,7 +423,7 @@ if(!empty($_REQUEST['id_escuela'])){
     <div>
     <form action=\"\" method=\"POST\" class=\"search-container sc-downloader\">
     <div class=\"select-container\">
-    <input type=\"text\" name=\"codigo_esc\" value=\"$codigo_esc\" readonly>
+    <h4>Codigo escuela: <input type=\"text\" name=\"codigo_esc\" value=\"$codigo_esc\" readonly></h4>
       </div>
         <div class=\"select-container\">
             <h4>Nombre escuela: <input type=\"text\" name=\"nombre_esc\" value=\"$nombre_esc\" required></h4>
@@ -382,6 +442,247 @@ if(!empty($_REQUEST['id_escuela'])){
   }
 
  }
+
+/*Actualiza datos de la tabla carrera*/
+if(!empty($_REQUEST['id_ca'])){
+
+
+  if(!empty($_POST)){
+    $alert='';
+     if(empty($_POST['nombre_ca']) || empty($_POST['codigo_es'])){
+       echo "Todos los campos son obligatorios.";
+     }
+     else{
+       $codigo_ca=$_POST['codigo_ca'];
+       $nombre_ca=$_POST['nombre_ca'];
+       $codigo_es=$_POST['codigo_es'];
+
+       $query=mysqli_query($conexion,"SELECT * FROM carrera WHERE (Nombre_carrera='$nombre_ca'  AND Codigo_carrera != '$codigo_ca')");
+       $result=mysqli_fetch_array($query);
+       if($result > 0){
+         echo "Esta escuela ya se encuentra registrada.";
+       }else{
+           $query_update=mysqli_query($conexion,"UPDATE carrera SET  Nombre_carrera='$nombre_ca', Codigo_escuela='$codigo_es' WHERE Codigo_carrera ='$codigo_ca'");
+           if($query_update){
+             echo "Usuario actualizado.";
+             header("Location: ../carreras.php");
+           }
+           else{
+           echo "Error al actualizar la información.";
+           }
+         }
+     }
+  }
+ $codigo_ca=$_REQUEST['id_ca'];
+ $query=mysqli_query($conexion,"SELECT * FROM carrera WHERE Codigo_carrera='$codigo_ca'");
+ $result=mysqli_num_rows($query);
+ if($result > 0){
+   while($mostrar = mysqli_fetch_array($query)){
+     $codigo_ca=$mostrar['Codigo_carrera'];
+     $nombre_ca=$mostrar['Nombre_carrera'];
+     $codigo_es=$mostrar['Codigo_escuela'];
+     
+   }
+   echo "<div class=\"formtab\">
+   <h2>Editar carera</h2>
+
+   <div>
+   <form  method=\"POST\" class=\"search-container sc-downloader\">
+       <div class=\"select-container\">
+      <h4>Codigo carrera: <input type=\"text\" name=\"codigo_ca\" value=\"$codigo_ca\" readonly></h4>
+       </div>
+
+       <div class=\"select-container\">
+           <h4>Nombre carrera: <input type=\"text\" name=\"nombre_ca\" value=\"$nombre_ca\" required></h4>
+       </div>
+       <div class=\"select-container\">
+           <h4>Codigo escuela:</h4>
+           <select name=\"codigo_es\" class=\"select_grupos_lab\">";
+           include("consultas.php");
+           while($mostra=mysqli_fetch_array($resultado1)){;
+          echo  "<option>";echo $mostra['Codigo_escuela'];"</option>";
+              };
+    echo
+           "</select>
+       </div>
+   </div>
+
+   <div class=\"btn-inscribir\">
+       <input type=\"submit\" id=\"btn-repo\">
+       <label for=\"btn-repo\" class=\"btn\">Actualizar materia <i class=\"fa fa-plus icon\" id=\"i-pdf-2\"></i></label>
+   </div>
+   </form>
+</div><br><br><br><br>";
+ }
+ else{
+   header("Location: ../carreras.php");
+ }
+
+}
+
+/*Actualiza datos de la tabla materia*/
+if(!empty($_REQUEST['id_ma'])){
+
+
+  if(!empty($_POST)){
+    $alert='';
+     if(empty($_POST['nombre_ma']) || empty($_POST['codigo_es'])){
+       echo "Todos los campos son obligatorios.";
+     }
+     else{
+       $codigo_ma=$_POST['codigo_ma'];
+       $nombre_ma=$_POST['nombre_ma'];
+       $codigo_es=$_POST['codigo_es'];
+
+       $query=mysqli_query($conexion,"SELECT * FROM materia WHERE (Nombre_materia='$nombre_ma'  AND Codigo_materia != '$codigo_ma')");
+       $result=mysqli_fetch_array($query);
+       if($result > 0){
+         echo "Esta carrera ya se encuentra registrada.";
+       }else{
+           $query_update=mysqli_query($conexion,"UPDATE materia SET  Nombre_materia='$nombre_ma', Codigo_escuela='$codigo_es' WHERE Codigo_materia ='$codigo_ma'");
+           if($query_update){
+             echo "Usuario actualizado.";
+             header("Location: ../materias.php");
+           }
+           else{
+           echo "Error al actualizar la información.";
+           }
+         }
+     }
+  }
+ $codigo_ma=$_REQUEST['id_ma'];
+ $query=mysqli_query($conexion,"SELECT * FROM materia WHERE Codigo_materia='$codigo_ma'");
+ $result=mysqli_num_rows($query);
+ if($result > 0){
+   while($mostrar = mysqli_fetch_array($query)){
+     $codigo_ma=$mostrar['Codigo_materia'];
+     $nombre_ma=$mostrar['Nombre_materia'];
+     $codigo_es=$mostrar['Codigo_escuela'];
+     
+   }
+   echo "<div class=\"formtab\">
+   <h2>Editar materia</h2>
+
+   <div>
+   <form  method=\"POST\" class=\"search-container sc-downloader\">
+       <div class=\"select-container\">
+      <h4>Codigo carrera: <input type=\"text\" name=\"codigo_ma\" value=\"$codigo_ma\" readonly></h4>
+       </div>
+
+       <div class=\"select-container\">
+           <h4>Nombre carrera: <input type=\"text\" name=\"nombre_ma\" value=\"$nombre_ma\" required></h4>
+       </div>
+       <div class=\"select-container\">
+           <h4>Codigo escuela:</h4>
+           <select name=\"codigo_es\" class=\"select_grupos_lab\">";
+           include("consultas.php");
+           while($mostra=mysqli_fetch_array($resultado1)){;
+          echo  "<option>";echo $mostra['Codigo_escuela'];"</option>";
+              };
+    echo
+           "</select>
+       </div>
+   </div>
+
+   <div class=\"btn-inscribir\">
+       <input type=\"submit\" id=\"btn-repo\">
+       <label for=\"btn-repo\" class=\"btn\">Actualizar materia <i class=\"fa fa-plus icon\" id=\"i-pdf-2\"></i></label>
+   </div>
+   </form>
+</div><br><br><br><br>";
+ }
+ else{
+  header("Location: ../materias.php");
+ }
+
+}
+
+
+/*Actualiza datos de la tabla grupo*/
+if(!empty($_REQUEST['id_gr'])){
+
+
+  if(!empty($_POST)){
+    $alert='';
+     if(empty($_POST['nombre_gr']) || empty($_POST['tipo']) && empty($_POST['cupo']) || empty($_POST['codigo_ma'])){
+       echo "Todos los campos son obligatorios.";
+     }
+     else{
+      $codigo_gr=$_POST['codigo_gr'];
+       $nombre_gr=$_POST['nombre_gr'];
+       $tipo=$_POST['tipo'];
+       $codigo_materia=$_POST['codigo_ma'];
+       $cupo=$_POST['cupo'];
+       $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE (Nombre_grupo='$nombre_gr'  AND Codigo_grupo != '$codigo_gr')");
+       $result=mysqli_fetch_array($query);
+       if($result > 0){
+         echo "Esta carrera ya se encuentra registrada.";
+       }else{
+           $query_update=mysqli_query($conexion,"UPDATE grupo SET  Nombre_grupo='$nombre_gr',Tipo='$tipo',Nombre_grupo='$nombre_gr', Codigo_materia='$codigo_materia',cupos='$cupo' WHERE Codigo_grupo ='$codigo_gr'");
+           if($query_update){
+             echo "Usuario actualizado.";
+             header("Location: ../grupos_materia.php");
+           }
+           else{
+           echo "Error al actualizar la información.";
+           }
+         }
+     }
+  }
+ $codigo_gr=$_REQUEST['id_gr'];
+ $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_gr'");
+ $result=mysqli_num_rows($query);
+ if($result > 0){
+   while($mostrar = mysqli_fetch_array($query)){
+    $codigo_gr=$mostrar['Codigo_grupo'];
+     $nombre_gr=$mostrar['Nombre_grupo'];
+     $tipo=$mostrar['Tipo'];
+     $codigo_escuela=$mostrar['Codigo_materia'];
+     $cupo=$mostrar['cupos'];
+   }
+   echo "<div class=\"formtab\">
+   <h2>Editar Grupo</h2>
+
+   <div>
+   <form  method=\"POST\" class=\"search-container sc-downloader\">
+   <input type=\"hidden\" name=\"codigo_gr\" value=\"$codigo_gr\" requered>
+       <div class=\"select-container\">
+      <h4>Nombre grupo: <input type=\"text\" name=\"nombre_gr\" value=\"$nombre_gr\" requered></h4>
+       </div>
+
+       <div class=\"select-container\">
+           <h4>Tipo: <input type=\"text\" name=\"tipo\" value=\"$tipo\" required></h4>
+       </div>
+
+       <div class=\"select-container\">
+           <h4>Cupo: <input type=\"text\" name=\"cupo\" value=\"$cupo\" required></h4>
+       </div>
+
+       <div class=\"select-container\">
+           <h4>Codigo materia:</h4>
+           <select name=\"codigo_ma\" class=\"select_grupos_lab\">";
+           include("consultas.php");
+           while($mostra=mysqli_fetch_array($resultado3)){;
+          echo  "<option>";echo $mostra['Codigo_materia'];"</option>";
+              };
+    echo
+           "</select>
+       </div>
+   </div>
+
+   <div class=\"btn-inscribir\">
+       <input type=\"submit\" id=\"btn-repo\">
+       <label for=\"btn-repo\" class=\"btn\">Actualizar grupo <i class=\"fa fa-plus icon\" id=\"i-pdf-2\"></i></label>
+   </div>
+   </form>
+</div><br><br><br><br>";
+ }
+ else{
+  header("Location: ../grupos_materia.php");
+ }
+
+}
+
 
 mysqli_close($conexion);
 ?> 

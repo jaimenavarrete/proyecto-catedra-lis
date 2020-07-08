@@ -21,6 +21,7 @@
         <ul>
             <div class="separador-links">
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
