@@ -42,10 +42,16 @@ function mostrarMaterias() {
     });
 }
 
+// Ejecutar funcion para mostrar materias actuales disponibles
+mostrarMaterias();
+
 // Funcion para mostrar los alumnos de los grupos de proyecto
 
 function mostrarAlumnosGrupo() {
+    // Obtener el grupo seleccionado actualmente
     var grupoProyecto = $("#lista-grupos option:selected").text();
+    // Agregar el valor del grupo seleccionado al boton para borrar el grupo
+    $('#btn-popup-borrar-grupo').attr("group", grupoProyecto);
 
     $.ajax({
         url: 'queries/fetch_students_group.php',
@@ -95,6 +101,15 @@ function mostrarAlumnosGrupo() {
                 var usuario = document.getElementById('alumno_a_modificar');
                 usuario.value = usuarioAlumno;
             });
+            // Funcion para el boton de borrar grupo
+            $('#btn-popup-borrar-grupo').click(function(e) {
+                e.preventDefault();
+                var borrarGrupo = $(this).attr('group');
+                $('#overlay-borrar-grupo').addClass('overlay-active');
+
+                var grupo = document.getElementById('grupo_a_borrar');
+                grupo.value = borrarGrupo;
+            });
         },
         error:function (exception) {
             console.log(exception);
@@ -131,7 +146,7 @@ function modificarAlumno() {
         type: 'post',
         dataType: 'json',
         async: true,
-        data: $('#form_modificar_alumno_grupo').serialize(),
+        data: $('#form_borrar_grupo').serialize(),
 
         success: function(response){
             console.log(response);
@@ -142,5 +157,19 @@ function modificarAlumno() {
     });
 }
 
-// Ejecutar funcion para mostrar materias actuales disponibles
-mostrarMaterias();
+function borrarGrupo() {
+    $.ajax({
+        url: 'queries/edit_student.php',
+        type: 'post',
+        dataType: 'json',
+        async: true,
+        data: $('#form_borrar_grupo').serialize(),
+
+        success: function(response){
+            console.log(response);
+        },
+        error:function (exception) {
+            console.log(exception);
+        }
+    });
+}

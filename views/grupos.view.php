@@ -36,6 +36,7 @@
     <?php 
         require_once('popups/quitar-alumno-grupo.php'); 
         require_once('popups/modificar-alumno-grupo.php'); 
+        require_once('popups/borrar-grupo.php'); 
     ?>
 
     <!-- Fin de ventanas emergentes -->
@@ -111,8 +112,9 @@
                         <?php echo mostrarGruposTabla($query4); ?>
                     </select>
 
-                    <input type="submit" id="btn-borrar-grupo">
-                    <label for="btn-borrar-grupo"><i class="fa fa-trash icon icon-delete"> </i></label>
+                    <!-- <input type="submit" id="btn-borrar-grupo">
+                    <label for="btn-borrar-grupo"><i class="fa fa-trash icon icon-delete"> </i></label> -->
+                    <a href='#' class='btn-popup-borrar-grupo' group='' id="btn-popup-borrar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
                 </form>
                 <div class="select-container sc">
                     <a href="crear_grupos.php" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></a>

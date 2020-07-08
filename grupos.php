@@ -62,6 +62,7 @@ function mostrarGruposTabla($consulta) {
     if(isset($_POST['materia'])) {
         if(mysqli_num_rows($consulta)>0){
             $fila = "<option value'#'>[Seleccionar grupo]</option>";
+            $fila = "<option value'0'>[Sin grupo]</option>";
 
             while($row = mysqli_fetch_array($consulta)){
                 $grupoProyecto = $row['Codigo_grupo_proyecto'];

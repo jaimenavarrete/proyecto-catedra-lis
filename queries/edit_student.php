@@ -22,5 +22,19 @@ elseif($_POST['action'] == 'modificarAlumno') {
 
     echo 'OK';
 }
+elseif($_POST['action'] == 'borrarGrupo') {
+    $grupo = $_POST['grupo_a_borrar'];
+
+    // Consultas utilizadas
+    $stmt = "UPDATE estudiante SET Grupo_proyecto='0'
+             WHERE Grupo_proyecto='$grupo'";
+    $query = mysqli_query($con, $stmt);
+
+    $stmt = "DELETE FROM grupo_proyecto
+             WHERE Codigo_grupo_proyecto='$grupo'";
+    $query = mysqli_query($con, $stmt);
+
+    echo 'OK';
+}
 
 ?>
