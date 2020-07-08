@@ -83,8 +83,19 @@ section{
   color: white;
 }
 
+.tablas label {
+  cursor: pointer;
+}
+
 .tablas tr:nth-child(even) {
   background-color: #ddd;
+}
+
+.tablas .tabla-vacia {
+  color: #212121;
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Tabla de la pagina de perfil personal*/
@@ -200,6 +211,11 @@ section{
   border-radius: 5px;
   cursor: pointer;
   padding: 10px 20px;
+  max-width: 350px;
+}
+
+.select-container select {
+  margin-right: 10px;
 }
 
 .select-container #cupos {
@@ -216,6 +232,11 @@ section{
 .select-container h4 {
   margin-right: 10px;
 }
+
+.select-container label {
+  cursor: pointer;
+}
+
 .trash {
   margin-left: 450%;
 }
@@ -231,6 +252,7 @@ section{
   cursor: pointer;
   border: 1px solid #000000;
   border-radius:6px;
+  text-decoration: none;
 }
 
 /* Botón específico para la página de inscripción */
@@ -537,6 +559,42 @@ padding: 15px;
   text-decoration: none;
   width: 100%;
 }
+
+
+
+/*** Login responsive celular ***/
+@media (max-width:625px){
+  #freg{
+    background-image: none;
+  }
+
+  .frm-l #salario .form-options .olvidar{
+      display: flex;
+      padding: 10px 0;
+      font-size: medium;
+      
+      
+  }
+
+  .form-horizontal .form-options label {
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    
+  }
+
+  .form-horizontal .form-options input[type="checkbox"] {
+   display:flex;
+  justify-content: space-between;
+  
+  }
+
+   
+
+
+
+
+
 /*Versión tablet*/
 @media (min-width:626px) and (max-width:1023px){
   /*Muesta las materias centradas*/
@@ -616,6 +674,7 @@ padding: 15px;
     }
       
     .select-container label {
+      cursor: pointer;
       padding: 15px 40px;
     }
 
@@ -661,9 +720,7 @@ padding: 15px;
   
   
 /*Formularios de login y registro*/
-  #freg {
-  background-size: 35%;
-   } 
+   
 
     .frm-l {
       margin-top: 300px;
@@ -802,5 +859,86 @@ select{
 .btn-modificar-perfil label {
   padding: 15px 14px;
 }
+}
 
+}
+
+/*** VENTANAS EMERGENTES ***/
+
+.overlay {
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-active {
+  visibility: visible;
+}
+
+.popup {
+  background: #F8F8F8;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+  border-radius: 3px;
+  font-family: 'Montserrat', Arial, sans-serif, helvetica;
+  padding: 20px;
+  text-align: center;
+
+  max-width: 500px;
+  width: 100%;
+}
+
+.popup .btn-cerrar-popup {
+  font-style: 16px;
+  line-height: 16px;
+  display: block;
+  text-align: right;
+}
+
+.popup .btn-cerrar-popup:hover {
+  color: #000;
+}
+
+.popup h2 {
+  margin: 10px 0 30px 0;
+}
+
+.popup p {
+  color: #212121;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.popup select {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.popup .contenedor-btn-popup {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup .btn {
+  border-radius: 0;
+  padding: 10px 20px;
+}
+
+.popup button.btn {
+  background: #EB5757;
+}
+
+.popup a.btn {
+  text-decoration: none;
 }

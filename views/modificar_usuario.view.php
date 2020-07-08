@@ -33,7 +33,7 @@
     <article>
         <h1>MODIFICAR USUARIO</h1>
         <div class="formtab seccion-perfil">
-                <form action="modificar_usuario.php">
+                <form action="ingresar-datos.php">
                     <div>
                         <img class="circular--squaremax" src="img/user.png" />
                     </div>
@@ -45,35 +45,35 @@
             <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
                 <div class="input-container">
                     <i class="fa fa-user-circle-o icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Usuario:" required>
+                    <input class="input-field" type="text" id="usuario" name="usuario" placeholder="Usuario:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Nombre:" required>
+                    <input class="input-field" type="text" id="nombre" name="nombre" placeholder="Nombre:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="input" placeholder="Apellido:" required>
+                    <input class="input-field" type="text" id="apellido" name="apellido" placeholder="Apellido:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="date" name="fechan" placeholder="dd/mm/yyyy" required>
+                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Años" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="email" placeholder="Email:" required>
+                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-phone icon icon-login-registro"></i>
-                    <input class="input-field" type="text" name="tel" placeholder="Numero de teléfono:" required>
+                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" name="pass" placeholder="Ingrese su contraseña:" required>
+                    <input class="input-field" type="password" id="password" name="password" placeholder="Ingrese su contraseña:" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>
-                    <input class="input-field" type="password" name="pass_rep" placeholder="Repita su contraseña:" required>
+                    <input class="input-field" type="password" id="password_rep" name="password_rep" placeholder="Repita su contraseña:" required>
                 </div>
 
                 <button type="submit" class="btn" value="Ingresar">Actualizar datos</button>

@@ -24,54 +24,63 @@
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
                 <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
-                </div>
+            </div>
         </ul>
     </nav>
 </div>
 </header>
 <section class="contenido">
+
+    <!-- Ventanas emergentes (Pop-ups) -->
+
+    <?php 
+        require_once('popups/quitar-alumno-grupo.php'); 
+        require_once('popups/modificar-alumno-grupo.php'); 
+        require_once('popups/borrar-grupo.php'); 
+    ?>
+
+    <!-- Fin de ventanas emergentes -->
+
     <article>
         <h1>GRUPOS DE LAS MATERIAS</h1>
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
-            <form class="search-container">
-                <div class="select-container sc">
-                    <h4>Materia:</h4>
-                    <select name="materias" class="materias">
-                        <option value="">Lenguajes interpretados en el servidor</option>
-                    </select>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
+                <div class="search-container">
+                    <div class="select-container sc">
+                        <h4>Materia:</h4>
+                        <select name="materia" id="materia" class="materias" required>
+                        </select>
+                    </div>
+                    <div class="select-container sc">
+                        <h4>Grupo:</h4>
+                        <select name="grupo" id="grupo" required>
+                        </select>
+                    </div>
                 </div>
-                <div class="select-container sc">
-                    <h4>Grupo:</h4>
-                    <select name="grupo" >
-                        <option value="" >01T</option>
-                    </select>
-                </div>
-                <div class="select-container">
-                    <input type="submit" id="btn-repo">
-                    <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                <div class="search-container">
+                    <div class="select-container sc">
+                        <input type="submit" id="btn-repo">
+                        <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                    </div>
                 </div>
             </form>
         </div>
 
         <div class="formtab">
-            <h2>Información de la materia actual</h2>
+            <h2>Información de las materias actuales</h2>
             <div class="bar-scroll">
-            <table class="tablas">
+            <table class="tablas" id="materias-actuales">
                 <thead>
                     <tr>
                         <th>Codigo</th>
                         <th>Nombre de la materia</th>
                         <th>Grupo de la materia</th>
-                        <th>Opciones</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>LIS104</td>
-                    <td>Lenguajes Intrepretados en el servidor</td>
-                    <td>1T</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr>                     
+
+                <?php echo mostrarMateriasTabla($query1); ?>
+
             </table>
         </div>
         </div>
@@ -83,65 +92,36 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre del alumno</th>
-                        <th>Grupo del alumno</th>
-                        <th>Opciones</th>
+                        <th>Correo electronico</th>
+                        <th>Grupo del alumno</th>                        
                     </tr>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>[Nombre del alumno 1]</td>
-                    <td>Grupo 1</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>2</td>
-                    <td>[Nombre del alumno 2]</td>
-                    <td>Grupo 2</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>3</td>
-                    <td>[Nombre del alumno 3]</td>
-                    <td>[Sin grupo]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>4</td>
-                    <td>[Nombre del alumno 4]</td>
-                    <td>[Sin grupo]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>5</td>
-                    <td>[Nombre del alumno 5]</td>
-                    <td>Grupo 1</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
+
+                <?php echo mostrarAlumnosTabla($query2); ?>
+
             </table>
         </div>
         </div>
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
-            <form class="search-container sc-tab" action="crear_grupos.php">
-                <div class="select-container sc">
+            <div class="search-container sc-tab">
+                <form class="select-container sc">
                     <h4>Grupo:</h4>
-                    <select name="lista-grupos" class="grupo-creacion">
-                        <option value="">Grupo 1</option>
-                        <option value="">Grupo 2</option>
+                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="mostrarAlumnosGrupo();">
+                        <?php echo mostrarGruposTabla($query4); ?>
                     </select>
-                </div>
-                <div class="select-container">
-                    <a href="#" class="trash"><i class="fa fa-trash icon icon-delete"> </i></a>   
-                </div>
 
+                    <!-- <input type="submit" id="btn-borrar-grupo">
+                    <label for="btn-borrar-grupo"><i class="fa fa-trash icon icon-delete"> </i></label> -->
+                    <a href='#' class='btn-popup-borrar-grupo' group='' id="btn-popup-borrar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
+                </form>
                 <div class="select-container sc">
-                <input type="submit" id="btn-grupos">
-                    <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
+                    <a href="crear_grupos.php" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></a>
                 </div>
-            </form>
+            </div>
             <div class="bar-scroll">
-            <table class="tablas">
+            <table class="tablas" id="alumnos-grupo">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -151,35 +131,8 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>1</td>
-                    <td>[Nombre del alumno 1]</td>
-                    <td>[Correo del alumno 1]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>2</td>
-                    <td>[Nombre del alumno 2]</td>
-                    <td>[Correo del alumno 2]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>3</td>
-                    <td>[Nombre del alumno 3]</td>
-                    <td>[Correo del alumno 3]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>4</td>
-                    <td>[Nombre del alumno 4]</td>
-                    <td>[Correo del alumno 4]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>5</td>
-                    <td>[Nombre del alumno 5]</td>
-                    <td>[Correo del alumno 5]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
+                    <td colspan='4' class='tabla-vacia'>No hay alumnos en este grupo de proyecto</td>
+                </tr>
             </table>
         </div>
         </div>
@@ -189,5 +142,12 @@
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>
+
+<!-- Scripts a ejecutar en la pagina -->
+
+<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="js/ajax.js"></script>
+<script src="js/popup.js"></script>
+
 </body>
 </html>
