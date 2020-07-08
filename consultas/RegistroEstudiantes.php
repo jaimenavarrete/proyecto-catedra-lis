@@ -1,6 +1,10 @@
 <?php
 if(isset($_POST['submit'])){
-  include("cn.php");
+  $server = "localhost";
+  $user = "root";
+  $passwd = "abc123";
+  $db = "proyectolis";
+  $conexion = new mysqli($server, $user, $passwd, $db);
   if($conexion->connect_error){
       die("Error de conexión a la base de datos: " . $conexion->connect_error);
     }else{
@@ -23,7 +27,7 @@ if(isset($_POST['submit'])){
         if($conexion->query($query) === TRUE){
           echo "Usuario registrado con éxito<br>"; //Si el query se realiza con éxito
           echo "<span style=\"color:Green;font:bold 15pt 'Lucida Sans';\"><a
-          href=../registro.php>Nuevo Registro</a>";
+          href=registro.php>Nuevo Registro</a>";
         }else{ //Si el query presenta un error
           "Error: " . $query . "<br>" . $conexion->error;
         }

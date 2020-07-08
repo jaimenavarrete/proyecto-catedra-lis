@@ -7,6 +7,8 @@ if(isset($_POST['submit'])){
   $db = "proyectolis";
   //Variable que almacena la cadena de conexión a la base de datos
   $conexion = new mysqli($server, $user, $passwd, $db);
+  date_default_timezone_set('America/El_Salvador');
+  $fecha = Date('H:i:s');
   $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;
   $contra = isset($_POST['Passwd']) ? $_POST['Passwd'] : 0;
   if($conexion->connect_error){
@@ -15,16 +17,25 @@ if(isset($_POST['submit'])){
     //Consulta de tipo INSERT para ingresar registro de nuevo usuario
     Session_start();
     //Queries para validar si la información ingresada corresponde a un estudiante
-    $query_estudiante="SELECT Usuario_estudiante, Pass, Codigo_rol, Activo, Hora_bloqueo FROM estudiante WHERE Usuario_estudiante='$usuario'";
+    $query_estudiante="SELECT Usuario_estudiante, Pass, Nombres_estudiante, Correo, Codigo_rol, Activo, Hora_bloqueo FROM estudiante WHERE Usuario_estudiante='$usuario'";
     $resultado_estudiante = $conexion->query($query_estudiante);
     //Queries para validar si la información ingresada corresponde a un empleado
-    $query_empleado="SELECT Usuario_empleado, Pass_empleado, Codigo_rol, Activo, Hora_bloqueo FROM empleado WHERE Usuario_empleado='$usuario'";
+    $query_empleado="SELECT Usuario_empleado, Pass_empleado, Nombres_empleado, Correo, Codigo_rol, Activo, Hora_bloqueo FROM empleado WHERE Usuario_empleado='$usuario'";
     $resultado_empleado = $conexion->query($query_empleado);
     if($resultado_estudiante->num_rows > 0){ //Si la consulta devuelve resultados
       while($row = $resultado_estudiante->fetch_assoc()){
       if($row["Activo"] == 0){ //Si el usuario ingresado se encuentra inactivo no lo deja pasar
         echo "Su cuenta se encuentra bloqueada desde las " . $row["Hora_bloqueo"] . " intente más tarde <br>";
-        echo "<a href=login.php>Volver a la página anterior inicio</a>";
+                    $horabd= new DateTime($row["Hora_bloqueo"]); //Convertimos la hora almacenada en la base de datos a formato DateTime
+                    $horasystem= new DateTime($fecha); //Convertimos la hora del sistema a formato DateTime
+                    $diferencia = $horabd->diff($horasystem); //Diferencia de hora de bloqueo con hora actual
+                    echo $diferencia->format('Tiempo transcurrido: %H horas %i minutos %s segundos ').PHP_EOL;echo "<br>";
+                    $totalMinutos=($diferencia->d * 24 * 60) + ($diferencia->h * 60) + $diferencia->i;//Calculo de minutos aparte para crear condición de reactivación
+                    if($totalMinutos>=60){ //Si los minutos son igual o mayor a 60, entonces ya pasó una hora y debe reactivarse el usuario
+                      $reactivar = "UPDATE empleado SET Activo='1',Hora_bloqueo=NULL WHERE Usuario_empleado='$usuario'"; //Consulta para reactivar el usuario
+                      $conexion->query($reactivar); //Se reactiva el usuario
+                    }
+                  echo "<a href=login.php>Regresar</a>";
       }else{
         $verificar_password = password_verify($contra, $row["Pass"]); //Verificación del hash de la contraseña
           switch($verificar_password){ //Valores booleanos en condicional
@@ -37,20 +48,20 @@ if(isset($_POST['submit'])){
               if($_SESSION['cont'] >= 3){ //Si la variable sesión llega 3 intentos, la cuenta se bloquea y se destruye la sesión
                   //Consulta de tipo UPDATE
                 session_destroy();
-                date_default_timezone_set('America/El_Salvador');
-                $fecha = Date('h:i:s');
                 //Query que actualiza el estado de la cuenta de usuario de ACTIVO a INACTIVO (1 -> 0)
                 $desactivar = "UPDATE estudiante SET Activo='0' WHERE Usuario_estudiante='$usuario'";
                 $Hora_Bloqueo = "UPDATE estudiante SET Hora_bloqueo='$fecha' WHERE Usuario_estudiante='$usuario'";
                 if($conexion->query($desactivar)===TRUE && $conexion->query($Hora_Bloqueo)===TRUE){
-                  echo "SU CUENTA HA SIDO BLOQUEADA PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS <br>";
-                  //AQUI DEBE IR EL CODIGO DE ENVIO DE CORREO
+                  echo "SU CUENTA HA SIDO BLOQUEADA A LAS " . $fecha . " PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS PERMITIDOS<br>";
+                  require_once('consultas/Notificaciones.php'); //Se invoca script donde está la función que notifica del bloqueo
+                  //Se envía por correo notificación de bloqueo. Pasando por parámetro el correo, nombre de estudiante y hora de bloqueo a la función.
+                  NotificacionBloqueo($row["Correo"], $row["Nombres_estudiante"], $fecha);
                   echo "<a href=login.php>Volver al inicio</a>";
                 }
               }else{
                   echo "Contraseña incorrecta <br>";
+                  echo "<a href=login.php>Intentar de nuevo</a>";
               }
-                echo "<a href=login.php>Intentar de nuevo</a>";
                 break;
             case 1 : //1 --> El hash de las contraseñas si coinciden
                 echo "Inicio de sesión como estudiante <br>";
@@ -62,10 +73,19 @@ if(isset($_POST['submit'])){
     }elseif($resultado_empleado->num_rows > 0){
       while($row = $resultado_empleado->fetch_assoc()){
         if($row["Activo"] == 0){ //Si el usuario ingresado se encuentra inactivo no lo deja pasar
-          echo "Su cuenta se encuentra bloqueada desde las " . $row["Hora_bloqueo"] . " intente más tarde <br>";
-          echo "<a href=login.php>Volver a la página anterior inicio</a>";
+          echo "Su cuenta se encuentra bloqueada desde las " . $row["Hora_bloqueo"] . " intente dentro de una hora <br>";
+                    $horabd= new DateTime($row["Hora_bloqueo"]); //Convertimos la hora almacenada en la base de datos a formato DateTime
+                    $horasystem= new DateTime($fecha); //Convertimos la hora del sistema a formato DateTime
+                    $diferencia = $horabd->diff($horasystem); //Diferencia de hora de bloqueo con hora actual
+                    echo $diferencia->format('Tiempo transcurrido: %H horas %i minutos %s segundos ').PHP_EOL;echo "<br>";
+                    $totalMinutos=($diferencia->d * 24 * 60) + ($diferencia->h * 60) + $diferencia->i;//Calculo de minutos aparte para crear condición de reactivación
+                    if($totalMinutos>=60){ //Si los minutos son igual o mayor a 60, entonces ya pasó una hora y debe reactivarse el usuario
+                      $reactivar = "UPDATE empleado SET Activo='1',Hora_bloqueo=NULL WHERE Usuario_empleado='$usuario'"; //Consulta para reactivar el usuario
+                      $conexion->query($reactivar); //Se reactiva el usuario
+                    }
+                    echo "<a href=login.php>Regresar</a>";
         }else{
-          $verificar_password = password_verify($contra, $row["Pass"]); //Verificación del hash de la contraseña
+          $verificar_password = password_verify($contra, $row["Pass_empleado"]); //Verificación del hash de la contraseña
             switch($verificar_password){ //Valores booleanos en condicional
               case 0 : //0 --> El hash de las contraseñas no coinciden
                 if(!isset($_SESSION['cont'])){ //Variable de sesion para contar cantidad de intentos fallidos
@@ -76,20 +96,20 @@ if(isset($_POST['submit'])){
                 if($_SESSION['cont'] >= 3){ //Si la variable sesión llega 3 intentos, la cuenta se bloquea y se destruye la sesión
                     //Consulta de tipo UPDATE
                   session_destroy();
-                  date_default_timezone_set('America/El_Salvador');
-                  $fecha = Date('h:i:s');
                   //Query que actualiza el estado de la cuenta de usuario de ACTIVO a INACTIVO (1 -> 0)
                   $desactivar = "UPDATE empleado SET Activo='0' WHERE Usuario_empleado='$usuario'";
                   $Hora_Bloqueo = "UPDATE empleado SET Hora_bloqueo='$fecha' WHERE Usuario_empleado='$usuario'";
                   if($conexion->query($desactivar)===TRUE && $conexion->query($Hora_Bloqueo)===TRUE){
-                    echo "SU CUENTA HA SIDO BLOQUEADA PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS <br>";
-                    //AQUI DEBE IR EL CODIGO DE ENVIO DE CORREO
+                    echo "SU CUENTA HA SIDO BLOQUEADA A LAS " . $fecha . " PORQUE HA SUPERADO EL LÍMITE DE INTENTOS FALLIDOS PERMITIDOS<br>";
+                    require_once('consultas/Notificaciones.php'); //Se invoca script donde está la función que notifica del bloqueo
+                    //Se envía por correo notificación de bloqueo. Pasando por parámetro el correo, nombre de estudiante y hora de bloqueo.
+                    NotificacionBloqueo($row["Correo"], $row["Nombres_empleado"], $fecha);
                     echo "<a href=login.php>Volver al inicio</a>";
                   }
                 }else{
                     echo "Contraseña incorrecta <br>";
+                    echo "<a href=login.php>Intentar de nuevo</a>";
                 }
-                  echo "<a href=login.php>Intentar de nuevo</a>";
                   break;
               case 1 : //1 --> El hash de las contraseñas si coinciden
                   if($row["Codigo_rol"] == 1){//Valida si el usuario es docente o administrador
