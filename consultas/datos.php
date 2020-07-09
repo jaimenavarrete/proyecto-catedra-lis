@@ -613,10 +613,10 @@ if(!empty($_REQUEST['id_gr'])){
        $tipo=$_POST['tipo'];
        $codigo_materia=$_POST['codigo_ma'];
        $cupo=$_POST['cupo'];
-       $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE (Nombre_grupo='$nombre_gr'  AND Codigo_grupo != '$codigo_gr')");
+       $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
        $result=mysqli_fetch_array($query);
        if($result > 0){
-         echo "Esta carrera ya se encuentra registrada.";
+         echo "El grupo ya se encuentra registrado.";
        }else{
            $query_update=mysqli_query($conexion,"UPDATE grupo SET  Nombre_grupo='$nombre_gr',Tipo='$tipo',Nombre_grupo='$nombre_gr', Codigo_materia='$codigo_materia',cupos='$cupo' WHERE Codigo_grupo ='$codigo_gr'");
            if($query_update){
@@ -682,6 +682,235 @@ if(!empty($_REQUEST['id_gr'])){
  }
 
 }
+
+/*Actualiza datos de la tabla empleado*/
+if(!empty($_REQUEST['id_emp'])){
+
+
+  if(!empty($_POST)){
+    $alert='';
+     if(empty($_POST['Edad']) || empty($_POST['Rol']) || empty($_POST['Correo']) || empty($_POST['Telefono'])){
+       echo "Todos los campos son obligatorios.";
+     }
+     else{
+       $usuario_emp=$_POST['Usuario'];
+       $nombre_emp=$_POST['Nombre'];
+       $nombre_emp=$_POST['Apellido'];
+       $edad=$_POST['Edad'];
+       $rol=$_POST['Rol'];
+       $correo=$_POST['Correo'];
+       $telefono=$_POST['Telefono'];
+       $pass=['Passwd'];
+       $passrep=['PasswdRep'];
+       if($pass != $passrep){
+        echo "Las contraseñas no coinciden";
+      }else{
+        $encriptada = password_hash($pass, PASSWORD_BCRYPT);
+
+       $query=mysqli_query($conexion,"SELECT * FROM empleado WHERE (Correo='$correo' AND Usuario_empleado != '$usuario_emp') OR (Telefono='$telefono' AND Usuario_empleado != '$usuario_emp') ");
+       $result=mysqli_fetch_array($query);
+      }
+       if($result > 0){
+         echo "Este usuario ya se encuentra registrada.";
+       }else{
+
+        if(empty($_POST['Passwd']) && empty($_POST['PasswdRep'])){
+
+          $query_update=mysqli_query($conexion,"UPDATE empleado SET  Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
+
+        }else{
+
+          $query_update=mysqli_query($conexion,"UPDATE empleado SET Pass_empleado='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
+
+        }
+           if($query_update){
+             echo "Usuario actualizado.";
+             header("Location: ../registro_interno.php");
+           }
+           else{
+           echo "Error al actualizar la información.";
+           }
+        }
+     }
+  }
+ $usuario_emp=$_REQUEST['id_emp'];
+ $query=mysqli_query($conexion,"SELECT * FROM empleado WHERE Usuario_empleado='$usuario_emp'");
+ $result=mysqli_num_rows($query);
+ if($result > 0){
+   while($mostrar = mysqli_fetch_array($query)){
+    $usuario_emp=$mostrar['Usuario_empleado'];
+     $nombre_emp=$mostrar['Nombres_empleado'];
+     $apellido_emp=$mostrar['Apellidos_empleado'];
+     $edad=$mostrar['Edad'];
+     $correo=$mostrar['Correo'];
+     $telefono=$mostrar['Telefono'];
+   }
+   echo "<div class=\"formtab\">
+   <h2>Actualizar datos de empleado</h2>
+
+   <form class=\"form-horizontal\"  name=\"formulario\" method=\"POST\">
+       <div class=\"input-container\">
+           <i class=\"fa fa-user-circle-o icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Usuario\" placeholder=\"Usuario:\" value=\"$usuario_emp\" readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-address-card icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Nombre\" placeholder=\"Nombre:\" value=\"$nombre_emp\" required readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-address-card icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Apellido\" placeholder=\"Apellido:\" value=\"$apellido_emp\" required readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-birthday-cake icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"number\" name=\"Edad\" placeholder=\"Edad:\" min=\"0\" max=\"100\" value=\"$edad\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-certificate icon icon-login-registro\"></i>
+           <select name=\"Rol\" class=\"input-field\">";
+           include("consultas.php");
+            while($mostrar=mysqli_fetch_array($resultado)){;
+           echo "<option value=\"";echo $mostrar['Codigo_rol'];"";echo "\">"; echo $mostrar['Nombre_rol'];"</option>";
+            }
+       echo "</select>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-envelope icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Correo\" placeholder=\"Email:\" value=\"$correo\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-phone icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Telefono\" placeholder=\"Numero de teléfono:\" value=\"$telefono\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-key icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"password\" name=\"Passwd\" placeholder=\"Ingrese su contraseña:\">
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-key icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"password\" name=\"PasswdRep\" placeholder=\"Repita su contraseña:\">
+       </div>
+
+       <button type=\"submit\" class=\"btn\" name=\"submit\" value=\"Actualizar\">Actualizar</button>
+   </form>
+   <div><br><br><br><br>";
+ }
+ else{
+  header("Location: ../registro_interno.php");
+ }
+
+}
+
+
+/*Actualiza datos de la tabla estudiante*/
+if(!empty($_REQUEST['id_est'])){
+
+
+  if(!empty($_POST)){
+    $alert='';
+     if(empty($_POST['Edad']) || empty($_POST['Correo']) || empty($_POST['Telefono'])){
+       echo "Todos los campos son obligatorios.";
+     }
+     else{
+       $usuario_est=$_POST['Usuario'];
+       $nombre_est=$_POST['Nombre'];
+       $nombre_est=$_POST['Apellido'];
+       $edad=$_POST['Edad'];
+       $correo=$_POST['Correo'];
+       $telefono=$_POST['Telefono'];
+       $pass=['Passwd'];
+       $passrep=['PasswdRep'];
+       if($pass != $passrep){
+        echo "Las contraseñas no coinciden";
+      }else{
+        $encriptada = password_hash($pass, PASSWORD_BCRYPT);
+
+       $query=mysqli_query($conexion,"SELECT * FROM estudiante WHERE (Correo='$correo' AND Usuario_estudiante != '$usuario_est') OR (Telefono='$telefono' AND Usuario_estudiante != '$usuario_est') ");
+       $result=mysqli_fetch_array($query);
+      }
+       if($result > 0){
+         echo "Este usuario ya se encuentra registrada.";
+       }else{
+
+        if(empty($_POST['Passwd']) && empty($_POST['PasswdRep'])){
+
+          $query_update=mysqli_query($conexion,"UPDATE estudiante SET  Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
+
+        }else{
+
+          $query_update=mysqli_query($conexion,"UPDATE estudiante SET Pass='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
+
+        }
+           if($query_update){
+             echo "Usuario actualizado.";
+             header("Location: ../registro_interno.php");
+           }
+           else{
+           echo "Error al actualizar la información.";
+           }
+        }
+     }
+  }
+ $usuario_est=$_REQUEST['id_est'];
+ $query=mysqli_query($conexion,"SELECT * FROM estudiante WHERE Usuario_estudiante='$usuario_est'");
+ $result=mysqli_num_rows($query);
+ if($result > 0){
+   while($mostrar = mysqli_fetch_array($query)){
+    $usuario_est=$mostrar['Usuario_estudiante'];
+     $nombre_est=$mostrar['Nombres_estudiante'];
+     $apellido_est=$mostrar['Apellidos_estudiante'];
+     $edad=$mostrar['Edad'];
+     $correo=$mostrar['Correo'];
+     $telefono=$mostrar['Telefono'];
+   }
+   echo "<div class=\"formtab\">
+   <h2>Actualizar datos de empleado</h2>
+
+   <form class=\"form-horizontal\"  name=\"formulario\" method=\"POST\">
+       <div class=\"input-container\">
+           <i class=\"fa fa-user-circle-o icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Usuario\" placeholder=\"Usuario:\" value=\"$usuario_est\" readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-address-card icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Nombre\" placeholder=\"Nombre:\" value=\"$nombre_est\" required readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-address-card icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Apellido\" placeholder=\"Apellido:\" value=\"$apellido_est\" required readonly>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-birthday-cake icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"number\" name=\"Edad\" placeholder=\"Edad:\" min=\"0\" max=\"100\" value=\"$edad\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-envelope icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Correo\" placeholder=\"Email:\" value=\"$correo\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-phone icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"text\" name=\"Telefono\" placeholder=\"Numero de teléfono:\" value=\"$telefono\" required>
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-key icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"password\" name=\"Passwd\" placeholder=\"Ingrese su contraseña:\">
+       </div>
+       <div class=\"input-container\">
+           <i class=\"fa fa-key icon icon-login-registro\"></i>
+           <input class=\"input-field\" type=\"password\" name=\"PasswdRep\" placeholder=\"Repita su contraseña:\">
+       </div>
+
+       <button type=\"submit\" class=\"btn\" name=\"submit\" value=\"Actualizar\">Actualizar</button>
+   </form>
+   <div><br><br><br><br>";
+ }
+ else{
+  header("Location: ../registro_interno.php");
+ }
+
+}
+
+
 
 
 mysqli_close($conexion);
