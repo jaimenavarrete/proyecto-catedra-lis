@@ -1,21 +1,24 @@
 <?php
 include("cn.php");
 session_start();
-/*
-if(!isset($_SESSION['id_usuario'])){
+
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 2){
     header("Location:index.php");
-}*/
+}else{
+    $usuario = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+}
 
-$iduser="jm1";/* esta parte solo es de ejemplo se modificara despues por $_SESSION['id_usuario'] que tomara el valor de la ventana de login*/ 
+if($rol == 1){
+    $consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
+    Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$usuario'";    
+}else{
+    $consulta="SELECT Usuario_empleado,Pass_empleado,Nombres_empleado,Apellidos_empleado,
+    Edad,Correo,Telefono FROM empleado WHERE Usuario_empleado='$usuario'";
+}
 
-$consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
-Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$iduser'";
 $resultado=$conexion->query($consulta);
 $row=$resultado->fetch_assoc();
-
-$consulta1="SELECT Usuario_estudiante, Codigo_grupo, Codigo_materia, Nombre_materia FROM inscripcion INNER JOIN materia 
-USING (Codigo_materia) INNER JOIN estudiante USING (Usuario_estudiante) WHERE Usuario_estudiante='$iduser'";
-$resultado1=mysqli_query($conexion,$consulta1);
 
 ?>
 
@@ -44,7 +47,7 @@ $resultado1=mysqli_query($conexion,$consulta1);
                 <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
                 <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
-                <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
+                <li class="cerrar-m" ><a href="login.php"><?php session_destroy();?>Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
         </ul>
     </nav>
@@ -68,54 +71,12 @@ $resultado1=mysqli_query($conexion,$consulta1);
             <div class="formtab">
                 <h2>Datos personales</h2>
                 <table class="tabla-datos-perfil">
-                    <tr>
-                        <td><h4>Usuario:</h4></td>  
-                        <td><p><?php echo utf8_decode($row['Usuario_estudiante']); ?></p></td>                     
-                    </tr>
-                    <tr>
-                        <td><h4>Nombres:</h4></td>
-                        <td><p><?php echo utf8_decode($row['Nombres_estudiante']); ?></p></td>                        
-                    </tr>
-                    <tr>
-                        <td><h4>Apellidos:</h4></td>      
-                        <td><p><?php echo utf8_decode($row['Apellidos_estudiante']); ?></p></td>                   
-                    </tr>
-                    <tr>
-                        <td><h4>Email:</h4></td> 
-                        <td><p><?php echo utf8_decode($row['Correo']); ?></p></td>                         
-                    </tr>
-                    <tr>
-                        <td><h4>Edad:</h4></td>  
-                        <td><p><?php echo utf8_decode($row['Edad']); ?></p></td>                        
-                    </tr>
-                    <tr>
-                        <td><h4>Número de teléfono:</h4></td>
-                        <td><p><?php echo utf8_decode($row['Telefono']); ?></p></td>  
-                    </tr>
+                    <?php
+                        require_once('queries/llenar_grupos.php');
+                    ?>
                 </table>
             </div>
-            <div class="formtab">
-                <h2>Materias inscritas</h2>
-               
-               <div class="bar-scroll">
-               
-                <div class="materias-container">
-                <?php while($contador=mysqli_fetch_array($resultado1)){
-                ?>
-                    <div class="formm">
-                        <h4>Codigo: <span><?php echo $contador['Codigo_materia'] ?></span> Grupo: <span><span><?php echo $contador['Codigo_grupo'] ?></span></h4>
-                        <h4>Nombre:</h4>
-                        <h3><span><?php echo $contador['Nombre_materia'] ?></h3>
-                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
-                    </div>
-                <?php 
-                }
-                ?>
-                    </div>
-             
-                </div>
-               
-            </div>
+            
     </article>
 </section>
 

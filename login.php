@@ -140,8 +140,7 @@ if(isset($_POST['submit'])){
                     header("Location: perfil.php");
                   }elseif($row["Codigo_rol"] == 2){
                     $_SESSION["rol"] = $row["Codigo_rol"];
-                    // header("Location: perfil_docente.php");
-                    header("Location: perfil.php");
+                    header("Location: crear_grupos.php");
                   }
                   break;
               }//Fin switch de verificar contraseña

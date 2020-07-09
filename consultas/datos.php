@@ -1,5 +1,5 @@
 <?php
-include("cn.php");
+include("../cn.php");
 /*Permite llamar los diferentes inputs y section option a una variable para poder realizar insert a la tabla empleado*/
  if(isset($_POST['submit'])){
     $Usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;

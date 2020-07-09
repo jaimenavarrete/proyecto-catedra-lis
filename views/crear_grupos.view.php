@@ -1,3 +1,12 @@
+<?php
+
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 2){
+    header("Location:index.php");
+}else{
+    $usuario = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

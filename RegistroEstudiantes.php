@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
       }else{
         $encriptada = password_hash($contra, PASSWORD_BCRYPT);
         $query="INSERT INTO estudiante (Usuario_estudiante, Pass, Nombres_estudiante, Apellidos_estudiante, Edad, Correo, Telefono, Codigo_rol, Activo)
-        VALUES ('$Usuario', '$encriptada', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Telefono', '3', '1')";
+        VALUES ('$Usuario', '$encriptada', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Telefono', '1', '1')";
         if($conexion->query($query) === TRUE){
           echo "Usuario registrado con éxito<br>"; //Si el query se realiza con éxito
           echo "<span style=\"color:Green;font:bold 15pt 'Lucida Sans';\"><a

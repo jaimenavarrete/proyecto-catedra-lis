@@ -1,4 +1,5 @@
 <?php
+
 //Llamada a la conexión a la base de datos
 require_once ("database/conn.php");
 //Lista de estudiantes inscritos en una materia
@@ -105,13 +106,15 @@ if(isset($_GET['create_groups']) && isset($_GET["cupos"])){
 
     //Crear los grupos, primer for para la cantidad de grupos
     $added = [];
+    
+    $empleado = $_SESSION['usuario'];
 
     for ($i=0; $i < $groups; $i++) {
         echo ("Grupo ".($i+1).": ");
         $name = get_name($s1, $s2, $con);
         $nombre_grupo = $name[0];
         $numero_grupo = $name[1]+1;
-        insert_group($con, $nombre_grupo, "LF155643", $s1, $s2, $numero_grupo);
+        insert_group($con, $nombre_grupo, $empleado, $s1, $s2, $numero_grupo);
         //Segundo for para los cupos de cada grupo
         for ($j=0; $j < $n; $j++) { 
             $idx = get_idx(count($all_students), $added);
