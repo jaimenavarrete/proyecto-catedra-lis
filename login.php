@@ -41,8 +41,14 @@ if(isset($_POST['submit'])){
                       NotificacionIntentos($row["Correo"], $row["Nombres_estudiante"], $fecha);
                     }
       }else{
-        //$row["Pass"] = password_hash($row["Pass"], PASSWORD_DEFAULT);
+
+
+
+        $row["Pass"] = password_hash($row["Pass"], PASSWORD_DEFAULT);
         $verificar_password = password_verify($contra, $row["Pass"]); //Verificación del hash de la contraseña
+
+
+
         echo $verificar_password;
           switch($verificar_password){ //Valores booleanos en condicional
             case 0 : //0 --> El hash de las contraseñas no coinciden
@@ -71,7 +77,8 @@ if(isset($_POST['submit'])){
                 $_SESSION["usuario"] = $row["Usuario_estudiante"];
                 $_SESSION["rol"] = $row["Codigo_rol"];
                 // header("Location: perfil_estudiante.php");
-                header("Location: perfil_estudiante.php");
+                // header("Location: perfil_estudiante.php");
+                header("Location: perfil.php");
                 break;
             }//Fin switch de verificar contraseña
           }//Fin else de NO bloqueo
@@ -93,8 +100,14 @@ if(isset($_POST['submit'])){
                       NotificacionIntentos($row["Correo"], $row["Nombres_empleado"], $fecha);
                     }
         }else{
-          //$row["Pass_empleado"] = password_hash($row["Pass_empleado"], PASSWORD_DEFAULT);
+
+
+
+          $row["Pass_empleado"] = password_hash($row["Pass_empleado"], PASSWORD_DEFAULT);
           $verificar_password = password_verify($contra, $row["Pass_empleado"]); //Verificación del hash de la contraseña
+
+
+
             switch($verificar_password){ //Valores booleanos en condicional
               case 0 : //0 --> El hash de las contraseñas no coinciden
                 if(!isset($_SESSION['cont'])){ //Variable de sesion para contar cantidad de intentos fallidos
@@ -123,10 +136,12 @@ if(isset($_POST['submit'])){
                   $_SESSION["usuario"] = $row["Usuario_empleado"];
                   if($row["Codigo_rol"] == 3){//Valida si el usuario es docente o administrador
                     $_SESSION["rol"] = $row["Codigo_rol"];
-                    header("Location: perfil_administrador.php");
+                    // header("Location: perfil_administrador.php");
+                    header("Location: perfil.php");
                   }elseif($row["Codigo_rol"] == 2){
                     $_SESSION["rol"] = $row["Codigo_rol"];
-                    header("Location: perfil_docente.php");
+                    // header("Location: perfil_docente.php");
+                    header("Location: perfil.php");
                   }
                   break;
               }//Fin switch de verificar contraseña
