@@ -44,7 +44,7 @@
 
         <div class="contenedor-g">
         <div class="boton-g"><a href="carreras.php">Carreras     </a><i class="fa fa-list-alt" style="font-size:45px;"></i></div>
-        <div class="boton-g"><a href="grupos_admin.php">Grupos     </a><i class="fa fa-users" style="font-size:45px;"></i></div>
+        <div class="boton-g"><a href="grupos.php">Grupos     </a><i class="fa fa-users" style="font-size:45px;"></i></div>
         </div>
 
         </div>

@@ -233,6 +233,11 @@ section{
   border-radius:6px;
 }
 
+.btn-a{
+  color:#fff;
+  text-decoration: none;
+}
+
 /* Botón específico para la página de inscripción */
 .btn-inscribir {
   margin: 60px 0 30px 0;
