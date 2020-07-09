@@ -12,7 +12,7 @@
 <body id="freg">
 <section class="frm-l">
     <article>
-        <form action="InicioSesion.php" class="form-horizontal" name="formulario" class="frm-usu" method="post">
+        <form action="login.php" class="form-horizontal" name="formulario" class="frm-usu" method="post">
             <div>
                 <h2>Inicio de sesión</h2>
             </div>
@@ -23,11 +23,6 @@
             <div class="input-container">
                 <i class="fa fa-key icon icon-login-registro"></i>
                 <input class="input-field" type="password" name="Passwd" placeholder="Ingrese su contraseña:" required>
-            </div>
-            <div class="form-options">
-                <label for="recuerdame">Recuérdame</label>
-                <input type="checkbox" name="recordar" id="recuerdame">
-                <a href="#" class="olvidar">¿Olvidaste tu contraseña?</a>
             </div>
             <input type="submit" class="btn" value="Iniciar Sesión" name="submit">
             <div class="form-options">
