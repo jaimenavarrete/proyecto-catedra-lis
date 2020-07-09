@@ -38,6 +38,9 @@ if(mysqli_num_rows($query) > 0){
         $contar += 1;
     }
 }
+else {
+    $return = 0;
+}
 
 // Para evitar con caracteres especiales al generar el arreglo JSON
 echo json_encode($return, JSON_UNESCAPED_UNICODE);

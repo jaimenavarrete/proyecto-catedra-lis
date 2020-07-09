@@ -128,6 +128,7 @@ if(isset($_POST['submit'])){
       }//Fin while resultado_empleado
     }else{
             echo "El usuario ingresado no existe <br>";
+<<<<<<< HEAD
           }
       }
   $conexion->close();
@@ -136,3 +137,11 @@ if(isset($_POST['submit'])){
 }*/
 require 'views/login.view.php';
 ?>
+=======
+            echo "<a href=\"{$_SERVER['PHP_SELF']}\">Intentar de nuevo</a>";
+        }
+        $conexion->close();
+    ?>
+</body>
+</html>
+>>>>>>> 3931fec371fc7e5a38e0c6a1b00a9262b62d5aa7
