@@ -1,3 +1,22 @@
+<?php
+include("cn.php");
+
+$consulta1="SELECT * FROM materia";
+$resultado1=mysqli_query($conexion,$consulta1);
+
+/* Consulta para mostrar grupos de teoria */
+
+$consulta2="SELECT Nombre_grupo FROM grupo WHERE Tipo='0'";
+$resultado2=mysqli_query($conexion,$consulta2);
+
+/* Consulta para mostrar grupos de lab */
+
+$consulta3="SELECT Nombre_grupo FROM grupo WHERE Tipo='1'";
+$resultado3=mysqli_query($conexion,$consulta3);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,18 +58,26 @@
                 <div class="select-container">
                     <h4>Materia:</h4>
                     <select name="materias" id="materias" class="materias">
-                        <option value="">Matematica 1</option>
-                        <option value="">Matematica 2</option>
-                        <option value="">Matematica 3</option>
+                <?php while($contador=mysqli_fetch_array($resultado1)){
+                ?>
+                        <option value="<?php echo $contador['Nombre_materia'] ?>"><?php echo $contador['Nombre_materia'] ?></option>
+
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
 
                 <div class="select-container">
                     <h4>Grupo teoria:</h4>
                     <select name="grupo" id="grupo" class="materias">
-                        <option value="">01T</option>
-                        <option value="">04T</option>
-                        <option value="">02T</option>
+                <?php while($contador=mysqli_fetch_array($resultado2)){
+                ?>
+                        <option value="<?php echo $contador['Nombre_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
+                
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
             </div>
@@ -64,9 +91,13 @@
                 <div class="select-container">
                     <h4>Grupo laboratorio:</h4>
                     <select name="grupo" id="grupo" class="select_grupos_lab">
-                        <option value="">01L</option>
-                        <option value="">04L</option>
-                        <option value="">02L</option>
+                    <?php while($contador=mysqli_fetch_array($resultado3)){
+                ?>
+                        <option value="<?php echo $contador['Nombre_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
+                
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
             </div>

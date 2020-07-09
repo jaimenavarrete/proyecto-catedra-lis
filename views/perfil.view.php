@@ -1,21 +1,5 @@
 <?php
-include("cn.php");
-session_start();
-/*
-if(!isset($_SESSION['id_usuario'])){
-    header("Location:index.php");
-}*/
 
-$iduser="jm1";/* esta parte solo es de ejemplo se modificara despues por $_SESSION['id_usuario'] que tomara el valor de la ventana de login*/ 
-
-$consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
-Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$iduser'";
-$resultado=$conexion->query($consulta);
-$row=$resultado->fetch_assoc();
-
-$consulta1="SELECT Usuario_estudiante, Codigo_grupo, Codigo_materia, Nombre_materia FROM inscripcion INNER JOIN materia 
-USING (Codigo_materia) INNER JOIN estudiante USING (Usuario_estudiante) WHERE Usuario_estudiante='$iduser'";
-$resultado1=mysqli_query($conexion,$consulta1);
 
 ?>
 
@@ -60,7 +44,7 @@ $resultado1=mysqli_query($conexion,$consulta1);
                     </div>
 
                     <div class="btn-modificar-perfil">
-                    <input type="hidden" name="idusuario" value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>">
+                    <input type="hidden" name="idusuario" value="<?php echo ($row['Usuario_estudiante']); ?>">
                         <input type="submit" id="btn-repo">
                         <label for="btn-repo" class="btn">Modificar perfil<i class="fa fa-pencil icon" style="font-size:24px"></i></label>
                     </div>
@@ -71,27 +55,27 @@ $resultado1=mysqli_query($conexion,$consulta1);
                 <table class="tabla-datos-perfil">
                     <tr>
                         <td><h4>Usuario:</h4></td>  
-                        <td><p><?php echo utf8_decode($row['Usuario_estudiante']); ?></p></td>                     
+                        <td><p><?php echo ($row['Usuario_estudiante']); ?></p></td>                     
                     </tr>
                     <tr>
                         <td><h4>Nombres:</h4></td>
-                        <td><p><?php echo utf8_decode($row['Nombres_estudiante']); ?></p></td>                        
+                        <td><p><?php echo ($row['Nombres_estudiante']); ?></p></td>                        
                     </tr>
                     <tr>
                         <td><h4>Apellidos:</h4></td>      
-                        <td><p><?php echo utf8_decode($row['Apellidos_estudiante']); ?></p></td>                   
+                        <td><p><?php echo ($row['Apellidos_estudiante']); ?></p></td>                   
                     </tr>
                     <tr>
                         <td><h4>Email:</h4></td> 
-                        <td><p><?php echo utf8_decode($row['Correo']); ?></p></td>                         
+                        <td><p><?php echo ($row['Correo']); ?></p></td>                         
                     </tr>
                     <tr>
                         <td><h4>Edad:</h4></td>  
-                        <td><p><?php echo utf8_decode($row['Edad']); ?></p></td>                        
+                        <td><p><?php echo ($row['Edad']); ?></p></td>                        
                     </tr>
                     <tr>
                         <td><h4>Número de teléfono:</h4></td>
-                        <td><p><?php echo utf8_decode($row['Telefono']); ?></p></td>  
+                        <td><p><?php echo ($row['Telefono']); ?></p></td>  
                     </tr>
                 </table>
             </div>
@@ -104,10 +88,10 @@ $resultado1=mysqli_query($conexion,$consulta1);
                 <?php while($contador=mysqli_fetch_array($resultado1)){
                 ?>
                     <div class="formm">
-                        <h4>Codigo: <span><?php echo $contador['Codigo_materia'] ?></span> Grupo: <span><span><?php echo $contador['Codigo_grupo'] ?></span></h4>
+                        <h4>Codigo: <span><?php echo $contador['Codigo_materia'] ?></span> Grupo: <span><span><?php echo $contador['Nombre_grupo'] ?></span></h4>
                         <h4>Nombre:</h4>
                         <h3><span><?php echo $contador['Nombre_materia'] ?></h3>
-                        <a href="#" class="btn">Ver materia<i class="fa fa-arrow-circle-right icon"></i></a>
+                        
                     </div>
                 <?php 
                 }

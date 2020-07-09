@@ -9,9 +9,36 @@ $row=$resultado->fetch_assoc();
 
 /*  Modificar campos de la tablas */
 
-if(isset($_POST['btn_actualizar'])){
-        
+switch(true){
+
+    case isset($_POST['cumple']);
+    $años_alumno=$_POST['cumple'];
+    $actualizar="UPDATE estudiante SET Edad='$años_alumno' WHERE Usuario_estudiante='$id_usuario'";
+    break;
+
+    case isset($_POST['email']);
+
+    break;
+
+    case isset($_POST['telefono']);
+
+    break;
+
+    case isset($_POST['password']);
+
+    break;
+
+    default:
+
 }
+
+/*if(isset($_POST['cumple']) || isset($_POST['email']) || isset($_POST['telefono']) ||isset($_POST['password'])){
+    $años_alumno=$_POST['cumple'];
+    $email_alumno=$_POST['email'];
+    $telefono_alumno=$_POST['telefono'];
+    $pas_alumno=$_POST['password'];
+    
+}*/
 
 ?>
 
@@ -59,8 +86,8 @@ if(isset($_POST['btn_actualizar'])){
         <div class="formtab">
             <h2>Nuevos datos del usuario</h2>
 
-            <form action="modificar_usuario.php" class="form-horizontal" name="formulario" id="salario" method="post">
-                    <input class="input-field" type="hidden" id="usuario" name="usuario" placeholder="Usuario:" value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>" >
+            <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
+                    <input class="input-field" type="hidden" id="usuario" name="usuario" placeholder="Usuario:"  value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>" >
                 
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
@@ -72,15 +99,15 @@ if(isset($_POST['btn_actualizar'])){
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Edad" value="<?php echo utf8_decode($row['Edad']); ?>" required>
+                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Edad" >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
-                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" value="<?php echo utf8_decode($row['Correo']); ?>" required>
+                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-phone icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" value="<?php echo utf8_decode($row['Telefono']); ?>" required>
+                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>

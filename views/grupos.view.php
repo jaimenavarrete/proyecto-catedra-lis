@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,47 +35,39 @@
         <h1>GRUPOS DE LAS MATERIAS</h1>
         <div class="formtab">
             <h2>Búsqueda de grupos por materia</h2>
-            <form class="search-container">
+            <form class="search-container"  method="post">
                 <div class="select-container sc">
                     <h4>Materia:</h4>
                     <select name="materias" class="materias">
-                        <option value="">Lenguajes interpretados en el servidor</option>
+            <?php while($contador=mysqli_fetch_array($resultado1)){
+                ?>
+                        <option><?php echo $contador['Nombre_materia']?></option>
+
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
                 <div class="select-container sc">
                     <h4>Grupo:</h4>
-                    <select name="grupo" >
-                        <option value="" >01T</option>
+                    <select name="grupo">
+                <?php while($contador1=mysqli_fetch_array($resultado2))
+                {
+                ?>
+                        <option value="<?php echo $contador1['Nombre_grupo'] ?>" ><?php echo $contador1['Nombre_grupo'] ?></option>
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
                 <div class="select-container">
                     <input type="submit" id="btn-repo">
-                    <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                    <label for="btn-repo" class="btn btn-g" name="bt_mostrar">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
                 </div>
             </form>
         </div>
 
-        <div class="formtab">
-            <h2>Información de la materia actual</h2>
-            <div class="bar-scroll">
-            <table class="tablas">
-                <thead>
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Nombre de la materia</th>
-                        <th>Grupo de la materia</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>LIS104</td>
-                    <td>Lenguajes Intrepretados en el servidor</td>
-                    <td>1T</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr>                     
-            </table>
-        </div>
-        </div>
+       
         <div class="formtab">
             <h2>Información de los alumnos de la materia actual</h2>
             <div class="bar-scroll">
@@ -84,39 +77,26 @@
                         <th>#</th>
                         <th>Nombre del alumno</th>
                         <th>Grupo del alumno</th>
-                        <th>Opciones</th>
+                        
                     </tr>
                 </thead>
+                
+                <?php 
+                if(isset($resultado3)){
+                while($contador2=mysqli_fetch_array($resultado3))
+                {
+                ?>
                 <tr>
-                    <td>1</td>
-                    <td>[Nombre del alumno 1]</td>
-                    <td>Grupo 1</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                    <td><?php echo ++$acum?></td>
+                    <td><?php echo $contador2['Nombres_estudiante'] ?></td>
+                    <td>Grupo <?php echo $contador2['numero_grupo'] ?></td>
+                    
                 </tr> 
-                <tr>
-                    <td>2</td>
-                    <td>[Nombre del alumno 2]</td>
-                    <td>Grupo 2</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>3</td>
-                    <td>[Nombre del alumno 3]</td>
-                    <td>[Sin grupo]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>4</td>
-                    <td>[Nombre del alumno 4]</td>
-                    <td>[Sin grupo]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
-                <tr>
-                    <td>5</td>
-                    <td>[Nombre del alumno 5]</td>
-                    <td>Grupo 1</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                </tr> 
+                <?php 
+                }
+            }
+                ?>
+               
             </table>
         </div>
         </div>
@@ -127,18 +107,18 @@
                 <div class="select-container sc">
                     <h4>Grupo:</h4>
                     <select name="lista-grupos" class="grupo-creacion">
-                        <option value="">Grupo 1</option>
-                        <option value="">Grupo 2</option>
+                <?php while($contador3=mysqli_fetch_array($resultado4))
+                {
+                ?>
+                        <option value="">Grupo <?php echo $contador3['numero_grupo'] ?></option>
+                <?php 
+                }
+                ?>
                     </select>
                 </div>
-                <div class="select-container">
-                    <a href="#" class="trash"><i class="fa fa-trash icon icon-delete"> </i></a>   
-                </div>
+                
 
-                <div class="select-container sc">
-                <input type="submit" id="btn-grupos">
-                    <label for="btn-grupos" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></label>
-                </div>
+                
             </form>
             <div class="bar-scroll">
             <table class="tablas">
@@ -147,38 +127,37 @@
                         <th>#</th>
                         <th>Nombre del alumno</th>
                         <th>Correo electrónico</th>
-                        <th>Opciones</th>
+                        
                     </tr>
                 </thead>
                 <tr>
                     <td>1</td>
                     <td>[Nombre del alumno 1]</td>
                     <td>[Correo del alumno 1]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
-                </tr> 
+                   
                 <tr>
                     <td>2</td>
                     <td>[Nombre del alumno 2]</td>
                     <td>[Correo del alumno 2]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                    
                 </tr> 
                 <tr>
                     <td>3</td>
                     <td>[Nombre del alumno 3]</td>
                     <td>[Correo del alumno 3]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                   
                 </tr> 
                 <tr>
                     <td>4</td>
                     <td>[Nombre del alumno 4]</td>
                     <td>[Correo del alumno 4]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                    
                 </tr> 
                 <tr>
                     <td>5</td>
                     <td>[Nombre del alumno 5]</td>
                     <td>[Correo del alumno 5]</td>
-                    <td><a href="#"><i class="fa fa-pencil icon icon-modify"></i></a></td>
+                    
                 </tr> 
             </table>
         </div>
