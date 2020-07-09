@@ -154,7 +154,7 @@
                     <td><?php echo $mostrar['Nombre_rol'] ?></td>
                     <td><?php echo $mostrar['Activo'] ?></td>
                     <td><?php echo $mostrar['Hora_bloqueo'] ?></td>
-                    <td><a href="consultas/datos.php?id_est=<?php echo $mostrar['Usuario_estudiante'];?>"><i class="fa fa-pencil icon icon-modify"></i></a><a href="consultas/datos.php?id_estudiante=<?php echo $mostrar['Usuario_estudiante'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                    <td><a href="queries/datos.php?id_est=<?php echo $mostrar['Usuario_estudiante'];?>"><i class="fa fa-pencil icon icon-modify"></i></a><a href="queries/datos.php?id_estudiante=<?php echo $mostrar['Usuario_estudiante'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                 </tr> 
                 <?php 
                 }
