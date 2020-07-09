@@ -34,7 +34,7 @@
                         var len = response.length;
                         for(i=0; i<len; i++){
                             var id = response[i].id;
-                            var name = Number(response[i].materia) + 1;
+                            var name = Number(response[i].materia);
                             var option = '<option value="'+id+'">'+'Grupo '+name+'</option>';
                             $('#lista-grupos').append(option);
                         }
