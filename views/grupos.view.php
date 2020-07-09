@@ -34,74 +34,88 @@
     <!-- Ventanas emergentes (Pop-ups) -->
 
     <?php 
-        require_once('popups/quitar-alumno-grupo.php'); 
-        require_once('popups/modificar-alumno-grupo.php'); 
-        require_once('popups/borrar-grupo.php'); 
+        if(isset($rolUsuario) && $rolUsuario != 1) {
+            require_once('popups/quitar-alumno-grupo.php'); 
+            require_once('popups/modificar-alumno-grupo.php'); 
+            require_once('popups/borrar-grupo.php');
+        } 
     ?>
 
     <!-- Fin de ventanas emergentes -->
 
     <article>
         <h1>GRUPOS DE LAS MATERIAS</h1>
-        <div class="formtab">
-            <h2>Búsqueda de grupos por materia</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
-                <div class="search-container">
-                    <div class="select-container sc">
-                        <h4>Materia:</h4>
-                        <select name="materia" id="materia" class="materias" required>
-                        </select>
+
+        <?php if(isset($rolUsuario) && $rolUsuario != 1): ?>
+            <div class="formtab">
+                <h2>Búsqueda de grupos por materia</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
+                    <div class="search-container">
+                        <div class="select-container sc">
+                            <h4>Materia:</h4>
+                            <select name="materia" id="materia" class="materias" required>
+                            </select>
+                        </div>
+                        <div class="select-container sc">
+                            <h4>Grupo:</h4>
+                            <select name="grupo" id="grupo" required>
+                            </select>
+                        </div>
                     </div>
-                    <div class="select-container sc">
-                        <h4>Grupo:</h4>
-                        <select name="grupo" id="grupo" required>
-                        </select>
+                    <div class="search-container">
+                        <div class="select-container sc">
+                            <input type="submit" id="btn-repo">
+                            <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                        </div>
                     </div>
+                </form>
+            </div>
+        <?php endif ?>
+
+        <?php if(isset($rolUsuario) && $rolUsuario != 1) : ?>
+            <div class="formtab">
+                <h2>Información de las materias actuales</h2>
+                <div class="bar-scroll">
+                    <table class="tablas" id="materias-actuales">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre de la materia</th>
+                                <th>Grupo de la materia</th>
+                            </tr>
+                        </thead>
+
+                        <?php if(isset($rolUsuario) && $rolUsuario != 1) { echo mostrarMateriasTabla($query1); } ?>
+
+                    </table>
                 </div>
-                <div class="search-container">
-                    <div class="select-container sc">
-                        <input type="submit" id="btn-repo">
-                        <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
-                    </div>
+            </div>
+        <?php endif ?>
+
+        <?php if(isset($rolUsuario) && $rolUsuario != 1) : ?>
+            <div class="formtab">
+                <h2>Información de los alumnos de la materia actual</h2>
+                <div class="bar-scroll">
+                    <table class="tablas">
+                        <thead>
+                                <tr>
+                                <th>#</th>
+                                <th>Nombre del alumno</th>
+                                <th>Correo electronico</th>
+                                <th>Grupo del alumno</th>                        
+                            </tr>
+                        </thead>
+
+                        <?php echo mostrarAlumnosTabla($query2); ?>
+
+                    </table>
                 </div>
-            </form>
-        </div>
+            </div>
+        <?php endif ?>
 
-        <div class="formtab">
-            <h2>Información de las materias actuales</h2>
-            <div class="bar-scroll">
-            <table class="tablas" id="materias-actuales">
-                <thead>
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Nombre de la materia</th>
-                        <th>Grupo de la materia</th>
-                    </tr>
-                </thead>
-
-                <?php echo mostrarMateriasTabla($query1); ?>
-
-            </table>
-        </div>
-        </div>
-        <div class="formtab">
-            <h2>Información de los alumnos de la materia actual</h2>
-            <div class="bar-scroll">
-            <table class="tablas">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre del alumno</th>
-                        <th>Correo electronico</th>
-                        <th>Grupo del alumno</th>                        
-                    </tr>
-                </thead>
-
-                <?php echo mostrarAlumnosTabla($query2); ?>
-
-            </table>
-        </div>
-        </div>
+        <?php //if(isset($rolUsuario) && $rolUsuario != 1) : ?>
+            
+        <?php //endif ?>
 
         <div class="formtab">
             <h2>Información de los grupos de la materia actual</h2>
