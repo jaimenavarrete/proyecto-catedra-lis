@@ -122,8 +122,14 @@ if(isset($_GET['create_groups']) && isset($_GET["cupos"])){
         echo nl2br("\r\n");
     }
     echo "Estudiante/s sin grupo: ";
+    $studentswo_group = [];
     for ($o=0; $o < count($out); $o++) { 
-        echo $out[$o]." ";
+        if(!in_array($out[$o],$all_students)){
+            array_push($studentswo_group, $out[$o]);
+        }
+    }
+    for ($u=0; $u < count($studentswo_group); $u++) { 
+        echo $studentswo_group[$u];
     }
 }
 

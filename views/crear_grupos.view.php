@@ -11,6 +11,7 @@
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script type = "text/javascript">
     $(document).ready(function(){
+
         $.ajax({
             url: "queries/fetch_subjects.php",
             type: 'get',
@@ -108,14 +109,14 @@
                 <div class="search-container">
                     <div class="select-container">
                         <h4>Primera materia:</h4>
-                        <select name="materia1" id="materia1" class="materias">
+                        <select name="materia1" id="materia1" class="materias" readonly="True">
 
                         </select>
                     </div>
 
                     <div class="select-container">
                         <h4>Segunda materia:</h4>
-                        <select name="materia2" id="materia2" class="materias">
+                        <select name="materia2" id="materia2" class="materias" readonly="True">
                         </select>
                     </div>
                 </div>
