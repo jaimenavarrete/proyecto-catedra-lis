@@ -160,7 +160,7 @@ CREATE TABLE `estudiante` (
   `Codigo_rol` int(11) DEFAULT NULL,
   `Grupo_proyecto` varchar(8) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
-  `Hora_bloqueo` datetime DEFAULT NULL
+  `Hora_bloqueo` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
