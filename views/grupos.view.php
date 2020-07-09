@@ -118,8 +118,8 @@
             <div class="search-container sc-tab">
                 <form class="select-container sc">
                     <h4>Grupo:</h4>
-                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="mostrarAlumnosGrupo();">
-                        <?php echo mostrarGruposTabla($query4); ?>
+                    <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" <?php echo "rol='$rolUsuario'"; ?> onchange="mostrarAlumnosGrupo();">
+                        <?php echo mostrarGruposTabla($query4, $rolUsuario); ?>
                     </select>
                     <?php if($rolUsuario != 1) : ?>
                         <a href='#' class='btn-popup-borrar-grupo' group='' id="btn-popup-borrar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>

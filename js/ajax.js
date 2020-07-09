@@ -50,6 +50,7 @@ mostrarMaterias();
 function mostrarAlumnosGrupo() {
     // Obtener el grupo seleccionado actualmente
     var grupoProyecto = $("#lista-grupos option:selected").val();
+    var rol =  $("#lista-grupos").attr('rol');
     // Agregar el valor del grupo seleccionado al boton para borrar el grupo
     $('#btn-popup-borrar-grupo').attr("group", grupoProyecto);
 
@@ -80,7 +81,11 @@ function mostrarAlumnosGrupo() {
                     var alumno = "<tr><td>" + numero + "</td>";
                     alumno += "<td>" + apellidos + ", " + nombres + "</td>";
                     alumno += "<td>" + correo + "</td>";
-                    alumno += "<td><a href='#' class='btn-popup-modificar-grupo' user='" + usuario + "'><i class='fa fa-pencil icon icon-modify'></i></a> <a href='#' class='btn-popup-quitar-grupo' user='" + usuario + "'><i class='fa fa-trash icon icon-delete'></i></a></td></td>";
+                    
+                    if(rol != 1) {
+                        alumno += "<td><a href='#' class='btn-popup-modificar-grupo' user='" + usuario + "'><i class='fa fa-pencil icon icon-modify'></i></a> <a href='#' class='btn-popup-quitar-grupo' user='" + usuario + "'><i class='fa fa-trash icon icon-delete'></i></a></td></td>";
+                    }
+
                     $('#alumnos-grupo').append(alumno);
                 }
             }

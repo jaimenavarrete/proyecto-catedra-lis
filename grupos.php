@@ -73,12 +73,12 @@ function mostrarAlumnosTabla($consulta) {
     return $fila;
 }
 
-function mostrarGruposTabla($consulta) {
+function mostrarGruposTabla($consulta, $rol) {
     if(isset($_POST['materia'])) {
         if(mysqli_num_rows($consulta)>0){
             $fila = "<option value='#'>Seleccionar grupo</option>";
 
-            if($rolUsuario != 1) {
+            if($rol != 1) {
                 $fila .= "<option value='0'>[Sin grupo]</option>";
             }
 
