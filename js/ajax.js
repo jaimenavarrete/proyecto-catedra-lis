@@ -69,17 +69,23 @@ function mostrarAlumnosGrupo() {
                 $("#alumnos-grupo tr:last").remove();
             }
 
-            for(i=0; i<len; i++){
-                numero = response[i].numero;
-                nombres = response[i].nombres;
-                apellidos = response[i].apellidos;
-                usuario = response[i].usuario;
-                correo = response[i].correo;
-          
-                var alumno = "<tr><td>" + numero + "</td>";
-                alumno += "<td>" + apellidos + ", " + nombres + "</td>";
-                alumno += "<td>" + correo + "</td>";
-                alumno += "<td><a href='#' class='btn-popup-modificar-grupo' user='" + usuario + "'><i class='fa fa-pencil icon icon-modify'></i></a> <a href='#' class='btn-popup-quitar-grupo' user='" + usuario + "'><i class='fa fa-trash icon icon-delete'></i></a></td></td>";
+            if(len > 0) {
+                for(i=0; i<len; i++){
+                    numero = response[i].numero;
+                    nombres = response[i].nombres;
+                    apellidos = response[i].apellidos;
+                    usuario = response[i].usuario;
+                    correo = response[i].correo;
+              
+                    var alumno = "<tr><td>" + numero + "</td>";
+                    alumno += "<td>" + apellidos + ", " + nombres + "</td>";
+                    alumno += "<td>" + correo + "</td>";
+                    alumno += "<td><a href='#' class='btn-popup-modificar-grupo' user='" + usuario + "'><i class='fa fa-pencil icon icon-modify'></i></a> <a href='#' class='btn-popup-quitar-grupo' user='" + usuario + "'><i class='fa fa-trash icon icon-delete'></i></a></td></td>";
+                    $('#alumnos-grupo').append(alumno);
+                }
+            }
+            else {
+                var alumno = "<tr><td colspan='4' class='tabla-vacia'>No hay alumnos en este grupo</td></tr>";
                 $('#alumnos-grupo').append(alumno);
             }
 

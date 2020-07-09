@@ -54,7 +54,7 @@ function mostrarAlumnosTabla($consulta) {
             }
         }
         else {
-            $fila = "<tr><td colspan='4' class='tabla-vacia'>No hay alumnos inscritos actualmente</td></tr>";
+            $fila = "<tr><td colspan='4' class='tabla-vacia'>No hay alumnos inscritos actualmente en este grupo</td></tr>";
         }
     }        
     else {
