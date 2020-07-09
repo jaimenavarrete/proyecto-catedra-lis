@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+
+$rolUsuario = $_SESSION['rol'];
+$usuarioEstudiante = $_SESSION['usuario'];
+
+// if(!isset($rolUsuario)) {
+//     header('Location: login.php');
+// }
+
 $query1 = '';
 $query2 = '';
 
@@ -116,8 +125,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query2 = mysqli_query($con, $stmt2);
 
     // Buscar en la base de datos, los grupos actuales que pertenezcan a las materias colocadas
-    $stmt3 = "SELECT Codigo_grupo_proyecto, numero_grupo FROM grupo_proyecto
-              WHERE Codigo_materia_uno='$materia' OR Codigo_materia_dos='$materia'";
+    if($rolUsuario != 1) {
+        $stmt3 = "SELECT Codigo_grupo_proyecto, numero_grupo FROM grupo_proyecto
+                  WHERE Codigo_materia_uno='$materia' OR Codigo_materia_dos='$materia'";
+    }
+    else {
+        $stmt3 = "SELECT Codigo_grupo_proyecto, numero_grupo FROM grupo_proyecto gp
+                  INNER JOIN estudiante AS e
+                  ON gp.Codigo_grupo_proyecto = e.Grupo_proyecto
+                  WHERE (gp.Codigo_materia_uno='$materia' OR gp.Codigo_materia_dos='$materia') AND e.Usuario_estudiante='$usuarioEstudiante'";
+    }
     $query3 = mysqli_query($con, $stmt3);
     $query4 = mysqli_query($con, $stmt3);
 }
