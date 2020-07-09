@@ -2,7 +2,7 @@
 <?php
 $server = "localhost";
 $user = "root";
-$passwd = "abc123";
+$passwd = "";
 $db = "proyectolis";
 //Variable que almacena la cadena de conexión a la base de datos
 $conexion = new mysqli($server, $user, $passwd, $db);

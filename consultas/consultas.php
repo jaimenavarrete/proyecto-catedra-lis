@@ -1,5 +1,5 @@
 <?php
-include("consultas/cn.php");
+include("cn.php");
 /*Consultas a la base de datos*/
 /*Consulta a la tabla roles, permite mostrar en un select option el rol al momento de registrar un nuevo usuario desde la vista del Admin*/
 $selecionar="SELECT * FROM roles WHERE Codigo_rol<=2";
