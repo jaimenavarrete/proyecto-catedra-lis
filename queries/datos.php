@@ -30,7 +30,7 @@
 <section class="contenido-g">
     <article>
 <?php
-include("cn.php");
+include("../database/conn.php");
 /*Insertar información*/
 /*Permite llamar los diferentes inputs y section option a una variable para poder realizar insert a la tabla empleado*/
  if(isset($_POST['submit'])){
@@ -49,7 +49,7 @@ include("cn.php");
       $encriptada = password_hash($contra, PASSWORD_BCRYPT);
       $query="INSERT INTO empleado (Usuario_empleado, Pass_empleado, Nombres_empleado, Apellidos_empleado, Edad, Correo, Telefono, Codigo_rol, Activo)
       VALUES ('$Usuario', '$encriptada', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Telefono', '$Rol', '1')";
-      if($conexion->query($query) === TRUE){
+      if($con->query($query) === TRUE){
         echo "Usuario registrado con éxito";
         header("Location: ../registro_interno.php"); //Si el query se realiza con éxito
       }else{ //Si el query presenta un error
@@ -64,7 +64,7 @@ include("cn.php");
   $codigo_escuela=$_POST["codigo_escuela"];
   $nombre_escuela=$_POST["nombre_escuela"];
   $insertar="INSERT INTO escuela(Codigo_escuela, Nombre_escuela) VALUES('$codigo_escuela', '$nombre_escuela')";
-  if($conexion->query($insertar)===true){
+  if($con->query($insertar)===true){
       echo 'La escuela se ha registrado';
       header("Location: ../escuelas.php");
   }
@@ -80,7 +80,7 @@ include("cn.php");
   $nombre_carrera=$_POST["nombre_carrera"];
   $codigo_escuela=$_POST["codigo_escuela"];
   $insertar="INSERT INTO carrera(Codigo_carrera, Nombre_carrera, Codigo_escuela) VALUES('$codigo_carrera', '$nombre_carrera', '$codigo_escuela')";
-  if($conexion->query($insertar)===true){
+  if($con->query($insertar)===true){
       echo 'La carrera se ha registrado';
       header("Location: ../carreras.php");
   }
@@ -95,7 +95,7 @@ if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($
   $nombre_materia=$_POST["nombre_materia"];
   $codigo_escuela=$_POST["codigo_escuela"];
   $insertar="INSERT INTO materia(Codigo_materia, Nombre_materia, Codigo_escuela) VALUES('$codigo_materia','$nombre_materia', '$codigo_escuela')";
-  if($conexion->query($insertar)===true){
+  if($con->query($insertar)===true){
       echo 'La materia se ha registrado';
       header("Location: ../materias.php");
   }
@@ -112,7 +112,7 @@ if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($
     $cupos=$_POST["cupos"];
     $codigo_mat=$_POST["cod_mat"];
     $insertar="INSERT INTO grupo (Codigo_grupo, Nombre_grupo, Tipo, Codigo_materia, cupos) VALUES('', '$nombre', '$tipo', '$codigo_mat', '$cupos')";
-    if($conexion->query($insertar)===true){
+    if($con->query($insertar)===true){
         echo 'El grupo se ha registrado';
         header("Location: ../grupos_materia.php");
     }
@@ -127,7 +127,7 @@ if(isset($_POST['codigo_materia']) && isset($_POST['nombre_materia']) && isset($
 if(!empty($_REQUEST['id_materia'])){
 if(!empty($_POST)){
   $codigo_mat=$_POST['codigo_mat'];
-  $query_delete=mysqli_query($conexion,"DELETE FROM materia WHERE Codigo_materia='$codigo_mat'");
+  $query_delete=mysqli_query($con,"DELETE FROM materia WHERE Codigo_materia='$codigo_mat'");
   if($query_delete){
     header("Location: ../materias.php");
   }else{
@@ -137,7 +137,7 @@ if(!empty($_POST)){
 
 /*Permite seleccionar la informacion que va ser eliminada de la tabla materias y mostrar un mensaje si el usuario desea eliminar o no la información*/
   $codigo_mat=$_REQUEST['id_materia'];
-  $query=mysqli_query($conexion,"SELECT Nombre_materia FROM materia WHERE Codigo_materia='$codigo_mat'");
+  $query=mysqli_query($con,"SELECT Nombre_materia FROM materia WHERE Codigo_materia='$codigo_mat'");
   $result=mysqli_num_rows($query);
   if($result > 0){
     while($mostrar = mysqli_fetch_array($query)){
@@ -167,7 +167,7 @@ if(!empty($_REQUEST['id_carrera'])){
 /*Permite eliminar datos de la tabla carreras*/
 if(!empty($_POST)){
   $codigo_car=$_POST['codigo_car'];
-  $query_delete=mysqli_query($conexion,"DELETE FROM carrera WHERE Codigo_carrera='$codigo_car'");
+  $query_delete=mysqli_query($con,"DELETE FROM carrera WHERE Codigo_carrera='$codigo_car'");
   if($query_delete){
     header("Location: ../carreras.php");
   }else{
@@ -177,7 +177,7 @@ if(!empty($_POST)){
 
 /*Permite seleccionar la informacion que va ser eliminar de la tabla carreras y mostrar un mensaje si el usuario desea eliminar o no la información*/
   $codigo_car=$_REQUEST['id_carrera'];
-  $query=mysqli_query($conexion,"SELECT Nombre_carrera FROM carrera WHERE Codigo_carrera='$codigo_car'");
+  $query=mysqli_query($con,"SELECT Nombre_carrera FROM carrera WHERE Codigo_carrera='$codigo_car'");
   $result=mysqli_num_rows($query);
   if($result > 0){
     while($mostrar = mysqli_fetch_array($query)){
@@ -206,7 +206,7 @@ if(!empty($_REQUEST['id_escuela'])){
   /*Permite eliminar datos de la tabla carreras*/
   if(!empty($_POST)){
     $codigo_esc=$_POST['codigo_esc'];
-    $query_delete=mysqli_query($conexion,"DELETE FROM escuela WHERE Codigo_escuela='$codigo_esc'");
+    $query_delete=mysqli_query($con,"DELETE FROM escuela WHERE Codigo_escuela='$codigo_esc'");
     if($query_delete){
       header("Location: ../escuelas.php");
     }else{
@@ -216,7 +216,7 @@ if(!empty($_REQUEST['id_escuela'])){
   
   /*Permite seleccionar la informacion que va ser eliminar de la tabla escuelas y mostrar un mensaje si el usuario desea eliminar o no la información*/
     $codigo_esc=$_REQUEST['id_escuela'];
-    $query=mysqli_query($conexion,"SELECT Nombre_escuela FROM escuela WHERE Codigo_escuela='$codigo_esc'");
+    $query=mysqli_query($con,"SELECT Nombre_escuela FROM escuela WHERE Codigo_escuela='$codigo_esc'");
     $result=mysqli_num_rows($query);
     if($result > 0){
       while($mostrar = mysqli_fetch_array($query)){
@@ -245,7 +245,7 @@ if(!empty($_REQUEST['id_escuela'])){
     /*Permite eliminar datos de la tabla carreras*/
     if(!empty($_POST)){
       $usuario_emp=$_POST['codigo_emp'];
-      $query_delete=mysqli_query($conexion,"DELETE FROM empleado WHERE Usuario_empleado='$usuario_emp'");
+      $query_delete=mysqli_query($con,"DELETE FROM empleado WHERE Usuario_empleado='$usuario_emp'");
       if($query_delete){
         header("Location: ../registro_interno.php");
       }else{
@@ -255,7 +255,7 @@ if(!empty($_REQUEST['id_escuela'])){
     
     /*Permite seleccionar la informacion que va ser eliminar de la tabla empleado y mostrar un mensaje si el usuario desea eliminar o no la información*/
       $usuario_emp=$_REQUEST['id_empleado'];
-      $query=mysqli_query($conexion,"SELECT Usuario_empleado, Nombres_empleado, Apellidos_empleado, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM empleado INNER JOIN roles USING (Codigo_rol) WHERE Usuario_empleado='$usuario_emp'");
+      $query=mysqli_query($con,"SELECT Usuario_empleado, Nombres_empleado, Apellidos_empleado, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM empleado INNER JOIN roles USING (Codigo_rol) WHERE Usuario_empleado='$usuario_emp'");
       $result=mysqli_num_rows($query);
       if($result > 0){
         while($mostrar = mysqli_fetch_array($query)){
@@ -292,7 +292,7 @@ if(!empty($_REQUEST['id_escuela'])){
       /*Permite eliminar datos de la tabla carreras*/
       if(!empty($_POST)){
         $usuario_emp=$_POST['codigo_est'];
-        $query_delete=mysqli_query($conexion,"DELETE FROM estudiante WHERE Usuario_estudiante='$usuario_emp'");
+        $query_delete=mysqli_query($con,"DELETE FROM estudiante WHERE Usuario_estudiante='$usuario_emp'");
         if($query_delete){
           header("Location: ../registro_interno.php");
         }else{
@@ -302,7 +302,7 @@ if(!empty($_REQUEST['id_escuela'])){
       
       /*Permite seleccionar la informacion que va ser eliminar de la tabla estudiante y mostrar un mensaje si el usuario desea eliminar o no la información*/
         $usuario_emp=$_REQUEST['id_estudiante'];
-        $query=mysqli_query($conexion,"SELECT Usuario_estudiante, Nombres_estudiante, Apellidos_estudiante, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM estudiante INNER JOIN roles USING (Codigo_rol) WHERE Usuario_estudiante='$usuario_emp'");
+        $query=mysqli_query($con,"SELECT Usuario_estudiante, Nombres_estudiante, Apellidos_estudiante, Edad,Correo, Telefono, Nombre_rol, Activo, Hora_bloqueo FROM estudiante INNER JOIN roles USING (Codigo_rol) WHERE Usuario_estudiante='$usuario_emp'");
         $result=mysqli_num_rows($query);
         if($result > 0){
           while($mostrar = mysqli_fetch_array($query)){
@@ -339,7 +339,7 @@ if(!empty($_REQUEST['id_escuela'])){
         /*Permite eliminar datos de la tabla grupo*/
         if(!empty($_POST)){
           $codigo_grupo=$_POST['codigo_grupo'];
-          $query_delete=mysqli_query($conexion,"DELETE FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
+          $query_delete=mysqli_query($con,"DELETE FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
           if($query_delete){
             header("Location: ../escuelas.php");
           }else{
@@ -349,7 +349,7 @@ if(!empty($_REQUEST['id_escuela'])){
         
         /*Permite seleccionar la informacion que va ser eliminar de la tabla grupo y mostrar un mensaje si el usuario desea eliminar o no la información*/
           $codigo_grupo=$_REQUEST['id_grupo'];
-          $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
+          $query=mysqli_query($con,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
           $result=mysqli_num_rows($query);
           if($result > 0){
             while($mostrar = mysqli_fetch_array($query)){
@@ -393,12 +393,12 @@ if(!empty($_REQUEST['id_escuela'])){
         $codigo_esc=$_POST['codigo_esc'];
         $nombre_esc=$_POST['nombre_esc'];
 
-        $query=mysqli_query($conexion,"SELECT * FROM escuela WHERE (Nombre_escuela='$nombre_esc' AND Codigo_escuela!='$codigo_esc')");
+        $query=mysqli_query($con,"SELECT * FROM escuela WHERE (Nombre_escuela='$nombre_esc' AND Codigo_escuela!='$codigo_esc')");
         $result=mysqli_fetch_array($query);
         if($result > 0){
           echo "<h4>Esta escuela ya se encuentra registrada.";
         }else{
-            $query_update=mysqli_query($conexion,"UPDATE escuela SET  Nombre_escuela='$nombre_esc' WHERE Codigo_escuela ='$codigo_esc' ");
+            $query_update=mysqli_query($co,"UPDATE escuela SET  Nombre_escuela='$nombre_esc' WHERE Codigo_escuela ='$codigo_esc' ");
             if($query_update){
               echo "Usuario actualizado.";
               header("Location: ../escuelas.php");
@@ -411,7 +411,7 @@ if(!empty($_REQUEST['id_escuela'])){
    }
 
   $codigo_es=$_REQUEST['id_esc'];
-  $query=mysqli_query($conexion,"SELECT * FROM escuela WHERE Codigo_escuela='$codigo_es'");
+  $query=mysqli_query($con,"SELECT * FROM escuela WHERE Codigo_escuela='$codigo_es'");
   $result=mysqli_num_rows($query);
   if($result > 0){
     while($mostrar = mysqli_fetch_array($query)){
@@ -457,12 +457,12 @@ if(!empty($_REQUEST['id_ca'])){
        $nombre_ca=$_POST['nombre_ca'];
        $codigo_es=$_POST['codigo_es'];
 
-       $query=mysqli_query($conexion,"SELECT * FROM carrera WHERE (Nombre_carrera='$nombre_ca'  AND Codigo_carrera != '$codigo_ca')");
+       $query=mysqli_query($con,"SELECT * FROM carrera WHERE (Nombre_carrera='$nombre_ca'  AND Codigo_carrera != '$codigo_ca')");
        $result=mysqli_fetch_array($query);
        if($result > 0){
          echo "Esta escuela ya se encuentra registrada.";
        }else{
-           $query_update=mysqli_query($conexion,"UPDATE carrera SET  Nombre_carrera='$nombre_ca', Codigo_escuela='$codigo_es' WHERE Codigo_carrera ='$codigo_ca'");
+           $query_update=mysqli_query($con,"UPDATE carrera SET  Nombre_carrera='$nombre_ca', Codigo_escuela='$codigo_es' WHERE Codigo_carrera ='$codigo_ca'");
            if($query_update){
              echo "Usuario actualizado.";
              header("Location: ../carreras.php");
@@ -474,7 +474,7 @@ if(!empty($_REQUEST['id_ca'])){
      }
   }
  $codigo_ca=$_REQUEST['id_ca'];
- $query=mysqli_query($conexion,"SELECT * FROM carrera WHERE Codigo_carrera='$codigo_ca'");
+ $query=mysqli_query($con,"SELECT * FROM carrera WHERE Codigo_carrera='$codigo_ca'");
  $result=mysqli_num_rows($query);
  if($result > 0){
    while($mostrar = mysqli_fetch_array($query)){
@@ -498,7 +498,7 @@ if(!empty($_REQUEST['id_ca'])){
        <div class=\"select-container\">
            <h4>Codigo escuela:</h4>
            <select name=\"codigo_es\" class=\"select_grupos_lab\">";
-           include("consultas.php");
+           include("../queries/consultas.php");
            while($mostra=mysqli_fetch_array($resultado1)){;
           echo  "<option>";echo $mostra['Codigo_escuela'];"</option>";
               };
@@ -534,12 +534,12 @@ if(!empty($_REQUEST['id_ma'])){
        $nombre_ma=$_POST['nombre_ma'];
        $codigo_es=$_POST['codigo_es'];
 
-       $query=mysqli_query($conexion,"SELECT * FROM materia WHERE (Nombre_materia='$nombre_ma'  AND Codigo_materia != '$codigo_ma')");
+       $query=mysqli_query($con,"SELECT * FROM materia WHERE (Nombre_materia='$nombre_ma'  AND Codigo_materia != '$codigo_ma')");
        $result=mysqli_fetch_array($query);
        if($result > 0){
          echo "Esta carrera ya se encuentra registrada.";
        }else{
-           $query_update=mysqli_query($conexion,"UPDATE materia SET  Nombre_materia='$nombre_ma', Codigo_escuela='$codigo_es' WHERE Codigo_materia ='$codigo_ma'");
+           $query_update=mysqli_query($con,"UPDATE materia SET  Nombre_materia='$nombre_ma', Codigo_escuela='$codigo_es' WHERE Codigo_materia ='$codigo_ma'");
            if($query_update){
              echo "Usuario actualizado.";
              header("Location: ../materias.php");
@@ -551,7 +551,7 @@ if(!empty($_REQUEST['id_ma'])){
      }
   }
  $codigo_ma=$_REQUEST['id_ma'];
- $query=mysqli_query($conexion,"SELECT * FROM materia WHERE Codigo_materia='$codigo_ma'");
+ $query=mysqli_query($con,"SELECT * FROM materia WHERE Codigo_materia='$codigo_ma'");
  $result=mysqli_num_rows($query);
  if($result > 0){
    while($mostrar = mysqli_fetch_array($query)){
@@ -575,7 +575,7 @@ if(!empty($_REQUEST['id_ma'])){
        <div class=\"select-container\">
            <h4>Codigo escuela:</h4>
            <select name=\"codigo_es\" class=\"select_grupos_lab\">";
-           include("consultas.php");
+           include("../queries/consultas.php");
            while($mostra=mysqli_fetch_array($resultado1)){;
           echo  "<option>";echo $mostra['Codigo_escuela'];"</option>";
               };
@@ -613,12 +613,12 @@ if(!empty($_REQUEST['id_gr'])){
        $tipo=$_POST['tipo'];
        $codigo_materia=$_POST['codigo_ma'];
        $cupo=$_POST['cupo'];
-       $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
+       $query=mysqli_query($con,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_grupo'");
        $result=mysqli_fetch_array($query);
        if($result > 0){
          echo "El grupo ya se encuentra registrado.";
        }else{
-           $query_update=mysqli_query($conexion,"UPDATE grupo SET  Nombre_grupo='$nombre_gr',Tipo='$tipo',Nombre_grupo='$nombre_gr', Codigo_materia='$codigo_materia',cupos='$cupo' WHERE Codigo_grupo ='$codigo_gr'");
+           $query_update=mysqli_query($con,"UPDATE grupo SET  Nombre_grupo='$nombre_gr',Tipo='$tipo',Nombre_grupo='$nombre_gr', Codigo_materia='$codigo_materia',cupos='$cupo' WHERE Codigo_grupo ='$codigo_gr'");
            if($query_update){
              echo "Usuario actualizado.";
              header("Location: ../grupos_materia.php");
@@ -630,7 +630,7 @@ if(!empty($_REQUEST['id_gr'])){
      }
   }
  $codigo_gr=$_REQUEST['id_gr'];
- $query=mysqli_query($conexion,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_gr'");
+ $query=mysqli_query($con,"SELECT * FROM grupo WHERE Codigo_grupo='$codigo_gr'");
  $result=mysqli_num_rows($query);
  if($result > 0){
    while($mostrar = mysqli_fetch_array($query)){
@@ -661,7 +661,7 @@ if(!empty($_REQUEST['id_gr'])){
        <div class=\"select-container\">
            <h4>Codigo materia:</h4>
            <select name=\"codigo_ma\" class=\"select_grupos_lab\">";
-           include("consultas.php");
+           include("../queries/consultas.php");
            while($mostra=mysqli_fetch_array($resultado3)){;
           echo  "<option>";echo $mostra['Codigo_materia'];"</option>";
               };
@@ -707,7 +707,7 @@ if(!empty($_REQUEST['id_emp'])){
       }else{
         $encriptada = password_hash($pass, PASSWORD_BCRYPT);
 
-       $query=mysqli_query($conexion,"SELECT * FROM empleado WHERE (Correo='$correo' AND Usuario_empleado != '$usuario_emp') OR (Telefono='$telefono' AND Usuario_empleado != '$usuario_emp') ");
+       $query=mysqli_query($con,"SELECT * FROM empleado WHERE (Correo='$correo' AND Usuario_empleado != '$usuario_emp') OR (Telefono='$telefono' AND Usuario_empleado != '$usuario_emp') ");
        $result=mysqli_fetch_array($query);
       }
        if($result > 0){
@@ -716,11 +716,11 @@ if(!empty($_REQUEST['id_emp'])){
 
         if(empty($_POST['Passwd']) && empty($_POST['PasswdRep'])){
 
-          $query_update=mysqli_query($conexion,"UPDATE empleado SET  Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
+          $query_update=mysqli_query($con,"UPDATE empleado SET  Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
 
         }else{
 
-          $query_update=mysqli_query($conexion,"UPDATE empleado SET Pass_empleado='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
+          $query_update=mysqli_query($con,"UPDATE empleado SET Pass_empleado='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono', Codigo_rol='$rol' WHERE Usuario_empleado ='$usuario_emp'");
 
         }
            if($query_update){
@@ -734,7 +734,7 @@ if(!empty($_REQUEST['id_emp'])){
      }
   }
  $usuario_emp=$_REQUEST['id_emp'];
- $query=mysqli_query($conexion,"SELECT * FROM empleado WHERE Usuario_empleado='$usuario_emp'");
+ $query=mysqli_query($con,"SELECT * FROM empleado WHERE Usuario_empleado='$usuario_emp'");
  $result=mysqli_num_rows($query);
  if($result > 0){
    while($mostrar = mysqli_fetch_array($query)){
@@ -768,7 +768,7 @@ if(!empty($_REQUEST['id_emp'])){
        <div class=\"input-container\">
            <i class=\"fa fa-certificate icon icon-login-registro\"></i>
            <select name=\"Rol\" class=\"input-field\">";
-           include("consultas.php");
+           include("../queries/consultas.php");
             while($mostrar=mysqli_fetch_array($resultado)){;
            echo "<option value=\"";echo $mostrar['Codigo_rol'];"";echo "\">"; echo $mostrar['Nombre_rol'];"</option>";
             }
@@ -825,7 +825,7 @@ if(!empty($_REQUEST['id_est'])){
       }else{
         $encriptada = password_hash($pass, PASSWORD_BCRYPT);
 
-       $query=mysqli_query($conexion,"SELECT * FROM estudiante WHERE (Correo='$correo' AND Usuario_estudiante != '$usuario_est') OR (Telefono='$telefono' AND Usuario_estudiante != '$usuario_est') ");
+       $query=mysqli_query($con,"SELECT * FROM estudiante WHERE (Correo='$correo' AND Usuario_estudiante != '$usuario_est') OR (Telefono='$telefono' AND Usuario_estudiante != '$usuario_est') ");
        $result=mysqli_fetch_array($query);
       }
        if($result > 0){
@@ -834,11 +834,11 @@ if(!empty($_REQUEST['id_est'])){
 
         if(empty($_POST['Passwd']) && empty($_POST['PasswdRep'])){
 
-          $query_update=mysqli_query($conexion,"UPDATE estudiante SET  Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
+          $query_update=mysqli_query($con,"UPDATE estudiante SET  Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
 
         }else{
 
-          $query_update=mysqli_query($conexion,"UPDATE estudiante SET Pass='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
+          $query_update=mysqli_query($con,"UPDATE estudiante SET Pass='$encriptada', Edad='$edad', Correo='$correo', Telefono='$telefono' WHERE Usuario_estudiante ='$usuario_est'");
 
         }
            if($query_update){
@@ -852,7 +852,7 @@ if(!empty($_REQUEST['id_est'])){
      }
   }
  $usuario_est=$_REQUEST['id_est'];
- $query=mysqli_query($conexion,"SELECT * FROM estudiante WHERE Usuario_estudiante='$usuario_est'");
+ $query=mysqli_query($con,"SELECT * FROM estudiante WHERE Usuario_estudiante='$usuario_est'");
  $result=mysqli_num_rows($query);
  if($result > 0){
    while($mostrar = mysqli_fetch_array($query)){
@@ -913,7 +913,7 @@ if(!empty($_REQUEST['id_est'])){
 
 
 
-mysqli_close($conexion);
+mysqli_close($con);
 ?> 
  </article>
 </section>

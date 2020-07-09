@@ -1,4 +1,4 @@
-<?php include("consultas/consultas.php");?>
+<?php include("queries/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,7 @@
     <nav class="menu">
         <ul>
             <div class="separador-links">
-                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+             <li><a href="perfil_admin.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
@@ -35,7 +35,7 @@
         <div class="formtab">
             <h2>Datos de registro</h2>
 
-            <form action="consultas/datos.php" class="form-horizontal"  name="formulario" method="POST">
+            <form action="queries/datos.php" class="form-horizontal"  name="formulario" method="POST">
                 <div class="input-container">
                     <i class="fa fa-user-circle-o icon icon-login-registro"></i>
                     <input class="input-field" type="text" name="Usuario" placeholder="Usuario:" required>
@@ -115,7 +115,7 @@
                     <td><?php echo $mostrar['Nombre_rol'] ?></td>
                     <td><?php echo $mostrar['Activo'] ?></td>
                     <td><?php echo $mostrar['Hora_bloqueo'] ?></td>
-                    <td><a href="consultas/datos.php?id_emp=<?php echo $mostrar['Usuario_empleado'];?>"><i class="fa fa-pencil icon icon-modify"></i></a><a href="consultas/datos.php?id_empleado=<?php echo $mostrar['Usuario_empleado'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                    <td><a href="queries/datos.php?id_emp=<?php echo $mostrar['Usuario_empleado'];?>"><i class="fa fa-pencil icon icon-modify"></i></a><a href="queries/datos.php?id_empleado=<?php echo $mostrar['Usuario_empleado'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                 </tr> 
                 <?php 
                 }

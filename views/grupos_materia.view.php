@@ -1,4 +1,4 @@
-<?php include("consultas/consultas.php");?>
+<?php include("queries/consultas.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,7 @@
     <nav class="menu">
         <ul>
             <div class="separador-links">
-                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="perfil_admin.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
@@ -36,7 +36,7 @@
             <h2>Grupos</h2>
 
             <div>
-            <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
+            <form action="queries/datos.php" method="POST" class="search-container sc-downloader">
             <div class="select-container">
                     <h4>Nombre: <input type="text" name="nombre" id=""></h4>
                 </div>
@@ -98,7 +98,7 @@
                             <td><?php echo $mostrar['Tipo'] ?></td>
                             <td><?php echo $mostrar['cupos'] ?></td>
                             <td><?php echo $mostrar['Codigo_materia'] ?></td>
-                            <td><a href="consultas/datos.php?id_gr=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="consultas/datos.php?id_grupo=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="queries/datos.php?id_gr=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="queries/datos.php?id_grupo=<?php echo $mostrar['Codigo_grupo'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                     }
