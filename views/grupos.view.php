@@ -34,7 +34,7 @@
     <!-- Ventanas emergentes (Pop-ups) -->
 
     <?php 
-        if(isset($rolUsuario) && $rolUsuario != 1) {
+        if($rolUsuario != 1) {
             require_once('popups/quitar-alumno-grupo.php'); 
             require_once('popups/modificar-alumno-grupo.php'); 
             require_once('popups/borrar-grupo.php');
@@ -46,53 +46,49 @@
     <article>
         <h1>GRUPOS DE LAS MATERIAS</h1>
 
-        <?php if(isset($rolUsuario) && $rolUsuario != 1): ?>
-            <div class="formtab">
-                <h2>Búsqueda de grupos por materia</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
-                    <div class="search-container">
-                        <div class="select-container sc">
-                            <h4>Materia:</h4>
-                            <select name="materia" id="materia" class="materias" required>
-                            </select>
-                        </div>
-                        <div class="select-container sc">
-                            <h4>Grupo:</h4>
-                            <select name="grupo" id="grupo" required>
-                            </select>
-                        </div>
+        <div class="formtab">
+            <h2>Búsqueda de grupos por materia</h2>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-materia-grupo">
+                <div class="search-container">
+                    <div class="select-container sc">
+                        <h4>Materia:</h4>
+                        <select name="materia" id="materia" class="materias" required>
+                        </select>
                     </div>
-                    <div class="search-container">
-                        <div class="select-container sc">
-                            <input type="submit" id="btn-repo">
-                            <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
-                        </div>
+                    <div class="select-container sc">
+                        <h4>Grupo:</h4>
+                        <select name="grupo" id="grupo" required>
+                        </select>
                     </div>
-                </form>
-            </div>
-        <?php endif ?>
-
-        <?php if(isset($rolUsuario) && $rolUsuario != 1) : ?>
-            <div class="formtab">
-                <h2>Información de las materias actuales</h2>
-                <div class="bar-scroll">
-                    <table class="tablas" id="materias-actuales">
-                        <thead>
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Nombre de la materia</th>
-                                <th>Grupo de la materia</th>
-                            </tr>
-                        </thead>
-
-                        <?php if(isset($rolUsuario) && $rolUsuario != 1) { echo mostrarMateriasTabla($query1); } ?>
-
-                    </table>
                 </div>
-            </div>
-        <?php endif ?>
+                <div class="search-container">
+                    <div class="select-container sc">
+                        <input type="submit" id="btn-repo">
+                        <label for="btn-repo" class="btn btn-g">Ver grupo <i class="fa fa-search icon" id="i-pdf"></i></label>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <?php if(isset($rolUsuario) && $rolUsuario != 1) : ?>
+        <div class="formtab">
+            <h2>Información de las materias actuales</h2>
+            <div class="bar-scroll">
+                <table class="tablas" id="materias-actuales">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre de la materia</th>
+                            <th>Grupo de la materia</th>
+                        </tr>
+                    </thead>
+
+                    <?php echo mostrarMateriasTabla($query1); ?>
+
+                </table>
+            </div>
+        </div>
+
+        <?php if($rolUsuario != 1) : ?>
             <div class="formtab">
                 <h2>Información de los alumnos de la materia actual</h2>
                 <div class="bar-scroll">
@@ -125,14 +121,16 @@
                     <select name="lista-grupos" id="lista-grupos" class="grupo-creacion" onchange="mostrarAlumnosGrupo();">
                         <?php echo mostrarGruposTabla($query4); ?>
                     </select>
-
-                    <!-- <input type="submit" id="btn-borrar-grupo">
-                    <label for="btn-borrar-grupo"><i class="fa fa-trash icon icon-delete"> </i></label> -->
-                    <a href='#' class='btn-popup-borrar-grupo' group='' id="btn-popup-borrar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
+                    <?php if($rolUsuario != 1) : ?>
+                        <a href='#' class='btn-popup-borrar-grupo' group='' id="btn-popup-borrar-grupo"><i class="fa fa-trash icon icon-delete"></i></a>
+                    <?php endif ?>
                 </form>
-                <div class="select-container sc">
-                    <a href="crear_grupos.php" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></a>
-                </div>
+                <?php if($rolUsuario != 1) : ?>
+                    <div class="select-container sc">
+                        <a href="crear_grupos.php" class="btn">Formar Grupos <i class="fa fa-plus icon" id="i-pdf"></i></a>
+                    </div>
+                <?php endif ?>
+                
             </div>
             <div class="bar-scroll">
             <table class="tablas" id="alumnos-grupo">
@@ -141,7 +139,9 @@
                         <th>#</th>
                         <th>Nombre del alumno</th>
                         <th>Correo electrónico</th>
-                        <th>Opciones</th>
+                        <?php if($rolUsuario != 1) : ?>
+                            <th>Opciones</th>
+                        <?php endif ?>
                     </tr>
                 </thead>
                 <tr>

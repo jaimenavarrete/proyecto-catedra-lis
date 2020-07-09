@@ -5,9 +5,9 @@ session_start();
 $rolUsuario = $_SESSION['rol'];
 $usuarioEstudiante = $_SESSION['usuario'];
 
-// if(!isset($rolUsuario)) {
-//     header('Location: login.php');
-// }
+if(!isset($rolUsuario)) {
+    header('Location: login.php');
+}
 
 $query1 = '';
 $query2 = '';
@@ -77,13 +77,16 @@ function mostrarGruposTabla($consulta) {
     if(isset($_POST['materia'])) {
         if(mysqli_num_rows($consulta)>0){
             $fila = "<option value='#'>Seleccionar grupo</option>";
-            $fila .= "<option value='0'>[Sin grupo]</option>";
+
+            if($rolUsuario != 1) {
+                $fila .= "<option value='0'>[Sin grupo]</option>";
+            }
 
             while($row = mysqli_fetch_array($consulta)){
                 $grupoProyecto = $row['Codigo_grupo_proyecto'];
                 $numeroGrupo = $row['numero_grupo'];
 
-                $fila .= "<option value='$grupoProyecto'>Grupo " . ($numeroGrupo+1) . "</option>";
+                $fila .= "<option value='$grupoProyecto'>Grupo " . $numeroGrupo . "</option>";
             }
         }
         else {

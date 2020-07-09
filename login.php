@@ -11,6 +11,7 @@ if(isset($_POST['submit'])){
   $fecha = Date('H:i:s');
   $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;
   $contra = isset($_POST['Passwd']) ? $_POST['Passwd'] : 0;
+
   if($conexion->connect_error){
     die("Error de conexión a la base de datos: " . $conexion->connect_error);
   }else{
@@ -19,6 +20,7 @@ if(isset($_POST['submit'])){
     //Queries para validar si la información ingresada corresponde a un estudiante
     $query_estudiante="SELECT Usuario_estudiante, Pass, Nombres_estudiante, Correo, Codigo_rol, Activo, Hora_bloqueo FROM estudiante WHERE Usuario_estudiante='$usuario'";
     $resultado_estudiante = $conexion->query($query_estudiante);
+
     //Queries para validar si la información ingresada corresponde a un empleado
     $query_empleado="SELECT Usuario_empleado, Pass_empleado, Nombres_empleado, Correo, Codigo_rol, Activo, Hora_bloqueo FROM empleado WHERE Usuario_empleado='$usuario'";
     $resultado_empleado = $conexion->query($query_empleado);
@@ -39,7 +41,16 @@ if(isset($_POST['submit'])){
                       NotificacionIntentos($row["Correo"], $row["Nombres_estudiante"], $fecha);
                     }
       }else{
+
+
+
+        $row["Pass"] = password_hash($row["Pass"], PASSWORD_DEFAULT);
         $verificar_password = password_verify($contra, $row["Pass"]); //Verificación del hash de la contraseña
+
+
+
+
+        echo $verificar_password;
           switch($verificar_password){ //Valores booleanos en condicional
             case 0 : //0 --> El hash de las contraseñas no coinciden
               if(!isset($_SESSION['cont'])){ //Variable de sesion para contar cantidad de intentos fallidos
@@ -66,7 +77,8 @@ if(isset($_POST['submit'])){
             case 1 : //1 --> El hash de las contraseñas si coinciden
                 $_SESSION["usuario"] = $row["Usuario_estudiante"];
                 $_SESSION["rol"] = $row["Codigo_rol"];
-                header("Location: perfil_estudiante.php");
+                // header("Location: perfil_estudiante.php");
+                header("Location: perfil.php");
                 break;
             }//Fin switch de verificar contraseña
           }//Fin else de NO bloqueo
@@ -88,7 +100,15 @@ if(isset($_POST['submit'])){
                       NotificacionIntentos($row["Correo"], $row["Nombres_empleado"], $fecha);
                     }
         }else{
+
+
+
+          $row["Pass_empleado"] = password_hash($row["Pass_empleado"], PASSWORD_DEFAULT);
           $verificar_password = password_verify($contra, $row["Pass_empleado"]); //Verificación del hash de la contraseña
+
+
+
+
             switch($verificar_password){ //Valores booleanos en condicional
               case 0 : //0 --> El hash de las contraseñas no coinciden
                 if(!isset($_SESSION['cont'])){ //Variable de sesion para contar cantidad de intentos fallidos
@@ -120,7 +140,8 @@ if(isset($_POST['submit'])){
                     header("Location: perfil_administrador.php");
                   }elseif($row["Codigo_rol"] == 2){
                     $_SESSION["rol"] = $row["Codigo_rol"];
-                    header("Location: perfil_docente.php");
+                    // header("Location: perfil_docente.php");
+                    header("Location: perfil.php");
                   }
                   break;
               }//Fin switch de verificar contraseña
@@ -128,20 +149,11 @@ if(isset($_POST['submit'])){
       }//Fin while resultado_empleado
     }else{
             echo "El usuario ingresado no existe <br>";
-<<<<<<< HEAD
           }
-      }
+  }
   $conexion->close();
 }/*else{
   echo "No se pudo iniciar sesión";
 }*/
 require 'views/login.view.php';
 ?>
-=======
-            echo "<a href=\"{$_SERVER['PHP_SELF']}\">Intentar de nuevo</a>";
-        }
-        $conexion->close();
-    ?>
-</body>
-</html>
->>>>>>> 3931fec371fc7e5a38e0c6a1b00a9262b62d5aa7
