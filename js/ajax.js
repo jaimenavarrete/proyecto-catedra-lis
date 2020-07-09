@@ -152,7 +152,7 @@ function modificarAlumno() {
         type: 'post',
         dataType: 'json',
         async: true,
-        data: $('#form_borrar_grupo').serialize(),
+        data: $('#form_modificar_alumno_grupo').serialize(),
 
         success: function(response){
             console.log(response);
