@@ -8,7 +8,7 @@
             <div class="contenedor-btn-popup">
                 <input type="hidden" name="alumno_a_quitar" id="alumno_a_quitar" required>
                 <input type="hidden" name="action" value="quitarAlumno" required>
-                
+                <button type="submit" class="btn">Quitar alumno</button>
                 <a href="#" class="btn" onclick="cerrarModal();">Cancelar</a>
             </div>
         </form>

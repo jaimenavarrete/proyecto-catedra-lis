@@ -160,7 +160,7 @@ CREATE TABLE `estudiante` (
   `Codigo_rol` int(11) DEFAULT NULL,
   `Grupo_proyecto` varchar(8) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
-  `Hora_bloqueo` datetime DEFAULT NULL
+  `Hora_bloqueo` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -192,6 +192,7 @@ CREATE TABLE `grupo` (
   `Tipo` tinyint(1) DEFAULT NULL,
   `Codigo_materia` varchar(6) DEFAULT NULL,
   `cupos` int(11) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -218,6 +219,34 @@ CREATE TABLE `grupo_proyecto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`Codigo_grupo`, `Nombre_grupo`, `Tipo`, `Codigo_materia`, `cupos`) VALUES
+(1, '01T', 0, 'POO104', NULL),
+(2, '01T', 0, 'MDB104', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grupo_proyecto`
+--
+
+DROP TABLE IF EXISTS `grupo_proyecto`;
+CREATE TABLE `grupo_proyecto` (
+  `Codigo_grupo_proyecto` varchar(8) NOT NULL,
+  `Codigo_materia_uno` varchar(6) DEFAULT NULL,
+  `Codigo_materia_dos` varchar(6) DEFAULT NULL,
+  `Codigo_empleado` varchar(8) DEFAULT NULL,
+  `numero_grupo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+>>>>>>> pruebas
 -- Volcado de datos para la tabla `grupo_proyecto`
 --
 
