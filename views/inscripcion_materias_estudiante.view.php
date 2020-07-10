@@ -15,46 +15,28 @@
     <article>
         <h1>INSCRIPCION DE MATERIAS</h1>
         <div class="formtab">
-            <form action="" method="post">
-            <h2>Proceso de inscripción</h2>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <h2>Proceso de inscripción</h2>
 
-            <div class="search-container sc-downloader">
-                <div class="select-container">
-                
-                    <h4>Materia:</h4>
-                    <select name="materias" id="materias" class="materias">
-                <?php while($contador=mysqli_fetch_array($resultado1)){
-                ?>
-                        <option value="<?php echo $contador['Codigo_materia'] ?>"><?php echo $contador['Nombre_materia'] ?></option>
+                <div class="search-container sc-downloader">
+                    <div class="select-container">
+                    
+                        <h4>Materia:</h4>
+                        <select name="materia" id="materia" class="materia">
+                        </select>
+                    </div>
 
-                <?php 
-                }
-                ?>
-                    </select>
+                    <div class="select-container">
+                        <h4>Grupo teoria:</h4>
+                        <select name="grupo" id="grupo" class="materias">
+                        </select>
+                    </div>
                 </div>
 
-                <div class="select-container">
-                    <h4>Grupo teoria:</h4>
-                    <select name="grupo" id="grupo" class="materias">
-                <?php while($contador=mysqli_fetch_array($resultado2)){
-                ?>
-                        <option value="<?php echo $contador['Codigo_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
-                
-                <?php 
-                }
-                ?>
-                    </select>
+                <div class="btn-inscribir">
+                    <input type="submit" name="submit" id="btn-repo">
+                    <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
                 </div>
-            </div>
-
-
-               
-            </div>
-
-            <div class="btn-inscribir">
-                <input type="submit" id="btn-repo">
-                <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
-            </div>
             </form>
         </div>
     </article>
@@ -65,5 +47,11 @@
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
 </div>
+
+<!-- Scripts a utilizar -->
+
+<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="js/ajax.js"></script>
+
 </body>
 </html>

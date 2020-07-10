@@ -9,28 +9,29 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 1){
     echo $rol;
 }
 
+/* El usuario del alumno */
 
 $iduser=$usuario;
 
-$consulta1="SELECT * FROM materia";
-$resultado1=mysqli_query($con,$consulta1);
+if(isset($_POST['submit']) && $_POST['grupo'] != '#' && $_POST['materia'] != '#') {
+    $materia = $_POST['materia'];
+    $grupo = $_POST['grupo'];
 
-/* Consulta para mostrar grupos de teoria */
+    /*Consulta para obtener el codigo de grupo que se va a inscribir*/
+    $consulta1 = "SELECT Codigo_grupo FROM grupo WHERE Codigo_materia='$materia' AND Nombre_grupo='$grupo'";
+    $resultado1 = mysqli_query($con, $consulta1);
+    $row = mysqli_fetch_array($resultado1);
 
-$consulta2="SELECT * FROM grupo WHERE Tipo='0'";
-$resultado2=mysqli_query($con,$consulta2);
+    $codigoGrupo = $row['Codigo_grupo'];
 
+    echo '<br><br><br>' . $codigoGrupo;
 
-
-if(empty($_POST['grupo']) || empty($_POST['materias'])){
-    echo "campos necesarios";
-}else{
-    $grupos=$_POST['grupo'];
-
-$registrar_materia="INSERT INTO inscripcion (Codigo_inscripcion, Usuario_estudiante, Codigo_grupo, Usuario_empleado) VALUES (NULL, '$iduser', '$grupos', NULL); ";
-$resultado3=mysqli_query($con,$registrar_materia);
+    $registrar_materia="INSERT INTO inscripcion (Codigo_inscripcion, Usuario_estudiante, Codigo_grupo, Usuario_empleado) VALUES (NULL, '$iduser', '$codigoGrupo', NULL); ";
+    $resultado2 = mysqli_query($con,$registrar_materia);
 }
-
+else {
+    echo "Debe rellenar los campos necesarios";
+}
 
 
 require 'views/inscripcion_materias_estudiante.view.php';
