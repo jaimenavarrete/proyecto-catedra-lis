@@ -1,11 +1,5 @@
-<?php
-include 'cn.php';
-/*session_start();/*
-/*
-if(isset($_SESSION['id_usuario'])){
-    header("Location:perfil.php");
-}*/
-?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

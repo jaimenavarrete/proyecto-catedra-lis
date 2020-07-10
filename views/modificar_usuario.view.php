@@ -1,47 +1,3 @@
-<?php
-include("cn.php");
-$id_usuario=$_POST["idusuario"];
-
-$consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
-Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$id_usuario'";
-$resultado=$conexion->query($consulta);
-$row=$resultado->fetch_assoc();
-
-/*  Modificar campos de la tablas */
-
-switch(true){
-
-    case isset($_POST['cumple']);
-    $años_alumno=$_POST['cumple'];
-    $actualizar="UPDATE estudiante SET Edad='$años_alumno' WHERE Usuario_estudiante='$id_usuario'";
-    break;
-
-    case isset($_POST['email']);
-
-    break;
-
-    case isset($_POST['telefono']);
-
-    break;
-
-    case isset($_POST['password']);
-
-    break;
-
-    default:
-
-}
-
-/*if(isset($_POST['cumple']) || isset($_POST['email']) || isset($_POST['telefono']) ||isset($_POST['password'])){
-    $años_alumno=$_POST['cumple'];
-    $email_alumno=$_POST['email'];
-    $telefono_alumno=$_POST['telefono'];
-    $pas_alumno=$_POST['password'];
-    
-}*/
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +22,6 @@ switch(true){
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
         </ul>
@@ -87,27 +42,27 @@ switch(true){
             <h2>Nuevos datos del usuario</h2>
 
             <form action="" class="form-horizontal" name="formulario" id="salario" method="post">
-                    <input class="input-field" type="hidden" id="usuario" name="usuario" placeholder="Usuario:"  value="<?php echo utf8_decode($row['Usuario_estudiante']); ?>" >
+                    <input class="input-field" type="hidden" id="usuario" name="usuario" placeholder="Usuario:"  value="<?php echo ($row['Usuario_estudiante']); ?>" >
                 
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="nombre" name="nombre" placeholder="Nombre:" value="<?php echo utf8_decode($row['Nombres_estudiante']); ?>" required readonly>
+                    <input class="input-field" type="text" id="nombre" name="nombre" placeholder="Nombre:" value="<?php echo ($row['Nombres_estudiante']); ?>" required readonly>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-address-card icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="apellido" name="apellido" placeholder="Apellido:" value="<?php echo utf8_decode($row['Apellidos_estudiante']); ?>"  required readonly>
+                    <input class="input-field" type="text" id="apellido" name="apellido" placeholder="Apellido:" value="<?php echo ($row['Apellidos_estudiante']); ?>"  required readonly>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-birthday-cake icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Edad" >
+                    <input class="input-field" type="text" id="cumple" name="cumple" placeholder="Edad" value="<?php echo ($row['Edad']); ?>">
                 </div>
                 <div class="input-container">
                     <i class="fa fa-envelope icon icon-login-registro"></i>
-                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" >
+                    <input class="input-field" type="text"id="email" name="email" placeholder="Email:" value="<?php echo ($row['Correo']); ?>" >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-phone icon icon-login-registro"></i>
-                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" >
+                    <input class="input-field" type="text" id="telefono" name="telefono" placeholder="Numero de teléfono:" value="<?php echo ($row['Telefono']); ?>" >
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key icon icon-login-registro"></i>

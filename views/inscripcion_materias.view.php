@@ -1,18 +1,19 @@
 <?php
-include("cn.php");
+include("database/conn.php");
+$iduser="CF176243";
 
 $consulta1="SELECT * FROM materia";
-$resultado1=mysqli_query($conexion,$consulta1);
+$resultado1=mysqli_query($con,$consulta1);
 
 /* Consulta para mostrar grupos de teoria */
 
-$consulta2="SELECT Nombre_grupo FROM grupo WHERE Tipo='0'";
-$resultado2=mysqli_query($conexion,$consulta2);
+$consulta2="SELECT * FROM grupo WHERE Tipo='0'";
+$resultado2=mysqli_query($con,$consulta2);
 
 /* Consulta para mostrar grupos de lab */
 
-$consulta3="SELECT Nombre_grupo FROM grupo WHERE Tipo='1'";
-$resultado3=mysqli_query($conexion,$consulta3);
+
+$registrar_materia="INSERT inscrpcion Usuario_estudiante='$iduser',Codigo_grupo='grupo', Usuario_empleado=''";
 
 
 ?>
@@ -41,14 +42,13 @@ $resultado3=mysqli_query($conexion,$consulta3);
                 <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                 <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
                 <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
         </ul>
     </nav>
 </div>
 </header>
-<section class="contenido">
+<section class="contenido contenido1">
     <article>
         <h1>INSCRIPCION DE MATERIAS</h1>
         <div class="formtab">
@@ -60,7 +60,7 @@ $resultado3=mysqli_query($conexion,$consulta3);
                     <select name="materias" id="materias" class="materias">
                 <?php while($contador=mysqli_fetch_array($resultado1)){
                 ?>
-                        <option value="<?php echo $contador['Nombre_materia'] ?>"><?php echo $contador['Nombre_materia'] ?></option>
+                        <option value="<?php echo $contador['Codigo_materia'] ?>"><?php echo $contador['Nombre_materia'] ?></option>
 
                 <?php 
                 }
@@ -73,7 +73,7 @@ $resultado3=mysqli_query($conexion,$consulta3);
                     <select name="grupo" id="grupo" class="materias">
                 <?php while($contador=mysqli_fetch_array($resultado2)){
                 ?>
-                        <option value="<?php echo $contador['Nombre_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
+                        <option value="<?php echo $contador['Codigo_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
                 
                 <?php 
                 }
@@ -88,18 +88,7 @@ $resultado3=mysqli_query($conexion,$consulta3);
                     <input type="text" name="cupos" id="cupos" readonly value="27">
                 </div>
 
-                <div class="select-container">
-                    <h4>Grupo laboratorio:</h4>
-                    <select name="grupo" id="grupo" class="select_grupos_lab">
-                    <?php while($contador=mysqli_fetch_array($resultado3)){
-                ?>
-                        <option value="<?php echo $contador['Nombre_grupo'] ?>"><?php echo $contador['Nombre_grupo'] ?></option>
-                
-                <?php 
-                }
-                ?>
-                    </select>
-                </div>
+               
             </div>
 
             <div class="btn-inscribir">
@@ -110,46 +99,7 @@ $resultado3=mysqli_query($conexion,$consulta3);
     </article>
 </section>
 
-<section>
-    <article>
-        <div class="formtab">
-            <h2>Materias a inscribir</h2>
-            <form action="" name="formulario" id="inscripcion">
-                <div class="search-container">
-                <div class="bar-scroll">
-                    <table class="tablas">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre de la materia</th>
-                                <th>Grupo de la materia</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>Lenguajes Interpretados en el servidor</td>
-                            <td>01T</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr> 
-                        <tr>
-                            <td>2</td>
-                            <td>[Nombre de materia 2]</td>
-                            <td>01T</td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
-                        </tr>
-                    </table>
-                </div>
-                </div>
-                <div class="btn-inscribir">
-                    <input type="submit" id="btn-repo-2">
-                    <label for="btn-repo-2" class="btn">Finalizar inscripción <i class="fa fa-check icon" id="i-pdf-2"></i></label>
-                </div>
-            </form>
-        </div>
-        </div>
-    </article>
-</section>
+<br><br><br><br>
 
 <div id="creditos">
     <h5>Copyright © 2020-Universidad Don Bosco</h5>
