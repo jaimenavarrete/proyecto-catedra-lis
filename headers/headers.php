@@ -29,7 +29,7 @@ if(isset($rol)){
                     <nav class="menu">
                         <ul>
                         <div class="separador-links">
-                            <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                            <li><a href="perfil_docente.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                             <li><a href="grupos.php">Ver grupos<i class="fa fa-users icon"></i></a></li>
                             <li><a href="inscripcion_materias.php">Crear grupos<i class="fa fa-pencil-square-o icon"></i></a></li>
                             </div>
@@ -49,6 +49,7 @@ if(isset($rol)){
                         <ul>
                         <div class="separador-links">
                             <li><a href="perfil_admin.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                            <li><a href="grupos.php">Ver grupos<i class="fa fa-users icon"></i></a></li>
                             <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
                             <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                             </div>
