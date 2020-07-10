@@ -32,31 +32,6 @@
 <?php
 include("../database/conn.php");
 /*Insertar información*/
-/*Permite llamar los diferentes inputs y section option a una variable para poder realizar insert a la tabla empleado*/
- if(isset($_POST['submit'])){
-    $Usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;
-    $Nombre = isset($_POST['Nombre']) ? $_POST['Nombre'] : 0;
-    $Apellido = isset($_POST['Apellido']) ? $_POST['Apellido'] : 0;
-    $Edad = isset($_POST['Edad']) ? $_POST['Edad'] : 0;
-    $Rol = isset($_POST['Rol']) ? $_POST['Rol'] : 0;
-    $Correo = isset($_POST['Correo']) ? $_POST['Correo'] : 0;
-    $Telefono = isset($_POST['Telefono']) ? $_POST['Telefono'] : 0;
-    $contra = isset($_POST['Passwd']) ? $_POST['Passwd'] : 0;
-    $contraRep = isset($_POST['PasswdRep']) ? $_POST['PasswdRep'] : 0;
-    if($contra != $contraRep){
-      echo "Las contraseñas no coinciden <br>";
-    }else{
-      $encriptada = password_hash($contra, PASSWORD_BCRYPT);
-      $query="INSERT INTO empleado (Usuario_empleado, Pass_empleado, Nombres_empleado, Apellidos_empleado, Edad, Correo, Telefono, Codigo_rol, Activo)
-      VALUES ('$Usuario', '$encriptada', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Telefono', '$Rol', '1')";
-      if($con->query($query) === TRUE){
-        echo "Usuario registrado con éxito";
-        header("Location: ../registro_interno.php"); //Si el query se realiza con éxito
-      }else{ //Si el query presenta un error
-        echo "Error al ingresar los datos";
-      }
-    }
-  }
 
 
  /*Permire realizar insert a la tabla escuela*/
@@ -398,7 +373,7 @@ if(!empty($_REQUEST['id_escuela'])){
         if($result > 0){
           echo "<h4>Esta escuela ya se encuentra registrada.";
         }else{
-            $query_update=mysqli_query($co,"UPDATE escuela SET  Nombre_escuela='$nombre_esc' WHERE Codigo_escuela ='$codigo_esc' ");
+            $query_update=mysqli_query($con,"UPDATE escuela SET  Nombre_escuela='$nombre_esc' WHERE Codigo_escuela ='$codigo_esc' ");
             if($query_update){
               echo "Usuario actualizado.";
               header("Location: ../escuelas.php");
@@ -910,7 +885,31 @@ if(!empty($_REQUEST['id_est'])){
 
 }
 
-
+/*Permite llamar los diferentes inputs y section option a una variable para poder realizar insert a la tabla empleado*/
+if(isset($_POST['submit'])){
+  $Usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;
+  $Nombre = isset($_POST['Nombre']) ? $_POST['Nombre'] : 0;
+  $Apellido = isset($_POST['Apellido']) ? $_POST['Apellido'] : 0;
+  $Edad = isset($_POST['Edad']) ? $_POST['Edad'] : 0;
+  $Rol = isset($_POST['Rol']) ? $_POST['Rol'] : 0;
+  $Correo = isset($_POST['Correo']) ? $_POST['Correo'] : 0;
+  $Telefono = isset($_POST['Telefono']) ? $_POST['Telefono'] : 0;
+  $contra = isset($_POST['Passwd']) ? $_POST['Passwd'] : 0;
+  $contraRep = isset($_POST['PasswdRep']) ? $_POST['PasswdRep'] : 0;
+  if($contra != $contraRep){
+    echo "Las contraseñas no coinciden <br>";
+  }else{
+    $encriptada = password_hash($contra, PASSWORD_BCRYPT);
+    $query="INSERT INTO empleado (Usuario_empleado, Pass_empleado, Nombres_empleado, Apellidos_empleado, Edad, Correo, Telefono, Codigo_rol, Activo)
+    VALUES ('$Usuario', '$encriptada', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Telefono', '$Rol', '1')";
+    if($con->query($query) === TRUE){
+      echo "Usuario registrado con éxito";
+      header("Location: ../registro_interno.php"); //Si el query se realiza con éxito
+    }else{ //Si el query presenta un error
+      echo "Error al ingresar los datos";
+    }
+  }
+}
 
 
 mysqli_close($con);
