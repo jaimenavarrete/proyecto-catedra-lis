@@ -5,7 +5,7 @@ $pass = "";
 $db = "proyectolis";
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-$con = mysqli_connect($server, $user, $pass, $db, 3308);
+$con = mysqli_connect($server, $user, $pass, $db);
 
 if(!$con){
     echo("La conexión falló. ");

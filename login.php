@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
   $passwd = "";
   $db = "proyectolis";
   //Variable que almacena la cadena de conexión a la base de datos
-  $conexion = new mysqli($server, $user, $passwd, $db, 3308);
+  $conexion = new mysqli($server, $user, $passwd, $db);
   date_default_timezone_set('America/El_Salvador');
   $fecha = Date('H:i:s');
   $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : 0;
