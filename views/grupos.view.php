@@ -1,6 +1,6 @@
 <?php
 
-if(!isset($_SESSION['usuario']) || $_SESSION['rol'] <=1){
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] <0){
     header("Location:index.php");
 
 }else{

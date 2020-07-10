@@ -1,12 +1,15 @@
 <?php
 include("database/conn.php");
 session_start();
-/*
-if(!isset($_SESSION['id_usuario'])){
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 1){
     header("Location:index.php");
-}*/
+}else{
+    $usuario = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+    echo $rol;
+}
 
-$iduser="CF176243";/* esta parte solo es de ejemplo se modificara despues por $_SESSION['id_usuario'] que tomara el valor de la ventana de login*/ 
+$iduser= $usuario;
 
 $consulta="SELECT Usuario_estudiante,Pass,Nombres_estudiante,Apellidos_estudiante,
 Edad,Correo,Telefono FROM estudiante WHERE Usuario_estudiante='$iduser'";

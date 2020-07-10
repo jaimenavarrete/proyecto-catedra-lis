@@ -1,23 +1,3 @@
-<?php
-include("database/conn.php");
-$iduser="CF176243";
-
-$consulta1="SELECT * FROM materia";
-$resultado1=mysqli_query($con,$consulta1);
-
-/* Consulta para mostrar grupos de teoria */
-
-$consulta2="SELECT * FROM grupo WHERE Tipo='0'";
-$resultado2=mysqli_query($con,$consulta2);
-
-/* Consulta para mostrar grupos de lab */
-
-
-$registrar_materia="INSERT inscrpcion Usuario_estudiante='$iduser',Codigo_grupo='grupo', Usuario_empleado=''";
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,24 +10,7 @@ $registrar_materia="INSERT inscrpcion Usuario_estudiante='$iduser',Codigo_grupo=
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-<div id="navegador">
-<input type="checkbox" id="menu-bar">
-<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
-<a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
-<a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
-    <nav class="menu">
-        <ul>
-            <div class="separador-links">
-                <li><a href="perfil_estudiante.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos_estudiante.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias_estudiante.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
-                </div>
-        </ul>
-    </nav>
-</div>
-</header>
+<?php require_once('headers/headers.php'); ?>
 <section class="contenido contenido1">
     <article>
         <h1>INSCRIPCION DE MATERIAS</h1>

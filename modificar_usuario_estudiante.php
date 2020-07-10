@@ -1,7 +1,15 @@
 <?php
-
 include("database/conn.php");
-$id_usuario=$_POST["idusuario"];
+session_start();
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 1){
+    header("Location:index.php");
+}else{
+    $usuario = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+    echo $rol;
+}
+
+$id_usuario=$usuario;
 
         
 
