@@ -16,7 +16,7 @@ $row=$resultado->fetch_assoc();
 $consulta1="SELECT Usuario_estudiante, Nombre_grupo, Codigo_materia, Nombre_materia  FROM grupo INNER JOIN inscripcion 
 USING (Codigo_grupo) INNER JOIN materia USING (Codigo_materia) WHERE Usuario_estudiante='$iduser'";
 $resultado1=mysqli_query($con,$consulta1);
-require 'views/perfil.view.php';
+require 'views/perfil_estudiante.view.php';
 
 
 ?>

@@ -39,9 +39,9 @@ $registrar_materia="INSERT inscrpcion Usuario_estudiante='$iduser',Codigo_grupo=
     <nav class="menu">
         <ul>
             <div class="separador-links">
-                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
+                <li><a href="perfil_estudiante.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
+                <li><a href="grupos_estudiante.php">Grupos<i class="fa fa-users icon"></i></a></li>
+                <li><a href="inscripcion_materias_estudiante.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
                 <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
                 </div>
         </ul>

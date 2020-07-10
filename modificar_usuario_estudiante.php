@@ -44,17 +44,17 @@ if(empty($_POST['cumple']) || empty($_POST['email']) || empty($_POST['telefono']
         
     }if($query_update =true){
         echo "Informacion actualizada";
-       header("Location:perfil.php");
+       header("Location:perfil_estudiante.php");
         
     }else{
         
         echo "Error al actualizar la informacion";
-        header("Location:perfil.php");
+        header("Location:perfil_estudiante.php");
     }
     }
 
 }
 
-require 'views/modificar_usuario.view.php';
+require 'views/modificar_usuario_estudiante.view.php';
 
 ?>
