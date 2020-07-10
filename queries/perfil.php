@@ -20,4 +20,3 @@ $resultado=$con->query($consulta);
 $row=$resultado->fetch_assoc();
 
 ?>
-?>

@@ -1,5 +1,4 @@
 <?php
-
 //Llamada a la conexión a la base de datos
 require_once ("database/conn.php");
 //Lista de estudiantes inscritos en una materia
