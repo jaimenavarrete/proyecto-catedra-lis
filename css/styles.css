@@ -155,10 +155,10 @@ section{
   background-color:#3CA4DA;
   color: white;
   font-weight: bold;
-  padding: 50px 50px;
+  padding: 60px 60px;
   cursor: pointer;
   border: 1px solid #000000;
-  text-align: left;
+  text-align: center;
   margin: 30px;
 }
 
@@ -252,6 +252,11 @@ section{
   cursor: pointer;
   border: 1px solid #000000;
   border-radius:6px;
+  text-decoration: none;
+}
+
+.btn-a{
+  color:#fff;
   text-decoration: none;
 }
 
@@ -504,6 +509,9 @@ padding: 15px;
   margin-top: 7em;
 }
 
+.contenido-g{
+  margin-top: 10.2em;
+}
 .seccion-perfil {
   background-color: #3CA4DA;
   text-align: center;
@@ -560,43 +568,53 @@ padding: 15px;
   width: 100%;
 }
 
+.btn-ok {
+  background-color: #27AE60;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius:6px;
+  margin-right: 50px;
+}
 
-
-/*** Login responsive celular ***/
-@media (max-width:625px){
-  #freg{
-    background-image: none;
-  }
-
-  .frm-l #salario .form-options .olvidar{
-      display: flex;
-      padding: 10px 0;
-      font-size: medium;
-      
-      
-  }
-
-  .form-horizontal .form-options label {
-    display: flex;
-    width: 60%;
-    flex-direction: row;
-    
-  }
-
-  .form-horizontal .form-options input[type="checkbox"] {
-   display:flex;
-  justify-content: space-between;
-  
-  }
-
-   
-
-
-
-
+.btn-cancel{
+  background-color: #3CA4DA;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  border-radius:6px;
+  margin-right: 50px;
+}
 
 /*Versión tablet*/
 @media (min-width:626px) and (max-width:1023px){
+  .btn-ok {
+    background-color: #27AE60;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius:6px;
+    margin-right: 25px;
+  }
+  
+  .btn-cancel{
+    background-color: #3CA4DA;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    border-radius:6px;
+    margin-left: 8em;
+  }
   /*Muesta las materias centradas*/
   .boton-g{
     border-radius: 6px ;
@@ -700,6 +718,7 @@ padding: 15px;
       border: 1px solid #000000;
       border-radius:6px;
     }
+
     
     .btn-inscribir {
       margin: 60px 0 30px 0;
@@ -743,12 +762,34 @@ padding: 15px;
 @media (min-width:300px){
   .bar-scroll{
   width: 100%; 
-  height: 100%; 
+  height: auto; 
   overflow-x: auto;
   }
 }
 
 @media (max-width:625px){
+  .btn-ok {
+    background-color: #27AE60;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius:6px;
+    margin-left: -2.5em;
+  }
+  
+  .btn-cancel{
+    background-color: #3CA4DA;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    border-radius:6px;
+    margin-left: 1em;
+  }
     /* Diseño de botones de gestión*/
 .boton-g{
   border-radius: 6px ;
@@ -861,7 +902,6 @@ select{
 }
 }
 
-}
 
 /*** VENTANAS EMERGENTES ***/
 

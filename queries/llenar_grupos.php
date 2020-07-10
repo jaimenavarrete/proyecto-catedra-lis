@@ -21,7 +21,7 @@ if(isset($_SESSION['usuario'])){
                         <td><p>'.$row[3].'</p></td>                   
                     </tr>
                     <tr>
-                        <td><h4>Email:/h4></td> 
+                        <td><h4>Email:</h4></td> 
                         <td><p>'.$row[4].'</p></td>                         
                     </tr>
                     <tr>

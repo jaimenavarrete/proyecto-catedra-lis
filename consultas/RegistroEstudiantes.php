@@ -2,9 +2,9 @@
 if(isset($_POST['submit'])){
   $server = "localhost";
   $user = "root";
-  $passwd = "abc123";
+  $passwd = "";
   $db = "proyectolis";
-  $conexion = new mysqli($server, $user, $passwd, $db);
+  $conexion = new mysqli($server, $user, $passwd, $db,3308);
   if($conexion->connect_error){
       die("Error de conexión a la base de datos: " . $conexion->connect_error);
     }else{

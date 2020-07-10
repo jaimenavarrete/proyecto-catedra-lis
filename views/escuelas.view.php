@@ -1,4 +1,14 @@
-<?php include("consultas/consultas.php");?>
+<?php include("queries/consultas.php");?>
+<?php
+session_start();
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 3){
+    header("Location:index.php");
+}else{
+    $usuario = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+    echo $rol;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,33 +21,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-<div id="navegador">
-<input type="checkbox" id="menu-bar">
-<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
-<a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
-<a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
-    <nav class="menu">
-        <ul>
-            <div class="separador-links">
-                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
-                <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
-                <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
-                </div>
-        </ul>
-    </nav>
-</div>
-</header>
+<?php require_once('headers/headers.php'); ?>
 <section class="contenido">
     <article>
         <h1>REGISTRO DE ESCUELAS</h1>
         <div class="formtab">
             <h2>Escuelas</h2>
             <div>
-            <form action="consultas/datos.php" method="POST" class="search-container sc-downloader">
+            <form action="queries/datos.php" method="POST" class="search-container sc-downloader">
                 <div class="select-container">
                     <h4>Codigo escuela: <input type="text" name="codigo_escuela" required></h4>
                 </div>
@@ -77,7 +68,7 @@
                         <tr>
                             <td><?php echo $mostrar['Codigo_escuela'] ?></td>
                             <td><?php echo $mostrar['Nombre_escuela'] ?></td>
-                            <td><a href="#"><i class="fa fa-trash icon icon-delete"></i></a></td>
+                            <td><a href="queries/datos.php?id_esc=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-pencil icon icon-modify"></i></a> <a href="queries/datos.php?id_escuela=<?php echo $mostrar['Codigo_escuela'];?>"><i class="fa fa-trash icon icon-delete"></i></a></td>
                         </tr> 
                         <?php 
                           }
