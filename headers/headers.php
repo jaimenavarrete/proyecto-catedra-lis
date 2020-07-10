@@ -52,7 +52,7 @@ if(isset($rol)){
                         <div class="separador-links">
                             <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
                             <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
-                            <li><a href="reportes.php">Gestión <i class="fa fa-cog icon"></i></a></li>
+                            <li><a href="gestion.php">Gestión <i class="fa fa-cog icon"></i></a></li>
                             </div>
                         </ul>
                     </nav>
