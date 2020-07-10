@@ -2,8 +2,8 @@
 	include("plantilla.php");
 	require '../database/conn.php';
 	$num=0;
-	$query = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
-	ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo>0";
+	$query = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Grupo_proyecto, numero_grupo FROM estudiante 
+	INNER JOIN grupo_proyecto ON estudiante.Grupo_proyecto = grupo_proyecto.Codigo_grupo_proyecto";
 	$resultado = $con->query($query);
 	
 	$pdf = new PDF();
@@ -39,7 +39,7 @@
 		$pdf->Cell(40,10,utf8_decode($row['Nombres_estudiante']),0,0,'C',1);
 		$pdf->Cell(40,10,utf8_decode($row['Apellidos_estudiante']),0,0,'C',1);
 		$pdf->Cell(30,10,utf8_decode($row['Usuario_estudiante']),0,0,'C',1);
-		$pdf->Cell(50,10,utf8_decode($row['Codigo_grupo_proyecto']),0,1,'C',1);
+		$pdf->Cell(50,10,utf8_decode("Grupo ".$row['numero_grupo']),0,1,'C',1);
 	}
-	$pdf->Output('Reporte_Estudiantes'.'.pdf','I');
+	$pdf->Output('Reporte_Estudiantes_Grupos'.'.pdf','I');
 ?>

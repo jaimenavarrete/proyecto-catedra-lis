@@ -43,13 +43,12 @@ $selecionar9 = "SELECT Nombres_empleado, Apellidos_empleado, Usuario_empleado, C
 $resultado9=mysqli_query($con,$selecionar9);
 
 /*Consulta que permite tener los datos necesarios de grupos de proyectos*/
-$selecionar10 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
-                 ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo>0";
+$selecionar10 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Grupo_proyecto, numero_grupo FROM estudiante 
+                        INNER JOIN grupo_proyecto ON estudiante.Grupo_proyecto = grupo_proyecto.Codigo_grupo_proyecto";
 $resultado10=mysqli_query($con,$selecionar10);
 
 /*Consulta que permite tener los datos necesarios de grupos de proyectos*/
-$selecionar11 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
-                 ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo=0";
+$selecionar11 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Correo, Grupo_proyecto FROM estudiante WHERE Grupo_proyecto='0'";
 $resultado11=mysqli_query($con,$selecionar11);
 
 ?>

@@ -129,7 +129,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 3){
                     <td><?php echo $mostrar['Nombres_estudiante'] ?></td>
                     <td><?php echo $mostrar['Apellidos_estudiante'] ?></td>
                     <td><?php echo $mostrar['Usuario_estudiante'] ?></td>
-                    <td><?php echo $mostrar['Codigo_grupo_proyecto'] ?></td>
+                    <td><?php echo "Grupo ". $mostrar['numero_grupo'] ?></td>
                 </tr> 
                 <?php 
                  }
@@ -153,6 +153,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 3){
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Usuario del alumno</th>
+                        <th>Correo</th>
                     </tr>
                 </thead>
                 <?php
@@ -163,6 +164,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 3){
                     <td><?php echo $mostrar['Nombres_estudiante'] ?></td>
                     <td><?php echo $mostrar['Apellidos_estudiante'] ?></td>
                     <td><?php echo $mostrar['Usuario_estudiante'] ?></td>
+                    <td><?php echo $mostrar['Correo'] ?></td>
                 </tr> 
                 <?php 
                  }
