@@ -39,16 +39,17 @@ inscripcion INNER JOIN estudiante USING(Usuario_estudiante) GROUP BY Usuario_est
 $resultado8=mysqli_query($con,$selecionar8);
 
 /*Consulta de las tablas empleado y inscripcion*/
-$selecionar9 = "SELECT Nombres_empleado, Apellidos_empleado, Usuario_empleado, Correo, COUNT(Usuario_empleado) Materias FROM 
-inscripcion INNER JOIN empleado USING(Usuario_empleado) GROUP BY Usuario_empleado HAVING Materias >1";
+$selecionar9 = "SELECT Nombres_empleado, Apellidos_empleado, Usuario_empleado, Correo FROM empleado GROUP BY Usuario_empleado";
 $resultado9=mysqli_query($con,$selecionar9);
 
 /*Consulta que permite tener los datos necesarios de grupos de proyectos*/
-$selecionar10 = "SELECT Usuario_estudiante, Nombres_estudiante, Apellidos_estudiante, Correo, numero_grupo, Nombre_materia, Nombre_grupo, COUNT(numero_grupo) Integrantes FROM 
-estudiante INNER JOIN grupo_proyecto ON estudiante.Grupo_proyecto = grupo_proyecto.Codigo_grupo_proyecto INNER JOIN materia 
-ON(grupo_proyecto.Codigo_materia_uno AND Codigo_materia_dos) = materia.Codigo_materia INNER JOIN grupo USING(codigo_materia)
- WHERE numero_grupo > 0 GROUP BY Nombre_grupo HAVING Integrantes >1";
+$selecionar10 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
+                 ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo>0";
 $resultado10=mysqli_query($con,$selecionar10);
 
+/*Consulta que permite tener los datos necesarios de grupos de proyectos*/
+$selecionar11 = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
+                 ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo=0";
+$resultado11=mysqli_query($con,$selecionar11);
 
 ?>

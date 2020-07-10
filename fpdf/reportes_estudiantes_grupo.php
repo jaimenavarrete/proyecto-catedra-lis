@@ -2,7 +2,8 @@
 	include("plantilla.php");
 	require '../database/conn.php';
 	$num=0;
-	$query = "SELECT Nombres_empleado, Apellidos_empleado, Usuario_empleado, Correo FROM empleado GROUP BY Usuario_empleado";
+	$query = "SELECT Nombres_estudiante, Apellidos_estudiante, Usuario_estudiante, Codigo_grupo_proyecto FROM estudiante INNER JOIN grupo_proyecto 
+	ON estudiante.Grupo_proyecto=grupo_proyecto.Codigo_grupo_proyecto WHERE numero_grupo>0";
 	$resultado = $con->query($query);
 	
 	$pdf = new PDF();
@@ -16,7 +17,7 @@
 	$pdf->SetLineWidth(1);
 	$pdf->SetDrawColor(60,164,218);
 	$pdf->Line(7.8,65,202.5,65);
-	$pdf->Cell(150,100, 'Reporte Docentes',0,0,'L');
+	$pdf->Cell(150,100, 'Grupos formados',0,0,'L');
 	$pdf->Ln(60);
 	$pdf->SetX(20);
 	$pdf->SetFillColor(60,164,218);
@@ -26,7 +27,7 @@
 	$pdf->Cell(40,10,'NOMBRE',0,0,'C',1);
 	$pdf->Cell(40,10,'APELLIDO',0,0,'C',1);
 	$pdf->Cell(30,10,'USUARIO',0,0,'C',1);
-	$pdf->Cell(50,10,'CORREO',0,1,'C',1);
+	$pdf->Cell(50,10,'GRUPO',0,1,'C',1);
 	$pdf->SetFont('Arial','',10);
 	$pdf->SetTextColor(0,0,0);
 	$pdf->SetFillColor(240,240,240);
@@ -35,10 +36,10 @@
 	{
 		$pdf->SetX(20);
 		$pdf->Cell(5,10,(++$num),0,0,'C',1);
-		$pdf->Cell(40,10,utf8_decode($row['Nombres_empleado']),0,0,'C',1);
-		$pdf->Cell(40,10,utf8_decode($row['Apellidos_empleado']),0,0,'C',1);
-		$pdf->Cell(30,10,utf8_decode($row['Usuario_empleado']),0,0,'C',1);
-		$pdf->Cell(50,10,utf8_decode($row['Correo']),0,1,'C',1);
+		$pdf->Cell(40,10,utf8_decode($row['Nombres_estudiante']),0,0,'C',1);
+		$pdf->Cell(40,10,utf8_decode($row['Apellidos_estudiante']),0,0,'C',1);
+		$pdf->Cell(30,10,utf8_decode($row['Usuario_estudiante']),0,0,'C',1);
+		$pdf->Cell(50,10,utf8_decode($row['Codigo_grupo_proyecto']),0,1,'C',1);
 	}
-	$pdf->Output('Reporte_Docentes'.'.pdf','I');
+	$pdf->Output('Reporte_Estudiantes'.'.pdf','I');
 ?>
