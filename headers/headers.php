@@ -39,7 +39,7 @@ if(isset($rol)){
                     </nav>
                 </div>
             </header>';
-    }else fi($rol == 3){
+    }else if($rol == 3){
         echo '
             <header>
                 <div id="navegador">
