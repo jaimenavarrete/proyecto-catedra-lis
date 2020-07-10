@@ -1,12 +1,15 @@
 <?php
 
-if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 2){
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] <=1){
     header("Location:index.php");
+
 }else{
     $usuario = $_SESSION['usuario'];
     $rol = $_SESSION['rol'];
     echo $rol;
-}
+    }
+   
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

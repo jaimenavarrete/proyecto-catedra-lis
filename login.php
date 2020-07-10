@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
                   $_SESSION["usuario"] = $row["Usuario_empleado"];
                   if($row["Codigo_rol"] == 3){//Valida si el usuario es docente o administrador
                     $_SESSION["rol"] = $row["Codigo_rol"];
-                    header("Location: perfil_administrador.php");
+                    header("Location: perfil_admin.php");
                   }elseif($row["Codigo_rol"] == 2){
                     $_SESSION["rol"] = $row["Codigo_rol"];
                     header("Location: crear_grupos.php");

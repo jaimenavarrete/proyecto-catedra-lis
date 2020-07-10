@@ -25,30 +25,9 @@
             <div class="formtab">
                 <h2>Datos personales</h2>
                 <table class="tabla-datos-perfil">
-                    <tr>
-                        <td><h4>Usuario:</h4></td>  
-                        <td><p><?php echo ($result['Usuario_empleado']); ?></p></td>                     
-                    </tr>
-                    <tr>
-                        <td><h4>Nombres:</h4></td>
-                        <td><p><?php echo ($result['Nombres_empleado']); ?></p></td>                        
-                    </tr>
-                    <tr>
-                        <td><h4>Apellidos:</h4></td>      
-                        <td><p><?php echo ($result['Apellidos_empleado']); ?></p></td>                   
-                    </tr>
-                    <tr>
-                        <td><h4>Email:</h4></td> 
-                        <td><p><?php echo ($result['Correo']); ?></p></td>                         
-                    </tr>
-                    <tr>
-                        <td><h4>Edad:</h4></td>  
-                        <td><p><?php echo ($result['Edad']); ?></p></td>                        
-                    </tr>
-                    <tr>
-                        <td><h4>Número de teléfono:</h4></td>
-                        <td><p><?php echo ($result['Telefono']); ?></p></td>  
-                    </tr>
+                <?php
+                        require_once('queries/llenar_grupos.php');
+                    ?>
                 </table>
             </div>
                 </div>
