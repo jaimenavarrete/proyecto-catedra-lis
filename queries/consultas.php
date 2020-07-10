@@ -2,7 +2,7 @@
 include("database/conn.php");
 /*Consultas a la base de datos*/
 /*Consulta a la tabla roles, permite mostrar en un select option el rol al momento de registrar un nuevo usuario desde la vista del Admin*/
-$selecionar="SELECT * FROM roles WHERE Codigo_rol<=2";
+$selecionar="SELECT * FROM roles WHERE Codigo_rol>=2";
 $resultado=mysqli_query($con,$selecionar);
 
 /*Consulta a la tabla escula, permite mostrarlos datos de esta tabla en la tabla de escuela desde la vista del Admin*/
