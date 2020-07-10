@@ -15,10 +15,12 @@
     <article>
         <h1>INSCRIPCION DE MATERIAS</h1>
         <div class="formtab">
+            <form action="" method="post">
             <h2>Proceso de inscripción</h2>
 
             <div class="search-container sc-downloader">
                 <div class="select-container">
+                
                     <h4>Materia:</h4>
                     <select name="materias" id="materias" class="materias">
                 <?php while($contador=mysqli_fetch_array($resultado1)){
@@ -45,11 +47,6 @@
                 </div>
             </div>
 
-            <div class="search-container sc-downloader">
-                <div class="select-container">
-                    <h4>Cupos:</h4>
-                    <input type="text" name="cupos" id="cupos" readonly value="27">
-                </div>
 
                
             </div>
@@ -58,6 +55,7 @@
                 <input type="submit" id="btn-repo">
                 <label for="btn-repo" class="btn">Agregar materia <i class="fa fa-plus icon" id="i-pdf-2"></i></label>
             </div>
+            </form>
         </div>
     </article>
 </section>
