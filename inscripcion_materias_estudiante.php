@@ -20,10 +20,18 @@ $resultado1=mysqli_query($con,$consulta1);
 $consulta2="SELECT * FROM grupo WHERE Tipo='0'";
 $resultado2=mysqli_query($con,$consulta2);
 
-/* Consulta para mostrar grupos de lab */
 
 
-$registrar_materia="INSERT inscrpcion Usuario_estudiante='$iduser',Codigo_grupo='grupo', Usuario_empleado=''";
+if(empty($_POST['grupo']) || empty($_POST['materias'])){
+    echo "campos necesarios";
+}else{
+    $grupos=$_POST['grupo'];
+
+$registrar_materia="INSERT INTO inscripcion (Codigo_inscripcion, Usuario_estudiante, Codigo_grupo, Usuario_empleado) VALUES (NULL, '$iduser', '$grupos', NULL); ";
+$resultado3=mysqli_query($con,$registrar_materia);
+}
+
+
 
 require 'views/inscripcion_materias_estudiante.view.php';
 
