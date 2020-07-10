@@ -5,6 +5,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 2){
 }else{
     $usuario = $_SESSION['usuario'];
     $rol = $_SESSION['rol'];
+    echo $rol;
 }
 ?>
 <!DOCTYPE html>
@@ -90,25 +91,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 2){
     </script>
 </head>
 <body>
-<header>
-<div id="navegador">
-<input type="checkbox" id="menu-bar">
-<label for="menu-bar" class="fa fa-bars icon" style="font-size:36px"></label>
-<a href="perfil.php"><img class="circular--squaremin" src="img/user.png" /></a>
-<a href="login.php" class="cerrar">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a>
-    <nav class="menu">
-        <ul>
-            <div class="separador-links">
-                <li><a href="perfil.php">Mi perfil<i class="fa fa-user icon"></i></a></li>
-                <li><a href="grupos.php">Grupos<i class="fa fa-users icon"></i></a></li>
-                <li><a href="inscripcion_materias.php">Inscripción <i class="fa fa-pencil-square-o icon"></i></a></li>
-                <li><a href="reportes.php">Reportes <i class="fa fa-book icon"></i></a></li>
-                <li class="cerrar-m" ><a href="login.php">Cerrar Sesión <i class="fa fa-sign-out icon"></i> </a></li>
-                </div>
-        </ul>
-    </nav>
-</div>
-</header>
+<?php require_once('headers/headers.php'); ?>
 <section class="contenido">
     <article>
         <h1>CREACIÓN DE GRUPOS DE PROYECTO</h1>
